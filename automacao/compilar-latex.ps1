@@ -1,9 +1,13 @@
 [CmdletBinding()]
 param(
-    [string]$Repositorio = (Split-Path -Parent $PSScriptRoot)
+    [string]$Repositorio
 )
 
 $ErrorActionPreference = 'Stop'
+if (-not $Repositorio) {
+    $pastaScript = Split-Path -Parent $MyInvocation.MyCommand.Path
+    $Repositorio = Split-Path -Parent $pastaScript
+}
 $miktex = Join-Path $env:LOCALAPPDATA 'Programs\MiKTeX\miktex\bin\x64'
 $xelatex = Join-Path $miktex 'xelatex.exe'
 $bibtex = Join-Path $miktex 'bibtex.exe'

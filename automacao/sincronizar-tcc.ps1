@@ -1,9 +1,13 @@
 [CmdletBinding()]
 param(
-    [string]$Repositorio = (Split-Path -Parent $PSScriptRoot)
+    [string]$Repositorio
 )
 
 $ErrorActionPreference = 'Stop'
+if (-not $Repositorio) {
+    $pastaScript = Split-Path -Parent $MyInvocation.MyCommand.Path
+    $Repositorio = Split-Path -Parent $pastaScript
+}
 $git = 'C:\Program Files\Git\cmd\git.exe'
 $pastaLog = Join-Path $env:LOCALAPPDATA 'TCC-REAL'
 $arquivoLog = Join-Path $pastaLog 'sync.log'
@@ -16,9 +20,17 @@ function Registrar([string]$Mensagem) {
 }
 
 function Git {
-    & $git -C $Repositorio @args 2>&1 | ForEach-Object { Registrar "git: $_" }
-    if ($LASTEXITCODE -ne 0) {
-        throw "O comando git falhou (código $LASTEXITCODE): git $($args -join ' ')"
+    # O Windows PowerShell 5 transforma o stderr de programas nativos em
+    # ErrorRecord. Capture-o sem deixar ErrorActionPreference=Stop interromper
+    # comandos bem-sucedidos como `git fetch`.
+    $preferenciaAnterior = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    $saida = & $git -C $Repositorio @args 2>&1
+    $codigo = $LASTEXITCODE
+    $ErrorActionPreference = $preferenciaAnterior
+    $saida | ForEach-Object { Registrar "git: $_" }
+    if ($codigo -ne 0) {
+        throw "O comando git falhou (código $codigo): git $($args -join ' ')"
     }
 }
 
