@@ -29,20 +29,20 @@ function Git {
     $ErrorActionPreference = $preferenciaAnterior
     $saida | ForEach-Object { Registrar "git: $_" }
     if ($codigo -ne 0) {
-        throw "O comando git falhou (código $codigo): git $($args -join ' ')"
+        throw "O comando git falhou (codigo $codigo): git $($args -join ' ')"
     }
 }
 
 try {
-    if (-not (Test-Path -LiteralPath $git)) { throw "Git não encontrado em $git" }
+    if (-not (Test-Path -LiteralPath $git)) { throw "Git nao encontrado em $git" }
 
-    Registrar 'Início da sincronização.'
+    Registrar 'Inicio da sincronizacao.'
 
     # Um repositório recém-criado pode ainda não ter a branch main remota.
     & $git -C $Repositorio ls-remote --exit-code --heads origin main *> $null
     $mainRemotaExiste = ($LASTEXITCODE -eq 0)
     if ($LASTEXITCODE -notin 0, 2) {
-        throw 'Não foi possível consultar a branch main no GitHub.'
+        throw 'Nao foi possivel consultar a branch main no GitHub.'
     }
 
     if ($mainRemotaExiste) {
@@ -50,11 +50,11 @@ try {
     }
 
     $alteracoes = & $git -C $Repositorio status --porcelain=v1
-    if ($LASTEXITCODE -ne 0) { throw 'Não foi possível consultar o estado do repositório.' }
+    if ($LASTEXITCODE -ne 0) { throw 'Nao foi possivel consultar o estado do repositorio.' }
 
     if ($alteracoes) {
         Git add --all
-        $mensagem = "Atualização automática $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+        $mensagem = "Atualizacao automatica $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
         Git commit -m $mensagem
     }
 
@@ -62,7 +62,7 @@ try {
         Git rebase origin/main
     }
     Git push origin main
-    Registrar 'Sincronização concluída.'
+    Registrar 'Sincronizacao concluida.'
 }
 catch {
     Registrar "ERRO: $($_.Exception.Message)"
