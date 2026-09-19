@@ -2,6 +2,8 @@
 .DS_Store
 Thumbs.db
 ~$*.docx
+~$*
+*.tmp
 
 # Saídas de compilação LaTeX não selecionadas para versionamento
 latex/*.aux
@@ -17,3 +19,6 @@ latex/*.out
 latex/*.run.xml
 latex/*.synctex.gz
 latex/*.toc
+
+# Estado local da automacao (os logs ficam fora do repositorio)
+.tcc-sync.lock
