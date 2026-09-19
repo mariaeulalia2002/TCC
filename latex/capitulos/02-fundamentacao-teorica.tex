@@ -1,12 +1,27 @@
 \chapter{Fundamentação teórica}\label{cap:fundamentacao}
 
-\section{Localização e acesso}
+\section{Sísmica de reflexão}
 
-\TextoModelo{Descreva os limites, os principais acessos, os municípios abrangidos e as folhas cartográficas. Informe o sistema de referência e a fonte de todos os dados espaciais.}
+A sísmica de reflexão é um dos métodos geofísicos mais efetivos para mapear a geologia de uma determinada área, principalmente em ambientes submersos, utilizando fontes artificiais. Esse método baseia-se no princípio de que, quando um pulso sísmico é provocado próximo à superfície da coluna d'água por uma fonte artificial, ondas mecânicas se propagam em direção ao interior da Terra até encontrarem interfaces que delimitam camadas litológicas com diferentes impedâncias acústicas, nas quais parte de sua energia é refletida (Tóth, 2011).
 
-Exemplo de coordenadas: \coordenadas{27°35' S}{48°32' W}.
+A impedância acústica ($Z$) é uma propriedade que pode ser determinada pelo produto entre a densidade ($\rho$) do meio e a velocidade de propagação ($c$) da onda, considerando-se uma onda plana com incidência normal à interface. Assim, a impedância acústica de um meio pode ser expressa pela relação $Z = \rho c$ (Yilmaz, 2001). O fenômeno físico da reflexão das ondas acústicas ocorre quando existem contrastes representativos de impedância entre os meios atravessados pelo sinal emitido (Tóth, 2011). Nessas interfaces, parte da energia da onda retorna em direção à superfície, enquanto outra parte é transmitida e continua sua propagação até encontrar uma nova camada com impedância acústica distinta, repetindo-se sucessivamente os processos de reflexão e transmissão.
 
-\figuraplaceholder{Mapa de localização e vias de acesso à área de estudo}{Elaboração própria, com dados de [indicar as bases cartográficas]}{fig:mapa-localizacao}
+A técnica baseia-se na análise dos intervalos de tempo decorridos entre a emissão dos sinais pela fonte artificial e a chegada das ondas refletidas aos receptores, bem como de suas amplitudes. Esse intervalo é denominado tempo duplo de percurso, ou \textit{two-way travel time} (TWT), pois corresponde ao tempo necessário para que a onda se desloque da fonte até uma determinada interface e retorne à superfície. Dessa forma, os refletores presentes nas seções sísmicas são inicialmente posicionados em função do tempo, geralmente expresso em segundos ou milissegundos, e não diretamente em profundidade. A conversão do tempo em profundidade depende do conhecimento ou da estimativa das velocidades de propagação das ondas nos diferentes materiais atravessados (Yilmaz, 2001).
+
+Cada receptor registra, ao longo do tempo, as variações de amplitude das ondas que retornam à superfície. Esse registro individual é denominado traço sísmico e representa a resposta do meio geológico ao pulso emitido em uma determinada posição. A organização de vários traços sísmicos lado a lado forma uma seção sísmica, na qual a continuidade, a geometria e a amplitude das reflexões permitem identificar e interpretar interfaces e estruturas geológicas em subsuperfície (Kearey, 2009; Yilmaz, 2001). Assim, o método de sísmica de reflexão fundamenta-se no processamento e na posterior interpretação das reflexões registradas na superfície (Kearey, 2009).
+
+\subsection{Cosseno de fase instantânea}
+
+O atributo sísmico cosseno da fase instantânea é obtido a partir do cálculo do cosseno da fase instantânea do sinal sísmico, conforme a Equação~\ref{eq:cosseno-fase}.
+
+\begin{equation}
+  C(t) = \cos\bigl(\phi(t)\bigr)
+  \label{eq:cosseno-fase}
+\end{equation}
+
+em que $C(t)$ corresponde ao cosseno da fase instantânea e $\phi(t)$ representa a fase instantânea do sinal sísmico no tempo $t$. A fase instantânea é determinada a partir do sinal analítico, cuja parte imaginária é obtida por meio da transformada de Hilbert. Esse procedimento permite separar as informações de fase e amplitude do traço sísmico (Chopra \& Marfurt, 2007). Consequentemente, o cálculo do cosseno da fase torna-se independente dos valores de amplitude, promovendo uma normalização do traço sísmico e removendo as variações relacionadas à intensidade do sinal (Meneses, 2010).
+
+Ao reduzir a influência dos contrastes de amplitude, esse atributo evidencia a geometria e a configuração dos refletores, permitindo que feições anteriormente pouco perceptíveis sejam visualizadas com maior clareza (Chopra \& Marfurt, 2007). Dessa forma, o cosseno da fase instantânea contribui para realçar a continuidade lateral dos refletores, as mudanças no padrão de acamamento e os limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados (Alvarenga, 2016).
 
 \section{Contexto geológico regional}
 
@@ -15,5 +30,3 @@ Exemplo de coordenadas: \coordenadas{27°35' S}{48°32' W}.
 \section{Geologia local}
 
 \TextoModelo{Descreva as unidades mapeadas, suas relações de contato, estruturas, metamorfismo, alteração, geomorfologia e demais aspectos pertinentes ao tema.}
-
-Um dado estrutural pode ser registrado de forma consistente como \dadoestrutural{S_0}{N45E}{30SE}.
