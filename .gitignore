@@ -4,6 +4,7 @@ Thumbs.db
 ~$*.docx
 ~$*
 *.tmp
+tmp/
 
 # Saídas de compilação LaTeX não selecionadas para versionamento
 latex/*.aux
