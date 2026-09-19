@@ -55,9 +55,27 @@ O MiKTeX está instalado neste computador. Para gerar `latex/main.pdf`, execute:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\automacao\compilar-latex.ps1"
 ```
 
-Arquivos nativos do Google Docs não ficam dentro de uma pasta Git. Depois de
-editar no Google Docs, exporte/substitua `docs/template-tcc-geologia-ufsc.docx`
-para que essa versão seja registrada. Evite editar simultaneamente o mesmo
-trecho em dois computadores; conflitos ficam preservados para revisão manual e
-nunca são descartados pela automação.
+Arquivos nativos do Google Docs não ficam dentro de uma pasta Git. Evite editar
+simultaneamente o mesmo trecho em dois computadores; conflitos ficam
+preservados para revisão manual e nunca são descartados pela automação.
+
+## Documento editorial no Google Docs
+
+O documento editorial oficial deste TCC é
+[`template-tcc-geologia-ufsc`](https://docs.google.com/document/d/1ZoLTqc8Ihwv2FqDgTXCC3GTA_VLcLR78uw_x9cwu1ME/edit).
+
+O fluxo de trabalho adotado é:
+
+1. escrever e revisar o conteúdo no Google Docs;
+2. solicitar a conversão quando uma etapa estiver pronta;
+3. usar o Google Docs como autoridade para o conteúdo e `latex/` como autoridade
+   para estrutura, comandos e formatação;
+4. converter títulos, texto, citações, tabelas, figuras e legendas para os
+   arquivos modulares do projeto;
+5. compilar e revisar `latex/main.pdf`;
+6. registrar e enviar a conversão ao GitHub.
+
+A conversão do Google Docs para LaTeX é feita sob demanda. Isso evita que
+rascunhos intermediários ou edições ainda incompletas sejam propagados
+automaticamente para a versão destinada à banca.
 
