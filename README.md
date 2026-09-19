@@ -49,6 +49,12 @@ Para sincronizar imediatamente, execute no PowerShell:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\automacao\sincronizar-tcc.ps1"
 ```
 
+O MiKTeX está instalado neste computador. Para gerar `latex/main.pdf`, execute:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\automacao\compilar-latex.ps1"
+```
+
 Arquivos nativos do Google Docs não ficam dentro de uma pasta Git. Depois de
 editar no Google Docs, exporte/substitua `docs/template-tcc-geologia-ufsc.docx`
 para que essa versão seja registrada. Evite editar simultaneamente o mesmo
