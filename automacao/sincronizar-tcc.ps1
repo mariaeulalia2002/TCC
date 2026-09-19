@@ -11,7 +11,6 @@ if (-not $Repositorio) {
 $git = 'C:\Program Files\Git\cmd\git.exe'
 $pastaLog = Join-Path $env:LOCALAPPDATA 'TCC-REAL'
 $arquivoLog = Join-Path $pastaLog 'sync.log'
-$mutex = [Threading.Mutex]::new($false, 'Local\TCC-REAL-Git-Sync')
 
 New-Item -ItemType Directory -Path $pastaLog -Force | Out-Null
 
@@ -35,7 +34,6 @@ function Git {
 }
 
 try {
-    if (-not $mutex.WaitOne(0)) { exit 0 }
     if (-not (Test-Path -LiteralPath $git)) { throw "Git não encontrado em $git" }
 
     Registrar 'Início da sincronização.'
@@ -69,8 +67,4 @@ try {
 catch {
     Registrar "ERRO: $($_.Exception.Message)"
     exit 1
-}
-finally {
-    try { $mutex.ReleaseMutex() } catch { }
-    $mutex.Dispose()
 }
