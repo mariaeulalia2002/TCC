@@ -4,6 +4,7 @@ param()
 $ErrorActionPreference = 'Stop'
 $nomeTarefa = 'TCC - sincronização GitHub'
 $scriptSync = Join-Path $PSScriptRoot 'sincronizar-tcc.ps1'
+$repositorio = Split-Path -Parent $PSScriptRoot
 $powershell = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
 
 if (-not (Test-Path -LiteralPath $scriptSync)) {
@@ -12,7 +13,8 @@ if (-not (Test-Path -LiteralPath $scriptSync)) {
 
 $acao = New-ScheduledTaskAction `
     -Execute $powershell `
-    -Argument "-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$scriptSync`""
+    -Argument "-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$scriptSync`" -Repositorio `"$repositorio`"" `
+    -WorkingDirectory $repositorio
 
 $gatilho = New-ScheduledTaskTrigger `
     -Once `
