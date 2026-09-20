@@ -13,6 +13,8 @@ O arquivo [`template-tcc-geologia-ufsc.docx`](template-tcc-geologia-ufsc.docx) �
 ## Regras de edição
 
 - Preserve os estilos de título para que o sumário e a conversão para LaTeX reconheçam a hierarquia.
+- Padronize os títulos numerados pela profundidade: `1` = Título 1; `1.1` = Título 2; `1.1.1` = Título 3; `1.1.1.1` = Título 4.
+- Conforme o estilo do LaTeX, todos os níveis usam Times New Roman, 12 pt e cor preta. Os níveis 1 a 3 ficam em negrito; o nível 4 fica em itálico e sem negrito.
 - Use o recurso de legenda para figuras e tabelas e mantenha a fonte logo abaixo de cada elemento.
 - Não digite números de página manualmente no sumário.
 - Não invente referências. Registre os dados bibliográficos completos e, de preferência, mantenha uma biblioteca no Zotero ou Mendeley.
