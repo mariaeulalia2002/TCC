@@ -1,32 +1,52 @@
 \chapter{Materiais e métodos}\label{cap:metodos}
 
-\section{Pesquisa bibliográfica e bases de dados}
+\TextoModelo{O fluxograma apresentado na Figura X sintetiza as principais etapas adotadas no desenvolvimento deste trabalho.}
 
-\TextoModelo{Indique bases consultadas, critérios de seleção, mapas, imagens, modelos digitais de elevação, dados geoquímicos e demais produtos utilizados.}
+\section{Sísmica}
+
+O principal conjunto de dados utilizado neste trabalho foi o cubo sísmico 3D R0014\_BS\_500 (\TextoModelo{Figura X}), fornecido pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP). O volume corresponde a um dado sísmico 3D PSTM (\textit{Post-Stack Time Migration}), migrado em tempo e pós-processado.
+
+O cubo é composto por 14.672.450 traços, com 2.126 amostras por traço e intervalo amostral de 4~ms, equivalente a uma frequência de amostragem de 250~Hz e frequência de Nyquist de 125~Hz. A consistência do intervalo amostral foi verificada no \textit{binary header} e em 200 \textit{trace headers}, por meio de \textit{script} desenvolvido em \textit{Python\textsuperscript{\textregistered}} (Anexo~1); todos os registros analisados apresentaram intervalo de 4.000~\textmu s.
+
+O registro sísmico possui duração aproximada de 8,5~s. O produto final foi reamostrado para 4~ms durante o processamento. A geometria nominal do levantamento apresenta \textit{bin size} de 25~$\times$~12,5~m, com coordenadas referidas ao \textit{datum} SAD69 e à projeção UTM, zona 23S.
+
+\subsection{Reconhecimento de depósitos e complexos de transporte de massa}
+
+A interpretação sísmica foi realizada no software \textit{Petrel\textsuperscript{\textregistered}}. Para cada depósito ou complexo de transporte de massa, foram identificados os horizontes correspondentes às superfícies de topo e base de cada evento, priorizando-se, sempre que possível, os refletores de maior continuidade.
+
+O mapeamento foi realizado manualmente por meio da ferramenta \textit{Manual Interpretation}. Os eventos mais recentes foram interpretados com espaçamento de 100~$\times$~100~m entre os pontos de controle, em \textit{inlines} e \textit{crosslines}. Parte dos eventos mais antigos foi interpretada com espaçamento de 200~$\times$~200~m, em função do tempo disponível para esta etapa. Optou-se pela interpretação manual com o objetivo de minimizar possíveis erros de correlação associados a procedimentos automatizados.
+
+Como controle de qualidade da interpretação, foi aplicado o método de \textit{loop tie}, no qual os horizontes foram correlacionados entre \textit{inlines} e \textit{crosslines} sucessivas, formando circuitos fechados. Nos pontos de interseção, verificou-se a continuidade do refletor sísmico interpretado e, ao final de cada circuito, avaliou-se se a interpretação retornava ao mesmo evento no ponto inicial. Eventuais \textit{mis-ties} foram revisados, reduzindo erros de correlação entre refletores adjacentes e aumentando a consistência tridimensional dos horizontes interpretados \cite{tearpock2003}.
+
+Feições relevantes associadas aos depósitos e complexos, tais como falhas, blocos preservados, estruturas de escape de gás (\textit{pockmarks}) e blocos de alta amplitude, foram documentadas e posteriormente caracterizadas em seções sísmicas de interesse.
+
+\subsubsection{Cosseno de fase instantânea}
+
+O atributo sísmico cosseno de fase instantânea foi aplicado ao cubo sísmico no software \textit{Petrel\textsuperscript{\textregistered}}, com o objetivo de apoiar o reconhecimento das superfícies-limite de topo e base dos depósitos, bem como auxiliar na distinção entre eventos que compõem os complexos de transporte de massa (MTCs), quando necessário.
+
+Esse atributo contribui para o realce da continuidade lateral dos refletores, das mudanças nos padrões de acamamento e dos limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados \cite{alvarenga2016}. A fundamentação teórica do atributo é apresentada na Seção~\ref{subsec:cosseno-fase}.
+
+\subsection{Geração de superfícies sísmicas e análise geomorfométrica}
+
+A geração de superfícies a partir de horizontes sísmicos permite representar a geometria de refletores de interesse e investigar padrões de acomodação e distribuição sedimentar \cite{preissler2016}. Neste trabalho, a análise geomorfométrica do fundo marinho foi realizada integralmente no domínio do tempo sísmico, tendo como base o horizonte correspondente ao primeiro refletor identificado no volume sísmico. Esse refletor foi associado à interface entre a coluna d'água e o substrato sedimentar, caracterizada por elevado contraste de impedância acústica.
+
+O horizonte do fundo marinho foi interpretado no software \textit{Petrel\textsuperscript{\textregistered}} por meio da ferramenta \textit{Guided Autotracking}. Nessa ferramenta, o intérprete define pontos inicial e final ao longo de um refletor, e o algoritmo realiza o rastreamento do evento sísmico entre esses pontos, de acordo com os parâmetros de rastreamento previamente estabelecidos. O resultado do rastreamento foi submetido à verificação visual e, quando necessário, a correções manuais, a fim de garantir a continuidade e a coerência do horizonte interpretado. Os pontos correspondentes ao horizonte foram exportados em formato ASCII, contendo as coordenadas espaciais X e Y e os respectivos valores de tempo sísmico de dupla viagem (\textit{two-way travel time} --- TWT), em milissegundos. Para facilitar a visualização tridimensional da superfície, os valores de tempo foram representados com sinal negativo. Essa inversão não altera a geometria relativa da superfície, mas possibilita sua representação visual em uma configuração semelhante à de um modelo de relevo submarino.
+
+A interpolação inicial foi realizada no software \textit{Surfer\textsuperscript{\textregistered}}, versão 11.0, utilizando o método de krigagem e variograma linear, com resolução espacial de 50~$\times$~50~m. A krigagem é um método geoestatístico de interpolação que estima valores em locais não amostrados com base na dependência espacial existente entre as observações. Essa dependência é descrita pelo variograma, que expressa a variação entre pares de dados em função da distância que os separa. Assim, os valores interpolados em cada célula do \textit{grid} foram estimados a partir da posição, dos valores de TWT e da estrutura de correlação espacial dos pontos interpretados \cite{davis2002}.
+
+Posteriormente, o \textit{grid} foi importado para o software \textit{QGIS\textsuperscript{\textregistered}}, no qual foram calculados atributos derivados de \textit{raster}: rugosidade e declividade. A rugosidade é uma medida da heterogeneidade local da superfície e é calculada a partir das diferenças entre o valor de uma célula central e os valores das células que compõem sua vizinhança. Valores mais elevados indicam maior variabilidade local, permitindo realçar descontinuidades, escarpas, cicatrizes, canais e outras irregularidades morfológicas \cite{riley1999,wilson2007}.
+
+A declividade foi calculada a partir da taxa de variação dos valores da superfície entre células adjacentes. Como os valores verticais do \textit{grid} correspondem a TWT, e não à profundidade em metros, esse atributo representa um gradiente temporal aparente, expresso a partir da variação do tempo sísmico em relação à distância horizontal. Portanto, a declividade obtida não deve ser interpretada como declividade batimétrica real, mas como uma medida relativa útil para evidenciar mudanças abruptas na geometria do refletor sísmico. Os procedimentos de análise de terreno empregados pelo \textit{QGIS\textsuperscript{\textregistered}} calculam esses atributos a partir das relações espaciais entre células de um modelo \textit{raster} de superfície \cite{qgis2025}.
+
+Até agosto de 2026, a geração e a visualização das superfícies foram realizadas predominantemente fora do \textit{Petrel\textsuperscript{\textregistered}}, pois a infraestrutura computacional disponível no acesso remoto inicial não possuía capacidade suficiente para carregar adequadamente as janelas de visualização 2D e 3D do projeto, em razão do tamanho do conjunto de dados. Essa limitação afetava a manipulação e a inspeção visual dos horizontes e superfícies, mas não a interpretação dos dados em si. Posteriormente, foi disponibilizado um novo acesso remoto com maior capacidade computacional, permitindo a visualização adequada das janelas 2D e 3D do \textit{Petrel\textsuperscript{\textregistered}}. A superfície correspondente ao fundo marinho foi então também gerada no software por meio da ferramenta \textit{Make Surface}, utilizando os mesmos pontos interpretados, resolução espacial e parâmetros de interpolação adotados no fluxo inicial. Esse procedimento permitiu comparar os resultados obtidos nos dois ambientes e realizar a visualização tridimensional da superfície diretamente no projeto sísmico.
+
+As superfícies de topo e base dos depósitos e complexos de transporte de massa foram geradas no \textit{Petrel\textsuperscript{\textregistered}} utilizando a ferramenta \textit{Make Surface} e o método de krigagem simples. Nesse método, a estimativa espacial é realizada assumindo-se uma média conhecida ou constante para os dados analisados, enquanto a influência de cada ponto na estimativa depende da estrutura de continuidade espacial definida pelo modelo de variograma \cite{davis2002}. O tamanho das células foi definido de acordo com o espaçamento de interpretação de cada evento, buscando manter compatibilidade entre a resolução da superfície gerada e a densidade dos pontos interpretados. As superfícies também foram visualizadas no \textit{Surfer\textsuperscript{\textregistered}}, versão 11.0, para fins de comparação e controle de qualidade. \TextoModelo{Informações adicionais sobre os procedimentos de análise morfométrica serão apresentadas na seção correspondente.}
 
 \section{Etapa de campo}
-
 \TextoModelo{Informe período, escala de trabalho, equipamentos, critérios de descrição de afloramentos, amostragem, controle de qualidade e registro de coordenadas.}
 
-\begin{quadro}
-\caption{Exemplo de organização do levantamento de campo}\label{qua:campo}
-\centering
-\begin{tabularx}{\textwidth}{>{\bfseries}l X l}
-\toprule
-Atividade & Registro mínimo & Produto \\
-\midrule
-Descrição de afloramento & Litologia, textura, estruturas, alteração e fotografias & Ficha de ponto \\
-Medida estrutural & Tipo de estrutura, atitude, método e qualidade & Banco estrutural \\
-Amostragem & Código, material, finalidade e posição & Cadeia de custódia \\
-\bottomrule
-\end{tabularx}
-\FonteTCC{Elaboração própria}
-\end{quadro}
-
 \section{Etapa laboratorial}
-
 \TextoModelo{Descreva preparação das amostras, métodos analíticos, equipamentos, padrões, limites de detecção, brancos, duplicatas e tratamento de incertezas.}
 
 \section{Tratamento e integração dos dados}
-
-\TextoModelo{Explique os procedimentos estatísticos, petrográficos, geoquímicos, geocronológicos, geofísicos, geotécnicos ou de geoprocessamento adotados. Declare softwares e versões quando forem relevantes à reprodutibilidade.}
+\TextoModelo{Explique os procedimentos estatísticos, petrográficos, geoquímicos, geocronológicos, geofísicos, geotécnicos ou de geoprocessamento. Declare softwares e versões quando relevantes à reprodutibilidade.}
