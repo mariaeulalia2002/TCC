@@ -6,7 +6,7 @@ O fluxograma apresentado na \TextoModelo{Figura a inserir} sintetiza as principa
 
 O principal conjunto de dados utilizado neste trabalho foi o cubo sísmico 3D R0014\_BS\_500 (\TextoModelo{Figura a inserir}), fornecido pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP). O volume corresponde a um dado sísmico 3D PSTM (\textit{Post-Stack Time Migration}), migrado em tempo e pós-processado.
 
-O cubo é composto por 14.672.450 traços, com 2.126 amostras por traço e intervalo amostral de 4 ms, equivalente a uma frequência de amostragem de 250 Hz e frequência de Nyquist de 125 Hz. A consistência do intervalo amostral foi verificada no \textit{binary header} e em 200 \textit{trace headers}, por meio de script desenvolvido em \textit{Python®} (\TextoModelo{Anexo a definir}); todos os registros analisados apresentaram intervalo de 4.000 \textmu{}s.
+O cubo é composto por 14.672.450 traços, com 2.126 amostras por traço e intervalo amostral de \SI{4}{\milli\second}, equivalente a uma frequência de amostragem de \SI{250}{\hertz} e frequência de Nyquist de \SI{125}{\hertz}. A consistência do intervalo amostral foi verificada no \textit{binary header} e em 200 \textit{trace headers}, por meio de script desenvolvido em \textit{Python\textsuperscript{\textregistered}} (\TextoModelo{Anexo a definir}); todos os registros analisados apresentaram intervalo de \SI{4000}{\micro\second}.
 
 O registro sísmico possui duração aproximada de 8,5 s. O produto final foi reamostrado para 4 ms durante o processamento. A geometria nominal do levantamento apresenta \textit{bin size} de 25 $\times$ 12,5 m, com coordenadas referidas ao datum SAD69 e à projeção UTM, zona 23S.
 
@@ -89,7 +89,7 @@ Os pontos exportados foram importados no QGIS e organizados segundo a sequência
 
 \noindent\colorbox{yellow}{\parbox{0.94\linewidth}{A definição do eixo foi auxiliada pelo mapa de aspecto da superfície basal e pelos perfis extraídos com o \textit{Profile Tool}. O aspecto foi interpretado em conjunto com os limites sísmicos e com os perfis. O eixo resultante representa o percurso interpretado em planta, incluindo suas mudanças de direção. Colocar figura de exemplo}}
 
-O eixo principal do movimento foi digitalizado como uma polilinha, considerando a posição da cicatriz, a geometria do depósito, o relevo da superfície basal e a trajetória interpretada de transporte. Como exemplo na figura x, o eixo acompanhou a curvatura do corpo e o talvegue do canal.
+O eixo principal do movimento foi digitalizado como uma polilinha, considerando a posição da cicatriz, a geometria do depósito, o relevo da superfície basal e a trajetória interpretada de transporte. Na \TextoModelo{Figura a inserir}, o eixo acompanha a curvatura do corpo e o talvegue do canal.
 
 As três linhas de limites foram intersectadas com o eixo. As interseções definiram as posições A, B e C efetivamente utilizadas nos cálculos longitudinais. Em seguida, a polilinha foi dividida nessas posições, originando os segmentos A--B e B--C.
 
@@ -204,11 +204,11 @@ A medida caracteriza, portanto, a superfície receptora imediatamente à frente 
 
 \subsection{Conversão tempo--profundidade das medidas morfométricas}
 
-A conversão das medidas temporais foi realizada para fornecer uma estimativa das dimensões dos depósitos em metros. Foram utilizadas velocidades representativas dos sedimentos rasos, ponderadas pela distância entre poços (\TextoModelo{Figura a inserir}) fornecidos pela Agência Nacional de Petróleo Gás e Biocombustíveis (ANP) e o ponto central de cada MTD. Os procedimentos foram separados entre a conversão de intervalos sedimentares e os cálculos que também envolveram medidas próximas a coluna d’água.
+A conversão das medidas temporais foi realizada para fornecer uma estimativa das dimensões dos depósitos em metros. Foram utilizadas velocidades representativas dos sedimentos rasos, ponderadas pela distância entre os poços fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) e o ponto central de cada MTD (\TextoModelo{Figura a inserir}). Os procedimentos foram separados entre a conversão de intervalos sedimentares e os cálculos que também envolveram medidas próximas à coluna d'água.
 
 \subsubsection{Obtenção das velocidades nos poços}
 
-No poço 1-BRSA-137-RJS, foi selecionada a velocidade do trecho mais raso (1.849 m a 2.073 m ) da curva intervalar derivada do VSP (\TextoModelo{Figura a inserir})  e suavizada pelo método de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}) (, correspondente a 1.553,662 m/s., através de script em Python (\TextoModelo{Anexo a definir}). Esse valor representa o intervalo raso selecionado, e não uma média de toda a curva do poço.
+No poço 1-BRSA-137-RJS, foi selecionada a velocidade do trecho mais raso (\SI{1849}{\metre} a \SI{2073}{\metre}) da curva intervalar derivada do VSP (\TextoModelo{Figura a inserir}), suavizada pelo método de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}) por meio de script em \textit{Python\textsuperscript{\textregistered}} (\TextoModelo{Anexo a definir}). O valor correspondente foi de \SI{1553,662}{\metre\per\second} e representa o intervalo raso selecionado, não uma média de toda a curva do poço.
 
 No poço 1-BRSA-127-RJS, a velocidade intervalar foi calculada entre as profundidades de 1.854 e 2.059 m, aproximadamente 23--228 m abaixo do fundo marinho, obtidas através de relatório do poço. A diferença de profundidade foi relacionada à diferença entre os tempos duplos de 2.425,68 e 2.693,94 ms:
 
@@ -230,7 +230,7 @@ Foram utilizadas as distâncias horizontais entre o ponto central de cada MTD/MT
 \end{equation}
 \equationdescription{Velocidade ponderada do MTD}
 
-Em que vi é a velocidade selecionada no poço e di, sua distância ao ponto central do depósito. Assim, os controles mais próximos receberam maior peso. Foi obtida uma velocidade constante para cada MTD/MTC, sem variação célula a célula. As distâncias calculadas e as velocidades ponderadas para cada MTD/MTC encontram-se no anexo x.
+Em que $v_i$ é a velocidade selecionada no poço e $d_i$, sua distância ao ponto central do depósito. Assim, os controles mais próximos receberam maior peso. Foi obtida uma velocidade constante para cada MTD/MTC, sem variação célula a célula. As distâncias calculadas e as velocidades ponderadas para cada MTD/MTC encontram-se no \TextoModelo{Anexo a definir}.
 
 \subsubsection{Conversão dos intervalos sedimentares}
 
