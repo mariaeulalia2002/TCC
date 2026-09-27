@@ -1,37 +1,37 @@
-\contentsline {equation}{\numberline {Equação~2.1}Cosseno da fase instantânea}{21}{equation.2.1}%
-\contentsline {equation}{\numberline {Equação~2.2}Fator de segurança}{27}{equation.2.2}%
-\contentsline {equation}{\numberline {Equação~2.3}Critério de ruptura de Mohr--Coulomb}{27}{equation.2.3}%
-\contentsline {equation}{\numberline {Equação~2.4}Tensão normal efetiva}{28}{equation.2.4}%
-\contentsline {equation}{\numberline {Equação~2.5}Resistência ao cisalhamento em função da poropressão}{28}{equation.2.5}%
-\contentsline {equation}{\numberline {Equação~2.6}Fator de segurança em função da poropressão}{28}{equation.2.6}%
-\contentsline {equation}{\numberline {Equação~4.1}Espessura temporal da isócrona}{62}{equation.4.1}%
-\contentsline {equation}{\numberline {Equação~4.2}Comprimento total do movimento de massa}{64}{equation.4.2}%
-\contentsline {equation}{\numberline {Equação~4.3}Comprimento do depósito}{64}{equation.4.3}%
-\contentsline {equation}{\numberline {Equação~4.4}Comprimento da zona evacuada}{64}{equation.4.4}%
-\contentsline {equation}{\numberline {Equação~4.5}Intervalos temporais}{65}{equation.4.5}%
-\contentsline {equation}{\numberline {Equação~4.6}Altura da zona evacuada}{65}{equation.4.6}%
-\contentsline {equation}{\numberline {Equação~4.7}Altura total de queda}{65}{equation.4.7}%
-\contentsline {equation}{\numberline {Equação~4.8}Desnível distal}{65}{equation.4.8}%
-\contentsline {equation}{\numberline {Equação~4.9}Altura da cicatriz}{65}{equation.4.9}%
-\contentsline {equation}{\numberline {Equação~4.10}Inclinação máxima da cicatriz}{66}{equation.4.10}%
-\contentsline {equation}{\numberline {Equação~4.11}Inclinação do declive}{66}{equation.4.11}%
-\contentsline {equation}{\numberline {Equação~4.12}Inclinação à frente do pé}{67}{equation.4.12}%
-\contentsline {equation}{\numberline {Equação~4.13}Velocidade intervalar}{67}{equation.4.13}%
-\contentsline {equation}{\numberline {Equação~4.14}Velocidade ponderada do MTD}{68}{equation.4.14}%
-\contentsline {equation}{\numberline {Equação~4.15}Conversão da espessura}{68}{equation.4.15}%
-\contentsline {equation}{\numberline {Equação~4.16}Conversão na coluna d'água}{68}{equation.4.16}%
-\contentsline {equation}{\numberline {Equação~4.17}Profundidade de ponto soterrado}{68}{equation.4.17}%
-\contentsline {equation}{\numberline {Equação~4.18}Resolução vertical temporal}{70}{equation.4.18}%
-\contentsline {equation}{\numberline {Equação~4.19}Resolução vertical em milissegundos}{70}{equation.4.19}%
-\contentsline {equation}{\numberline {Equação~4.20}Diferença entre interpretações}{70}{equation.4.20}%
-\contentsline {equation}{\numberline {Equação~4.21}Incerteza de repetibilidade}{71}{equation.4.21}%
-\contentsline {equation}{\numberline {Equação~4.22}Resultado da incerteza de picking}{71}{equation.4.22}%
-\contentsline {equation}{\numberline {Equação~4.23}Incerteza de interpolação}{71}{equation.4.23}%
-\contentsline {equation}{\numberline {Equação~4.24}Média ponderada da velocidade}{72}{equation.4.24}%
-\contentsline {equation}{\numberline {Equação~4.25}Velocidade com incerteza}{72}{equation.4.25}%
-\contentsline {equation}{\numberline {Equação~4.26}Propagação geral de incertezas}{72}{equation.4.26}%
-\contentsline {equation}{\numberline {Equação~4.27}Incerteza temporal}{72}{equation.4.27}%
-\contentsline {equation}{\numberline {Equação~4.28}Incerteza da diferença temporal}{73}{equation.4.28}%
-\contentsline {equation}{\numberline {Equação~4.29}Conversão de tempo em profundidade}{73}{equation.4.29}%
-\contentsline {equation}{\numberline {Equação~4.30}Incerteza relativa da profundidade}{73}{equation.4.30}%
-\contentsline {equation}{\numberline {Equação~4.31}Formulação geral para variáveis independentes}{73}{equation.4.31}%
+\contentsline {equation}{\numberline {Equação~2.1}Cosseno da fase instantânea}{22}{equation.2.1}%
+\contentsline {equation}{\numberline {Equação~2.2}Fator de segurança}{28}{equation.2.2}%
+\contentsline {equation}{\numberline {Equação~2.3}Critério de ruptura de Mohr--Coulomb}{29}{equation.2.3}%
+\contentsline {equation}{\numberline {Equação~2.4}Tensão normal efetiva}{29}{equation.2.4}%
+\contentsline {equation}{\numberline {Equação~2.5}Resistência ao cisalhamento em função da poropressão}{29}{equation.2.5}%
+\contentsline {equation}{\numberline {Equação~2.6}Fator de segurança em função da poropressão}{29}{equation.2.6}%
+\contentsline {equation}{\numberline {Equação~4.1}Espessura temporal da isócrona}{64}{equation.4.1}%
+\contentsline {equation}{\numberline {Equação~4.2}Comprimento total do movimento de massa}{66}{equation.4.2}%
+\contentsline {equation}{\numberline {Equação~4.3}Comprimento do depósito}{66}{equation.4.3}%
+\contentsline {equation}{\numberline {Equação~4.4}Comprimento da zona evacuada}{66}{equation.4.4}%
+\contentsline {equation}{\numberline {Equação~4.5}Intervalos temporais}{67}{equation.4.5}%
+\contentsline {equation}{\numberline {Equação~4.6}Altura da zona evacuada}{67}{equation.4.6}%
+\contentsline {equation}{\numberline {Equação~4.7}Altura total de queda}{67}{equation.4.7}%
+\contentsline {equation}{\numberline {Equação~4.8}Desnível distal}{67}{equation.4.8}%
+\contentsline {equation}{\numberline {Equação~4.9}Altura da cicatriz}{68}{equation.4.9}%
+\contentsline {equation}{\numberline {Equação~4.10}Inclinação máxima da cicatriz}{68}{equation.4.10}%
+\contentsline {equation}{\numberline {Equação~4.11}Inclinação do declive}{68}{equation.4.11}%
+\contentsline {equation}{\numberline {Equação~4.12}Inclinação à frente do pé}{69}{equation.4.12}%
+\contentsline {equation}{\numberline {Equação~4.13}Velocidade intervalar}{69}{equation.4.13}%
+\contentsline {equation}{\numberline {Equação~4.14}Velocidade ponderada do MTD}{70}{equation.4.14}%
+\contentsline {equation}{\numberline {Equação~4.15}Conversão da espessura}{70}{equation.4.15}%
+\contentsline {equation}{\numberline {Equação~4.16}Conversão na coluna d'água}{70}{equation.4.16}%
+\contentsline {equation}{\numberline {Equação~4.17}Profundidade de ponto soterrado}{70}{equation.4.17}%
+\contentsline {equation}{\numberline {Equação~4.18}Resolução vertical temporal}{72}{equation.4.18}%
+\contentsline {equation}{\numberline {Equação~4.19}Resolução vertical em milissegundos}{72}{equation.4.19}%
+\contentsline {equation}{\numberline {Equação~4.20}Diferença entre interpretações}{72}{equation.4.20}%
+\contentsline {equation}{\numberline {Equação~4.21}Incerteza de repetibilidade}{73}{equation.4.21}%
+\contentsline {equation}{\numberline {Equação~4.22}Resultado da incerteza de picking}{73}{equation.4.22}%
+\contentsline {equation}{\numberline {Equação~4.23}Incerteza de interpolação}{73}{equation.4.23}%
+\contentsline {equation}{\numberline {Equação~4.24}Média ponderada da velocidade}{74}{equation.4.24}%
+\contentsline {equation}{\numberline {Equação~4.25}Velocidade com incerteza}{74}{equation.4.25}%
+\contentsline {equation}{\numberline {Equação~4.26}Propagação geral de incertezas}{74}{equation.4.26}%
+\contentsline {equation}{\numberline {Equação~4.27}Incerteza temporal}{75}{equation.4.27}%
+\contentsline {equation}{\numberline {Equação~4.28}Incerteza da diferença temporal}{75}{equation.4.28}%
+\contentsline {equation}{\numberline {Equação~4.29}Conversão de tempo em profundidade}{75}{equation.4.29}%
+\contentsline {equation}{\numberline {Equação~4.30}Incerteza relativa da profundidade}{75}{equation.4.30}%
+\contentsline {equation}{\numberline {Equação~4.31}Formulação geral para variáveis independentes}{75}{equation.4.31}%
