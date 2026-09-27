@@ -18,6 +18,7 @@ O atributo sísmico cosseno da fase instantânea é obtido a partir do cálculo 
   C(t) = \cos\bigl(\phi(t)\bigr)
   \label{eq:cosseno-fase}
 \end{equation}
+\equationdescription{Cosseno da fase instantânea}
 
 em que $C(t)$ corresponde ao cosseno da fase instantânea e $\phi(t)$ representa a fase instantânea do sinal sísmico no tempo $t$. A fase instantânea é determinada a partir do sinal analítico, cuja parte imaginária é obtida por meio da transformada de Hilbert. Esse procedimento permite separar as informações de fase e amplitude do traço sísmico \cite{chopra2007}. Consequentemente, o cálculo do cosseno da fase torna-se independente dos valores de amplitude, promovendo uma normalização do traço sísmico e removendo as variações relacionadas à intensidade do sinal \cite{meneses2010}.
 
@@ -115,6 +116,7 @@ A condição de estabilidade pode ser inicialmente avaliada por meio do fator de
   FS = \frac{\tau_f}{\tau_m},
   \label{eq:fator-seguranca}
 \end{equation}
+\equationdescription{Fator de segurança}
 
 em que $FS$ é o fator de segurança, $\tau_f$ é a resistência ao cisalhamento do material e $\tau_m$ é a tensão cisalhante mobilizada ao longo da superfície potencial de ruptura. Quando $FS>1$, a resistência disponível é superior à tensão mobilizada e o talude é considerado estável. Quando $FS=1$, o sistema encontra-se na condição limite de equilíbrio. Valores de $FS<1$ indicam que as tensões atuantes superaram a resistência do material, levando à ruptura.
 
@@ -126,6 +128,7 @@ Um dos modelos mais empregados na análise da estabilidade de taludes é o crit�
   \tau_f = c' + \sigma'_n \tan\varphi',
   \label{eq:mohr-coulomb}
 \end{equation}
+\equationdescription{Critério de ruptura de Mohr--Coulomb}
 
 em que $c'$ é a coesão efetiva do material, $\sigma'_n$ é a tensão normal efetiva atuante sobre a superfície de ruptura e $\varphi'$ é o ângulo de atrito interno efetivo.
 
@@ -137,6 +140,7 @@ Como os sedimentos marinhos estão saturados, parte da tensão total aplicada ao
   \sigma'_n = \sigma_n - u,
   \label{eq:tensao-efetiva}
 \end{equation}
+\equationdescription{Tensão normal efetiva}
 
 em que $\sigma'_n$ é a tensão normal efetiva, $\sigma_n$ é a tensão normal total e $u$ é a pressão do fluido nos poros, ou poropressão. Substituindo a Equação~\ref{eq:tensao-efetiva} no critério de Mohr--Coulomb, obtém-se:
 
@@ -144,6 +148,7 @@ em que $\sigma'_n$ é a tensão normal efetiva, $\sigma_n$ é a tensão normal t
   \tau_f = c' + (\sigma_n-u)\tan\varphi'.
   \label{eq:mohr-coulomb-poropressao}
 \end{equation}
+\equationdescription{Resistência ao cisalhamento em função da poropressão}
 
 Com isso, o fator de segurança pode ser representado de forma simplificada por:
 
@@ -151,6 +156,7 @@ Com isso, o fator de segurança pode ser representado de forma simplificada por:
   FS = \frac{c' + (\sigma_n-u)\tan\varphi'}{\tau_m}.
   \label{eq:fator-seguranca-completo}
 \end{equation}
+\equationdescription{Fator de segurança em função da poropressão}
 
 As forças atuantes sobre um bloco sedimentar em um talude e o equilíbrio entre a componente tangencial do peso e a resistência ao cisalhamento são representados na Figura~\ref{fig:relacoes-forcas-estabilidade}(a). Nos sedimentos saturados, a água ocupa os espaços entre os grãos e o excesso de poropressão reduz o contato efetivo entre eles, como ilustrado na Figura~\ref{fig:relacoes-forcas-estabilidade}(b). As equações mostram que esse aumento da poropressão reduz a tensão efetiva e, consequentemente, a resistência ao cisalhamento; a variação da tensão total, da poropressão e da tensão efetiva com a profundidade é apresentada na Figura~\ref{fig:relacoes-forcas-estabilidade}(c). Quando a poropressão se aproxima da tensão normal total, a tensão efetiva tende a valores muito baixos e o sedimento perde grande parte de sua resistência. Nessas condições, mesmo um pequeno aumento da tensão cisalhante pode provocar a ruptura \cite{hampton1996,talling2014}. Na figura, a poropressão e o ângulo de atrito são representados por $\mu$ e $\theta$; neste texto e nas equações, adotam-se $u$ e $\varphi'$, respectivamente.
 

@@ -109,6 +109,21 @@
 ]{quadro}
 \newcommand{\listofquadrosname}{Lista de quadros}
 
+% Lista de equações alimentada por \equationdescription imediatamente após
+% cada ambiente equation. A numeração continua sendo produzida pelo amsmath.
+\makeatletter
+\newcommand{\listofequationsname}{Lista de equações}
+\newcommand{\listofequations}{%
+  \chapter*{\listofequationsname}%
+  \addcontentsline{toc}{chapter}{\listofequationsname}%
+  \@starttoc{loe}%
+}
+\newcommand*{\l@equation}{\@dottedtocline{1}{0em}{5.2em}}
+\newcommand{\equationdescription}[1]{%
+  \addcontentsline{loe}{equation}{\protect\numberline{Equação~\theequation}#1}%
+}
+\makeatother
+
 \newenvironment{paisagem}{\begin{landscape}}{\end{landscape}}
 
 \newcommand{\TituloCompletoTCC}{%

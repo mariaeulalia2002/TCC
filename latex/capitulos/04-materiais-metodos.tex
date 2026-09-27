@@ -1,52 +1,418 @@
-\chapter{Materiais e métodos}\label{cap:metodos}
+\chapter{Materiais e m�todos}\label{cap:metodos}
 
-\TextoModelo{O fluxograma apresentado na Figura X sintetiza as principais etapas adotadas no desenvolvimento deste trabalho.}
+O fluxograma apresentado na \TextoModelo{Figura a inserir} sintetiza as principais etapas adotadas no desenvolvimento deste trabalho.
 
-\section{Sísmica}
+\section{S�smica}
 
-O principal conjunto de dados utilizado neste trabalho foi o cubo sísmico 3D R0014\_\allowbreak BS\_\allowbreak 500 (\TextoModelo{Figura X}), fornecido pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP). O volume corresponde a um dado sísmico 3D PSTM (\textit{Post-Stack Time Migration}), migrado em tempo e pós-processado.
+O principal conjunto de dados utilizado neste trabalho foi o cubo s�smico 3D R0014\_BS\_500 (\TextoModelo{Figura a inserir}), fornecido pela Ag�ncia Nacional do Petr�leo, G�s Natural e Biocombust�veis (ANP). O volume corresponde a um dado s�smico 3D PSTM (\textit{Post-Stack Time Migration}), migrado em tempo e p�s-processado.
 
-O cubo é composto por 14.672.450 traços, com 2.126 amostras por traço e intervalo amostral de 4~ms, equivalente a uma frequência de amostragem de 250~Hz e frequência de Nyquist de 125~Hz. A consistência do intervalo amostral foi verificada no \textit{binary header} e em 200 \textit{trace headers}, por meio de \textit{script} desenvolvido em \textit{Python\textsuperscript{\textregistered}} (Anexo~1); todos os registros analisados apresentaram intervalo de 4.000~\textmu s.
+O cubo � composto por 14.672.450 tra�os, com 2.126 amostras por tra�o e intervalo amostral de 4 ms, equivalente a uma frequ�ncia de amostragem de 250 Hz e frequ�ncia de Nyquist de 125 Hz. A consist�ncia do intervalo amostral foi verificada no \textit{binary header} e em 200 \textit{trace headers}, por meio de script desenvolvido em \textit{Python�} (\TextoModelo{Anexo a definir}); todos os registros analisados apresentaram intervalo de 4.000 \textmu{}s.
 
-O registro sísmico possui duração aproximada de 8,5~s. O produto final foi reamostrado para 4~ms durante o processamento. A geometria nominal do levantamento apresenta \textit{bin size} de 25~$\times$~12,5~m, com coordenadas referidas ao \textit{datum} SAD69 e à projeção UTM, zona 23S.
+O registro s�smico possui dura��o aproximada de 8,5 s. O produto final foi reamostrado para 4 ms durante o processamento. A geometria nominal do levantamento apresenta \textit{bin size} de 25 $\times$ 12,5 m, com coordenadas referidas ao datum SAD69 e � proje��o UTM, zona 23S.
 
-\subsection{Reconhecimento de depósitos e complexos de transporte de massa}
+\subsection{Reconhecimento de dep�sitos e complexos de transporte de massa}
 
-A interpretação sísmica foi realizada no software \textit{Petrel\textsuperscript{\textregistered}}. Para cada depósito ou complexo de transporte de massa, foram identificados os horizontes correspondentes às superfícies de topo e base de cada evento, priorizando-se, sempre que possível, os refletores de maior continuidade.
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{A interpreta��o s�smica foi realizada no software \textit{Petrel�}. Para cada dep�sito ou complexo de transporte de massa, foram identificados os horizontes correspondentes �s superf�cies de topo e base de ruptura de cada evento, priorizando-se, sempre que poss�vel, os refletores de maior continuidade. Colocar figura de exemplo}}
 
-O mapeamento foi realizado manualmente por meio da ferramenta \textit{Manual Interpretation}. Os eventos mais recentes foram interpretados com espaçamento de 100~$\times$~100~m entre os pontos de controle, em \textit{inlines} e \textit{crosslines}. Parte dos eventos mais antigos foi interpretada com espaçamento de 200~$\times$~200~m, em função do tempo disponível para esta etapa. Optou-se pela interpretação manual com o objetivo de minimizar possíveis erros de correlação associados a procedimentos automatizados.
+O mapeamento foi realizado manualmente por meio da ferramenta \textit{Manual Interpretation}. Os eventos mais recentes foram interpretados com espa�amento de 100 $\times$ 100 m entre os pontos de controle, em \textit{inlines} e \textit{crosslines}. Parte dos eventos mais antigos foi interpretada com espa�amento de 200 $\times$ 200 m, em fun��o do tempo dispon�vel para esta etapa. Optou-se pela interpreta��o manual com o objetivo de minimizar poss�veis erros de correla��o associados a procedimentos automatizados.
 
-Como controle de qualidade da interpretação, foi aplicado o método de \textit{loop tie}, no qual os horizontes foram correlacionados entre \textit{inlines} e \textit{crosslines} sucessivas, formando circuitos fechados. Nos pontos de interseção, verificou-se a continuidade do refletor sísmico interpretado e, ao final de cada circuito, avaliou-se se a interpretação retornava ao mesmo evento no ponto inicial. Eventuais \textit{mis-ties} foram revisados, reduzindo erros de correlação entre refletores adjacentes e aumentando a consistência tridimensional dos horizontes interpretados \cite{tearpock2003}.
+Como controle de qualidade da interpreta��o, foi aplicado o m�todo de \textit{loop tie}, no qual os horizontes foram correlacionados entre \textit{inlines} e \textit{crosslines} sucessivas, formando circuitos fechados. Nos pontos de interse��o, verificou-se a continuidade do refletor s�smico interpretado e, ao final de cada circuito, avaliou-se se a interpreta��o retornava ao mesmo evento no ponto inicial. Eventuais \textit{mis-ties} foram revisados, reduzindo erros de correla��o entre refletores adjacentes e aumentando a consist�ncia tridimensional dos horizontes interpretados \cite{tearpock2003}.
 
-Feições relevantes associadas aos depósitos e complexos, tais como falhas, blocos preservados, estruturas de escape de gás (\textit{pockmarks}) e blocos de alta amplitude, foram documentadas e posteriormente caracterizadas em seções sísmicas de interesse.
+Fei��es relevantes associadas aos dep�sitos e complexos, tais como falhas, blocos preservados, estruturas de escape de g�s (\textit{pockmarks}) e blocos de alta amplitude, foram documentadas e posteriormente caracterizadas em se��es s�smicas de interesse.
 
-\subsubsection{Cosseno de fase instantânea}
+\subsubsection{Cosseno de fase instant�nea}
 
-O atributo sísmico cosseno de fase instantânea foi aplicado ao cubo sísmico no software \textit{Petrel\textsuperscript{\textregistered}}, com o objetivo de apoiar o reconhecimento das superfícies-limite de topo e base dos depósitos, bem como auxiliar na distinção entre eventos que compõem os complexos de transporte de massa (MTCs), quando necessário.
+O atributo s�smico cosseno de fase instant�nea foi aplicado ao cubo s�smico no software \textit{Petrel�}, com o objetivo de apoiar o reconhecimento das superf�cies-limite de topo e base dos dep�sitos, bem como auxiliar na distin��o entre eventos que comp�em os complexos de transporte de massa (MTCs), quando necess�rio.
 
-Esse atributo contribui para o realce da continuidade lateral dos refletores, das mudanças nos padrões de acamamento e dos limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados \cite{alvarenga2016}. A fundamentação teórica do atributo é apresentada na Seção~\ref{subsec:cosseno-fase}.
+Esse atributo contribui para o realce da continuidade lateral dos refletores, das mudan�as nos padr�es de acamamento e dos limites entre sequ�ncias s�smicas, auxiliando a interpreta��o estratigr�fica e estrutural dos dados \cite{alvarenga2016}. A fundamenta��o te�rica do atributo � apresentada na Se��o 2.1.1.
 
-\subsection{Geração de superfícies sísmicas e análise geomorfométrica}
+\subsection{Gera��o de superf�cies s�smicas e an�lise geomorfom�trica}
 
-A geração de superfícies a partir de horizontes sísmicos permite representar a geometria de refletores de interesse e investigar padrões de acomodação e distribuição sedimentar \cite{preissler2016}. Neste trabalho, a análise geomorfométrica do fundo marinho foi realizada integralmente no domínio do tempo sísmico, tendo como base o horizonte correspondente ao primeiro refletor identificado no volume sísmico. Esse refletor foi associado à interface entre a coluna d'água e o substrato sedimentar, caracterizada por elevado contraste de impedância acústica.
+A gera��o de superf�cies a partir de horizontes s�smicos permite representar a geometria de refletores de interesse e investigar padr�es de acomoda��o e distribui��o sedimentar \cite{preissler2016}. Neste trabalho, a an�lise geomorfom�trica do fundo marinho foi realizada integralmente no dom�nio do tempo s�smico, tendo como base o horizonte correspondente ao primeiro refletor identificado no volume s�smico. Esse refletor foi associado � interface entre a coluna d��gua e o substrato sedimentar, caracterizada por elevado contraste de imped�ncia ac�stica.
 
-O horizonte do fundo marinho foi interpretado no software \textit{Petrel\textsuperscript{\textregistered}} por meio da ferramenta \textit{Guided Autotracking}. Nessa ferramenta, o intérprete define pontos inicial e final ao longo de um refletor, e o algoritmo realiza o rastreamento do evento sísmico entre esses pontos, de acordo com os parâmetros de rastreamento previamente estabelecidos. O resultado do rastreamento foi submetido à verificação visual e, quando necessário, a correções manuais, a fim de garantir a continuidade e a coerência do horizonte interpretado. Os pontos correspondentes ao horizonte foram exportados em formato ASCII, contendo as coordenadas espaciais X e Y e os respectivos valores de tempo sísmico de dupla viagem (\textit{two-way travel time} --- TWT), em milissegundos. Para facilitar a visualização tridimensional da superfície, os valores de tempo foram representados com sinal negativo. Essa inversão não altera a geometria relativa da superfície, mas possibilita sua representação visual em uma configuração semelhante à de um modelo de relevo submarino.
+O horizonte do fundo marinho foi interpretado no software \textit{Petrel�} por meio da ferramenta \textit{Guided Autotracking}. Nessa ferramenta, o int�rprete define pontos inicial e final ao longo de um refletor, e o algoritmo realiza o rastreamento do evento s�smico entre esses pontos, de acordo com os par�metros de rastreamento previamente estabelecidos. O resultado do rastreamento foi submetido � verifica��o visual e, quando necess�rio, a corre��es manuais, a fim de garantir a continuidade e a coer�ncia do horizonte interpretado. Os pontos correspondentes ao horizonte foram exportados em formato ASCII, contendo as coordenadas espaciais X e Y e os respectivos valores de tempo s�smico de dupla viagem (\textit{two-way travel time} --- TWT), em milissegundos. Para facilitar a visualiza��o tridimensional da superf�cie, os valores de tempo foram representados com sinal negativo. Essa invers�o n�o altera a geometria relativa da superf�cie, mas possibilita sua representa��o visual em uma configura��o semelhante � de um modelo de relevo submarino.
 
-A interpolação inicial foi realizada no software \textit{Surfer\textsuperscript{\textregistered}}, versão 11.0, utilizando o método de krigagem e variograma linear, com resolução espacial de 50~$\times$~50~m. A krigagem é um método geoestatístico de interpolação que estima valores em locais não amostrados com base na dependência espacial existente entre as observações. Essa dependência é descrita pelo variograma, que expressa a variação entre pares de dados em função da distância que os separa. Assim, os valores interpolados em cada célula do \textit{grid} foram estimados a partir da posição, dos valores de TWT e da estrutura de correlação espacial dos pontos interpretados \cite{davis2002}.
+A interpola��o inicial foi realizada no software \textit{Surfer�}, vers�o 11.0, utilizando o m�todo de krigagem e variograma linear, com resolu��o espacial de 50 $\times$ 50 m. A krigagem � um m�todo geoestat�stico de interpola��o que estima valores em locais n�o amostrados com base na depend�ncia espacial existente entre as observa��es. Essa depend�ncia � descrita pelo variograma, que expressa a varia��o entre pares de dados em fun��o da dist�ncia que os separa. Assim, os valores interpolados em cada c�lula do \textit{grid} foram estimados a partir da posi��o, dos valores de TWT e da estrutura de correla��o espacial dos pontos interpretados \cite{davis2002}.
 
-Posteriormente, o \textit{grid} foi importado para o software \textit{QGIS\textsuperscript{\textregistered}}, no qual foram calculados atributos derivados de \textit{raster}: rugosidade e declividade. A rugosidade é uma medida da heterogeneidade local da superfície e é calculada a partir das diferenças entre o valor de uma célula central e os valores das células que compõem sua vizinhança. Valores mais elevados indicam maior variabilidade local, permitindo realçar descontinuidades, escarpas, cicatrizes, canais e outras irregularidades morfológicas \cite{riley1999,wilson2007}.
+Posteriormente, o \textit{grid} foi importado para o software \textit{QGIS�}, no qual foram calculados atributos derivados de \textit{raster}: rugosidade e declividade. A rugosidade � uma medida da heterogeneidade local da superf�cie e � calculada a partir das diferen�as entre o valor de uma c�lula central e os valores das c�lulas que comp�em sua vizinhan�a. Valores mais elevados indicam maior variabilidade local, permitindo real�ar descontinuidades, escarpas, cicatrizes, canais e outras irregularidades morfol�gicas \cite{riley1999,wilson2007}.
 
-A declividade foi calculada a partir da taxa de variação dos valores da superfície entre células adjacentes. Como os valores verticais do \textit{grid} correspondem a TWT, e não à profundidade em metros, esse atributo representa um gradiente temporal aparente, expresso a partir da variação do tempo sísmico em relação à distância horizontal. Portanto, a declividade obtida não deve ser interpretada como declividade batimétrica real, mas como uma medida relativa útil para evidenciar mudanças abruptas na geometria do refletor sísmico. Os procedimentos de análise de terreno empregados pelo \textit{QGIS\textsuperscript{\textregistered}} calculam esses atributos a partir das relações espaciais entre células de um modelo \textit{raster} de superfície \cite{qgis2025}.
+A declividade foi calculada a partir da taxa de varia��o dos valores da superf�cie entre c�lulas adjacentes. Como os valores verticais do \textit{grid} correspondem a TWT, e n�o � profundidade em metros, esse atributo representa um gradiente temporal aparente, expresso a partir da varia��o do tempo s�smico em rela��o � dist�ncia horizontal. Portanto, a declividade obtida n�o deve ser interpretada como declividade batim�trica real, mas como uma medida relativa �til para evidenciar mudan�as abruptas na geometria do refletor s�smico. Os procedimentos de an�lise de terreno empregados pelo \textit{QGIS�} calculam esses atributos a partir das rela��es espaciais entre c�lulas de um modelo \textit{raster} de superf�cie \cite{qgis2025}.
 
-Até agosto de 2026, a geração e a visualização das superfícies foram realizadas predominantemente fora do \textit{Petrel\textsuperscript{\textregistered}}, pois a infraestrutura computacional disponível no acesso remoto inicial não possuía capacidade suficiente para carregar adequadamente as janelas de visualização 2D e 3D do projeto, em razão do tamanho do conjunto de dados. Essa limitação afetava a manipulação e a inspeção visual dos horizontes e superfícies, mas não a interpretação dos dados em si. Posteriormente, foi disponibilizado um novo acesso remoto com maior capacidade computacional, permitindo a visualização adequada das janelas 2D e 3D do \textit{Petrel\textsuperscript{\textregistered}}. A superfície correspondente ao fundo marinho foi então também gerada no software por meio da ferramenta \textit{Make Surface}, utilizando os mesmos pontos interpretados, resolução espacial e parâmetros de interpolação adotados no fluxo inicial. Esse procedimento permitiu comparar os resultados obtidos nos dois ambientes e realizar a visualização tridimensional da superfície diretamente no projeto sísmico.
+A superf�cie correspondente ao fundo marinho foi ent�o tamb�m gerada no software Petrel por meio da ferramenta \textit{Make Surface}, utilizando os mesmos pontos interpretados, resolu��o espacial e par�metros de interpola��o adotados no fluxo inicial. Esse procedimento permitiu comparar os resultados obtidos nos dois ambientes e realizar a visualiza��o tridimensional da superf�cie diretamente no projeto s�smico.
 
-As superfícies de topo e base dos depósitos e complexos de transporte de massa foram geradas no \textit{Petrel\textsuperscript{\textregistered}} utilizando a ferramenta \textit{Make Surface} e o método de krigagem simples. Nesse método, a estimativa espacial é realizada assumindo-se uma média conhecida ou constante para os dados analisados, enquanto a influência de cada ponto na estimativa depende da estrutura de continuidade espacial definida pelo modelo de variograma \cite{davis2002}. O tamanho das células foi definido de acordo com o espaçamento de interpretação de cada evento, buscando manter compatibilidade entre a resolução da superfície gerada e a densidade dos pontos interpretados. As superfícies também foram visualizadas no \textit{Surfer\textsuperscript{\textregistered}}, versão 11.0, para fins de comparação e controle de qualidade. \TextoModelo{Informações adicionais sobre os procedimentos de análise morfométrica serão apresentadas na seção correspondente.}
+As superf�cies de topo e base dos dep�sitos e complexos de transporte de massa foram geradas no \textit{Petrel�} utilizando a ferramenta \textit{Make Surface} e o m�todo de krigagem simples. Nesse m�todo, a estimativa espacial � realizada assumindo-se uma m�dia conhecida ou constante para os dados analisados, enquanto a influ�ncia de cada ponto na estimativa depende da estrutura de continuidade espacial definida pelo modelo de variograma \cite{davis2002}. O tamanho das c�lulas foi definido de acordo com o espa�amento de interpreta��o de cada evento, buscando manter compatibilidade entre a resolu��o da superf�cie gerada e a densidade dos pontos interpretados. As superf�cies tamb�m foram visualizadas no \textit{Surfer�}, vers�o 11.0, para fins de compara��o e controle de qualidade. Informa��es adicionais sobre os procedimentos de an�lise morfom�trica s�o apresentadas na Se��o X.X.X.
 
-\section{Etapa de campo}
-\TextoModelo{Informe período, escala de trabalho, equipamentos, critérios de descrição de afloramentos, amostragem, controle de qualidade e registro de coordenadas.}
+\section{Caracteriza��o morfom�trica dos dep�sitos}
 
-\section{Etapa laboratorial}
-\TextoModelo{Descreva preparação das amostras, métodos analíticos, equipamentos, padrões, limites de detecção, brancos, duplicatas e tratamento de incertezas.}
+A caracteriza��o morfom�trica dos dep�sitos foi baseada na proposta de \citeauthoronline{clare2018} (\citeyear{clare2018}), que estabelece par�metros para a descri��o quantitativa de movimentos de massa subaqu�ticos (\TextoModelo{Figura a inserir}). Foram determinados, quando as fei��es apresentaram preserva��o e resolu��o s�smica suficientes, a profundidade do topo do dep�sito, o comprimento total (Lt), o comprimento do dep�sito (Ld), a altura da cicatriz (Hs), a altura da zona evacuada (He), a altura total de queda (Ht), a espessura m�xima do dep�sito (Tdmax), as inclina��es da escarpa (Ss) e do declive adjacente n�o deformado (S), al�m de �rea, per�metro e volume preservado.
 
-\section{Tratamento e integração dos dados}
-\TextoModelo{Explique os procedimentos estatísticos, petrográficos, geoquímicos, geocronológicos, geofísicos, geotécnicos ou de geoprocessamento. Declare softwares e versões quando relevantes à reprodutibilidade.}
+Os procedimentos de interpreta��o s�smica, defini��o do eixo longitudinal, sele��o dos perfis e extra��o das medidas foram adaptados �s caracter�sticas geom�tricas e ao grau de preserva��o de cada dep�sito. Os par�metros foram obtidos somente quando sua identifica��o apresentou confian�a suficiente.
+
+As medidas foram inicialmente obtidas em unidades horizontais m�tricas e em tempo duplo de percurso da onda s�smica (TWT). Posteriormente, os intervalos temporais necess�rios aos c�lculos verticais foram convertidos em profundidade com base nas velocidades representativas da coluna d��gua e dos sedimentos, conforme ser� abordado na se��o x.x.x.
+
+A representa��o esquem�tica dos par�metros morfom�tricos � apresentada na Figura~\ref{fig:parametros-morfometricos}.
+
+\subsection{Prepara��o dos horizontes e gera��o das superf�cies}
+
+Os horizontes de topo e base dos dep�sitos foram interpretados no Petrel, e as interpola��es foram realizadas em grades regulares, respeitando o espa�amento do mapeamento (100x100m para os eventos mais recentes, 200x200 m para eventos mais antigos). As superf�cies, conforme abordado anteriormente na se��o, foram geradas atrav�s da ferramenta \textit{Make Surface}, utilizando a krigagem, referencia m�todo que apresentou menor erro quadr�tico m�dio em compara��o com m�todos como Gaussiano ou Interpola��o Convergente, por exemplo. A extens�o em planta de cada dep�sito foi delimitada por um pol�gono, considerando os limites reconhecidos na interpreta��o s�smica. Esse pol�gono foi utilizado como m�scara para recortar as superf�cies de topo e base, restringindo os c�lculos � �rea interpretada. Antes das opera��es, foram verificadas a compatibilidade do sistema de coordenadas, a resolu��o e a posi��o das c�lulas.
+
+\subsection{C�lculo das is�cronas}
+
+A espessura temporal foi calculada na aba \textit{Operations} , do Petrel, subtraindo-se a superf�cie de base da superf�cie de topo.
+
+\begin{equation}
+\Delta t(x,y)=t_{\mathrm{topo}}(x,y)-t_{\mathrm{base}}(x,y)
+\end{equation}
+\equationdescription{Espessura temporal da is�crona}
+
+O resultado corresponde � is�crona do dep�sito, expressa em milissegundos de TWT. Foram inspecionadas as c�lulas com valores negativos, que poderiam indicar cruzamento das superf�cies, problemas de alinhamento ou interpola��o em �reas marginais. No processamento documentado, a m�scara e o mapeamento foram ajustados quando ocorreu a identifica��o de valores negativos predominantemente nas bordas, mantendo os c�lculos restritos ao dom�nio v�lido.
+
+Em seguida, as is�cronas foram exportadas em formato \textit{Surfer Binary Grid} (.grd) para o QGIS, onde duas estat�sticas foram extra�das pela ferramenta Estat�sticas Zonais, utilizando a m�scara do dep�sito. Foram obtidos o n�mero de c�lulas v�lidas, a soma, a m�dia, a mediana, o desvio-padr�o, os valores m�nimo e m�ximo e a amplitude da espessura temporal. Tamb�m foram calculados contornos de mesma espessura (is�pacas em tempo) para cada is�crona.
+
+\subsection{�rea, volume e per�metro}
+
+A �rea em m2 e o volume em ms. m2 foram obtidos atrav�s da aba \textit{Operations} no Petrel, realizando a opera��o \textit{Volume Below Surface} na is�crona previamente calculada.
+
+O per�metro do pol�gono de m�scara utilizado na gera��o da is�crona foi calculado no QGIS atrav�s da Calculadora de Campo.
+
+\subsection{Defini��o dos marcos operacionais para o c�lculo dos comprimentos}
+
+Para operacionalizar a extra��o dos comprimentos propostos por \citeauthoronline{clare2018} (\citeyear{clare2018}), foram definidos tr�s marcos ao longo do eixo principal de cada movimento de massa: A, correspondente ao topo da cicatriz; B, correspondente ao in�cio do dep�sito; e C, correspondente � sua termina��o distal. Esses marcos foram identificados manualmente, quando poss�vel, em se��es s�smicas sucessivas no Petrel.
+
+O marco A foi posicionado no topo da escarpa principal. O marco B foi definido no limite proximal do dep�sito, a partir do qual os horizontes de topo e base passam a delimitar um corpo com espessura positiva e continuidade lateral reconhec�vel. O marco C foi localizado na termina��o distal do dep�sito, caracterizada pelo afinamento do corpo e pela converg�ncia entre os horizontes de topo e base.
+
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Como exemplo, no exemplo apresentado (\TextoModelo{Figura a inserir}), esses limites foram marcados em se��es com incremento predominante de 20 \textit{inlines}. Na geometria utilizada nessa etapa, com espa�amento aproximado de 25 m entre \textit{inlines}, esse incremento correspondia a cerca de 500 m entre se��es. Esse espa�amento refere-se ao levantamento espec�fico dos limites A, B e C, sendo distinto da resolu��o das grades utilizadas para os c�lculos. O acompanhamento dos limites em v�rias se��es permitiu representar sua varia��o lateral. Os conjuntos foram exportados em arquivos ASCII contendo os campos inline, crossline, coordenadas X e Y e tempo s�smico Z. Esses arquivos preservaram tanto a posi��o em planta quanto o tempo correspondente a cada ponto interpretado. Colocar figura de exemplo}}
+
+\subsection{Constru��o das linhas dos limites e defini��o do eixo no QGIS}
+
+Os pontos exportados foram importados no QGIS e organizados segundo a sequ�ncia das \textit{inlines}. Cada conjunto foi convertido em uma linha, originando tr�s fei��es: a linha do topo da cicatriz, a linha de in�cio do dep�sito e a linha de termina��o distal.
+
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{A defini��o do eixo foi auxiliada pelo mapa de aspecto da superf�cie basal e pelos perfis extra�dos com o \textit{Profile Tool}. O aspecto foi interpretado em conjunto com os limites s�smicos e com os perfis. O eixo resultante representa o percurso interpretado em planta, incluindo suas mudan�as de dire��o. Colocar figura de exemplo}}
+
+O eixo principal do movimento foi digitalizado como uma polilinha, considerando a posi��o da cicatriz, a geometria do dep�sito, o relevo da superf�cie basal e a trajet�ria interpretada de transporte. Como exemplo na figura x, o eixo acompanhou a curvatura do corpo e o talvegue do canal.
+
+As tr�s linhas de limites foram intersectadas com o eixo. As interse��es definiram as posi��es A, B e C efetivamente utilizadas nos c�lculos longitudinais. Em seguida, a polilinha foi dividida nessas posi��es, originando os segmentos A--B e B--C.
+
+\subsection{Comprimentos total, evacuado e do dep�sito}
+
+Os comprimentos foram calculados a partir dos segmentos do eixo, utilizando a Calculadora de Campo do QGIS. Com as coordenadas em unidades m�tricas, o comprimento foi obtido em metros; para apresenta��o em quil�metros, utilizou-se a express�o $length / 1000.
+
+Os comprimentos foram calculados ao longo do eixo principal do movimento de massa, preservando sua trajet�ria em planta. O comprimento total (Lt) foi obtido entre o topo da cicatriz e a termina��o distal do dep�sito. O comprimento do dep�sito (Ld) foi calculado entre seu limite proximal e sua termina��o distal. A extens�o longitudinal da zona evacuada (Le) correspondeu � diferen�a entre Lt e Ld.
+
+\begin{equation}
+L_t=L_{A-C}
+\end{equation}
+\equationdescription{Comprimento total do movimento de massa}
+
+\begin{equation}
+L_d=L_{B-C}
+\end{equation}
+\equationdescription{Comprimento do dep�sito}
+
+\begin{equation}
+L_e=L_{A-B}=L_t-L_d
+\end{equation}
+\equationdescription{Comprimento da zona evacuada}
+
+Embora Le seja �til para descrever a extens�o da �rea de remo��o de material, ela foi empregada como medida operacional complementar neste estudo; os par�metros padronizados de \citeauthoronline{clare2018} (\citeyear{clare2018}) utilizados para compara��o s�o Lt e Ld.
+
+\subsection{Altura da zona evacuada e altura total de queda}
+
+Talvez fazer uma tabela pra cada mtd com as medidas usadas e colocar nos anexos
+
+A altura da zona evacuada (He) foi definida como o desn�vel vertical entre o topo da cicatriz e o limite proximal do dep�sito. A altura total de queda (Ht) correspondeu ao desn�vel entre o topo da cicatriz e a termina��o distal do dep�sito, conforme a defini��o apresentada por \citeauthoronline{clare2018} (\citeyear{clare2018}).
+
+Inicialmente, foram calculadas as diferen�as temporais:
+
+\begin{equation}
+\Delta t_e=t_B-t_A \quad\text{e}\quad \Delta t_t=t_C-t_A
+\end{equation}
+\equationdescription{Intervalos temporais}
+
+Para a obten��o das alturas em metros, cada ponto foi convertido individualmente para profundidade, considerando o tempo do fundo marinho na respectiva posi��o. O procedimento de convers�o adotado e incertezas associadas ser�o abordados na se��o x.x.x. As alturas foram calculadas por:
+
+\begin{equation}
+H_e=\lvert z_B-z_A\rvert
+\end{equation}
+\equationdescription{Altura da zona evacuada}
+
+\begin{equation}
+H_t=\lvert z_C-z_A\rvert
+\end{equation}
+\equationdescription{Altura total de queda}
+
+O desn�vel entre o in�cio e a termina��o do dep�sito foi calculado adicionalmente para caracterizar sua posi��o no declive:
+
+\begin{equation}
+\Delta z_d=\lvert z_C-z_B\rvert
+\end{equation}
+\equationdescription{Desn�vel distal}
+
+Esse procedimento foi necess�rio porque os pontos podem apresentar diferentes condi��es de soterramento. No c�lculo documentado, A foi tratado como situado no fundo marinho, enquanto B e C estavam abaixo dele. Portanto, a convers�o considerou trajet�rias distintas na �gua e nos sedimentos.
+
+\subsection{Altura e inclina��o da cicatriz}
+
+Tais par�metros foram calculados em eventos de transporte de massa que possuem cicatriz bem definida, em que a morfologia de fundo � influenciada pelo seu formato. A altura da cicatriz (Hs) foi medida entre a quebra superior da escarpa e sua base, em perfis gerados com o \textit{Profile Tool} aproximadamente perpendiculares � fei��o e orientados na dire��o de maior declive. Foram examinados perfis distribu�dos lateralmente ao longo da cicatriz, de modo a representar sua varia��o morfol�gica. A maior altura identificada foi registrada como Hs.
+
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Tomando como exemplo o MTD representado na figura x, , foram examinados tr�s perfis, posicionados nos setores esquerdo, central e direito da cicatriz. Em cada perfil, a diferen�a vertical entre os limites superior e inferior forneceu a altura local. A compara��o entre os perfis permitiu reconhecer a varia��o lateral e selecionar a maior altura medida. Colocar figura de exemplo}}
+
+Nas anota��es desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, s�o indicados aqui como As e Bs:
+
+\begin{equation}
+H_s=z_{B_s}-z_{A_s}
+\end{equation}
+\equationdescription{Altura da cicatriz}
+
+A inclina��o m�xima da cicatriz foi determinada separadamente. Dentro do intervalo As--Bs, foram selecionados os pontos P e Q, delimitando o trecho cont�nuo de maior gradiente. O desn�vel e a dist�ncia horizontal desse trecho foram utilizados para calcular:
+
+\begin{equation}
+S_s=\arctan\left(\frac{\lvert z_Q-z_P\rvert}{L_{P-Q}}\right)\frac{180}{\pi}
+\end{equation}
+\equationdescription{Inclina��o m�xima da cicatriz}
+
+Assim, a altura foi medida entre as quebras que delimitam a escarpa, enquanto a inclina��o m�xima foi medida no trecho mais �ngreme de sua face. Os setores de maior altura e de maior inclina��o foram identificados independentemente. Para os perfis medidos sobre a cicatriz expressa no fundo marinho, as diferen�as de TWT foram convertidas utilizando a velocidade de propaga��o do som na �gua, de 1.500 m/s.
+
+\subsection{Inclina��o do declive n�o deformado}
+
+A inclina��o do declive, S, foi determinada em um perfil lateral ao movimento de massa, posicionado fora da cicatriz, da zona evacuada e do dep�sito. A orienta��o foi aproximadamente paralela � dire��o geral de transporte, permitindo caracterizar o gradiente de uma superf�cie preservada adjacente � fei��o.
+
+No Petrel, foram selecionados dois pontos, P1 e P2, sobre o mesmo refletor s�smico cont�nuo, interpretado como representativo do paleodeclive n�o deformado. Tamb�m foi registrado o TWT do fundo marinho acima de cada ponto, necess�rio � convers�o das profundidades.
+
+A inclina��o foi obtida pela raz�o entre o desn�vel convertido e a dist�ncia horizontal:
+
+\begin{equation}
+S=\arctan\left(\frac{\lvert z_{P2}-z_{P1}\rvert}{L_{P1-P2}}\right)\frac{180}{\pi}
+\end{equation}
+\equationdescription{Inclina��o do declive}
+
+O comprimento e a posi��o do perfil foram mantidos associados � medida, uma vez que a inclina��o depende do trecho considerado.
+
+\subsection{Inclina��o � frente do p� do dep�sito}
+
+O par�metro St, identificado na tabela como inclina��o da base, foi medido � frente da termina��o distal do dep�sito. A se��o foi tra�ada aproximadamente como prolongamento do eixo principal, incluindo a termina��o do corpo para permitir reconhecer sua rela��o com o terreno receptor.
+
+O c�lculo utilizou apenas o trecho externo ao dep�sito, delimitado pelos pontos P3 e P4. P3 foi posicionado a jusante de C, onde o corpo j� havia terminado e o refletor apresentava continuidade fora da zona deformada. P4 foi selecionado mais adiante sobre o mesmo refletor, antes de outra deforma��o ou mudan�a significativa da superf�cie.
+
+Foram registrados as coordenadas, o TWT do refletor e o TWT do fundo marinho em cada posi��o. Ap�s a convers�o individual das profundidades:
+
+\begin{equation}
+S_t=\arctan\left(\frac{\lvert z_{P4}-z_{P3}\rvert}{L_{P3-P4}}\right)\frac{180}{\pi}
+\end{equation}
+\equationdescription{Inclina��o � frente do p�}
+
+A medida caracteriza, portanto, a superf�cie receptora imediatamente � frente do p� do dep�sito.
+
+\subsection{Convers�o tempo--profundidade das medidas morfom�tricas}
+
+A convers�o das medidas temporais foi realizada para fornecer uma estimativa das dimens�es dos dep�sitos em metros. Foram utilizadas velocidades representativas dos sedimentos rasos, ponderadas pela dist�ncia entre po�os (\TextoModelo{Figura a inserir}) fornecidos pela Ag�ncia Nacional de Petr�leo G�s e Biocombust�veis (ANP) e o ponto central de cada MTD. Os procedimentos foram separados entre a convers�o de intervalos sedimentares e os c�lculos que tamb�m envolveram medidas pr�ximas a coluna d��gua.
+
+\subsubsection{Obten��o das velocidades nos po�os}
+
+No po�o 1-BRSA-137-RJS, foi selecionada a velocidade do trecho mais raso (1.849 m a 2.073 m ) da curva intervalar derivada do VSP (\TextoModelo{Figura a inserir})  e suavizada pelo m�todo de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}) (, correspondente a 1.553,662 m/s., atrav�s de script em Python (\TextoModelo{Anexo a definir}). Esse valor representa o intervalo raso selecionado, e n�o uma m�dia de toda a curva do po�o.
+
+No po�o 1-BRSA-127-RJS, a velocidade intervalar foi calculada entre as profundidades de 1.854 e 2.059 m, aproximadamente 23--228 m abaixo do fundo marinho, obtidas atrav�s de relat�rio do po�o. A diferen�a de profundidade foi relacionada � diferen�a entre os tempos duplos de 2.425,68 e 2.693,94 ms:
+
+\begin{equation}
+v_{\mathrm{int}}=\frac{2000(z_2-z_1)}{t_2-t_1}
+\end{equation}
+\equationdescription{Velocidade intervalar}
+
+O resultado foi de 1.528,4 m/s. O fator 2000 considera a convers�o de milissegundos para segundos e o percurso de ida e volta da onda.
+
+O po�o 3-BRSA-944A-RJS tamb�m foi avaliado, mas n�o integrou a estimativa central. Os dados dispon�veis, identificados nos registros como velocidades RMS, representavam um intervalo mais amplo e profundo, sem equival�ncia direta com os intervalos rasos selecionados nos demais po�os.
+
+\subsubsection{Pondera��o pela dist�ncia aos dep�sitos}
+
+Foram utilizadas as dist�ncias horizontais entre o ponto central de cada MTD/MTC e os po�os 137 e 127. A velocidade representativa de cada dep�sito foi calculada pela m�dia ponderada pelo inverso da dist�ncia, com expoente igual a um:
+
+\begin{equation}
+\overline{v}_{\mathrm{MTD}}=\frac{\sum_i v_i/d_i}{\sum_i 1/d_i}
+\end{equation}
+\equationdescription{Velocidade ponderada do MTD}
+
+Em que vi � a velocidade selecionada no po�o e di, sua dist�ncia ao ponto central do dep�sito. Assim, os controles mais pr�ximos receberam maior peso. Foi obtida uma velocidade constante para cada MTD/MTC, sem varia��o c�lula a c�lula. As dist�ncias calculadas e as velocidades ponderadas para cada MTD/MTC encontram-se no anexo x.
+
+\subsubsection{Convers�o dos intervalos sedimentares}
+
+As espessuras e volume dos eventos foram convertidas utilizando a diferen�a de TWT entre topo e base e a velocidade ponderada do respectivo MTD:
+
+\begin{equation}
+h=\frac{(t_{\mathrm{topo}}-t_{\mathrm{base}})v_{\mathrm{MTD}}}{2000}
+\end{equation}
+\equationdescription{Convers�o da espessura}
+
+A mesma rela��o foi aplicada �s espessuras m�xima, m�dia e m�nima. Para o soterramento do topo, utilizou-se a diferen�a entre o tempo do topo e o tempo do fundo marinho, adotando a velocidade ponderada tamb�m como aproxima��o para a cobertura sedimentar. Comprimentos, �reas e per�metros, medidos em planta, n�o dependeram da convers�o de velocidade.
+
+\subsubsection{Procedimentos que envolveram a coluna d'�gua}
+
+Adotou-se a velocidade de 1.500 m/s para a coluna d��gua, valor usualmente empregado como aproxima��o para a velocidade do som em �gua do mar. Embora essa velocidade possa variar em fun��o da temperatura, salinidade e press�o, sua ado��o � adequada para a estimativa de primeira ordem realizada neste estudo \cite{mackenzie1981}. Essa velocidade foi utilizada na convers�o das alturas e dos desn�veis dos perfis de cicatrizes medidos sobre o fundo marinho:
+
+\begin{equation}
+\Delta z=\frac{\Delta t\,1500}{2000}
+\end{equation}
+\equationdescription{Convers�o na coluna d'�gua}
+
+Para pontos soterrados, a profundidade foi calculada separando o percurso na �gua do percurso nos sedimentos:
+
+\begin{equation}
+z_P=\frac{t_{\mathrm{fundo},P}1500+(t_P-t_{\mathrm{fundo},P})v_{\mathrm{MTD}}}{2000}
+\end{equation}
+\equationdescription{Profundidade de ponto soterrado}
+
+Em que tP � o tempo do ponto interpretado e tfundo,P, o tempo do fundo marinho na mesma posi��o.
+
+Essa separa��o foi utilizada para obter as profundidades dos pontos A, B e C e, posteriormente, calcular a altura de evacua��o (\textbackslash\{\}(He=|z\_B-z\_A| \textbackslash\{\}qquad \textbackslash\{\}text\{e\} \textbackslash\{\}qquad Ht=|z\_C-z\_A|\textbackslash\{\}) ) e a altura total de queda (\textbackslash\{\}(He=|z\_B-z\_A| \textbackslash\{\}qquad \textbackslash\{\}text\{e\} \textbackslash\{\}qquad Ht=|z\_C-z\_A|\textbackslash\{\}) ). Tamb�m foi aplicada aos pontos dos perfis do declive lateral e da superf�cie � frente do p�. As inclina��es foram calculadas a partir dos desn�veis convertidos e das respectivas dist�ncias horizontais.
+
+\subsubsection{Limita��es da convers�o}
+
+A convers�o teve car�ter aproximado, destinado a fornecer uma no��o das dimens�es em metros e dos volumes correspondentes. A pondera��o pela dist�ncia n�o representa as varia��es de velocidade relacionadas � litologia, � compacta��o e ao soterramento, e os po�os n�o constituem controles diretos sobre todos os dep�sitos. Portanto, os valores convertidos s�o estimativas de primeira ordem, mantendo-se as medidas em TWT como refer�ncia da interpreta��o s�smica. Recomenda-se fortemente, para trabalhos futuros, a constru��o de um modelo de velocidades robusto e calibrado para a �rea e os intervalos investigados Al�m disso, a ado��o de uma velocidade constante de 1.500 m/s para a coluna d��gua n�o contempla varia��es locais de temperatura, salinidade e press�o, devendo as profundidades e os desn�veis associados ser interpretados como estimativas de primeira ordem. .
+
+\subsection{Incertezas nas medidas morfom�tricas}
+
+As incertezas associadas �s medidas morfom�tricas foram tratadas a partir das principais etapas envolvidas na obten��o dos par�metros, desde a interpreta��o s�smica at� a convers�o das medidas em profundidade. A abordagem adotada segue os princ�pios de propaga��o de incertezas apresentados por \citeauthoronline{taylor1997} (\citeyear{taylor1997}), mantendo separadas as diferentes fontes de erro e combinando-as apenas quando representam contribui��es independentes para uma mesma grandeza. A resolu��o do dado s�smico foi tratada como um limite f�sico de resolu��o, e n�o como um erro aleat�rio a ser somado diretamente �s demais componentes.
+
+\subsubsection{Resolu��o vertical e conte�do espectral do dado s�smico}
+
+O intervalo amostral do volume s�smico foi verificado diretamente no \textit{binary header} e em uma amostra de 200 \textit{trace headers} do arquivo SEG-Y, obtendo-se valor constante de 4 ms, correspondente a uma frequ�ncia de amostragem de 250 Hz e frequ�ncia de Nyquist de 125 Hz. O cabe�alho do dado tamb�m indica que o volume final foi reamostrado para 4 ms durante o processamento.
+
+A frequ�ncia dominante foi estimada diretamente no intervalo estratigr�fico dos MTDs. Foram selecionados 45 pontos de controle distribu�dos entre os diferentes dep�sitos e, nos eventos regionais, entre setores rasos, intermedi�rios e distais. Em cada posi��o foi considerada uma vizinhan�a de 3 $\times$ 3 tra�os. Os espectros de pot�ncia foram obtidos por transformada r�pida de Fourier, ap�s remo��o da tend�ncia linear e aplica��o de janela de Hann.
+
+Para avaliar a influ�ncia do comprimento da janela temporal, foram testadas janelas de 256, 384 e 512 ms, equivalentes a 64, 96 e 128 amostras, respectivamente. A estabilidade da frequ�ncia foi avaliada entre as diferentes janelas e entre os pontos de cada dom�nio. Nos setores rasos dos eventos regionais, onde uma janela centrada no horizonte interceptaria o fundo do mar, foi utilizada uma janela de 256 ms iniciada no horizonte e estendida para tempos maiores.
+
+A frequ�ncia dominante representativa foi determinada considerando a estabilidade entre as diferentes janelas e a variabilidade espacial entre os pontos. A partir dela foi estimada a resolu��o vertical temporal pelo crit�rio de quarto de comprimento de onda, amplamente utilizado para expressar a resolu��o vertical s�smica \cite{kallweit1982} :
+
+\begin{equation}
+R_{\mathrm{TWT}}=\frac{1}{2f_{\mathrm{dom}}}
+\end{equation}
+\equationdescription{Resolu��o vertical temporal}
+
+ou, em milissegundos,
+
+\begin{equation}
+R_{\mathrm{TWT}}=\frac{500}{f_{\mathrm{dom}}}
+\end{equation}
+\equationdescription{Resolu��o vertical em milissegundos}
+
+Os valores obtidos variam aproximadamente entre 13 e 22 ms TWT, dependendo do evento e do setor analisado. Esses valores representam a capacidade do dado de individualizar interfaces pr�ximas e, portanto, ser�o apresentados como limite de resolu��o vertical, n�o como incerteza direta da posi��o do horizonte. A resolu��o vertical foi utilizada como crit�rio de detectabilidade e confiabilidade da separa��o entre refletores, sendo reportada separadamente das incertezas aleat�rias de \textit{picking} e interpola��o.
+
+\subsubsection{Repetibilidade do picking}
+
+A contribui��o do int�rprete foi avaliada por meio de um teste de repetibilidade realizado em um subconjunto de 12 pontos, distribu�dos entre diferentes MTDs, profundidades e condi��es de imageamento. O mesmo refletor foi identificado novamente nas mesmas posi��es IL/XL, sem altera��o dos horizontes originais, e o novo TWT foi comparado ao valor anteriormente interpretado.
+
+Para cada ponto foi calculada a diferen�a:
+
+\begin{equation}
+d_i=t_{2,i}-t_{1,i}
+\end{equation}
+\equationdescription{Diferen�a entre interpreta��es}
+
+A m�dia das diferen�as foi de aproximadamente 0,15 ms, pr�xima de zero, indicando aus�ncia de tend�ncia sistem�tica relevante entre as duas leituras. O desvio-padr�o das diferen�as foi de aproximadamente 0,54 ms. Considerando duas determina��es independentes com a mesma precis�o, a repetibilidade de um \textit{picking} individual foi estimada por:
+
+\begin{equation}
+u_{\mathrm{pick}}=\frac{s_d}{\sqrt{2}}
+\end{equation}
+\equationdescription{Incerteza de repetibilidade}
+
+resultando em aproximadamente:
+
+\begin{equation}
+\boxed{u_{\mathrm{pick}}\approx 0{,}4\,\mathrm{ms}}
+\end{equation}
+\equationdescription{Resultado da incerteza de picking}
+
+Esse valor representa a repetibilidade intraint�rprete, e n�o a resolu��o vertical nem a acur�cia absoluta do horizonte.
+
+\subsubsection{Incerteza associada � interpola��o}
+
+Os horizontes interpretados no Petrel foram exportados e utilizados na gera��o das superf�cies posteriormente analisadas no QGIS. A componente de incerteza introduzida pela gera��o das superf�cies ser� estimada a partir dos resultados de valida��o da interpola��o, utilizando os relat�rios obtidos por Krigagem, incluindo principalmente RMSE, erro m�dio e, quando dispon�vel, MAE e estat�sticas dos res�duos.
+
+O RMSE ser� utilizado como indicador da discrep�ncia entre os valores observados e estimados durante a valida��o da interpola��o, sendo empregado como medida da dispers�o vertical associada � superf�cie interpolada \cite{isaaks1989} :
+
+\begin{equation}
+u_{\mathrm{interp}}\approx\mathrm{RMSE}
+\end{equation}
+\equationdescription{Incerteza de interpola��o}
+
+Essa componente dever� ser obtida separadamente para as superf�cies de topo e base utilizadas nos c�lculos.
+
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Observa��o: os relat�rios de interpola��o ainda n�o foram incorporados � an�lise e dever�o ser adicionados posteriormente para cada superf�cie independente utilizada nas medidas morfom�tricas.}}
+
+\subsubsection{Resolu��o espacial e medidas planim�tricas}
+
+A geometria nominal do levantamento s�smico apresenta \textit{bin size} de 25 $\times$ 12,5 m, enquanto as superf�cies utilizadas na etapa final da an�lise morfom�trica foram geradas com grade de 100 $\times$ 100 m. Esses valores representam escalas de amostragem e discretiza��o e n�o foram considerados diretamente como uma incerteza de �25 m ou �100 m.
+
+A influ�ncia da resolu��o espacial ser� avaliada por meio da sensibilidade das medidas � discretiza��o utilizada. Para par�metros derivados das superf�cies, como espessuras, alturas e volume, poder�o ser comparados resultados obtidos com diferentes espa�amentos de grade, mantendo-se constantes os dados de entrada e o m�todo de interpola��o. Para comprimentos definidos pelos pontos A, B e C, a componente horizontal ser� associada � precis�o espacial da interpreta��o e da representa��o cartogr�fica.
+
+A incerteza decorrente da redelimita��o manual das bordas dos MTDs n�o ser� quantificada separadamente nesta etapa. Assim, �rea e per�metro ser�o acompanhados principalmente pela componente de resolu��o espacial/discretiza��o, devendo essa limita��o ser explicitada na discuss�o dos resultados.
+
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Observa��o: ainda falta consolidar quantitativamente a componente espacial que ser� atribu�da �s medidas horizontais.}}
+
+\subsubsection{Convers�o tempo--profundidade}
+
+As medidas verticais obtidas em TWT ser�o convertidas para profundidade utilizando velocidades derivadas dos dados VSP dispon�veis na regi�o. Para cada MTD/MTC ser� utilizada uma velocidade representativa calculada a partir dos po�os, ponderada pela dist�ncia entre cada po�o e o ponto central do dep�sito. Esse procedimento atribui maior peso aos controles mais pr�ximos \cite{shepard1968} .
+
+A velocidade ponderada ser� dada por:
+
+\begin{equation}
+\bar v=\frac{\sum_i w_i v_i}{\sum_i w_i},\quad w_i=\frac{1}{d_i}
+\end{equation}
+\equationdescription{M�dia ponderada da velocidade}
+
+A incerteza da velocidade ser� obtida a partir da dispers�o das velocidades dos po�os em rela��o � m�dia ponderada, mantendo a influ�ncia espacial definida pelos mesmos pesos. Dessa forma, cada MTD possuir� uma estimativa:
+
+\begin{equation}
+\bar v\pm u_v
+\end{equation}
+\equationdescription{Velocidade com incerteza}
+
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Observa��o: as velocidades e as dist�ncias aos MTDs j� foram levantadas; resta consolidar numericamente a dispers�o ponderada e a incerteza correspondente.}}
+
+\subsubsection{Propaga��o da incerteza para os par�metros morfom�tricos}
+
+Depois de determinadas as componentes independentes, a incerteza combinada ser� calculada utilizando a propaga��o de \citeauthoronline{taylor1997} (\citeyear{taylor1997}):
+
+\begin{equation}
+u_F=\sqrt{\left(\frac{\partial F}{\partial x_1}u_{x_1}\right)^2+\left(\frac{\partial F}{\partial x_2}u_{x_2}\right)^2+\cdots}
+\end{equation}
+\equationdescription{Propaga��o geral de incertezas}
+
+As diferentes fontes de incerteza n�o foram combinadas em um �nico valor geral, mas propagadas de acordo com as vari�veis envolvidas no c�lculo de cada par�metro morfom�trico. Inicialmente, para cada superf�cie s�smica, a incerteza temporal ser� obtida a partir da combina��o da repetibilidade do \textit{picking} e da incerteza associada � interpola��o:
+
+\begin{equation}
+u_t=\sqrt{u_{\mathrm{pick}}^2+u_{\mathrm{interp}}^2}
+\end{equation}
+\equationdescription{Incerteza temporal}
+
+A resolu��o vertical s�smica ser� apresentada separadamente como limite f�sico de resolu��o do dado, n�o sendo tratada como uma componente aleat�ria da incerteza do horizonte.
+
+Para par�metros definidos pela diferen�a entre duas superf�cies, como espessuras e alturas, as respectivas incertezas ser�o propagadas segundo:
+
+\begin{equation}
+u_{\Delta t}=\sqrt{u_{t_1}^2+u_{t_2}^2}
+\end{equation}
+\equationdescription{Incerteza da diferen�a temporal}
+
+Quando essas medidas forem convertidas para profundidade utilizando uma velocidade v, a incerteza da velocidade ser� incorporada � propaga��o. Para uma medida dada por:
+
+\begin{equation}
+z=\frac{vt}{2}
+\end{equation}
+\equationdescription{Convers�o de tempo em profundidade}
+
+a incerteza ser� calculada por:
+
+\begin{equation}
+\frac{u_z}{z}=\sqrt{\left(\frac{u_v}{v}\right)^2+\left(\frac{u_t}{t}\right)^2}
+\end{equation}
+\equationdescription{Incerteza relativa da profundidade}
+
+As medidas horizontais, como os comprimentos A--B, B--C e A--C, ter�o suas incertezas associadas � componente de resolu��o espacial utilizada na defini��o de seus extremos. Para as inclina��es S, Ss e St, ser�o propagadas conjuntamente as incertezas vertical e horizontal, uma vez que esses par�metros dependem simultaneamente da diferen�a de eleva��o e da dist�ncia horizontal.
+
+Para o volume, as incertezas associadas � espessura e � componente espacial da �rea ser�o combinadas conforme a rela��o utilizada em seu c�lculo. Dessa forma, cada par�metro apresentar� uma incerteza final pr�pria, resultante apenas das fontes que efetivamente participam de sua determina��o. A propaga��o ser� realizada segundo a formula��o geral de \citeauthoronline{taylor1997} (\citeyear{taylor1997}) para vari�veis independentes:
+
+\begin{equation}
+u_F=\sqrt{\sum_i\left(\frac{\partial F}{\partial x_i}u_{x_i}\right)^2}
+\end{equation}
+\equationdescription{Formula��o geral para vari�veis independentes}
+
+Ao final, os resultados ser�o apresentados na forma valor � incerteza, com o n�mero de casas decimais ajustado � magnitude da incerteza estimada. A tabela final sintetizar�, para cada par�metro, o valor obtido, a incerteza combinada, o m�todo de estimativa e a principal fonte de incerteza.
