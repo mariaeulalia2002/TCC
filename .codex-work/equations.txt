@@ -1,0 +1,38 @@
+433		Δt(x,y)=ttopo(x,y)-tbase(x,y)
+452		Lt=LA-C
+454		Ld=LB-C
+456		Le=LA-B=Lt-Ld
+463		Δte=tB-tA e Δtt=tC-tA
+466		He=|zB-zA|
+468		Ht=|zC-zA|
+471		Δzd=|zC-zB|
+477		Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como As e Bs:
+479		Hs=zBs-zAs
+480		A inclinação máxima da cicatriz foi determinada separadamente. Dentro do intervalo As–Bs, foram selecionados os pontos P e Q, delimitando o trecho contínuo de maior gradiente. O desnível e a distância horizontal desse trecho foram utilizados para calcular:
+482		Ss=arctan|zQ-zP|LP-Q180π
+485		A inclinação do declive, S, foi determinada em um perfil lateral ao movimento de massa, posicionado fora da cicatriz, da zona evacuada e do depósito. A orientação foi aproximadamente paralela à direção geral de transporte, permitindo caracterizar o gradiente de uma superfície preservada adjacente à feição.
+489		S=arctan|zP2-zP1|LP1-P2180π
+492		O parâmetro St, identificado na tabela como inclinação da base, foi medido à frente da terminação distal do depósito. A seção foi traçada aproximadamente como prolongamento do eixo principal, incluindo a terminação do corpo para permitir reconhecer sua relação com o terreno receptor.
+496		St=arctan|zP4-zP3|LP3-P4180π
+504	Heading2	vint=2000(z2-z1)t2-t1
+510	Heading2	Em que vi é a velocidade selecionada no poço e di, sua distância ao ponto central do depósito. Assim, os controles mais próximos receberam maior peso. Foi obtida uma velocidade constante para cada MTD/MTC, sem variação célula a célula. As distâncias calculadas e as velocidades ponderadas para cada MTD/MTC encontram-se no anexo x.
+514	Heading2	h=(ttopo-tbase)vMTD2000
+519	Heading2	Δz=Δt15002000
+522	Heading2	zP=tfundo,P1500+(tP-tfundo,P)vMTD2000
+523	Heading2	Em que tP é o tempo do ponto interpretado e tfundo,P, o tempo do fundo marinho na mesma posição.
+524	Heading2	Essa separação foi utilizada para obter as profundidades dos pontos A, B e C e, posteriormente, calcular a altura de evacuação (\(He=|z_B-z_A| \qquad \text{e} \qquad Ht=|z_C-z_A|\) ) e a altura total de queda (\(He=|z_B-z_A| \qquad \text{e} \qquad Ht=|z_C-z_A|\) ). Também foi aplicada aos pontos dos perfis do declive lateral e da superfície à frente do pé. As inclinações foram calculadas a partir dos desníveis convertidos e das respectivas distâncias horizontais.
+535		RTWT=12fdom
+538		RTWT=500fdom
+544		di=t2,i-t1,i
+547		upick=sd2
+555		uinterp≈RMSE
+567		v=wiviwi,wi=1di
+570		v±uv
+575		uF=∂F∂x1ux12+∂F∂x2ux22+…
+578		ut=upick2+uinterp2
+582		uΔt=ut12+ut22
+583		Quando essas medidas forem convertidas para profundidade utilizando uma velocidade v, a incerteza da velocidade será incorporada à propagação. Para uma medida dada por:
+585		z=vt2
+588		uzz=uvv2+utt2
+589		As medidas horizontais, como os comprimentos A–B, B–C e A–C, terão suas incertezas associadas à componente de resolução espacial utilizada na definição de seus extremos. Para as inclinações S, Ss e St, serão propagadas conjuntamente as incertezas vertical e horizontal, uma vez que esses parâmetros dependem simultaneamente da diferença de elevação e da distância horizontal.
+592		uF=i∂F∂xiuxi2
