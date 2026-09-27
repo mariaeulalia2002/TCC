@@ -38,6 +38,17 @@ try {
 
     Registrar 'Inicio da sincronizacao.'
 
+    # Não versione artefatos intermediários enquanto o PDF estiver sendo
+    # recompilado. O xelatex substitui main.pdf durante a geração e, sem esta
+    # proteção, a tarefa agendada pode capturar um arquivo temporário.
+    $compiladoresAtivos = Get-Process -ErrorAction SilentlyContinue | Where-Object {
+        $_.ProcessName -match '^(xelatex|bibtex|biber|miktex-dvipdfmx)$'
+    }
+    if ($compiladoresAtivos) {
+        Registrar 'Compilacao LaTeX em andamento; sincronizacao adiada para a proxima execucao.'
+        exit 0
+    }
+
     # Um repositório recém-criado pode ainda não ter a branch main remota.
     & $git -C $Repositorio ls-remote --exit-code --heads origin main *> $null
     $mainRemotaExiste = ($LASTEXITCODE -eq 0)
