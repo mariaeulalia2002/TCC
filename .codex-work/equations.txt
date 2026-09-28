@@ -1,55 +1,51 @@
-464		Δt(x,y)=ttopo(x,y)-tbase(x,y)    (7)
-483		Lt=LA-C    (8)
-485		Ld=LB-C    (9)
-487		Le=LA-B=Lt-Ld    (10)
-494		Δte=tB-tA e Δtt=tC-tA    (11)
-497		He=|zB-zA|    (12)
-499		Ht=|zC-zA|    (13)
-502		Δzd=|zC-zB|    (14)
-508		Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como As e Bs:
-510		Hs=zBs-zAs    (15)
-511		A inclinação máxima da cicatriz foi determinada separadamente. Dentro do intervalo As–Bs, foram selecionados os pontos P e Q, delimitando o trecho contínuo de maior gradiente. O desnível e a distância horizontal desse trecho foram utilizados para calcular:
-513		Ss=arctan|zQ-zP|LP-Q180π    (16)
-516		A inclinação do declive, S, foi determinada em um perfil lateral ao movimento de massa, posicionado fora da cicatriz, da zona evacuada e do depósito. A orientação foi aproximadamente paralela à direção geral de transporte, permitindo caracterizar o gradiente de uma superfície preservada adjacente à feição.
-520		S=arctan|zP2-zP1|LP1-P2180π    (17)
-523		O parâmetro St, identificado na tabela como inclinação da base, foi medido à frente da terminação distal do depósito. A seção foi traçada aproximadamente como prolongamento do eixo principal, incluindo a terminação do corpo para permitir reconhecer sua relação com o terreno receptor.
-527		St=arctan|zP4-zP3|LP3-P4180π    (18)
-535		vint=2000(z2-z1)t2-t1     (19)
-541		Em que vi é a velocidade selecionada no poço e di, sua distância ao ponto central do depósito. Assim, os controles mais próximos receberam maior peso. Foi obtida uma velocidade constante para cada MTD/MTC, sem variação célula a célula. As distâncias calculadas e as velocidades ponderadas para cada MTD/MTC encontram-se no anexo x.
-545		h=(ttopo-tbase)vMTD2000    (21)
-550		Δz=Δt15002000    (22)
-553		zP=tfundo,P1500+(tP-tfundo,P)vMTD2000    (23)
-554		Em que tP é o tempo do ponto interpretado e tfundo,P, o tempo do fundo marinho na mesma posição.
-555		Essa separação foi utilizada para obter as profundidades dos pontos A, B e C e, posteriormente, calcular a altura de evacuação (\(He=|z_B-z_A| \qquad \text{e} \qquad Ht=|z_C-z_A|\) ) e a altura total de queda (\(He=|z_B-z_A| \qquad \text{e} \qquad Ht=|z_C-z_A|\) ). Também foi aplicada aos pontos dos perfis do declive lateral e da superfície à frente do pé. As inclinações foram calculadas a partir dos desníveis convertidos e das respectivas distâncias horizontais.
-566		RTWT=12fdom    (24)
-569		RTWT=500fdom    (25)
-575		di=t2,i-t1,i    (26)
-578		upick=sd2    (27)
-586		uinterp≈RMSE    (29)
-598		v=wiviwi,wi=1di    (30)
-601		v±uv    (31)
-606		uF=∂F∂x1ux12+∂F∂x2ux22+…    (32)
-609		ut=upick2+uinterp2    (33)
-613		uΔt=ut12+ut22    (34)
-614		Quando essas medidas forem convertidas para profundidade utilizando uma velocidade v, a incerteza da velocidade será incorporada à propagação. Para uma medida dada por:
-616		z=vt2    (35)
-619		uzz=uvv2+utt2    (36)
-620		As medidas horizontais, como os comprimentos A–B, B–C e A–C, terão suas incertezas associadas à componente de resolução espacial utilizada na definição de seus extremos. Para as inclinações S, Ss e St, serão propagadas conjuntamente as incertezas vertical e horizontal, uma vez que esses parâmetros dependem simultaneamente da diferença de elevação e da distância horizontal.
-623		uF=i∂F∂xiuxi2    (37)
-634		O método da Razão Espectral Horizontal/Vertical (Horizontal-to-Vertical Spectral Ratio - HVSR) foi aplicado para identificar a frequência fundamental de ressonância (f0) do pacote sedimentar e estimar a profundidade do principal contraste de impedância na subsuperfície. A técnica utiliza o ruído sísmico ambiente registrado nas componentes horizontais norte-sul (NS) e leste-oeste (EW), bem como na componente vertical (V), sendo amplamente empregada por ser passiva, de baixo impacto operacional e adequada à investigação de contrastes de rigidez no subsolo (Nakamura, 1989; Krylov et al., 2022).
-638		HVSR(f)=[NS(f)2+EW(f)2]/2V(f)
-639		O pico dominante da curva H/V foi associado à frequência fundamental de ressonância (f0), relacionada à interferência de ondas sísmicas em uma interface com contraste de impedância. Considerando um modelo simplificado de uma camada sedimentar sobre um substrato mais rígido, a profundidade aproximada da interface (H) foi calculada por:
-641		H≈Vs4f0
-642		em que Vs corresponde à velocidade média da onda S na camada acima da interface (Nakamura, 1989; Krylov et al., 2022).
-645		O processamento foi realizado em ambiente Python, utilizando os notebooks do repositório hvsrweb e a biblioteca hvsrpy (Vantassel et al., 2021). Os parâmetros foram definidos com base nas recomendações do projeto SESAME (2004). A Tabela x sintetiza os parâmetros utilizados no processamento. Os sinais contínuos foram divididos em janelas temporais de 120 s, utilizadas na determinação estatística de f0, e de 1.800 s, empregadas como teste de estabilidade espectral.
-646		Aplicou-se taper de Tukey, com larguras de 0,10 e 0,05, respectivamente, a fim de reduzir o vazamento espectral nas extremidades das janelas. O taper é uma função aplicada às extremidades de cada janela temporal para reduzir gradualmente a amplitude do sinal a zero, evitando descontinuidades e o vazamento espectral durante a transformação para o domínio da frequência. Neste estudo, utilizou-se o taper de Tukey, conforme recomendações para o processamento HVSR (SESAME, 2004; Vantassel et al., 2021). As componentes horizontais foram combinadas por média geométrica, procedimento recomendado para a obtenção de uma única curva H/V representativa (Cox et al., 2020; Cheng et al., 2020). Foram testadas as suavizações de Konno & Ohmachi e Parzen. A primeira foi adotada para a definição final de f0, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências (Konno & Ohmachi, 1998; SESAME, 2004). A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individuais; os valores de pico das janelas válidas foram tratados por estatística lognormal, resultando em frequência central e dispersão associada.
-650		Os valores de Vp foram integrados no ponto do OBS por interpolação ponderada pelo inverso da distância (Inverse Distance Weighting - IDW), atribuindo maior peso aos poços mais próximos (Isaaks & Srivastava, 1989). Foram obtidos dois valores médios de Vp: um com dois valores de velocidade por poço e outro incluindo o terceiro valor disponível no poço 137.
-651		Após a obtenção de Vp, realizou-se a conversão para Vs por meio do coeficiente de Poisson (ν), conforme a relação elástica proposta por Aki e Richards (2002):
-653		Vs=Vp1-2ν2(1-ν)
-654		Foram adotados valores de ν entre 0,46 e 0,48, compatíveis com sedimentos finos saturados e com a natureza litológica indicada pelos perfis dos poços (Davidovici, 1985; Domenico & Schwartz, 1990; Sharma et al., 1990).
-655		A profundidade foi estimada para todas as combinações entre f0, Vp e ν. A incerteza foi avaliada por dois procedimentos, segundo Taylor (1997). No método do envelope, foram combinados os valores mínimo e máximo de profundidade, resultando em uma estimativa conservadora:
-657		ΔHabs=Hmax-Hmin2
-659		ΔHrel=ΔHabsH×100
-660		Também foi utilizada a propagação de incertezas, assumindo independência entre Vs e f0:
-662		σHH2=σVsVs2+σf0f02
-663		Dessa forma, o envelope representa o limite máximo de variação possível entre os cenários, enquanto a propagação de erro fornece uma incerteza combinada mais representativa das contribuições relativas de Vs e f0. A análise é relevante para movimentos de massa submarinos porque a espessura de sedimentos menos consolidados e o contraste de rigidez com o substrato podem controlar a circulação de fluidos, a pressão de poros e a posição potencial de superfícies de ruptura. Entretanto, o HVSR deve ser interpretado em conjunto com sísmica, dados de poços e informações geotécnicas.
+470		Δt(x,y)=ttopo(x,y)-tbase(x,y)    (7)
+489		Lt=LA-C    (8)
+491		Ld=LB-C    (9)
+493		Le=LA-B=Lt-Ld    (10)
+500		Δte=tB-tA e Δtt=tC-tA    (11)
+503		He=|zB-zA|    (12)
+505		Ht=|zC-zA|    (13)
+508		Δzd=|zC-zB|    (14)
+514		Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como As e Bs:
+516		Hs=zBs-zAs    (15)
+517		A inclinação máxima da cicatriz foi determinada separadamente. Dentro do intervalo As–Bs, foram selecionados os pontos P e Q, delimitando o trecho contínuo de maior gradiente. O desnível e a distância horizontal desse trecho foram utilizados para calcular:
+519		Ss=arctan|zQ-zP|LP-Q180π    (16)
+522		A inclinação do declive, S, foi determinada em um perfil lateral ao movimento de massa, posicionado fora da cicatriz, da zona evacuada e do depósito. A orientação foi aproximadamente paralela à direção geral de transporte, permitindo caracterizar o gradiente de uma superfície preservada adjacente à feição.
+526		S=arctan|zP2-zP1|LP1-P2180π    (17)
+529		O parâmetro St, identificado na tabela como inclinação da base, foi medido à frente da terminação distal do depósito. A seção foi traçada aproximadamente como prolongamento do eixo principal, incluindo a terminação do corpo para permitir reconhecer sua relação com o terreno receptor.
+533		St=arctan|zP4-zP3|LP3-P4180π    (18)
+541		vint=2000(z2-z1)t2-t1     (19)
+547		Em que vi é a velocidade selecionada no poço e di, sua distância ao ponto central do depósito. Assim, os controles mais próximos receberam maior peso. Foi obtida uma velocidade constante para cada MTD/MTC, sem variação célula a célula. As distâncias calculadas e as velocidades ponderadas para cada MTD/MTC encontram-se no anexo x.
+551		h=(ttopo-tbase)vMTD2000    (21)
+556		Δz=Δt15002000    (22)
+559		zP=tfundo,P1500+(tP-tfundo,P)vMTD2000    (23)
+560		Em que tP é o tempo do ponto interpretado e tfundo,P, o tempo do fundo marinho na mesma posição.
+561		Essa separação foi utilizada para obter as profundidades dos pontos A, B e C e, posteriormente, calcular a altura de evacuação (\(He=|z_B-z_A| \qquad \text{e} \qquad Ht=|z_C-z_A|\) ) e a altura total de queda (\(He=|z_B-z_A| \qquad \text{e} \qquad Ht=|z_C-z_A|\) ). Também foi aplicada aos pontos dos perfis do declive lateral e da superfície à frente do pé. As inclinações foram calculadas a partir dos desníveis convertidos e das respectivas distâncias horizontais.
+572		RTWT=12fdom    (24)
+575		RTWT=500fdom    (25)
+581		di=t2,i-t1,i    (26)
+584		upick=sd2    (27)
+592		uinterp≈RMSE    (29)
+604		v=wiviwi,wi=1di    (30)
+607		v±uv    (31)
+612		uF=∂F∂x1ux12+∂F∂x2ux22+…    (32)
+615		ut=upick2+uinterp2    (33)
+619		uΔt=ut12+ut22    (34)
+620		Quando essas medidas forem convertidas para profundidade utilizando uma velocidade v, a incerteza da velocidade será incorporada à propagação. Para uma medida dada por:
+622		z=vt2    (35)
+625		uzz=uvv2+utt2    (36)
+626		As medidas horizontais, como os comprimentos A–B, B–C e A–C, terão suas incertezas associadas à componente de resolução espacial utilizada na definição de seus extremos. Para as inclinações S, Ss e St, serão propagadas conjuntamente as incertezas vertical e horizontal, uma vez que esses parâmetros dependem simultaneamente da diferença de elevação e da distância horizontal.
+629		uF=i∂F∂xiuxi2    (37)
+640		O método da Razão Espectral Horizontal/Vertical (Horizontal-to-Vertical Spectral Ratio - HVSR) foi aplicado para identificar a frequência fundamental de ressonância (f0) do pacote sedimentar e estimar a profundidade do principal contraste de impedância na subsuperfície. A técnica utiliza o ruído sísmico ambiente registrado nas componentes horizontais norte-sul (NS) e leste-oeste (EW), bem como na componente vertical (V), sendo amplamente empregada por ser passiva, de baixo impacto operacional e adequada à investigação de contrastes de rigidez no subsolo (Nakamura, 1989; Krylov et al., 2022).
+644		HVSR(f)=[NS(f)2+EW(f)2]/2V(f)
+645		O pico dominante da curva H/V foi associado à frequência fundamental de ressonância (f0), relacionada à interferência de ondas sísmicas em uma interface com contraste de impedância. Considerando um modelo simplificado de uma camada sedimentar sobre um substrato mais rígido, a profundidade aproximada da interface (H) foi calculada por:
+647		H≈Vs4f0
+648		em que Vs corresponde à velocidade média da onda S na camada acima da interface (Nakamura, 1989; Krylov et al., 2022).
+652		O processamento foi realizado em ambiente Python, utilizando os notebooks do repositório hvsrweb e a biblioteca hvsrpy (Vantassel et al., 2021). Os parâmetros foram definidos com base nas recomendações do projeto SESAME (2004). A Tabela 1 sintetiza os parâmetros utilizados no processamento. Os sinais contínuos foram divididos em janelas temporais de 120 s, utilizadas na determinação estatística de f0, e de 1.800 s, empregadas como teste de estabilidade espectral.
+668		Vs=Vp1-2ν2(1-ν)
+672		A profundidade foi estimada para todas as combinações entre f0, Vp e ν. A incerteza foi avaliada por dois procedimentos, segundo Taylor (1997). No método do envelope, foram combinados os valores mínimo e máximo de profundidade, resultando em uma estimativa conservadora:
+674		ΔHabs=Hmax-Hmin2
+676		ΔHrel=ΔHabsH×100
+677		Também foi utilizada a propagação de incertezas, assumindo independência entre Vs e f0:
+679		σHH2=σVsVs2+σf0f02
+680		Dessa forma, o envelope representa o limite máximo de variação possível entre os cenários, enquanto a propagação de erro fornece uma incerteza combinada mais representativa das contribuições relativas de Vs e f0. A análise é relevante para movimentos de massa submarinos porque a espessura de sedimentos menos consolidados e o contraste de rigidez com o substrato podem controlar a circulação de fluidos, a pressão de poros e a posição potencial de superfícies de ruptura. Entretanto, o HVSR deve ser interpretado em conjunto com sísmica, dados de poços e informações geotécnicas.
