@@ -28,21 +28,15 @@ Esse atributo contribui para o realce da continuidade lateral dos refletores, da
 
 \subsection{Geração de superfícies sísmicas e análise geomorfométrica}
 
-A geração de superfícies a partir de horizontes sísmicos permite representar a geometria de refletores de interesse e investigar padrões de acomodação e distribuição sedimentar \cite{preissler2016}. Neste trabalho, a análise geomorfométrica do fundo marinho foi realizada integralmente no domínio do tempo sísmico, tendo como base o horizonte correspondente ao primeiro refletor identificado no volume sísmico. Esse refletor foi associado à interface entre a coluna d’água e o substrato sedimentar, caracterizada por elevado contraste de impedância acústica.
+A geração de superfícies a partir de horizontes sísmicos permite representar a geometria de refletores de interesse e investigar padrões de acomodação e distribuição sedimentar \cite{preissler2016}. Neste trabalho, foram geradas superfícies para o fundo marinho e para os horizontes de topo e base dos depósitos de transporte de massa. Essas superfícies subsidiaram a análise geomorfométrica do fundo marinho e a caracterização morfométrica dos MTDs.
 
-O horizonte do fundo marinho foi interpretado no software \textit{Petrel®} por meio da ferramenta \textit{Guided Autotracking}. Nessa ferramenta, o intérprete define pontos inicial e final ao longo de um refletor, e o algoritmo realiza o rastreamento do evento sísmico entre esses pontos, de acordo com os parâmetros de rastreamento previamente estabelecidos. O resultado do rastreamento foi submetido à verificação visual e, quando necessário, a correções manuais, a fim de garantir a continuidade e a coerência do horizonte interpretado. Os pontos correspondentes ao horizonte foram exportados em formato ASCII, contendo as coordenadas espaciais X e Y e os respectivos valores de tempo sísmico de dupla viagem (\textit{two-way travel time} --- TWT), em milissegundos. Para facilitar a visualização tridimensional da superfície, os valores de tempo foram representados com sinal negativo. Essa inversão não altera a geometria relativa da superfície, mas possibilita sua representação visual em uma configuração semelhante à de um modelo de relevo submarino.
+As superfícies foram geradas no \textit{Petrel\textsuperscript{\textregistered}} pela ferramenta \textit{Make Surface} e, no caso do fundo marinho, também no \textit{Surfer\textsuperscript{\textregistered}} versão 11.0, utilizando krigagem, método que apresentou menor erro quadrático médio que os métodos Gaussiano e de Interpolação Convergente. A compatibilidade entre sistemas de coordenadas, resolução espacial e alinhamento das células foi verificada antes das análises.
 
-A interpolação inicial foi realizada no software \textit{Surfer®}, versão 11.0, utilizando o método de krigagem e variograma linear, com resolução espacial de 50 $\times$ 50 m. A krigagem é um método geoestatístico de interpolação que estima valores em locais não amostrados com base na dependência espacial existente entre as observações. Essa dependência é descrita pelo variograma, que expressa a variação entre pares de dados em função da distância que os separa. Assim, os valores interpolados em cada célula do \textit{grid} foram estimados a partir da posição, dos valores de TWT e da estrutura de correlação espacial dos pontos interpretados \cite{davis2002}.
+A análise geomorfométrica do fundo marinho foi realizada no domínio do tempo sísmico, a partir do primeiro refletor identificado no volume, associado à interface entre a coluna d’água e o substrato sedimentar. Devido ao elevado contraste de impedância acústica nessa interface, esse refletor foi adotado como referência e traçado com a ferramenta \textit{Guided Autotracking}. Para facilitar a visualização tridimensional, os valores de TWT foram representados com sinal negativo, sem alteração da geometria relativa da superfície. A interpolação foi realizada no \textit{Surfer\textsuperscript{\textregistered}} por krigagem com variograma linear e resolução de 50 $\times$ 50~m. O \textit{grid} foi importado para o \textit{QGIS\textsuperscript{\textregistered}}, onde se calcularam rugosidade e declividade. A rugosidade realçou escarpas, cicatrizes, canais e outras irregularidades morfológicas \cite{riley1999,wilson2007}. Como os valores verticais correspondem a TWT, a declividade representa um gradiente temporal aparente, e não uma declividade batimétrica real \cite{qgis2025}.
 
-Posteriormente, o \textit{grid} foi importado para o software \textit{QGIS®}, no qual foram calculados atributos derivados de \textit{raster}: rugosidade e declividade. A rugosidade é uma medida da heterogeneidade local da superfície e é calculada a partir das diferenças entre o valor de uma célula central e os valores das células que compõem sua vizinhança. Valores mais elevados indicam maior variabilidade local, permitindo realçar descontinuidades, escarpas, cicatrizes, canais e outras irregularidades morfológicas \cite{riley1999,wilson2007}.
+As superfícies de topo e base dos MTDs foram interpoladas em grades regulares compatíveis com o espaçamento do mapeamento: 100 $\times$ 100~m para os eventos mais recentes e 200 $\times$ 200~m para os mais antigos. A resolução foi definida conforme a densidade dos pontos interpretados. A extensão em planta de cada depósito foi delimitada por polígonos, empregados como máscaras para recortar as superfícies e restringir os cálculos à área efetivamente interpretada. Os procedimentos de cálculo dos parâmetros morfométricos são descritos na Seção~\ref{sec:caracterizacao-morfometrica}.
 
-A declividade foi calculada a partir da taxa de variação dos valores da superfície entre células adjacentes. Como os valores verticais do \textit{grid} correspondem a TWT, e não à profundidade em metros, esse atributo representa um gradiente temporal aparente, expresso a partir da variação do tempo sísmico em relação à distância horizontal. Portanto, a declividade obtida não deve ser interpretada como declividade batimétrica real, mas como uma medida relativa útil para evidenciar mudanças abruptas na geometria do refletor sísmico. Os procedimentos de análise de terreno empregados pelo \textit{QGIS®} calculam esses atributos a partir das relações espaciais entre células de um modelo \textit{raster} de superfície \cite{qgis2025}.
-
-A superfície correspondente ao fundo marinho foi então também gerada no software Petrel por meio da ferramenta \textit{Make Surface}, utilizando os mesmos pontos interpretados, resolução espacial e parâmetros de interpolação adotados no fluxo inicial. Esse procedimento permitiu comparar os resultados obtidos nos dois ambientes e realizar a visualização tridimensional da superfície diretamente no projeto sísmico.
-
-As superfícies de topo e base dos depósitos e complexos de transporte de massa foram geradas no \textit{Petrel®} utilizando a ferramenta \textit{Make Surface} e o método de krigagem simples. Nesse método, a estimativa espacial é realizada assumindo-se uma média conhecida ou constante para os dados analisados, enquanto a influência de cada ponto na estimativa depende da estrutura de continuidade espacial definida pelo modelo de variograma \cite{davis2002}. O tamanho das células foi definido de acordo com o espaçamento de interpretação de cada evento, buscando manter compatibilidade entre a resolução da superfície gerada e a densidade dos pontos interpretados. As superfícies também foram visualizadas no \textit{Surfer®}, versão 11.0, para fins de comparação e controle de qualidade. Informações adicionais sobre os procedimentos de análise morfométrica são apresentadas na Seção X.X.X.
-
-\section{Caracterização morfométrica dos depósitos}
+\section{Caracterização morfométrica dos depósitos}\label{sec:caracterizacao-morfometrica}
 
 A caracterização morfométrica dos depósitos foi baseada na proposta de \citeauthoronline{clare2018} (\citeyear{clare2018}), que estabelece parâmetros para a descrição quantitativa de movimentos de massa subaquáticos (\TextoModelo{Figura a inserir}). Foram determinados, quando as feições apresentaram preservação e resolução sísmica suficientes, a profundidade do topo do depósito, o comprimento total (Lt), o comprimento do depósito (Ld), a altura da cicatriz (Hs), a altura da zona evacuada (He), a altura total de queda (Ht), a espessura máxima do depósito (Tdmax), as inclinações da escarpa (Ss) e do declive adjacente não deformado (S), além de área, perímetro e volume preservado.
 
@@ -51,10 +45,6 @@ Os procedimentos de interpretação sísmica, definição do eixo longitudinal, 
 As medidas foram inicialmente obtidas em unidades horizontais métricas e em tempo duplo de percurso da onda sísmica (TWT). Posteriormente, os intervalos temporais necessários aos cálculos verticais foram convertidos em profundidade com base nas velocidades representativas da coluna d’água e dos sedimentos, conforme será abordado na seção x.x.x.
 
 A representação esquemática dos parâmetros morfométricos é apresentada na Figura~\ref{fig:parametros-morfometricos}.
-
-\subsection{Preparação dos horizontes e geração das superfícies}
-
-Os horizontes de topo e base dos depósitos foram interpretados no Petrel, e as interpolações foram realizadas em grades regulares, respeitando o espaçamento do mapeamento (100x100m para os eventos mais recentes, 200x200 m para eventos mais antigos). As superfícies, conforme abordado anteriormente na seção, foram geradas através da ferramenta \textit{Make Surface}, utilizando a krigagem, referencia método que apresentou menor erro quadrático médio em comparação com métodos como Gaussiano ou Interpolação Convergente, por exemplo. A extensão em planta de cada depósito foi delimitada por um polígono, considerando os limites reconhecidos na interpretação sísmica. Esse polígono foi utilizado como máscara para recortar as superfícies de topo e base, restringindo os cálculos à área interpretada. Antes das operações, foram verificadas a compatibilidade do sistema de coordenadas, a resolução e a posição das células.
 
 \subsection{Cálculo das isócronas}
 
@@ -75,46 +65,40 @@ A área, em \si{\square\metre}, e o volume temporal, em \si{\milli\second\square
 
 O perímetro do polígono de máscara utilizado na geração da isócrona foi calculado no QGIS através da Calculadora de Campo.
 
-\subsection{Definição dos marcos operacionais para o cálculo dos comprimentos}
+\subsection{Definição do eixo, dos marcos operacionais e cálculo dos comprimentos}
 
-Para operacionalizar a extração dos comprimentos propostos por \citeauthoronline{clare2018} (\citeyear{clare2018}), foram definidos três marcos ao longo do eixo principal de cada movimento de massa: A, correspondente ao topo da cicatriz; B, correspondente ao início do depósito; e C, correspondente à sua terminação distal. Esses marcos foram identificados manualmente, quando possível, em seções sísmicas sucessivas no Petrel.
+Para operacionalizar a extração dos comprimentos propostos por \citeauthoronline{clare2018} (\citeyear{clare2018}), foram definidos três marcos ao longo do eixo principal de cada movimento de massa: A, correspondente ao topo da cicatriz; B, ao início do depósito; e C, à sua terminação distal. Esses limites foram identificados manualmente, quando possível, em seções sísmicas sucessivas no \textit{Petrel\textsuperscript{\textregistered}}.
 
-O marco A foi posicionado no topo da escarpa principal. O marco B foi definido no limite proximal do depósito, a partir do qual os horizontes de topo e base passam a delimitar um corpo com espessura positiva e continuidade lateral reconhecível. O marco C foi localizado na terminação distal do depósito, caracterizada pelo afinamento do corpo e pela convergência entre os horizontes de topo e base.
+O marco A foi posicionado no topo da escarpa principal. O marco B corresponde ao limite proximal do depósito, a partir do qual os horizontes de topo e base delimitam um corpo com espessura positiva e continuidade lateral reconhecível. O marco C foi definido na terminação distal, caracterizada pelo afinamento do corpo e pela convergência entre os horizontes de topo e base. Para representar a variação lateral, os limites foram acompanhados em seções sucessivas, com incremento predominante de 20 \textit{inlines}, equivalente a cerca de 500~m. Esse espaçamento refere-se apenas ao levantamento dos limites, não à resolução das grades morfométricas.
 
-\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Como exemplo, no exemplo apresentado (\TextoModelo{Figura a inserir}), esses limites foram marcados em seções com incremento predominante de 20 \textit{inlines}. Na geometria utilizada nessa etapa, com espaçamento aproximado de 25 m entre \textit{inlines}, esse incremento correspondia a cerca de 500 m entre seções. Esse espaçamento refere-se ao levantamento específico dos limites A, B e C, sendo distinto da resolução das grades utilizadas para os cálculos. O acompanhamento dos limites em várias seções permitiu representar sua variação lateral. Os conjuntos foram exportados em arquivos ASCII contendo os campos inline, crossline, coordenadas X e Y e tempo sísmico Z. Esses arquivos preservaram tanto a posição em planta quanto o tempo correspondente a cada ponto interpretado. Colocar figura de exemplo}}
+Os conjuntos de pontos A, B e C foram exportados do \textit{Petrel\textsuperscript{\textregistered}} em arquivos ASCII, contendo \textit{inline}, \textit{crossline}, coordenadas X e Y e tempo sísmico Z. No \textit{QGIS\textsuperscript{\textregistered}}, foram organizados segundo a sequência das \textit{inlines} e convertidos em três linhas: topo da cicatriz, início do depósito e terminação distal.
 
-\subsection{Construção das linhas dos limites e definição do eixo no QGIS}
+O eixo principal de cada movimento de massa foi definido em planta pela integração da cicatriz, geometria do depósito, relevo da superfície basal, mapa de aspecto e perfis extraídos com o \textit{Profile Tool}. O aspecto permitiu reconhecer mudanças no mergulho, talvegues, flancos, altos estruturais e possíveis trajetórias preferenciais, mas não foi utilizado isoladamente para definir o transporte. O eixo foi digitalizado como uma polilinha que acompanha a trajetória interpretada, incluindo mudanças de direção associadas à geometria do depósito ou ao relevo estrutural.
 
-Os pontos exportados foram importados no QGIS e organizados segundo a sequência das \textit{inlines}. Cada conjunto foi convertido em uma linha, originando três feições: a linha do topo da cicatriz, a linha de início do depósito e a linha de terminação distal.
+As três linhas foram intersectadas com o eixo, definindo as posições A, B e C. A polilinha foi dividida nesses pontos, originando os segmentos A--B e B--C. Os comprimentos foram calculados no \textit{QGIS\textsuperscript{\textregistered}} com a Calculadora de Campo e convertidos para quilômetros pela expressão \texttt{\$length / 1000}.
 
-\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{A definição do eixo foi auxiliada pelo mapa de aspecto da superfície basal e pelos perfis extraídos com o \textit{Profile Tool}. O aspecto foi interpretado em conjunto com os limites sísmicos e com os perfis. O eixo resultante representa o percurso interpretado em planta, incluindo suas mudanças de direção. Colocar figura de exemplo}}
-
-O eixo principal do movimento foi digitalizado como uma polilinha, considerando a posição da cicatriz, a geometria do depósito, o relevo da superfície basal e a trajetória interpretada de transporte. Na \TextoModelo{Figura a inserir}, o eixo acompanha a curvatura do corpo e o talvegue do canal.
-
-As três linhas de limites foram intersectadas com o eixo. As interseções definiram as posições A, B e C efetivamente utilizadas nos cálculos longitudinais. Em seguida, a polilinha foi dividida nessas posições, originando os segmentos A--B e B--C.
-
-\subsection{Comprimentos total, evacuado e do depósito}
-
-Os comprimentos foram calculados a partir dos segmentos do eixo, utilizando a Calculadora de Campo do \textit{QGIS\textsuperscript{\textregistered}}. Com as coordenadas em unidades métricas, o comprimento foi obtido em metros; para apresentação em quilômetros, dividiu-se o valor por 1.000.
-
-Os comprimentos foram calculados ao longo do eixo principal do movimento de massa, preservando sua trajetória em planta. O comprimento total (Lt) foi obtido entre o topo da cicatriz e a terminação distal do depósito. O comprimento do depósito (Ld) foi calculado entre seu limite proximal e sua terminação distal. A extensão longitudinal da zona evacuada (Le) correspondeu à diferença entre Lt e Ld.
+O comprimento total ($L_t$) corresponde à distância ao longo do eixo entre o topo da cicatriz e a terminação distal do depósito:
 
 \begin{equation}
 L_t=L_{A-C}
 \end{equation}
 \equationdescription{Comprimento total do movimento de massa}
 
+O comprimento do depósito ($L_d$) corresponde à distância entre o início do depósito e sua terminação distal:
+
 \begin{equation}
 L_d=L_{B-C}
 \end{equation}
 \equationdescription{Comprimento do depósito}
+
+A extensão longitudinal da zona evacuada ($L_e$) foi obtida entre o topo da cicatriz e o início do depósito:
 
 \begin{equation}
 L_e=L_{A-B}=L_t-L_d
 \end{equation}
 \equationdescription{Comprimento da zona evacuada}
 
-Embora Le seja útil para descrever a extensão da área de remoção de material, ela foi empregada como medida operacional complementar neste estudo; os parâmetros padronizados de \citeauthoronline{clare2018} (\citeyear{clare2018}) utilizados para comparação são Lt e Ld.
+Embora $L_e$ seja útil para descrever a área de remoção de material, foi empregada como medida complementar. Os parâmetros padronizados de \citeauthoronline{clare2018} (\citeyear{clare2018}) utilizados para comparação entre os depósitos são $L_t$ e $L_d$.
 
 \subsection{Altura da zona evacuada e altura total de queda}
 
