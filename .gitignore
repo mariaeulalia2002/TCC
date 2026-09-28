@@ -24,6 +24,8 @@ latex/qa-area/
 
 # Estado local da automacao (os logs ficam fora do repositorio)
 .tcc-sync.lock
+automacao/instalar-sincronizacao.ps1
+automacao/registrar-sincronizacao-local.ps1
 
 # Artefatos temporários gerados durante auditorias e compilações locais
 .codex-work/compile-*.log
