@@ -127,7 +127,7 @@
 \newenvironment{paisagem}{\begin{landscape}}{\end{landscape}}
 
 \newcommand{\TituloCompletoTCC}{%
-  \TituloTCC\ifstrempty{\SubtituloTCC}{}{:\ \SubtituloTCC}%
+  \TituloTCC\ifdefempty{\SubtituloTCC}{}{:\ \SubtituloTCC}%
 }
 
 \newcommand{\AssinaturaTCC}[3]{%
@@ -165,8 +165,8 @@
     \begin{adjustwidth}{8cm}{0cm}
       \SingleSpacing\small
       \PreambuloTCC\par\medskip
-      Orientador: \OrientadorTCC.\par
-      \ifstrempty{\CoorientadorTCC}{}{Coorientador: \CoorientadorTCC.\par}
+      Orientador: \OrientadorTCC\par
+      \ifdefempty{\CoorientadorTCC}{}{Coorientador: \CoorientadorTCC\par}
     \end{adjustwidth}
     \vfill
     {\bfseries\MakeUppercase{\CidadeTCC}\par}
