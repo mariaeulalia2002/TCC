@@ -24,3 +24,10 @@ latex/qa-area/
 
 # Estado local da automacao (os logs ficam fora do repositorio)
 .tcc-sync.lock
+
+# Artefatos temporários gerados durante auditorias e compilações locais
+.codex-work/compile-*.log
+.codex-work/main-before-recompile.pdf
+.codex-work/latest-docs/final.docx
+.codex-work/latest-docs/final-export.zip
+.codex-work/latest-docs/unpacked-*/
