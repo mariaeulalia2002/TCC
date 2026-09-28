@@ -33,10 +33,16 @@ As duas versões seguem a mesma organização geral: elementos pré-textuais, in
 
 > Este é um modelo de apoio, não um documento oficial da UFSC. Antes da entrega, confirme as normas vigentes com a Coordenação do Curso de Geologia e com a Biblioteca Universitária.
 
-## Sincronização neste computador
+## Sincronização em cada computador
 
-A pasta é sincronizada automaticamente com o GitHub a cada dois minutos pela
-tarefa do Windows **TCC - sincronização GitHub**. A automação:
+A pasta pode ser sincronizada automaticamente com o GitHub por uma tarefa local,
+criada separadamente em cada computador. Use apenas um computador por vez: faça
+`push` antes de sair de um computador e `pull` antes de começar no outro.
+
+Neste repositório, o script compartilhado da automação é
+[`automacao/sincronizar-tcc.ps1`](automacao/sincronizar-tcc.ps1). Configure a
+tarefa local de cada computador para executar esse script apontando para a pasta
+do checkout daquele computador. A automação:
 
 1. cria um commit quando encontra arquivos alterados;
 2. incorpora os commits existentes no GitHub com `rebase`;
@@ -78,4 +84,3 @@ O fluxo de trabalho adotado é:
 A conversão do Google Docs para LaTeX é feita sob demanda. Isso evita que
 rascunhos intermediários ou edições ainda incompletas sejam propagados
 automaticamente para a versão destinada à banca.
-
