@@ -1,0 +1,458 @@
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/abntex2\abntex2
+.cls
+Document Class: abntex2 2018/11/24 v-1.9.7 abnTeX2
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memoir.c
+ls
+Document Class: memoir 2025/11/04 v3.8.4b configurable book, report, article do
+cument class
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.s
+ty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.
+sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3bac
+kend-xetex.def))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xpar
+se\xparse.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolb
+ox.sty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.s
+ty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/memoir\mem12.cl
+o)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.s
+ty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\delarray.
+sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.
+sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\bookta
+bs.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\namere
+f.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcou
+nt.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcm
+ds.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\inf
+warerr.sty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestrin
+g\gettitlestring.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvopt
+ions.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval
+.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvset
+keys.sty))))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.
+sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/base\shortvrb.s
+ty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/textcase\textca
+se.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperr
+ef.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\
+kvdefinekeys.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdf
+escape.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pd
+ftexcmds.sty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor
+.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\str
+ingenc.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc
+.def)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intca
+lc.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.
+def)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset
+.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bi
+gintcalc.sty)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex
+.def
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\
+rerunfilecheck.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter
+\uniquecounter.sty)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memhfixc
+.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookma
+rk.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-xe
+tex.def))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.s
+ty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/babel\xebabel
+.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.c
+fg)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/
+en\babel-english.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/
+invalid\babel-brazil.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\e
+nglish.ldf)
+
+Package babel Warning: Name 'brazil' is deprecated.
+(babel)                Use 'brazilian' instead.
+(babel)                Reported on input line 4320.
+
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/babel-portuges\
+brazilian.ldf))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumit
+em.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+
+
+******************************************************
+Stock height and width: 845.04684pt by 597.50787pt
+Top and edge trims: 0pt and 0pt
+Page height and width: 845.04684pt by 597.50787pt
+Text height and width: 708pt by 455pt
+Spine and edge margins: 85.35826pt and 56.9055pt
+Upper and lower margins: 85.35826pt and 51.68858pt
+Headheight and headsep: 14.5pt and 19.8738pt
+Footskip: 30pt
+Columnsep and columnseprule: 10pt and 0pt
+Marginparsep and marginparwidth: 7pt and 42.9055pt
+Sidecapsep and sidecapwidth: 7pt and 42pt
+Sidebarhsep and sidebarwidth: 7pt and 42pt
+Sidebarvsep and sidebartopsep: 14.5pt and 0pt
+Sidebarheight: 590.14995pt
+Sidefoothsep and sidefootwidth: 7pt and 42pt
+Sidefootvsep and sidefootheight: 14.5pt and 590.14995pt
+******************************************************
+
+
+Class memoir Warning: \settocpreprocessor is marked deprecated and will be
+(memoir)              removed in 2026, the problem it tried to solve 
+(memoir)              (see manual, section 9.2.3),
+(memoir)              has been fixed in the kernel, and the feature is
+(memoir)              no longer needed. on input line 483.
+
+) (dados.tex) (estilo/tcc-geologia-ufsc.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.st
+y (C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd))
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext
+.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.s
+ty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\co
+lor.cfg)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xe
+tex.def)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathco
+lor.ltx))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval
+.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyv
+al.tex
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvut
+ils.tex)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.s
+ty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring
+.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstri
+ng.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalef
+nt.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex
+.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontsp
+ec.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontsp
+ec-xetex.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.st
+y)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontsp
+ec.cfg))))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxmath
+.sty
+`newtxmath' v1.754, 2024/09/22 Math macros based originally on txfonts (msharpe
+)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath
+.sty
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext
+.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.
+sty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.
+sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.
+sty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/oberdiek\center
+not.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex
+.tex)
+amsthm NOT loaded
+)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geomet
+ry.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.
+sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geomet
+ry.cfg))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/microtype\micro
+type.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/microtype\micro
+type-xetex.def)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/microtype\micro
+type.cfg))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfir
+st.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphi
+cx.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphi
+cs.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.s
+ty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\gr
+aphics.cfg)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable
+.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multir
+ow.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx
+.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/translations\tr
+anslations.sty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3ke
+ys2e\l3keys2e.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/chemformula\che
+mformula.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlay
+er\tikz.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\
+pgf.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\p
+gfrcs.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities
+\pgfutil-common.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities
+\pgfutil-latex.def)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities
+\pgfrcs.code.tex
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revis
+ion.tex)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\
+pgfcore.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer
+\pgfsys.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlay
+er\pgfsys.code.tex
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities
+\pgfkeys.code.tex
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities
+\pgfkeyslibraryfiltered.code.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlay
+er\pgf.cfg)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlay
+er\pgfsys-xetex.def
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlay
+er\pgfsys-dvipdfmx.def
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlay
+er\pgfsys-common-pdf.def))))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlay
+er\pgfsyssoftpath.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlay
+er\pgfsysprotocol.code.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcore.code.tex
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+ath.code.tex
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athutil.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athparser.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.basic.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.trigonometric.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.random.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.comparison.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.base.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.round.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.misc.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfunctions.integerarithmetics.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athcalc.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+athfloat.code.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfi
+nt.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorepoints.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorepathconstruct.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorepathusage.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorescopes.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcoregraphicstate.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcoretransformations.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorequick.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcoreobjects.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorepathprocessing.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorearrows.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcoreshade.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcoreimage.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcoreexternal.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorelayers.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcoretransparency.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorepatterns.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclaye
+r\pgfcorerdf.code.tex)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\p
+gfmoduleshapes.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\p
+gfmoduleplot.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibili
+ty\pgfcomp-version-0-65.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibili
+ty\pgfcomp-version-1-18.sty))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\p
+gffor.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\p
+gfkeys.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities
+\pgfkeys.code.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmat
+h.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfm
+ath.code.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities
+\pgffor.code.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendl
+ayer/tikz\tikz.code.tex
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries
+\pgflibraryplothandlers.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\p
+gfmodulematrix.code.tex)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendl
+ayer/tikz/libraries\tikzlibrarytopaths.code.tex)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/xfrac\xfrac.sty
+)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/units\nicefrac.
+sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries
+\pgflibraryarrows.meta.code.tex))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newfloat\newflo
+at.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdfls
+cape.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdfls
+cape-nometadata.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape
+.sty)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquot
+es.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquot
+es.def)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquot
+es.cfg))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpag
+es.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic
+.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\ppxete
+x.def))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\backre
+f.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/abntex2\abntex2
+cite.sty
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/abntex2\abntex2
+abrev.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.s
+ty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex
+.sty)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/relsize\relsize
+.sty)))
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\TeXGyreTe
+rmesX.fontspec) (main.aux)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\omlntxmi.
+fd)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxexa.f
+d)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmsntxsy.
+fd)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmxntxexx
+.fd)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/translations/di
+cts\translations-basic-dictionary-brazil.trsl)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/translations/di
+cts\translations-basic-dictionary-english.trsl) [1] [1]
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\ot1minntx
+.fd)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxmia.f
+d)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxsym.f
+d)
+(C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxsyc.f
+
+dvipdfmx:fatal: Unable to open "main.pdf".
+
+No output PDF file written.
+miktex-dvipdfmx: major issue: So far, you have not checked for MiKTeX updates.
+d) [1] [2] (pre-textuais/dedicatoria.tex [3]) (pre-textuais/agradecimentos.tex
+
+Sorry, but C:\Users\maria_ym81dto\AppData\Local\Programs\MiKTeX\miktex\bin\x64\xelatex.exe did not succeed.
+
+The log file hopefully contains the information to get MiKTeX going again:
+
+  C:\Users\maria_ym81dto\AppData\Local\MiKTeX\miktex\log\xelatex.log
+xelatex: major issue: So far, you have not checked for MiKTeX updates.
+[4]) (pre-textuais/epigrafe.tex [5

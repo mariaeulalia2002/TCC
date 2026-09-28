@@ -416,3 +416,153 @@ u_F=\sqrt{\sum_i\left(\frac{\partial F}{\partial x_i}u_{x_i}\right)^2}
 \equationdescription{Formulação geral para variáveis independentes}
 
 Ao final, os resultados serão apresentados na forma valor ± incerteza, com o número de casas decimais ajustado à magnitude da incerteza estimada. A tabela final sintetizará, para cada parâmetro, o valor obtido, a incerteza combinada, o método de estimativa e a principal fonte de incerteza.
+
+\section{Classificação de depósitos e complexos de transporte de massa}
+
+Após a finalização dos cálculos morfométricos, os depósitos de movimentos de massa foram classificados quanto ao número de eventos, contexto de preservação, geometria geral, relação com a área-fonte, confinamentos lateral e frontal, estilo de deformação interna e provável mecanismo gatilho.
+
+A distinção entre eventos individuais e complexos de múltiplos eventos seguiu \citeauthoronline{clare2018} (\citeyear{clare2018}). A relação com a área-fonte foi definida segundo as categorias \textit{attached} e \textit{detached} de \citeauthoronline{moscardelli2008} (\citeyear{moscardelli2008}), complementadas por \citeauthoronline{clare2018} (\citeyear{clare2018}). O confinamento frontal foi classificado segundo \citeauthoronline{frey2006} (\citeyear{frey2006}), enquanto as geometrias tipo 1 e tipo 2 seguiram \citeauthoronline{gamboa2016} (\citeyear{gamboa2016}). A estrutura interna foi descrita a partir da continuidade e organização dos refletores, distinguindo-se fácies caóticas, transparentes, descontínuas, convolutas e blocos coerentes, conforme \citeonline{bull2009} e \citeonline{posamentier2011}.
+
+\section{Técnica HVSR}
+
+O método da Razão Espectral Horizontal/Vertical (\textit{Horizontal-to-Vertical Spectral Ratio} --- HVSR) foi aplicado para identificar a frequência fundamental de ressonância ($f_0$) do pacote sedimentar e estimar a profundidade do principal contraste de impedância na subsuperfície. A técnica utiliza o ruído sísmico ambiente registrado nas componentes horizontais norte--sul ($NS$) e leste--oeste ($EW$), bem como na componente vertical ($V$), sendo passiva, de baixo impacto operacional e adequada à investigação de contrastes de rigidez no subsolo \cite{nakamura1989,krylov2020}.
+
+A Terra apresenta vibrações constantes, com pequenas amplitudes da ordem de $10^{-4}$ a $10^{-2}$~cm \cite{okada2003}, conhecidas como ruído sísmico ambiental, que podem ser causadas por ondas oceânicas, influências atmosféricas e ações antrópicas. Pequenos sismos também constituem uma fonte de ruído ambiente na faixa de 2 a 10~Hz; no Brasil, a taxa de sismicidade é maior na margem oceânica que no interior do continente \cite{assumpcao2014}.
+
+A razão espectral foi calculada conforme:
+
+\begin{equation}
+\operatorname{HVSR}(f)=\frac{\sqrt{\left([NS(f)]^2+[EW(f)]^2\right)/2}}{V(f)}
+\end{equation}
+\equationdescription{Razão espectral horizontal/vertical}
+
+O pico dominante da curva H/V foi associado à frequência fundamental de ressonância ($f_0$). Considerando um modelo simplificado de uma camada sedimentar sobre um substrato mais rígido, a profundidade aproximada da interface ($H$) foi calculada por:
+
+\begin{equation}
+H\approx\frac{V_s}{4f_0}
+\end{equation}
+\equationdescription{Profundidade aproximada da interface pelo método HVSR}
+
+em que $V_s$ corresponde à velocidade média da onda S na camada acima da interface \cite{nakamura1989,krylov2020}.
+
+Foram utilizados dados do OBS~18 (\textit{Ocean Bottom Seismometer}), um sismógrafo de fundo oceânico autônomo, de três componentes e equipado com hidrofone, digitalizador e sistema de gravação \cite{guralp}. O equipamento pertence ao Pool de Equipamentos Geofísicos (PEG-BR) do Observatório Nacional e foi implantado pelo Projeto de Monitoramento Sismo-Oceanográfico. O sismógrafo permaneceu por 11 meses, de julho de 2019 a junho de 2020, no fundo oceânico da região do Campo de Búzios, a 
+\SI{1772}{\metre} de profundidade, registrando 24,5~GB de dados. Foram selecionados registros horários em formato \textit{miniSEED} dos dias 1 e 29 de fevereiro de 2020, escolhidos para reduzir a influência de condições meteorológicas e sinais não representativos do ruído ambiente.
+
+\subsection{Cálculo das curvas HVSR}
+
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Sugestão pendente: definir quais figuras serão incluídas nesta subseção.}}
+
+O processamento foi realizado em ambiente \textit{Python}, utilizando os \textit{notebooks} do repositório \textit{hvsrweb} e a biblioteca \textit{hvsrpy} \cite{vantassel2021}. Os parâmetros foram definidos com base nas recomendações do projeto SESAME \cite{sesame2004}. Os sinais contínuos foram divididos em janelas temporais de 120~s, utilizadas na determinação estatística de $f_0$, e de \SI{1800}{\second}, empregadas como teste de estabilidade espectral.
+
+Aplicou-se \textit{taper} de Tukey, com larguras de 0,10 e 0,05, para reduzir o vazamento espectral nas extremidades das janelas. As componentes horizontais foram combinadas por média geométrica \cite{coxcheng2020}. Foram testadas as suavizações de Konno--Ohmachi e Parzen; a primeira foi adotada para a definição final de $f_0$, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências \cite{konno1998,sesame2004}. A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individuais, e os valores das janelas válidas foram tratados por estatística lognormal.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Parâmetros adotados no processamento HVSR}
+  \label{tab:parametros-hvsr}
+  \begin{tabularx}{\textwidth}{l X}
+    \toprule
+    Parâmetro & Configuração adotada \\
+    \midrule
+    Janelas temporais & 120~s e \SI{1800}{\second} \\
+    \textit{Taper} & Tukey \\
+    Largura do \textit{taper} & 0,10 e 0,05 \\
+    Combinação das horizontais & Média geométrica \\
+    Suavização espectral & Konno--Ohmachi e Parzen \\
+    Largura do operador de suavização & 40 \\
+    Curva adotada para $f_0$ & Konno--Ohmachi, janela de 120~s e \textit{taper} 0,10 \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{Elaboração própria.}
+\end{table}
+
+\subsection{Obtenção de velocidades e incertezas}
+
+A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS, 1-BRSA-137-RJS e 3-BRSA-944A-RJS, disponibilizados pela ANP. Para o poço 1-BRSA-137-RJS, que possuía perfil VSP, os valores rasos de velocidade foram extraídos e suavizados pelo filtro de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}). Nos demais poços, foram utilizados os valores disponíveis nas menores profundidades investigadas.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Dados dos poços utilizados para estimativa das velocidades}
+  \label{tab:pocos-velocidades-hvsr}
+  \small
+  \begin{tabular}{lrrr}
+    \toprule
+    Poço & Profundidade (m) & Distância ao OBS~18 (m) & $V_p$ (m/s) \\
+    \midrule
+    1-BRSA-127-RJS & 1.854,0 & 42.577,5 & 1.510,0 \\
+    1-BRSA-127-RJS & 2.059,0 & 42.577,5 & 1.805,0 \\
+    3-BRSA-944A-RJS & 1.860,1 & 3.587,0 & 1.499,2 \\
+    3-BRSA-944A-RJS & 2.886,0 & 3.587,0 & 1.657,8 \\
+    1-BRSA-137-RJS & 1.849,0 & 6.081,6 & 1.553,6 \\
+    1-BRSA-137-RJS & 2.073,0 & 6.081,6 & 1.900,5 \\
+    1-BRSA-137-RJS & 2.251,0 & 6.081,6 & 2.135,6 \\
+    \bottomrule
+  \end{tabular}
+  \fonte{Elaboração própria.}
+\end{table}
+
+Os valores de $V_p$ foram integrados no ponto do OBS por interpolação ponderada pelo inverso da distância (\textit{Inverse Distance Weighting} --- IDW), atribuindo maior peso aos poços mais próximos \cite{isaaks1989}. Foram obtidos dois valores médios: um com dois valores rasos por poço e outro incluindo o terceiro valor disponível no poço 137.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Velocidades médias ponderadas no ponto do OBS~18}
+  \label{tab:vp-ponderada-obs18}
+  \begin{tabular}{lr}
+    \toprule
+    Configuração de cálculo & $V_p$ médio ponderado (m/s) \\
+    \midrule
+    Dois valores rasos por poço & 1.617,06 \\
+    Inclusão do terceiro valor do poço 137 & 1.649,58 \\
+    \bottomrule
+  \end{tabular}
+  \fonte{Elaboração própria.}
+\end{table}
+
+Após a obtenção de $V_p$, realizou-se a conversão para $V_s$ por meio do coeficiente de Poisson ($\nu$), conforme a relação elástica proposta por \citeauthoronline{aki2002} (\citeyear{aki2002}):
+
+\begin{equation}
+V_s=V_p\sqrt{\frac{1-2\nu}{2(1-\nu)}}
+\end{equation}
+\equationdescription{Conversão de velocidade da onda P para velocidade da onda S}
+
+Foram adotados valores de $\nu$ entre 0,46 e 0,48, compatíveis com sedimentos finos saturados e com a natureza litológica indicada pelos perfis dos poços \cite{davidovici1985,domenico1990,prakash1990}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Velocidades de onda S calculadas para os coeficientes de Poisson adotados}
+  \label{tab:vs-poisson}
+  \begin{tabular}{rrr}
+    \toprule
+    $V_p$ (m/s) & $\nu$ & $V_s$ calculado (m/s) \\
+    \midrule
+    1.617,06 & 0,46 & 440,11 \\
+    1.649,58 & 0,46 & 448,96 \\
+    1.617,06 & 0,47 & 384,72 \\
+    1.649,58 & 0,47 & 392,46 \\
+    1.617,06 & 0,48 & 317,13 \\
+    1.649,58 & 0,48 & 323,51 \\
+    \bottomrule
+  \end{tabular}
+  \fonte{Elaboração própria.}
+\end{table}
+
+A profundidade foi estimada para todas as combinações entre $f_0$, $V_p$ e $\nu$. A incerteza foi avaliada por dois procedimentos, segundo \citeauthoronline{taylor1997} (\citeyear{taylor1997}). No método do envelope, foram combinados os valores mínimo e máximo de profundidade:
+
+\begin{equation}
+\Delta H_{\mathrm{abs}}=\frac{H_{\max}-H_{\min}}{2}
+\end{equation}
+\equationdescription{Incerteza absoluta pelo método do envelope}
+
+\begin{equation}
+\Delta H_{\mathrm{rel}}=\frac{\Delta H_{\mathrm{abs}}}{H}\times100
+\end{equation}
+\equationdescription{Incerteza relativa pelo método do envelope}
+
+Também foi utilizada a propagação de incertezas, assumindo independência entre $V_s$ e $f_0$:
+
+\begin{equation}
+\left(\frac{\sigma_H}{H}\right)^2=\left(\frac{\sigma_{V_s}}{V_s}\right)^2+\left(\frac{\sigma_{f_0}}{f_0}\right)^2
+\end{equation}
+\equationdescription{Propagação relativa das incertezas de velocidade e frequência}
+
+O envelope representa o limite máximo de variação possível entre os cenários, enquanto a propagação fornece uma incerteza combinada mais representativa das contribuições relativas de $V_s$ e $f_0$. A análise é relevante para movimentos de massa submarinos porque a espessura de sedimentos menos consolidados e o contraste de rigidez com o substrato podem controlar a circulação de fluidos, a pressão de poros e a posição potencial de superfícies de ruptura. Entretanto, o HVSR deve ser interpretado em conjunto com sísmica, dados de poços e informações geotécnicas.
