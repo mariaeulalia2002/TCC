@@ -122,6 +122,8 @@
 \newcommand{\equationdescription}[1]{%
   \addcontentsline{loe}{equation}{\protect\numberline{Equação~\theequation}#1}%
 }
+% Numeração de equações entre colchetes, mantendo o corpo centralizado.
+\renewcommand{\tagform@}[1]{\maketag@@@{[#1]}}
 \makeatother
 
 \newenvironment{paisagem}{\begin{landscape}}{\end{landscape}}
