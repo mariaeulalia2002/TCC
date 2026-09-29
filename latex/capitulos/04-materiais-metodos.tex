@@ -89,15 +89,15 @@ O perímetro do polígono de máscara utilizado na geração da isócrona foi ca
 
 \subsection{Definição do eixo, dos marcos operacionais e cálculo dos comprimentos}
 
-Para operacionalizar a extração dos comprimentos propostos por \citeauthoronline{clare2018} (\citeyear{clare2018}), foram definidos três marcos ao longo do eixo principal de cada movimento de massa: A, correspondente ao topo da cicatriz; B, ao início do depósito; e C, à sua terminação distal. Esses limites foram identificados manualmente, quando possível, em seções sísmicas sucessivas no \textit{Petrel\textsuperscript{\textregistered}}.
+Para operacionalizar a extração dos comprimentos propostos por \citeauthoronline{clare2018} (\citeyear{clare2018}), foram definidos três marcos ao longo do eixo principal de cada movimento de massa: A, correspondente ao topo da cicatriz; B, ao início do depósito; e C, à sua terminação distal. Esses limites foram identificados manualmente, quando possível, em seções sísmicas sucessivas no \textit{Petrel\textsuperscript{\textregistered}} (Figura~\ref{fig:marcos-comprimentos}A).
 
 O marco A foi posicionado no topo da escarpa principal. O marco B corresponde ao limite proximal do depósito, a partir do qual os horizontes de topo e base delimitam um corpo com espessura positiva e continuidade lateral reconhecível. O marco C foi definido na terminação distal, caracterizada pelo afinamento do corpo e pela convergência entre os horizontes de topo e base. Para representar a variação lateral, os limites foram acompanhados em seções sucessivas, com incremento predominante de 20 \textit{inlines}, equivalente a cerca de 500~m. Esse espaçamento refere-se apenas ao levantamento dos limites, não à resolução das grades morfométricas.
 
-Os conjuntos de pontos A, B e C foram exportados do \textit{Petrel\textsuperscript{\textregistered}} em arquivos ASCII, contendo \textit{inline}, \textit{crossline}, coordenadas X e Y e tempo sísmico Z. No \textit{QGIS\textsuperscript{\textregistered}}, foram organizados segundo a sequência das \textit{inlines} e convertidos em três linhas: topo da cicatriz, início do depósito e terminação distal.
+Os conjuntos de pontos A, B e C foram exportados do \textit{Petrel\textsuperscript{\textregistered}} em arquivos ASCII, contendo \textit{inline}, \textit{crossline}, coordenadas X e Y e tempo sísmico Z. No \textit{QGIS\textsuperscript{\textregistered}}, foram organizados segundo a sequência das \textit{inlines} e convertidos em três linhas: topo da cicatriz, início do depósito e terminação distal (Figura~\ref{fig:marcos-comprimentos}B).
 
-O eixo principal de cada movimento de massa foi definido em planta pela integração da cicatriz, geometria do depósito, relevo da superfície basal, mapa de aspecto e perfis extraídos com o \textit{Profile Tool}. O aspecto permitiu reconhecer mudanças no mergulho, talvegues, flancos, altos estruturais e possíveis trajetórias preferenciais, mas não foi utilizado isoladamente para definir o transporte. O eixo foi digitalizado como uma polilinha que acompanha a trajetória interpretada, incluindo mudanças de direção associadas à geometria do depósito ou ao relevo estrutural.
+O eixo principal de cada movimento de massa foi definido em planta pela integração da cicatriz, geometria do depósito, relevo da superfície basal, mapa de aspecto (Figura~\ref{fig:marcos-comprimentos}C) e perfis extraídos com o \textit{Profile Tool}. O aspecto permitiu reconhecer mudanças no mergulho, talvegues, flancos, altos estruturais e possíveis trajetórias preferenciais, mas não foi utilizado isoladamente para definir o transporte. O eixo foi digitalizado como uma polilinha que acompanha a trajetória interpretada, incluindo mudanças de direção associadas à geometria do depósito ou ao relevo estrutural.
 
-As três linhas foram intersectadas com o eixo, definindo as posições A, B e C. A polilinha foi dividida nesses pontos, originando os segmentos A--B e B--C. Os comprimentos foram calculados no \textit{QGIS\textsuperscript{\textregistered}} com a Calculadora de Campo e convertidos para quilômetros pela expressão \texttt{\$length / 1000}.
+As três linhas foram intersectadas com o eixo, definindo as posições A, B e C. A polilinha foi dividida nesses pontos, originando os segmentos A--B e B--C (Figura~\ref{fig:marcos-comprimentos}C). Os comprimentos foram calculados no \textit{QGIS\textsuperscript{\textregistered}} com a Calculadora de Campo e convertidos para quilômetros pela expressão \texttt{\$length / 1000}.
 
 O comprimento total ($L_t$) corresponde à distância ao longo do eixo entre o topo da cicatriz e a terminação distal do depósito:
 
@@ -121,6 +121,14 @@ L_e=L_{A-B}=L_t-L_d
 \equationdescription{Comprimento da zona evacuada}
 
 Embora $L_e$ seja útil para descrever a área de remoção de material, foi empregada como medida complementar. Os parâmetros padronizados de \citeauthoronline{clare2018} (\citeyear{clare2018}) utilizados para comparação entre os depósitos são $L_t$ e $L_d$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/metodologia/figura-27-marcos-comprimentos.png}
+  \caption{Definição dos marcos e comprimentos morfométricos: (A) pontos A, B e C em seção sísmica; (B) distribuição espacial dos pontos A, B e C sobre a superfície de declividade do fundo marinho; e (C) mapa de aspecto com delimitação do eixo e dos comprimentos.}
+  \label{fig:marcos-comprimentos}
+  \fonte{Elaboração própria.}
+\end{figure}
 
 \subsection{Altura da zona evacuada e altura total de queda}
 
@@ -158,9 +166,17 @@ Esse procedimento foi necessário porque os pontos podem apresentar diferentes c
 
 \subsection{Altura e inclinação da cicatriz}
 
-Tais parâmetros foram calculados em eventos de transporte de massa que possuem cicatriz bem definida, em que a morfologia de fundo é influenciada pelo seu formato. A altura da cicatriz (Hs) foi medida entre a quebra superior da escarpa e sua base, em perfis gerados com o \textit{Profile Tool} aproximadamente perpendiculares à feição e orientados na direção de maior declive. Foram examinados perfis distribuídos lateralmente ao longo da cicatriz, de modo a representar sua variação morfológica. A maior altura identificada foi registrada como Hs.
+Esses parâmetros foram determinados nos eventos com cicatriz bem definida e expressa no fundo marinho. A altura da cicatriz ($H_s$) foi medida em perfis gerados com o \textit{Profile Tool}, na superfície do fundo marinho, aproximadamente perpendiculares à feição e orientados na direção de maior declive. Os perfis foram distribuídos lateralmente para representar a variação morfológica, adotando-se como $H_s$ o maior desnível entre a quebra superior ($A_s$) e a base da escarpa ($B_s$).
 
-\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Tomando como exemplo o MTD representado na figura x, , foram examinados três perfis, posicionados nos setores esquerdo, central e direito da cicatriz. Em cada perfil, a diferença vertical entre os limites superior e inferior forneceu a altura local. A comparação entre os perfis permitiu reconhecer a variação lateral e selecionar a maior altura medida. Colocar figura de exemplo}}
+Para cada evento, foram examinados três perfis, posicionados nos setores esquerdo, central e direito da cicatriz. Em cada perfil, a diferença vertical entre os limites superior e inferior forneceu a altura local. A comparação entre os perfis permitiu reconhecer a variação lateral e selecionar a maior altura medida (Figura~\ref{fig:altura-inclinacao-cicatriz}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/metodologia/figura-28-altura-inclinacao-cicatriz.png}
+  \caption{Exemplificação dos cálculos de altura e inclinação da cicatriz.}
+  \label{fig:altura-inclinacao-cicatriz}
+  \fonte{Elaboração própria.}
+\end{figure}
 
 Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como As e Bs:
 
@@ -182,7 +198,7 @@ Assim, a altura foi medida entre as quebras que delimitam a escarpa, enquanto a 
 
 A inclinação do declive, S, foi determinada em um perfil lateral ao movimento de massa, posicionado fora da cicatriz, da zona evacuada e do depósito. A orientação foi aproximadamente paralela à direção geral de transporte, permitindo caracterizar o gradiente de uma superfície preservada adjacente à feição.
 
-No Petrel, foram selecionados dois pontos, P1 e P2, sobre o mesmo refletor sísmico contínuo, interpretado como representativo do paleodeclive não deformado. Também foi registrado o TWT do fundo marinho acima de cada ponto, necessário à conversão das profundidades.
+No \textit{Petrel\textsuperscript{\textregistered}}, foram selecionados dois pontos, P1 e P2, sobre o mesmo refletor sísmico contínuo, interpretado como representativo do paleodeclive não deformado. Também foi registrado o TWT do fundo marinho acima de cada ponto, necessário à conversão das profundidades.
 
 A inclinação foi obtida pela razão entre o desnível convertido e a distância horizontal:
 
@@ -208,13 +224,21 @@ S_t=\arctan\left(\frac{\lvert z_{P4}-z_{P3}\rvert}{L_{P3-P4}}\right)\frac{180}{\
 
 A medida caracteriza, portanto, a superfície receptora imediatamente à frente do pé do depósito.
 
-\subsection{Conversão tempo--profundidade das medidas morfométricas}
+\subsection{Conversão tempo--profundidade das medidas morfométricas}\label{subsec:conversao-tempo-profundidade}
 
-A conversão das medidas temporais foi realizada para fornecer uma estimativa das dimensões dos depósitos em metros. Foram utilizadas velocidades representativas dos sedimentos rasos, ponderadas pela distância entre os poços fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) e o ponto central de cada MTD (\TextoModelo{Figura a inserir}). Os procedimentos foram separados entre a conversão de intervalos sedimentares e os cálculos que também envolveram medidas próximas à coluna d'água.
+A conversão das medidas temporais foi realizada para fornecer uma estimativa das dimensões dos depósitos em metros. Foram utilizadas velocidades representativas dos sedimentos rasos, ponderadas pela distância entre os poços fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) e o ponto central de cada MTD (Figura~\ref{fig:localizacao-pocos-obs}). Os procedimentos foram separados entre a conversão de intervalos sedimentares e os cálculos que também envolveram medidas próximas à coluna d'água.
 
 \subsubsection{Obtenção das velocidades nos poços}
 
-No poço 1-BRSA-137-RJS, foi selecionada a velocidade do trecho mais raso (\SI{1849}{\metre} a \SI{2073}{\metre}) da curva intervalar derivada do VSP (\TextoModelo{Figura a inserir}), suavizada pelo método de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}) por meio de script em \textit{Python\textsuperscript{\textregistered}} (\TextoModelo{Anexo a definir}). O valor correspondente foi de \SI{1553,662}{\metre\per\second} e representa o intervalo raso selecionado, não uma média de toda a curva do poço.
+No poço 1-BRSA-137-RJS, foi selecionada a velocidade do trecho mais raso (\SI{1849}{\metre} a \SI{2073}{\metre}) da curva intervalar derivada do VSP (Figura~\ref{fig:velocidade-profundidade-poco}), suavizada pelo método de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}) por meio de script em \textit{Python\textsuperscript{\textregistered}} (\TextoModelo{Anexo a definir}). O valor correspondente foi de \SI{1553,662}{\metre\per\second} e representa o intervalo raso selecionado, não uma média de toda a curva do poço.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.78\textwidth,height=0.72\textheight,keepaspectratio]{figuras/metodologia/figura-29-velocidade-profundidade-poco.png}
+  \caption{Curva de velocidade em função da profundidade no poço 1-BRSA-137-RJS.}
+  \label{fig:velocidade-profundidade-poco}
+  \fonte{Elaboração própria, com dados da ANP.}
+\end{figure}
 
 No poço 1-BRSA-127-RJS, a velocidade intervalar foi calculada entre as profundidades de 1.854 e 2.059 m, aproximadamente 23--228 m abaixo do fundo marinho, obtidas através de relatório do poço. A diferença de profundidade foi relacionada à diferença entre os tempos duplos de 2.425,68 e 2.693,94 ms:
 
@@ -353,6 +377,8 @@ A incerteza decorrente da redelimitação manual das bordas dos MTDs não será 
 
 \noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Observação: ainda falta consolidar quantitativamente a componente espacial que será atribuída às medidas horizontais.}}
 
+\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Verificar se é necessário calcular a incerteza desta etapa.}}
+
 \subsubsection{Conversão tempo--profundidade}
 
 As medidas verticais obtidas em TWT serão convertidas para profundidade utilizando velocidades derivadas dos dados VSP disponíveis na região. Para cada MTD/MTC será utilizada uma velocidade representativa calculada a partir dos poços, ponderada pela distância entre cada poço e o ponto central do depósito. Esse procedimento atribui maior peso aos controles mais próximos \cite{shepard1968} .
@@ -451,14 +477,13 @@ H\approx\frac{V_s}{4f_0}
 
 em que $V_s$ corresponde à velocidade média da onda S na camada acima da interface \cite{nakamura1989,krylov2020}.
 
-Foram utilizados dados do OBS~18 (\textit{Ocean Bottom Seismometer}), um sismógrafo de fundo oceânico autônomo, de três componentes e equipado com hidrofone, digitalizador e sistema de gravação \cite{guralp}. O equipamento pertence ao Pool de Equipamentos Geofísicos (PEG-BR) do Observatório Nacional e foi implantado pelo Projeto de Monitoramento Sismo-Oceanográfico. O sismógrafo permaneceu por 11 meses, de julho de 2019 a junho de 2020, no fundo oceânico da região do Campo de Búzios, a 
-\SI{1772}{\metre} de profundidade, registrando 24,5~GB de dados. Foram selecionados registros horários em formato \textit{miniSEED} dos dias 1 e 29 de fevereiro de 2020, escolhidos para reduzir a influência de condições meteorológicas e sinais não representativos do ruído ambiente.
+Foram utilizados dados do OBS~18 (\textit{Ocean Bottom Seismometer}), um sismógrafo de fundo oceânico autônomo, de três componentes e equipado com hidrofone, digitalizador e sistema de gravação \cite{guralp}. O equipamento pertence ao Pool de Equipamentos Geofísicos (PEG-BR) do Observatório Nacional e foi implantado pelo Projeto de Monitoramento Sismo-Oceanográfico, uma cooperação entre o Laboratório de Oceanografia Costeira da Universidade Federal de Santa Catarina (LOC-UFSC), o Observatório Nacional (ON), a Petrobras e outras instituições. O sismógrafo permaneceu por 11 meses, de julho de 2019 a junho de 2020, no fundo oceânico da região do Campo de Búzios (Figura~\ref{fig:localizacao-area-estudo}), a \SI{1772}{\metre} de profundidade, registrando 24,5~GB de dados. Foram selecionados registros horários em formato \textit{miniSEED} dos dias 1 e 29 de fevereiro de 2020, escolhidos para reduzir a influência de condições meteorológicas e sinais não representativos do ruído ambiente.
 
 \subsection{Cálculo das curvas HVSR}
 
 \noindent\colorbox{yellow}{\parbox{0.94\linewidth}{Sugestão pendente: definir quais figuras serão incluídas nesta subseção.}}
 
-O processamento foi realizado em ambiente \textit{Python}, utilizando os \textit{notebooks} do repositório \textit{hvsrweb} e a biblioteca \textit{hvsrpy} \cite{vantassel2021}. Os parâmetros foram definidos com base nas recomendações do projeto SESAME \cite{sesame2004}. Os sinais contínuos foram divididos em janelas temporais de 120~s, utilizadas na determinação estatística de $f_0$, e de \SI{1800}{\second}, empregadas como teste de estabilidade espectral.
+O processamento foi realizado em ambiente \textit{Python\textsuperscript{\textregistered}}, utilizando os \textit{notebooks} do repositório \textit{hvsrweb} e a biblioteca \textit{hvsrpy} \cite{vantassel2021}. Os parâmetros foram definidos com base nas recomendações do projeto SESAME \cite{sesame2004}. Os sinais contínuos foram divididos em janelas temporais de 120~s, utilizadas na determinação estatística de $f_0$, e de \SI{1800}{\second}, empregadas como teste de estabilidade espectral.
 
 Aplicou-se \textit{taper} de Tukey, com larguras de 0,10 e 0,05, para reduzir o vazamento espectral nas extremidades das janelas. As componentes horizontais foram combinadas por média geométrica \cite{coxcheng2020}. Foram testadas as suavizações de Konno--Ohmachi e Parzen; a primeira foi adotada para a definição final de $f_0$, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências \cite{konno1998,sesame2004}. A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individuais, e os valores das janelas válidas foram tratados por estatística lognormal.
 
@@ -484,7 +509,15 @@ Aplicou-se \textit{taper} de Tukey, com larguras de 0,10 e 0,05, para reduzir o 
 
 \subsection{Obtenção de velocidades e incertezas}
 
-A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS, 1-BRSA-137-RJS e 3-BRSA-944A-RJS, disponibilizados pela ANP. Para o poço 1-BRSA-137-RJS, que possuía perfil VSP, os valores rasos de velocidade foram extraídos e suavizados pelo filtro de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}). Nos demais poços, foram utilizados os valores disponíveis nas menores profundidades investigadas.
+A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS, 1-BRSA-137-RJS e 3-BRSA-944A-RJS, disponibilizados pela ANP (Figura~\ref{fig:localizacao-pocos-obs}). Para o poço 1-BRSA-137-RJS, que possuía perfil VSP (Figura~\ref{fig:velocidade-profundidade-poco}), os valores rasos de velocidade foram extraídos e suavizados pelo filtro de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}). Nos demais poços, foram utilizados os valores disponíveis nas menores profundidades investigadas.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/metodologia/figura-30-localizacao-pocos-obs.png}
+  \caption{Localização dos poços e do OBS utilizados na área de estudo.}
+  \label{fig:localizacao-pocos-obs}
+  \fonte{Elaboração própria, com dados da ANP.}
+\end{figure}
 
 \begin{table}[htbp]
   \centering
