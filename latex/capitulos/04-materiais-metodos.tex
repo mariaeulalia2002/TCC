@@ -1,24 +1,40 @@
 \chapter{Materiais e métodos}\label{cap:metodos}
 
-O fluxograma apresentado na \TextoModelo{Figura a inserir} sintetiza as principais etapas adotadas no desenvolvimento deste trabalho.
+O fluxograma apresentado na Figura~\ref{fig:fluxograma-metodologia} sintetiza as principais etapas adotadas no desenvolvimento deste trabalho.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/metodologia/figura-24-fluxograma-metodologia.png}
+  \caption{Fluxograma simplificado das etapas adotadas.}
+  \label{fig:fluxograma-metodologia}
+  \fonte{Elaboração própria.}
+\end{figure}
 
 \section{Sísmica}
 
-O principal conjunto de dados utilizado neste trabalho foi o cubo sísmico 3D R0014\_BS\_500 (\TextoModelo{Figura a inserir}), fornecido pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP). O volume corresponde a um dado sísmico 3D PSTM (\textit{Post-Stack Time Migration}), migrado em tempo e pós-processado.
+O principal conjunto de dados utilizado neste trabalho foi o cubo sísmico 3D R0014\_BS\_500 (Figura~\ref{fig:localizacao-area-estudo}), fornecido pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP). O volume corresponde a um dado sísmico 3D PSTM (\textit{Post-Stack Time Migration}), migrado em tempo e pós-processado.
 
 O cubo é composto por 14.672.450 traços, com 2.126 amostras por traço e intervalo amostral de \SI{4}{\milli\second}, equivalente a uma frequência de amostragem de \SI{250}{\hertz} e frequência de Nyquist de \SI{125}{\hertz}. A consistência do intervalo amostral foi verificada no \textit{binary header} e em 200 \textit{trace headers}, por meio de script desenvolvido em \textit{Python\textsuperscript{\textregistered}} (\TextoModelo{Anexo a definir}); todos os registros analisados apresentaram intervalo de \SI{4000}{\micro\second}.
 
-O registro sísmico possui duração aproximada de 8,5 s. O produto final foi reamostrado para 4 ms durante o processamento. A geometria nominal do levantamento apresenta \textit{bin size} de 25 $\times$ 12,5 m, com coordenadas referidas ao datum SAD69 e à projeção UTM, zona 23S.
+O registro sísmico possui duração aproximada de 8,5~s. O produto final foi reamostrado para 4~ms durante o processamento na ANP. A geometria nominal do levantamento apresenta \textit{bin size} de 25 $\times$ 12,5~m, com coordenadas referidas ao datum SAD69 e à projeção UTM, zona 23S.
 
 \subsection{Reconhecimento de depósitos e complexos de transporte de massa}
 
-\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{A interpretação sísmica foi realizada no software \textit{Petrel®}. Para cada depósito ou complexo de transporte de massa, foram identificados os horizontes correspondentes às superfícies de topo e base de ruptura de cada evento, priorizando-se, sempre que possível, os refletores de maior continuidade. Colocar figura de exemplo}}
+A interpretação sísmica foi realizada no software \textit{Petrel\textsuperscript{\textregistered}}. Para cada depósito ou complexo de transporte de massa, foram identificados os horizontes correspondentes às superfícies-limite de topo e base de ruptura de cada evento (Figura~\ref{fig:superficies-limite-mtd}), priorizando-se, sempre que possível, os refletores de maior continuidade que delimitam fácies caóticas ou transparentes, mais frequentemente associadas aos transportes de massa \cite{posamentier2011}.
 
 O mapeamento foi realizado manualmente por meio da ferramenta \textit{Manual Interpretation}. Os eventos mais recentes foram interpretados com espaçamento de 100 $\times$ 100 m entre os pontos de controle, em \textit{inlines} e \textit{crosslines}. Parte dos eventos mais antigos foi interpretada com espaçamento de 200 $\times$ 200 m, em função do tempo disponível para esta etapa. Optou-se pela interpretação manual com o objetivo de minimizar possíveis erros de correlação associados a procedimentos automatizados.
 
 Como controle de qualidade da interpretação, foi aplicado o método de \textit{loop tie}, no qual os horizontes foram correlacionados entre \textit{inlines} e \textit{crosslines} sucessivas, formando circuitos fechados. Nos pontos de interseção, verificou-se a continuidade do refletor sísmico interpretado e, ao final de cada circuito, avaliou-se se a interpretação retornava ao mesmo evento no ponto inicial. Eventuais \textit{mis-ties} foram revisados, reduzindo erros de correlação entre refletores adjacentes e aumentando a consistência tridimensional dos horizontes interpretados \cite{tearpock2003}.
 
 Feições relevantes associadas aos depósitos e complexos, tais como falhas, blocos preservados, estruturas de escape de gás (\textit{pockmarks}) e blocos de alta amplitude, foram documentadas e posteriormente caracterizadas em seções sísmicas de interesse.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/metodologia/figura-25-superficies-limite-mtd.png}
+  \caption{Exemplo de MTD com as superfícies-limite de topo (verde) e base (turquesa) delimitadas.}
+  \label{fig:superficies-limite-mtd}
+  \fonte{Elaboração própria.}
+\end{figure}
 
 \subsubsection{Cosseno de fase instantânea}
 
@@ -38,17 +54,23 @@ As superfícies de topo e base dos MTDs foram interpoladas em grades regulares c
 
 \section{Caracterização morfométrica dos depósitos}\label{sec:caracterizacao-morfometrica}
 
-A caracterização morfométrica dos depósitos foi baseada na proposta de \citeauthoronline{clare2018} (\citeyear{clare2018}), que estabelece parâmetros para a descrição quantitativa de movimentos de massa subaquáticos (\TextoModelo{Figura a inserir}). Foram determinados, quando as feições apresentaram preservação e resolução sísmica suficientes, a profundidade do topo do depósito, o comprimento total (Lt), o comprimento do depósito (Ld), a altura da cicatriz (Hs), a altura da zona evacuada (He), a altura total de queda (Ht), a espessura máxima do depósito (Tdmax), as inclinações da escarpa (Ss) e do declive adjacente não deformado (S), além de área, perímetro e volume preservado.
+A caracterização morfométrica dos depósitos foi baseada na proposta de \citeauthoronline{clare2018} (\citeyear{clare2018}), que estabelece parâmetros para a descrição quantitativa de movimentos de massa subaquáticos (Figura~\ref{fig:parametros-morfometricos}). Foram determinados, quando as feições apresentaram preservação e resolução sísmica suficientes, a profundidade do topo do depósito, o comprimento total ($L_t$), o comprimento do depósito ($L_d$), a altura da cicatriz ($H_s$), a altura da zona evacuada ($H_e$), a altura total de queda ($H_t$), a espessura máxima do depósito ($T_{d\max}$), as inclinações da escarpa ($S_s$) e do declive adjacente não deformado ($S$), além de área, perímetro e volume preservado.
 
 Os procedimentos de interpretação sísmica, definição do eixo longitudinal, seleção dos perfis e extração das medidas foram adaptados às características geométricas e ao grau de preservação de cada depósito. Os parâmetros foram obtidos somente quando sua identificação apresentou confiança suficiente.
 
-As medidas foram inicialmente obtidas em unidades horizontais métricas e em tempo duplo de percurso da onda sísmica (TWT). Posteriormente, os intervalos temporais necessários aos cálculos verticais foram convertidos em profundidade com base nas velocidades representativas da coluna d’água e dos sedimentos, conforme será abordado na seção x.x.x.
+As medidas foram inicialmente obtidas em unidades horizontais métricas e em tempo duplo de percurso da onda sísmica (TWT). Posteriormente, os intervalos temporais necessários aos cálculos verticais foram convertidos em profundidade com base nas velocidades representativas da coluna d’água e dos sedimentos, conforme descrito na Seção~\ref{subsec:conversao-tempo-profundidade}.
 
-A representação esquemática dos parâmetros morfométricos é apresentada na Figura~\ref{fig:parametros-morfometricos}.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.92\textwidth]{clare-parametros-morfometricos.png}
+  \caption{Representação esquemática dos parâmetros morfométricos: (A) movimento de massa frontalmente emergente; (B) movimento frontalmente confinado, ambos em seção; e (C) movimento de massa em planta.}
+  \label{fig:parametros-morfometricos}
+  \fonte{Traduzido de \citeonline{clare2018}.}
+\end{figure}
 
 \subsection{Cálculo das isócronas}
 
-A espessura temporal foi calculada na aba \textit{Operations} , do Petrel, subtraindo-se a superfície de base da superfície de topo.
+A espessura temporal foi calculada na aba \textit{Operations} do \textit{Petrel\textsuperscript{\textregistered}}, subtraindo-se a superfície de base da superfície de topo.
 
 \begin{equation}
 \Delta t(x,y)=t_{\mathrm{topo}}(x,y)-t_{\mathrm{base}}(x,y)
@@ -57,7 +79,7 @@ A espessura temporal foi calculada na aba \textit{Operations} , do Petrel, subtr
 
 O resultado corresponde à isócrona do depósito, expressa em milissegundos de TWT. Foram inspecionadas as células com valores negativos, que poderiam indicar cruzamento das superfícies, problemas de alinhamento ou interpolação em áreas marginais. No processamento documentado, a máscara e o mapeamento foram ajustados quando ocorreu a identificação de valores negativos predominantemente nas bordas, mantendo os cálculos restritos ao domínio válido.
 
-Em seguida, as isócronas foram exportadas em formato \textit{Surfer Binary Grid} (.grd) para o QGIS, onde duas estatísticas foram extraídas pela ferramenta Estatísticas Zonais, utilizando a máscara do depósito. Foram obtidos o número de células válidas, a soma, a média, a mediana, o desvio-padrão, os valores mínimo e máximo e a amplitude da espessura temporal. Também foram calculados contornos de mesma espessura (isópacas em tempo) para cada isócrona.
+Em seguida, as isócronas foram exportadas em formato \textit{Surfer\textsuperscript{\textregistered} Binary Grid} (.grd) para o \textit{QGIS\textsuperscript{\textregistered}}, onde as estatísticas foram extraídas pela ferramenta Estatísticas Zonais, utilizando a máscara do depósito. Foram obtidos o número de células válidas, a soma, a média, a mediana, o desvio-padrão, os valores mínimo e máximo e a amplitude da espessura temporal. Também foram calculados contornos de mesma espessura (isópacas em tempo) para cada isócrona.
 
 \subsection{Área, volume e perímetro}
 
