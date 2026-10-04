@@ -485,7 +485,7 @@ Foram utilizados dados do OBS~18 (\textit{Ocean Bottom Seismometer}), um sismóg
 
 O processamento foi realizado em ambiente \textit{Python\textsuperscript{\textregistered}}, utilizando os \textit{notebooks} do repositório \textit{hvsrweb} e a biblioteca \textit{hvsrpy} \cite{vantassel2021}. Os parâmetros foram definidos com base nas recomendações do projeto SESAME \cite{sesame2004}. Os sinais contínuos foram divididos em janelas temporais de 120~s, utilizadas na determinação estatística de $f_0$, e de \SI{1800}{\second}, empregadas como teste de estabilidade espectral.
 
-Aplicou-se \textit{taper} de Tukey, com larguras de 0,10 e 0,05, para reduzir o vazamento espectral nas extremidades das janelas. As componentes horizontais foram combinadas por média geométrica \cite{coxcheng2020}. Foram testadas as suavizações de Konno--Ohmachi e Parzen; a primeira foi adotada para a definição final de $f_0$, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências \cite{konno1998,sesame2004}. A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individuais, e os valores das janelas válidas foram tratados por estatística lognormal.
+Aplicou-se \textit{taper} de Tukey, com larguras de 0,10 e 0,05, para reduzir o vazamento espectral nas extremidades das janelas. As componentes horizontais foram combinadas por média geométrica \cite{coxcheng2020}. Foram testadas as suavizações de Konno--Ohmachi e Parzen; a primeira foi adotada para a definição final de $f_0$, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências \cite{konno1998,sesame2004}. A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individuais, e os valores das janelas válidas foram tratados por estatística lognormal, resultando em frequência central e dispersão associada.
 
 \begin{table}[htbp]
   \centering
@@ -507,6 +507,10 @@ Aplicou-se \textit{taper} de Tukey, com larguras de 0,10 e 0,05, para reduzir o 
   \fonte{Elaboração própria.}
 \end{table}
 
+Para identificar picos secundários e possíveis frequências $f_1$ e $f_2$, os arquivos CSV das curvas obtidas com as suavizações Konno--Ohmachi e Parzen foram processados em um \textit{script} \textit{Python\textsuperscript{\textregistered}} elaborado pela autora. Após a remoção de valores inválidos, mantiveram-se apenas razões H/V iguais ou superiores a 1,5. A curva foi agrupada em intervalos de 0,2~Hz para reduzir flutuações locais, e os picos significativos foram identificados pelo algoritmo \texttt{find\_peaks}, considerando altura mínima de 1,5 e proeminência mínima de 0,4. Picos separados por menos de 15\% em frequência relativa foram tratados como duplicados. Os picos restantes foram ordenados em frequência crescente e classificados como $f_0$, $f_1$ e $f_2$.
+
+Após o processamento convencional, foi realizada a análise azimutal das curvas HVSR com os \textit{notebooks} de \citeonline{vantassel2021}. As componentes horizontais NS e EW foram rotacionadas sistematicamente entre 0\textdegree{} e 180\textdegree{}. Para cada azimute, aplicaram-se as mesmas etapas do processamento convencional, e os picos foram tratados por estatística lognormal. A comparação entre curvas e frequências medianas permitiu verificar efeitos direcionais: respostas semelhantes indicam comportamento aproximadamente isotrópico, enquanto variações sistemáticas podem estar associadas a anisotropias, camadas inclinadas, fraturas ou heterogeneidades laterais \cite{cheng2020azimuthal}.
+
 \subsection{Obtenção de velocidades e incertezas}
 
 A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS, 1-BRSA-137-RJS e 3-BRSA-944A-RJS, disponibilizados pela ANP (Figura~\ref{fig:localizacao-pocos-obs}). Para o poço 1-BRSA-137-RJS, que possuía perfil VSP (Figura~\ref{fig:velocidade-profundidade-poco}), os valores rasos de velocidade foram extraídos e suavizados pelo filtro de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}). Nos demais poços, foram utilizados os valores disponíveis nas menores profundidades investigadas.
@@ -526,7 +530,7 @@ A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS
   \small
   \begin{tabular}{lrrr}
     \toprule
-    Poço & Profundidade (m) & Distância ao OBS~18 (m) & $V_p$ (m/s) \\
+    Poço & Profundidade do controle (m) & Distância ao OBS~18 (m) & $V_p$ (m/s) \\
     \midrule
     1-BRSA-127-RJS & 1.854,0 & 42.577,5 & 1.510,0 \\
     1-BRSA-127-RJS & 2.059,0 & 42.577,5 & 1.805,0 \\
@@ -540,7 +544,7 @@ A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS
   \fonte{Elaboração própria.}
 \end{table}
 
-Os valores de $V_p$ foram integrados no ponto do OBS por interpolação ponderada pelo inverso da distância (\textit{Inverse Distance Weighting} --- IDW), atribuindo maior peso aos poços mais próximos \cite{isaaks1989}. Foram obtidos dois valores médios: um com dois valores rasos por poço e outro incluindo o terceiro valor disponível no poço 137.
+Os valores de $V_p$ foram integrados no ponto do OBS por interpolação ponderada pelo inverso da distância (\textit{Inverse Distance Weighting} --- IDW), atribuindo maior peso aos poços mais próximos \cite{isaaks1989}. Foram obtidos dois valores médios: um com dois valores rasos por poço e outro incluindo o terceiro valor disponível no poço 137. Esse modelo foi utilizado exclusivamente na estimativa de profundidade por HVSR e não substitui as velocidades representativas adotadas na conversão das isócronas sísmicas dos MTDs/MTCs.
 
 \begin{table}[htbp]
   \centering
@@ -585,7 +589,16 @@ Foram adotados valores de $\nu$ entre 0,46 e 0,48, compatíveis com sedimentos f
   \fonte{Elaboração própria.}
 \end{table}
 
-A profundidade foi estimada para todas as combinações entre $f_0$, $V_p$ e $\nu$. A incerteza foi avaliada por dois procedimentos, segundo \citeauthoronline{taylor1997} (\citeyear{taylor1997}). No método do envelope, foram combinados os valores mínimo e máximo de profundidade:
+A profundidade foi estimada para todas as combinações entre três valores de frequência --- inferior, central e superior ---, duas estimativas de $V_p$ e três valores de $\nu$, totalizando 18 cenários para cada data. Os valores inferior e superior de frequência foram definidos a partir da dispersão das frequências de pico entre as janelas válidas.
+
+Adotando a apresentação de uma estimativa acompanhada de sua incerteza absoluta e relativa, conforme \citeonline{taylor1997}, os valores mínimo ($H_{\min}$) e máximo ($H_{\max}$) delimitaram o envelope. O ponto médio foi utilizado como valor de referência:
+
+\begin{equation}
+H_c=\frac{H_{\min}+H_{\max}}{2}
+\end{equation}
+\equationdescription{Ponto médio do envelope de profundidades}
+
+A incerteza absoluta foi definida como a semi-amplitude desse intervalo:
 
 \begin{equation}
 \Delta H_{\mathrm{abs}}=\frac{H_{\max}-H_{\min}}{2}
@@ -593,15 +606,10 @@ A profundidade foi estimada para todas as combinações entre $f_0$, $V_p$ e $\n
 \equationdescription{Incerteza absoluta pelo método do envelope}
 
 \begin{equation}
-\Delta H_{\mathrm{rel}}=\frac{\Delta H_{\mathrm{abs}}}{H}\times100
+\Delta H_{\mathrm{rel}}=\frac{\Delta H_{\mathrm{abs}}}{H_c}\times100
 \end{equation}
 \equationdescription{Incerteza relativa pelo método do envelope}
 
-Também foi utilizada a propagação de incertezas, assumindo independência entre $V_s$ e $f_0$:
+As margens obtidas representam os limites dos cenários adotados, sem equivaler necessariamente a desvios-padrão ou intervalos de confiança estatísticos. Complementarmente, foram calculadas as profundidades mantendo a frequência central de cada data e variando apenas $V_p$ e $\nu$, totalizando seis combinações por data. A comparação entre os envelopes das seis e das 18 combinações permitiu examinar a ampliação do intervalo decorrente da inclusão da dispersão de frequência. Não foi atribuído um desvio-padrão a $V_s$, pois seus valores foram obtidos a partir de combinações de parâmetros adotados como cenários, e não de medições independentes dessa velocidade.
 
-\begin{equation}
-\left(\frac{\sigma_H}{H}\right)^2=\left(\frac{\sigma_{V_s}}{V_s}\right)^2+\left(\frac{\sigma_{f_0}}{f_0}\right)^2
-\end{equation}
-\equationdescription{Propagação relativa das incertezas de velocidade e frequência}
-
-O envelope representa o limite máximo de variação possível entre os cenários, enquanto a propagação fornece uma incerteza combinada mais representativa das contribuições relativas de $V_s$ e $f_0$. A análise é relevante para movimentos de massa submarinos porque a espessura de sedimentos menos consolidados e o contraste de rigidez com o substrato podem controlar a circulação de fluidos, a pressão de poros e a posição potencial de superfícies de ruptura. Entretanto, o HVSR deve ser interpretado em conjunto com sísmica, dados de poços e informações geotécnicas.
+A profundidade estimada corresponde à interface associada ao pico fundamental no modelo simplificado de quarto de comprimento de onda e depende da representatividade da velocidade média de onda S adotada. Sua interpretação geológica deve ser realizada em conjunto com a sísmica, os dados de poços e as informações geotécnicas.

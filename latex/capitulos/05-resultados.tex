@@ -1,0 +1,145 @@
+\chapter{Resultados}\label{cap:resultados}
+
+\section{Resultados da análise HVSR}
+
+\subsection{Frequências e curvas HVSR}
+
+Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando duas durações de janela (120~s e 1.800~s) e os operadores de suavização Konno--Ohmachi e Parzen. A frequência fundamental ($f_0$) foi definida pela mediana lognormal das frequências de pico das janelas válidas. A variabilidade foi expressa pelo desvio-padrão no espaço logarítmico, $\sigma_{\ln(f_0)}$, conforme \citeonline{coxcheng2020}. Sob a hipótese de normalidade de $\ln(f_0)$, os intervalos de uma e duas unidades de $\sigma_{\ln(f_0)}$ em torno da mediana abrangem aproximadamente 68\% e 95\% dos valores, respectivamente. Os resultados são apresentados nas Figuras~\ref{fig:hvsr-0102} e \ref{fig:hvsr-2902} e nas Tabelas~\ref{tab:hvsr-0102} e \ref{tab:hvsr-2902}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.75\textheight,keepaspectratio]{figuras/resultados/figura-31-curvas-hvsr-01-02-2020.png}
+  \caption{Curvas HVSR referentes ao dia 01/02/2020.}
+  \label{fig:hvsr-0102}
+  \fonte{Elaboração própria.}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de $f_0$ para o dia 01/02/2020.}
+  \label{tab:hvsr-0102}
+  \scriptsize
+  \begin{tabularx}{\textwidth}{l c c c c c}
+    \toprule
+    Suavização & Janela & \makecell{Largura do\\\textit{taper}} & \makecell{$f_0$ mediana\\(Hz)} & $\sigma_{\ln(f_0)}$ & Figura \\
+    \midrule
+    Konno--Ohmachi & 120~s & 0,10 & 0,857 & 0,053 & 31A \\
+    Parzen & 120~s & 0,10 & 0,963 & 0,061 & 31B \\
+    Konno--Ohmachi & 1.800~s & 0,05 & 0,863 & 0,015 & 31C \\
+    Parzen & 1.800~s & 0,05 & 0,955 & 0,015 & 31D \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{Elaboração própria.}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.75\textheight,keepaspectratio]{figuras/resultados/figura-32-curvas-hvsr-29-02-2020.png}
+  \caption{Curvas HVSR referentes ao dia 29/02/2020.}
+  \label{fig:hvsr-2902}
+  \fonte{Elaboração própria.}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de $f_0$ para o dia 29/02/2020.}
+  \label{tab:hvsr-2902}
+  \scriptsize
+  \begin{tabularx}{\textwidth}{l c c c c c}
+    \toprule
+    Suavização & Janela & \makecell{Largura do\\\textit{taper}} & \makecell{$f_0$ mediana\\(Hz)} & $\sigma_{\ln(f_0)}$ & Figura \\
+    \midrule
+    Konno--Ohmachi & 120~s & 0,10 & 0,873 & 0,024 & 32A \\
+    Parzen & 120~s & 0,10 & 0,980 & 0,162 & 32B \\
+    Konno--Ohmachi & 1.800~s & 0,05 & 0,871 & 0,020 & 32C \\
+    Parzen & 1.800~s & 0,05 & 0,967 & 0,019 & 32D \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{Elaboração própria.}
+\end{table}
+
+As curvas processadas com Konno--Ohmachi preservaram melhor a definição dos picos em baixas frequências, em razão da suavização em escala logarítmica \cite{konno1998}. Em concordância com o projeto SESAME \cite{sesame2004}, os cálculos de profundidade utilizaram esse operador, janela de 120~s e \textit{taper} de Tukey de 0,10. A suavização de Parzen foi mantida como comparação, pois produziu curvas mais regularizadas e atenuou picos estreitos. A Figura~\ref{fig:comparacao-suavizacao} evidencia essa diferença entre os operadores.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{figuras/resultados/figura-33-comparacao-suavizacao.png}
+  \caption{Comparação entre os operadores de suavização. O parâmetro $b$ está relacionado à largura absoluta da janela, em escala não logarítmica; os valores adotados correspondem ao padrão da visualização \cite{vantassel2021}.}
+  \label{fig:comparacao-suavizacao}
+  \fonte{Elaboração própria.}
+\end{figure}
+
+Para a configuração adotada, as frequências fundamentais medianas foram de 0,857~Hz em 01/02/2020 e 0,873~Hz em 29/02/2020. Portanto, ambas as aquisições indicaram $f_0$ próxima de 0,9~Hz. O primeiro dia apresentou maior dispersão entre as janelas processadas ($\sigma_{\ln(f_0)}=0,053$) do que o segundo ($\sigma_{\ln(f_0)}=0,024$).
+
+\subsection{Análise azimutal}
+
+As curvas azimutais apresentaram pouca variação sistemática da frequência de pico entre as direções analisadas. Esse comportamento é compatível com uma resposta aproximadamente unidimensional no ponto do OBS, sem evidência clara de forte anisotropia azimutal; contudo, essa interpretação não exclui heterogeneidades laterais abaixo da resolução do método \cite{cheng2020azimuthal}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/resultados/figura-34-analise-azimutal.png}
+  \caption{Comparação da análise azimutal de HVSR para os registros de 01/02/2020 (A e B) e 29/02/2020 (C e D). Os painéis A e C apresentam as curvas HVSR em função da frequência e do azimute, enquanto os painéis B e D mostram mapas de contorno da razão H/V. Os quadrados verdes representam a frequência de pico da curva mediana lognormal em cada azimute \cite{cheng2020azimuthal}.}
+  \label{fig:analise-azimutal-hvsr}
+  \fonte{Elaboração própria.}
+\end{figure}
+
+\subsection{Frequências secundárias}
+
+Além do pico fundamental, centrado em torno de 0,9~Hz, foram identificados picos secundários nas curvas HVSR (Figuras~\ref{fig:picos-0102} e \ref{fig:picos-2902}). Como o pico secundário mais consistente ocorre próximo ao terceiro harmônico de $f_0$ ($\approx3f_0$), ele foi interpretado preferencialmente como resposta harmônica, e não como evidência de uma interface adicional. Essa interpretação deve ser confirmada pela comparação com a sísmica e com controles de velocidade.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth,height=0.7\textheight,keepaspectratio]{figuras/resultados/figura-35-picos-01-02-2020.png}
+  \caption{Picos de frequência identificados na curva HVSR de 01/02/2020. H/V: amplitude da razão espectral horizontal/vertical.}
+  \label{fig:picos-0102}
+  \fonte{Elaboração própria.}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth,height=0.7\textheight,keepaspectratio]{figuras/resultados/figura-36-picos-29-02-2020.png}
+  \caption{Picos de frequência identificados na curva HVSR de 29/02/2020. H/V: amplitude da razão espectral horizontal/vertical.}
+  \label{fig:picos-2902}
+  \fonte{Elaboração própria.}
+\end{figure}
+
+\subsection{Estimativas de profundidade e incerteza associada}
+
+As profundidades associadas ao pico fundamental foram estimadas conforme o procedimento descrito na Seção~4.5.2. Para cada data, foram avaliadas 18 combinações entre três valores de frequência, duas estimativas de $V_p$ e três coeficientes de Poisson. Os cálculos individuais são apresentados nos anexos provisórios X e Y, e seus envelopes são sintetizados nas Tabelas~\ref{tab:envelope-18} e \ref{tab:envelope-6}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Envelope das profundidades estimadas considerando 18 combinações por data.}
+  \label{tab:envelope-18}
+  \scriptsize
+  \begin{tabularx}{\textwidth}{c X c c c c c}
+    \toprule
+    Data & Frequências utilizadas (Hz) & $H_{\min}$ (m) & $H_{\max}$ (m) & $H_c$ (m) & $\Delta H_{\mathrm{abs}}$ (m) & $\Delta H_{\mathrm{rel}}$ (\%) \\
+    \midrule
+    01/02/2020 & 0,804; 0,857; 0,910 & 87,12 & 139,60 & 113,36 & 26,24 & 23,15 \\
+    29/02/2020 & 0,849; 0,873; 0,897 & 88,39 & 132,20 & 110,29 & 21,91 & 19,86 \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{Elaboração própria.}
+  \nota{Foram utilizados $V_p$ de 1.617,06 e 1.649,58~m/s e coeficientes de Poisson de 0,46, 0,47 e 0,48, resultando em $V_s$ entre 317,13 e 448,96~m/s. O ponto médio e a semi-amplitude sintetizam o envelope dos cenários, sem atribuição de um nível de confiança estatístico.}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Envelope das profundidades estimadas com frequência central fixa, considerando seis combinações por data.}
+  \label{tab:envelope-6}
+  \scriptsize
+  \begin{tabularx}{\textwidth}{c c c c c c c}
+    \toprule
+    Data & $f_0$ (Hz) & $H_{\min}$ (m) & $H_{\max}$ (m) & $H_c$ (m) & $\Delta H_{\mathrm{abs}}$ (m) & $\Delta H_{\mathrm{rel}}$ (\%) \\
+    \midrule
+    01/02/2020 & 0,857 & 92,51 & 130,97 & 111,74 & 19,23 & 17,21 \\
+    29/02/2020 & 0,873 & 90,82 & 128,57 & 109,69 & 18,88 & 17,21 \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{Elaboração própria.}
+  \nota{Foram utilizados $V_p$ de 1.617,06 e 1.649,58~m/s e coeficientes de Poisson de 0,46, 0,47 e 0,48, resultando em $V_s$ entre 317,13 e 448,96~m/s.}
+\end{table}
+
+Com a frequência central fixa, os intervalos foram de 92,5--131,0~m em 01/02/2020 e de 90,8--128,6~m em 29/02/2020. A semi-amplitude relativa foi de aproximadamente 17,2\% em ambas as datas. A comparação com os envelopes completos mostra que a variação dos parâmetros de velocidade responde por uma parcela expressiva da faixa de profundidades estimadas, enquanto a inclusão da dispersão de frequência amplia essa faixa, sobretudo no primeiro dia.
+
+As estimativas obtidas nas duas datas apresentam intervalos amplamente sobrepostos e pontos médios próximos, indicando uma profundidade da ordem de 110~m abaixo do fundo oceânico. Esse valor representa a profundidade estimada da interface associada ao pico fundamental, condicionada ao modelo de quarto de comprimento de onda e às velocidades adotadas. A identificação dessa interface como uma superfície estratigráfica específica depende da comparação com a sísmica de reflexão e com dados de poços.
