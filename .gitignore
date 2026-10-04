@@ -21,6 +21,8 @@ latex/*.run.xml
 latex/*.synctex.gz
 latex/*.toc
 latex/qa-area/
+latex/tcc-*.pdf
+latex/tcc-*.loe
 
 # Estado local da automacao (os logs ficam fora do repositorio)
 .tcc-sync.lock
