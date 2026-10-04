@@ -4,7 +4,7 @@
 
 \subsection{Frequências e curvas HVSR}
 
-Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando duas durações de janela (120~s e 1.800~s) e os operadores de suavização Konno--Ohmachi e Parzen. A frequência fundamental ($f_0$) foi definida pela mediana lognormal das frequências de pico das janelas válidas. A variabilidade foi expressa pelo desvio-padrão no espaço logarítmico, $\sigma_{\ln(f_0)}$, conforme \citeonline{coxcheng2020}. Sob a hipótese de normalidade de $\ln(f_0)$, os intervalos de uma e duas unidades de $\sigma_{\ln(f_0)}$ em torno da mediana abrangem aproximadamente 68\% e 95\% dos valores, respectivamente. Os resultados são apresentados nas Figuras~\ref{fig:hvsr-0102} e \ref{fig:hvsr-2902} e nas Tabelas~\ref{tab:hvsr-0102} e \ref{tab:hvsr-2902}.
+Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando duas durações de janela (120~s e 1.800~s) e os operadores de suavização Konno--Ohmachi e Parzen. A frequência fundamental ($f_0$) foi definida pela mediana lognormal das frequências de pico das janelas processadas. A variabilidade foi expressa pelo desvio-padrão no espaço logarítmico, $\sigma_{\ln(f_0)}$, conforme \citeonline{coxcheng2020}. Os limites de uma unidade de desvio-padrão foram calculados multiplicativamente com a Equação~\ref{eq:intervalo-lognormal} e abrangem, sob a hipótese lognormal, aproximadamente 68\% da distribuição. Os resultados são apresentados nas Figuras~\ref{fig:hvsr-0102} e \ref{fig:hvsr-2902} e nas Tabelas~\ref{tab:hvsr-0102} e \ref{tab:hvsr-2902}.
 
 \begin{figure}[H]
   \centering
@@ -19,17 +19,18 @@ Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando 
   \caption{Resultados de $f_0$ para o dia 01/02/2020.}
   \label{tab:hvsr-0102}
   \scriptsize
-  \begin{tabularx}{\textwidth}{l c c c c c}
+  \begin{tabularx}{\textwidth}{l c c c c X c}
     \toprule
-    Suavização & Janela & \makecell{Largura do\\\textit{taper}} & \makecell{$f_0$ mediana\\(Hz)} & $\sigma_{\ln(f_0)}$ & Figura \\
+    Suavização & Janela & \makecell{Largura do\\\textit{taper}} & \makecell{$f_0$ mediana\\(Hz)} & \makecell{$\sigma_{\ln(f_0)}$\\(adimensional)} & \makecell{Intervalo lognormal\\de $\pm1\sigma$ (Hz)} & Figura \\
     \midrule
-    Konno--Ohmachi & 120~s & 0,10 & 0,857 & 0,053 & 31A \\
-    Parzen & 120~s & 0,10 & 0,963 & 0,061 & 31B \\
-    Konno--Ohmachi & 1.800~s & 0,05 & 0,863 & 0,015 & 31C \\
-    Parzen & 1.800~s & 0,05 & 0,955 & 0,015 & 31D \\
+    Konno--Ohmachi & 120~s & 0,10 & 0,857 & 0,053 & 0,813--0,904 & 31A \\
+    Parzen & 120~s & 0,10 & 0,963 & 0,061 & 0,906--1,024 & 31B \\
+    Konno--Ohmachi & 1.800~s & 0,05 & 0,863 & 0,015 & 0,850--0,876 & 31C \\
+    Parzen & 1.800~s & 0,05 & 0,955 & 0,015 & 0,941--0,969 & 31D \\
     \bottomrule
   \end{tabularx}
   \fonte{Elaboração própria.}
+  \nota{$\sigma_{\ln(f_0)}$ representa o desvio-padrão no espaço logarítmico e, portanto, é adimensional. Os limites de uma unidade de desvio-padrão foram calculados de forma multiplicativa com a Equação~\ref{eq:intervalo-lognormal}, conforme \citeonline{coxcheng2020}.}
 \end{table}
 
 \begin{figure}[H]
@@ -45,17 +46,18 @@ Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando 
   \caption{Resultados de $f_0$ para o dia 29/02/2020.}
   \label{tab:hvsr-2902}
   \scriptsize
-  \begin{tabularx}{\textwidth}{l c c c c c}
+  \begin{tabularx}{\textwidth}{l c c c c X c}
     \toprule
-    Suavização & Janela & \makecell{Largura do\\\textit{taper}} & \makecell{$f_0$ mediana\\(Hz)} & $\sigma_{\ln(f_0)}$ & Figura \\
+    Suavização & Janela & \makecell{Largura do\\\textit{taper}} & \makecell{$f_0$ mediana\\(Hz)} & \makecell{$\sigma_{\ln(f_0)}$\\(adimensional)} & \makecell{Intervalo lognormal\\de $\pm1\sigma$ (Hz)} & Figura \\
     \midrule
-    Konno--Ohmachi & 120~s & 0,10 & 0,873 & 0,024 & 32A \\
-    Parzen & 120~s & 0,10 & 0,980 & 0,162 & 32B \\
-    Konno--Ohmachi & 1.800~s & 0,05 & 0,871 & 0,020 & 32C \\
-    Parzen & 1.800~s & 0,05 & 0,967 & 0,019 & 32D \\
+    Konno--Ohmachi & 120~s & 0,10 & 0,873 & 0,024 & 0,852--0,894 & 32A \\
+    Parzen & 120~s & 0,10 & 0,980 & 0,162 & 0,833--1,152 & 32B \\
+    Konno--Ohmachi & 1.800~s & 0,05 & 0,871 & 0,020 & 0,854--0,889 & 32C \\
+    Parzen & 1.800~s & 0,05 & 0,967 & 0,019 & 0,949--0,986 & 32D \\
     \bottomrule
   \end{tabularx}
   \fonte{Elaboração própria.}
+  \nota{$\sigma_{\ln(f_0)}$ representa o desvio-padrão no espaço logarítmico e, portanto, é adimensional. Os limites de uma unidade de desvio-padrão foram calculados de forma multiplicativa com a Equação~\ref{eq:intervalo-lognormal}, conforme \citeonline{coxcheng2020}.}
 \end{table}
 
 As curvas processadas com Konno--Ohmachi preservaram melhor a definição dos picos em baixas frequências, em razão da suavização em escala logarítmica \cite{konno1998}. Em concordância com o projeto SESAME \cite{sesame2004}, os cálculos de profundidade utilizaram esse operador, janela de 120~s e \textit{taper} de Tukey de 0,10. A suavização de Parzen foi mantida como comparação, pois produziu curvas mais regularizadas e atenuou picos estreitos. A Figura~\ref{fig:comparacao-suavizacao} evidencia essa diferença entre os operadores.
@@ -104,7 +106,7 @@ Além do pico fundamental, centrado em torno de 0,9~Hz, foram identificados pico
 
 \subsection{Estimativas de profundidade e incerteza associada}
 
-As profundidades associadas ao pico fundamental foram estimadas conforme o procedimento descrito na Seção~4.5.2. Para cada data, foram avaliadas 18 combinações entre três valores de frequência, duas estimativas de $V_p$ e três coeficientes de Poisson. Os cálculos individuais são apresentados nos anexos provisórios X e Y, e seus envelopes são sintetizados nas Tabelas~\ref{tab:envelope-18} e \ref{tab:envelope-6}.
+As profundidades associadas ao pico fundamental foram estimadas conforme o procedimento descrito na Seção~4.5.2. Para cada data, foram avaliadas 18 combinações entre três valores de frequência, duas estimativas de $V_p$ e três coeficientes de Poisson. Os cálculos individuais são apresentados nos Apêndices~\ref{ap:hvsr-0102} e \ref{ap:hvsr-2902}, e seus envelopes são sintetizados nas Tabelas~\ref{tab:envelope-18} e \ref{tab:envelope-6}.
 
 \begin{table}[H]
   \centering
@@ -115,12 +117,12 @@ As profundidades associadas ao pico fundamental foram estimadas conforme o proce
     \toprule
     Data & Frequências utilizadas (Hz) & $H_{\min}$ (m) & $H_{\max}$ (m) & $H_c$ (m) & $\Delta H_{\mathrm{abs}}$ (m) & $\Delta H_{\mathrm{rel}}$ (\%) \\
     \midrule
-    01/02/2020 & 0,804; 0,857; 0,910 & 87,12 & 139,60 & 113,36 & 26,24 & 23,15 \\
-    29/02/2020 & 0,849; 0,873; 0,897 & 88,39 & 132,20 & 110,29 & 21,91 & 19,86 \\
+    01/02/2020 & 0,813; 0,857; 0,904 & 87,74 & 138,10 & 112,92 & 25,18 & 22,30 \\
+    29/02/2020 & 0,852; 0,873; 0,894 & 88,66 & 131,69 & 110,18 & 21,51 & 19,53 \\
     \bottomrule
   \end{tabularx}
   \fonte{Elaboração própria.}
-  \nota{Foram utilizados $V_p$ de 1.617,06 e 1.649,58~m/s e coeficientes de Poisson de 0,46, 0,47 e 0,48, resultando em $V_s$ entre 317,13 e 448,96~m/s. O ponto médio e a semi-amplitude sintetizam o envelope dos cenários, sem atribuição de um nível de confiança estatístico.}
+  \nota{Foram utilizados valores de $V_p$ de 1.617,06 e 1.649,58~m/s e coeficientes de Poisson de 0,46, 0,47 e 0,48, resultando em valores de $V_s$ entre 317,13 e 448,96~m/s. As frequências inferior e superior foram calculadas de forma multiplicativa, considerando uma unidade de desvio-padrão no espaço logarítmico. Os cálculos utilizaram os limites lognormais com precisão completa antes do arredondamento para três casas decimais. O ponto médio e a semi-amplitude sintetizam o envelope dos cenários, sem representar um intervalo de confiança estatístico.}
 \end{table}
 
 \begin{table}[H]
@@ -140,6 +142,6 @@ As profundidades associadas ao pico fundamental foram estimadas conforme o proce
   \nota{Foram utilizados $V_p$ de 1.617,06 e 1.649,58~m/s e coeficientes de Poisson de 0,46, 0,47 e 0,48, resultando em $V_s$ entre 317,13 e 448,96~m/s.}
 \end{table}
 
-Com a frequência central fixa, os intervalos foram de 92,5--131,0~m em 01/02/2020 e de 90,8--128,6~m em 29/02/2020. A semi-amplitude relativa foi de aproximadamente 17,2\% em ambas as datas. A comparação com os envelopes completos mostra que a variação dos parâmetros de velocidade responde por uma parcela expressiva da faixa de profundidades estimadas, enquanto a inclusão da dispersão de frequência amplia essa faixa, sobretudo no primeiro dia.
+Com a frequência central fixa, os intervalos de profundidade foram de 92,5 a 131,0~m em 01/02/2020 e de 90,8 a 128,6~m em 29/02/2020. Considerando também os limites multiplicativos de uma unidade de desvio-padrão lognormal, os envelopes completos foram de 87,74 a 138,10~m e de 88,66 a 131,69~m, respectivamente. A semi-amplitude relativa passou de aproximadamente 17,2\%, considerando somente a variação dos parâmetros de velocidade, para 22,30\% em 01/02/2020 e 19,53\% em 29/02/2020. Isso demonstra que a variação dos parâmetros de velocidade representa uma parcela expressiva da incerteza, enquanto a dispersão das frequências amplia adicionalmente os envelopes.
 
 As estimativas obtidas nas duas datas apresentam intervalos amplamente sobrepostos e pontos médios próximos, indicando uma profundidade da ordem de 110~m abaixo do fundo oceânico. Esse valor representa a profundidade estimada da interface associada ao pico fundamental, condicionada ao modelo de quarto de comprimento de onda e às velocidades adotadas. A identificação dessa interface como uma superfície estratigráfica específica depende da comparação com a sísmica de reflexão e com dados de poços.
