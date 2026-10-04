@@ -6,7 +6,7 @@
 
 Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando duas durações de janela (120~s e 1.800~s) e os operadores de suavização Konno--Ohmachi e Parzen. A frequência fundamental ($f_0$) foi definida pela mediana lognormal das frequências de pico das janelas válidas. A variabilidade foi expressa pelo desvio-padrão no espaço logarítmico, $\sigma_{\ln(f_0)}$, conforme \citeonline{coxcheng2020}. Sob a hipótese de normalidade de $\ln(f_0)$, os intervalos de uma e duas unidades de $\sigma_{\ln(f_0)}$ em torno da mediana abrangem aproximadamente 68\% e 95\% dos valores, respectivamente. Os resultados são apresentados nas Figuras~\ref{fig:hvsr-0102} e \ref{fig:hvsr-2902} e nas Tabelas~\ref{tab:hvsr-0102} e \ref{tab:hvsr-2902}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth,height=0.75\textheight,keepaspectratio]{figuras/resultados/figura-31-curvas-hvsr-01-02-2020.png}
   \caption{Curvas HVSR referentes ao dia 01/02/2020.}
@@ -14,7 +14,7 @@ Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando 
   \fonte{Elaboração própria.}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Resultados de $f_0$ para o dia 01/02/2020.}
   \label{tab:hvsr-0102}
@@ -32,7 +32,7 @@ Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando 
   \fonte{Elaboração própria.}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth,height=0.75\textheight,keepaspectratio]{figuras/resultados/figura-32-curvas-hvsr-29-02-2020.png}
   \caption{Curvas HVSR referentes ao dia 29/02/2020.}
@@ -40,7 +40,7 @@ Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando 
   \fonte{Elaboração própria.}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Resultados de $f_0$ para o dia 29/02/2020.}
   \label{tab:hvsr-2902}
@@ -60,7 +60,7 @@ Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando 
 
 As curvas processadas com Konno--Ohmachi preservaram melhor a definição dos picos em baixas frequências, em razão da suavização em escala logarítmica \cite{konno1998}. Em concordância com o projeto SESAME \cite{sesame2004}, os cálculos de profundidade utilizaram esse operador, janela de 120~s e \textit{taper} de Tukey de 0,10. A suavização de Parzen foi mantida como comparação, pois produziu curvas mais regularizadas e atenuou picos estreitos. A Figura~\ref{fig:comparacao-suavizacao} evidencia essa diferença entre os operadores.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{figuras/resultados/figura-33-comparacao-suavizacao.png}
   \caption{Comparação entre os operadores de suavização. O parâmetro $b$ está relacionado à largura absoluta da janela, em escala não logarítmica; os valores adotados correspondem ao padrão da visualização \cite{vantassel2021}.}
@@ -74,7 +74,7 @@ Para a configuração adotada, as frequências fundamentais medianas foram de 0,
 
 As curvas azimutais apresentaram pouca variação sistemática da frequência de pico entre as direções analisadas. Esse comportamento é compatível com uma resposta aproximadamente unidimensional no ponto do OBS, sem evidência clara de forte anisotropia azimutal; contudo, essa interpretação não exclui heterogeneidades laterais abaixo da resolução do método \cite{cheng2020azimuthal}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/resultados/figura-34-analise-azimutal.png}
   \caption{Comparação da análise azimutal de HVSR para os registros de 01/02/2020 (A e B) e 29/02/2020 (C e D). Os painéis A e C apresentam as curvas HVSR em função da frequência e do azimute, enquanto os painéis B e D mostram mapas de contorno da razão H/V. Os quadrados verdes representam a frequência de pico da curva mediana lognormal em cada azimute \cite{cheng2020azimuthal}.}
@@ -86,7 +86,7 @@ As curvas azimutais apresentaram pouca variação sistemática da frequência de
 
 Além do pico fundamental, centrado em torno de 0,9~Hz, foram identificados picos secundários nas curvas HVSR (Figuras~\ref{fig:picos-0102} e \ref{fig:picos-2902}). Como o pico secundário mais consistente ocorre próximo ao terceiro harmônico de $f_0$ ($\approx3f_0$), ele foi interpretado preferencialmente como resposta harmônica, e não como evidência de uma interface adicional. Essa interpretação deve ser confirmada pela comparação com a sísmica e com controles de velocidade.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth,height=0.7\textheight,keepaspectratio]{figuras/resultados/figura-35-picos-01-02-2020.png}
   \caption{Picos de frequência identificados na curva HVSR de 01/02/2020. H/V: amplitude da razão espectral horizontal/vertical.}
@@ -94,7 +94,7 @@ Além do pico fundamental, centrado em torno de 0,9~Hz, foram identificados pico
   \fonte{Elaboração própria.}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth,height=0.7\textheight,keepaspectratio]{figuras/resultados/figura-36-picos-29-02-2020.png}
   \caption{Picos de frequência identificados na curva HVSR de 29/02/2020. H/V: amplitude da razão espectral horizontal/vertical.}
@@ -106,7 +106,7 @@ Além do pico fundamental, centrado em torno de 0,9~Hz, foram identificados pico
 
 As profundidades associadas ao pico fundamental foram estimadas conforme o procedimento descrito na Seção~4.5.2. Para cada data, foram avaliadas 18 combinações entre três valores de frequência, duas estimativas de $V_p$ e três coeficientes de Poisson. Os cálculos individuais são apresentados nos anexos provisórios X e Y, e seus envelopes são sintetizados nas Tabelas~\ref{tab:envelope-18} e \ref{tab:envelope-6}.
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Envelope das profundidades estimadas considerando 18 combinações por data.}
   \label{tab:envelope-18}
@@ -123,7 +123,7 @@ As profundidades associadas ao pico fundamental foram estimadas conforme o proce
   \nota{Foram utilizados $V_p$ de 1.617,06 e 1.649,58~m/s e coeficientes de Poisson de 0,46, 0,47 e 0,48, resultando em $V_s$ entre 317,13 e 448,96~m/s. O ponto médio e a semi-amplitude sintetizam o envelope dos cenários, sem atribuição de um nível de confiança estatístico.}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \caption{Envelope das profundidades estimadas com frequência central fixa, considerando seis combinações por data.}
   \label{tab:envelope-6}
