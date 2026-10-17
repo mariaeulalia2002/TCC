@@ -1,10 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{estilo/tcc-geologia-ufsc}[2026/09/19 Template de TCC de Geologia da UFSC]
 
-% Família serifada próxima à Times, disponível em distribuições TeX completas.
-% Evita dependência das fontes instaladas no sistema operacional.
-\RequirePackage[T1]{fontenc}
-\RequirePackage{newtxtext,newtxmath}
+% Times New Roman no texto; a alternativa mantém métricas equivalentes quando
+% a fonte do sistema não estiver disponível (por exemplo, em alguns servidores).
+\RequirePackage{fontspec}
+\IfFontExistsTF{Times New Roman}{%
+  \setmainfont{Times New Roman}%
+}{%
+  \setmainfont{TeX Gyre Termes}%
+}
+\RequirePackage{newtxmath}
 
 \RequirePackage{geometry}
 \geometry{a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,headsep=0.8cm}
@@ -63,9 +68,9 @@
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
 \renewcommand{\ABNTEXsectionfont}{\normalfont\bfseries}
 \renewcommand{\ABNTEXsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont}
 \renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont\itshape}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
 \renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
 \setlength{\afterchapskip}{\onelineskip}
 \setlength{\cftbeforechapterskip}{0pt}
@@ -125,8 +130,8 @@
 \newcommand{\equationdescription}[1]{%
   \addcontentsline{loe}{equation}{\protect\numberline{Equação~\theequation}#1}%
 }
-% Numeração de equações entre colchetes, mantendo o corpo centralizado.
-\renewcommand{\tagform@}[1]{\maketag@@@{[#1]}}
+% Equações centralizadas, com vírgula antes da numeração entre colchetes.
+\renewcommand{\tagform@}[1]{\maketag@@@{,\ [#1]}}
 \makeatother
 
 \newenvironment{paisagem}{\begin{landscape}}{\end{landscape}}

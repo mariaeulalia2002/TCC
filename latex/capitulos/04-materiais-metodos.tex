@@ -449,11 +449,29 @@ u_F=\sqrt{\sum_i\left(\frac{\partial F}{\partial x_i}u_{x_i}\right)^2}
 
 Ao final, os resultados serão apresentados na forma valor ± incerteza, com o número de casas decimais ajustado à magnitude da incerteza estimada. A tabela final sintetizará, para cada parâmetro, o valor obtido, a incerteza combinada, o método de estimativa e a principal fonte de incerteza.
 
+\section{Determinação dos domínios de cabeceira, translacional e distal}
+
+A compartimentação dos MTDs em domínios de cabeceira, translacional e distal foi realizada pela integração entre a interpretação sísmica e os atributos geomorfológicos das superfícies analisadas, principalmente a do fundo marinho. A proposta de \citeonline{scarselli2020} foi adotada como referencial conceitual para a caracterização dos domínios, considerando as feições cinemáticas reconhecidas nos dados disponíveis, sem pressupor a identificação de todas as feições descritas pelo autor.
+
+Inicialmente, foram definidos três conjuntos de pontos de referência em seções sísmicas sucessivas no \textit{Petrel\textsuperscript{\textregistered}}: A, associado ao topo da cicatriz; B, associado ao limite proximal do depósito; e C, associado à terminação distal do corpo. Os pontos foram acompanhados lateralmente em seções com incremento predominante de 20 \textit{inlines}. Considerando o espaçamento aproximado de 25~m entre \textit{inlines}, esse intervalo correspondeu a cerca de 500~m entre as seções interpretadas. Esse espaçamento refere-se ao levantamento dos pontos de referência e não à resolução das grades utilizadas nos cálculos morfométricos.
+
+Os conjuntos de pontos foram exportados do \textit{Petrel\textsuperscript{\textregistered}} em arquivos ASCII contendo \textit{inline}, \textit{crossline}, coordenadas X e Y e tempo sísmico Z. No \textit{QGIS\textsuperscript{\textregistered}}, os pontos foram organizados segundo a sequência das \textit{inlines} e convertidos em linhas representativas do topo da cicatriz, do limite proximal do depósito e de sua terminação distal. Essas linhas foram utilizadas como referências espaciais para a delimitação dos domínios ao longo do eixo principal do movimento de massa.
+
+O domínio de cabeceira foi reconhecido na porção proximal dos eventos, a partir da presença da escarpa principal e de feições associadas à extensão e à evacuação de material. O domínio translacional correspondeu à porção intermediária dos MTDs, caracterizada pelo deslocamento do material ao longo da superfície basal. O domínio distal, também denominado domínio de pé, foi delimitado na porção mais a jusante dos MTDs.
+
+Os limites entre os domínios foram definidos a partir das transições estruturais e geomorfológicas reconhecidas nos dados, não sendo necessariamente abruptos. Os pontos A, B e C constituíram referências espaciais, enquanto a delimitação final dos domínios resultou da integração entre a geometria dos depósitos, o relevo da superfície basal, os mapas de aspecto e as feições cinemáticas interpretadas, tendo como referência a compartimentação proposta por \citeonline{scarselli2020}.
+
 \section{Classificação de depósitos e complexos de transporte de massa}
 
 Após a finalização dos cálculos morfométricos, os depósitos de movimentos de massa foram classificados quanto ao número de eventos, contexto de preservação, geometria geral, relação com a área-fonte, confinamentos lateral e frontal, estilo de deformação interna e provável mecanismo gatilho.
 
 A distinção entre eventos individuais e complexos de múltiplos eventos seguiu \citeauthoronline{clare2018} (\citeyear{clare2018}). A relação com a área-fonte foi definida segundo as categorias \textit{attached} e \textit{detached} de \citeauthoronline{moscardelli2008} (\citeyear{moscardelli2008}), complementadas por \citeauthoronline{clare2018} (\citeyear{clare2018}). O confinamento frontal foi classificado segundo \citeauthoronline{frey2006} (\citeyear{frey2006}), enquanto as geometrias tipo 1 e tipo 2 seguiram \citeauthoronline{gamboa2016} (\citeyear{gamboa2016}). A estrutura interna foi descrita a partir da continuidade e organização dos refletores, distinguindo-se fácies caóticas, transparentes, descontínuas, convolutas e blocos coerentes, conforme \citeonline{bull2009} e \citeonline{posamentier2011}.
+
+\section{Mapeamento de \textit{pockmarks}}
+
+O mapeamento dos \textit{pockmarks} foi realizado pela integração entre o raster de rugosidade do fundo marinho e a interpretação sísmica. O raster de rugosidade auxiliou na identificação e na delimitação das depressões, enquanto as seções sísmicas foram utilizadas para avaliar sua expressão em subsuperfície e a presença de evidências associadas à ocorrência ou à migração de fluidos. O levantamento foi restrito aos \textit{pockmarks} espacialmente relacionados aos MTDs caracterizados neste estudo.
+
+Os \textit{pockmarks} foram diferenciados conforme a presença ou ausência de evidências sísmicas de fluidos em subsuperfície. Essa distinção foi adotada como critério interpretativo, sem implicar a comprovação de atividade ou inatividade atual, cuja determinação depende de evidências adicionais de exsudação no fundo marinho ou na coluna d'água \cite{spatola2025}.
 
 \section{Técnica HVSR}
 
