@@ -1265,9 +1265,8 @@ FUNCTION {format.names.for.label2} %abnt-alf only
 	      {"; " * t * } if$ }
             { t "OTHERS" = t "others" = or
 	      {abnt.etal.cite {bbl.etal *} 'skip$ if$}
-              % NBR 10520:2023: use semicolon between two authors in
-              % parenthetical citations; narrative citations use ``e''.
-              {numnames nameptr = {"; " * t *} 'skip$ if$}
+              % Project convention: join exactly two authors with ampersand.
+              {numnames nameptr = {bbl.and * t *} 'skip$ if$}
              if$
 	     }
           if$ }
