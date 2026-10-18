@@ -575,22 +575,7 @@ A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS
   \fonte{Elaboração própria.}
 \end{table}
 
-Os valores de $V_p$ foram integrados no ponto do OBS por interpolação ponderada pelo inverso da distância (\textit{Inverse Distance Weighting} --- IDW), atribuindo maior peso aos poços mais próximos \cite{isaaks1989}. Foram obtidos dois valores médios: um com dois valores rasos por poço e outro incluindo o terceiro valor disponível no poço 137. Esse modelo foi utilizado exclusivamente na estimativa de profundidade por HVSR e não substitui as velocidades representativas adotadas na conversão das isócronas sísmicas dos MTDs/MTCs.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Velocidades médias ponderadas no ponto do OBS~18}
-  \label{tab:vp-ponderada-obs18}
-  \begin{tabular}{lr}
-    \toprule
-    Configuração de cálculo & $V_p$ médio ponderado (m/s) \\
-    \midrule
-    Dois valores rasos por poço & 1.617,06 \\
-    Inclusão do terceiro valor do poço 137 & 1.649,58 \\
-    \bottomrule
-  \end{tabular}
-  \fonte{Elaboração própria.}
-\end{table}
+Os valores de $V_p$ foram integrados no ponto do OBS por interpolação ponderada pelo inverso da distância (\textit{Inverse Distance Weighting} --- IDW), atribuindo maior peso aos poços mais próximos \cite{isaaks1989}. Foram definidos dois cenários de interpolação: o primeiro considerou dois valores de velocidade por poço, enquanto o segundo incluiu também o terceiro valor disponível no poço 1-BRSA-137-RJS, correspondente a uma maior profundidade. Os valores obtidos são apresentados na Seção~\ref{subsec:resultados-velocidades-hvsr}. Esse modelo foi utilizado exclusivamente na estimativa de profundidade por HVSR e não substitui as velocidades representativas adotadas na conversão dos parâmetros morfométricos dos MTDs/MTCs.
 
 Após a obtenção de $V_p$, realizou-se a conversão para $V_s$ por meio do coeficiente de Poisson ($\nu$), conforme a relação elástica proposta por \citeauthoronline{aki2002} (\citeyear{aki2002}):
 
@@ -599,26 +584,7 @@ V_s=V_p\sqrt{\frac{1-2\nu}{2(1-\nu)}}
 \end{equation}
 \equationdescription{Conversão de velocidade da onda P para velocidade da onda S}
 
-Foram adotados valores de $\nu$ entre 0,46 e 0,48, compatíveis com sedimentos finos saturados e com a natureza litológica indicada pelos perfis dos poços \cite{davidovici1985,domenico1990,prakash1990}.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Velocidades de onda S calculadas para os coeficientes de Poisson adotados}
-  \label{tab:vs-poisson}
-  \begin{tabular}{rrr}
-    \toprule
-    $V_p$ (m/s) & $\nu$ & $V_s$ calculado (m/s) \\
-    \midrule
-    1.617,06 & 0,46 & 440,11 \\
-    1.649,58 & 0,46 & 448,96 \\
-    1.617,06 & 0,47 & 384,72 \\
-    1.649,58 & 0,47 & 392,46 \\
-    1.617,06 & 0,48 & 317,13 \\
-    1.649,58 & 0,48 & 323,51 \\
-    \bottomrule
-  \end{tabular}
-  \fonte{Elaboração própria.}
-\end{table}
+Foram adotados valores de $\nu$ entre 0,46 e 0,48, compatíveis com sedimentos finos saturados e com a natureza litológica indicada pelos perfis dos poços \cite{davidovici1985,domenico1990,prakash1990}. Os valores de $V_s$ resultantes das combinações entre as duas estimativas de $V_p$ e os três coeficientes de Poisson são apresentados na Seção~\ref{subsec:resultados-velocidades-hvsr}.
 
 A profundidade foi estimada para todas as combinações entre três valores de frequência --- inferior, central e superior ---, duas estimativas de $V_p$ e três valores de $\nu$, totalizando 18 cenários para cada data. Os valores inferior e superior foram calculados com a Equação~\ref{eq:intervalo-lognormal}, a partir da dispersão das frequências de pico entre as janelas processadas.
 

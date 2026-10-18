@@ -195,6 +195,48 @@ Além do pico fundamental, centrado em torno de 0,9~Hz, foram identificados pico
   \fonte{Elaboração própria.}
 \end{figure}
 
+\subsection{Velocidades utilizadas na análise HVSR}\label{subsec:resultados-velocidades-hvsr}
+
+Os valores de $V_p$ foram integrados no ponto do OBS~18 por interpolação ponderada pelo inverso da distância. Foram definidos dois cenários: o primeiro considerou dois valores de velocidade por poço, enquanto o segundo incluiu também o terceiro valor disponível no poço 1-BRSA-137-RJS, correspondente a uma maior profundidade. Os valores obtidos são apresentados na Tabela~\ref{tab:vp-ponderada-obs18}.
+
+\begin{table}[H]
+  \centering
+  \caption{Velocidades médias ponderadas no ponto do OBS~18}
+  \label{tab:vp-ponderada-obs18}
+  \begin{tabularx}{\textwidth}{X r}
+    \toprule
+    Configuração de cálculo & $V_p$ médio ponderado (m/s) \\
+    \midrule
+    Dois valores de velocidade por poço & 1.617,06 \\
+    Inclusão do terceiro valor do poço 137 & 1.649,58 \\
+    \bottomrule
+  \end{tabularx}
+  \fonte{Elaboração própria.}
+\end{table}
+
+A conversão das velocidades de onda P para velocidades de onda S foi realizada conforme a relação elástica apresentada na Seção~4.6.2. Foram considerados coeficientes de Poisson de 0,46, 0,47 e 0,48, representando diferentes cenários para os sedimentos saturados investigados.
+
+\begin{table}[H]
+  \centering
+  \caption{Velocidades de onda S calculadas para os coeficientes de Poisson adotados}
+  \label{tab:vs-poisson}
+  \begin{tabular}{rrr}
+    \toprule
+    $V_p$ (m/s) & Coeficiente de Poisson ($\nu$) & $V_s$ calculado (m/s) \\
+    \midrule
+    1.617,06 & 0,46 & 440,11 \\
+    1.649,58 & 0,46 & 448,96 \\
+    1.617,06 & 0,47 & 384,72 \\
+    1.649,58 & 0,47 & 392,46 \\
+    1.617,06 & 0,48 & 317,13 \\
+    1.649,58 & 0,48 & 323,51 \\
+    \bottomrule
+  \end{tabular}
+  \fonte{Elaboração própria.}
+\end{table}
+
+Os valores calculados de $V_s$ variaram de 317,13 a 448,96~m/s. Para um mesmo valor de $V_p$, o aumento do coeficiente de Poisson produziu uma redução de $V_s$. Esses valores foram tratados como cenários de cálculo e utilizados, juntamente com as frequências inferior, central e superior, na estimativa dos envelopes de profundidade.
+
 \subsection{Estimativas de profundidade e incerteza associada}
 
 As profundidades associadas ao pico fundamental foram estimadas conforme o procedimento descrito na Seção~4.5.2. Para cada data, foram avaliadas 18 combinações entre três valores de frequência, duas estimativas de $V_p$ e três coeficientes de Poisson. Os cálculos individuais são apresentados nos Apêndices~\ref{ap:hvsr-0102} e \ref{ap:hvsr-2902}, e seus envelopes são sintetizados nas Tabelas~\ref{tab:envelope-18} e \ref{tab:envelope-6}.
