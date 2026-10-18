@@ -226,52 +226,57 @@ A medida caracteriza, portanto, a superfície receptora imediatamente à frente 
 
 \subsection{Conversão tempo--profundidade das medidas morfométricas}\label{subsec:conversao-tempo-profundidade}
 
-A conversão das medidas temporais foi realizada para fornecer uma estimativa das dimensões dos depósitos em metros. Foram utilizadas velocidades representativas dos sedimentos rasos, ponderadas pela distância entre os poços fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) e o ponto central de cada MTD (Figura~\ref{fig:localizacao-pocos-obs}). Os procedimentos foram separados entre a conversão de intervalos sedimentares e os cálculos que também envolveram medidas próximas à coluna d'água.
+A conversão das medidas temporais foi realizada com caráter aproximativo, para fornecer uma noção da escala espacial e das dimensões dos depósitos em metros. Foram utilizadas velocidades representativas dos intervalos sedimentares de cada evento, estimadas a partir de dados de poços fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) e ponderadas pelo inverso da distância entre os poços e o ponto central de cada depósito (Figura~\ref{fig:localizacao-pocos-obs}). A tabela com as velocidades utilizadas encontra-se no Apêndice~\ref{ap:distancias-velocidades}. Os valores convertidos constituem estimativas condicionadas aos controles disponíveis e às simplificações adotadas; uma determinação mais precisa das dimensões requer uma conversão tempo--profundidade mais robusta, com um modelo de velocidades que represente adequadamente as variações verticais e laterais na área de estudo. Os procedimentos foram separados entre a conversão dos intervalos sedimentares e os cálculos que também envolveram o percurso da onda na coluna d'água.
 
 \subsubsection{Obtenção das velocidades nos poços}
 
-No poço 1-BRSA-137-RJS, foi selecionada a velocidade do trecho mais raso (\SI{1849}{\metre} a \SI{2073}{\metre}) da curva intervalar derivada do VSP (Figura~\ref{fig:velocidade-profundidade-poco}), suavizada pelo método de \citeauthoronline{savitzky1964} (\citeyear{savitzky1964}) por meio de script em \textit{Python\textsuperscript{\textregistered}} (\TextoModelo{Anexo a definir}). O valor correspondente foi de \SI{1553,662}{\metre\per\second} e representa o intervalo raso selecionado, não uma média de toda a curva do poço.
+No poço 1-BRSA-137-RJS, a curva de velocidades foi obtida em script em \textit{Python\textsuperscript{\textregistered}} a partir das diferenças de profundidade e de tempo de percurso entre registros consecutivos do VSP. Dessa forma, os valores calculados representam velocidades intervalares entre os níveis de aquisição, e não velocidades instantâneas ou RMS. As velocidades foram associadas às profundidades médias dos respectivos intervalos.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.78\textwidth,height=0.72\textheight,keepaspectratio]{figuras/metodologia/figura-29-velocidade-profundidade-poco.png}
-  \caption{Curva de velocidade em função da profundidade no poço 1-BRSA-137-RJS.}
-  \label{fig:velocidade-profundidade-poco}
-  \fonte{Elaboração própria, com dados da ANP.}
-\end{figure}
+Para a conversão das medidas morfométricas, utilizou-se a curva suavizada por média móvel ponderada de três amostras, com pesos de 0,25 para as amostras adjacentes e 0,50 para a amostra central. Essa escolha buscou reduzir oscilações entre intervalos consecutivos e obter uma tendência mais contínua e estável para a definição de velocidades representativas dos intervalos sedimentares investigados. A suavização foi aplicada às velocidades intervalares, sem alterar sua natureza ou constituir uma estimativa de velocidade RMS. A curva obtida é apresentada nos resultados (Figura~\ref{fig:velocidade-profundidade-poco}).
 
-No poço 1-BRSA-127-RJS, a velocidade intervalar foi calculada entre as profundidades de 1.854 e 2.059 m, aproximadamente 23--228 m abaixo do fundo marinho, obtidas através de relatório do poço. A diferença de profundidade foi relacionada à diferença entre os tempos duplos de 2.425,68 e 2.693,94 ms:
+As profundidades dos pontos de controle foram referenciadas ao fundo marinho, e as velocidades foram interpoladas linearmente entre esses pontos. Entre o fundo marinho e o primeiro controle disponível, adotou-se uma extensão constante da velocidade mais rasa. A partir desse perfil, foi construída uma relação cumulativa entre profundidade e tempo duplo de percurso nos sedimentos, mediante integração da lentidão, correspondente ao inverso da velocidade:
+
+\begin{equation}
+T(z)=2000\int_0^z\frac{1}{v(\zeta)}\,d\zeta,
+\end{equation}
+\equationdescription{Relação cumulativa entre profundidade e tempo duplo de percurso}
+
+Em que $T(z)$ é o tempo duplo de percurso nos sedimentos, em milissegundos, $z$ é a profundidade abaixo do fundo marinho, em metros, e $v(\zeta)$ é a velocidade em função dessa profundidade, em metros por segundo. Essa relação, construída por script em \textit{Python\textsuperscript{\textregistered}} (\TextoModelo{Anexo a definir}), permitiu determinar as profundidades correspondentes aos tempos médios do topo e da base dos eventos.
+
+No poço 1-BRSA-127-RJS, as velocidades intervalares foram calculadas a partir das diferenças de profundidade e dos tempos duplos correspondentes, obtidos no relatório do poço:
 
 \begin{equation}
 v_{\mathrm{int}}=\frac{2000(z_2-z_1)}{t_2-t_1}
 \end{equation}
 \equationdescription{Velocidade intervalar}
 
-O resultado foi de 1.528,4 m/s. O fator 2000 considera a conversão de milissegundos para segundos e o percurso de ida e volta da onda.
+Em que $z_1$ e $z_2$ são as profundidades, em metros, e $t_1$ e $t_2$, os tempos duplos, em milissegundos. O fator 2000 incorpora a conversão de milissegundos para segundos e o percurso de ida e volta da onda. No intervalo entre 1.854 e 2.059~m, aproximadamente 23--228~m abaixo do fundo marinho, os tempos de 2.425,68 e 2.693,94~ms resultaram em uma velocidade intervalar de aproximadamente 1.528,4~m/s. Os demais intervalos disponíveis foram incorporados ao modelo, mantendo-se a velocidade constante dentro de cada intervalo e estendendo-se a velocidade mais rasa até o fundo marinho.
 
 O poço 3-BRSA-944A-RJS também foi avaliado, mas não integrou a estimativa central. Os dados disponíveis, identificados nos registros como velocidades RMS, representavam um intervalo mais amplo e profundo, sem equivalência direta com os intervalos rasos selecionados nos demais poços.
 
 \subsubsection{Ponderação pela distância aos depósitos}
 
-Foram utilizadas as distâncias horizontais entre o ponto central de cada MTD/MTC e os poços 137 e 127. A velocidade representativa de cada depósito foi calculada pela média ponderada pelo inverso da distância, com expoente igual a um:
+Foram utilizadas as distâncias horizontais entre o ponto central de cada depósito e os poços 1-BRSA-137-RJS e 1-BRSA-127-RJS. As velocidades equivalentes obtidas para o intervalo temporal de cada evento foram combinadas pela média ponderada pelo inverso da distância, com expoente igual a um:
 
 \begin{equation}
-\overline{v}_{\mathrm{MTD}}=\frac{\sum_i v_i/d_i}{\sum_i 1/d_i}
+\overline{v}_e=\frac{\sum_i v_{i,e}/d_{i,e}}{\sum_i 1/d_{i,e}},
 \end{equation}
-\equationdescription{Velocidade ponderada do MTD}
+\equationdescription{Velocidade ponderada do evento}
 
-Em que $v_i$ é a velocidade selecionada no poço e $d_i$, sua distância ao ponto central do depósito. Assim, os controles mais próximos receberam maior peso. Foi obtida uma velocidade constante para cada MTD/MTC, sem variação célula a célula. As distâncias calculadas e as velocidades ponderadas para cada MTD/MTC encontram-se no \TextoModelo{Anexo a definir}.
+Em que $v_{i,e}$ é a velocidade equivalente do intervalo do evento $e$ no poço $i$, e $d_{i,e}$, a distância horizontal entre esse poço e o ponto central do depósito. Dessa forma, os controles mais próximos receberam maior peso. Foi obtida uma velocidade espacialmente constante para cada evento, sem variação célula a célula. As distâncias, os pesos normalizados, as velocidades equivalentes em cada poço e as velocidades ponderadas encontram-se no Apêndice~\ref{ap:distancias-velocidades}.
 
 \subsubsection{Conversão dos intervalos sedimentares}
 
-As espessuras e volume dos eventos foram convertidas utilizando a diferença de TWT entre topo e base e a velocidade ponderada do respectivo MTD:
+As espessuras dos eventos foram convertidas utilizando a diferença de TWT entre topo e base e a velocidade ponderada do respectivo evento:
 
 \begin{equation}
-h=\frac{(t_{\mathrm{topo}}-t_{\mathrm{base}})v_{\mathrm{MTD}}}{2000}
+h=\frac{\lvert t_{\mathrm{base}}-t_{\mathrm{topo}}\rvert\,\overline{v}_e}{2000},
 \end{equation}
-\equationdescription{Conversão da espessura}
+\equationdescription{Conversão dos intervalos sedimentares}
 
-A mesma relação foi aplicada às espessuras máxima, média e mínima. Para o soterramento do topo, utilizou-se a diferença entre o tempo do topo e o tempo do fundo marinho, adotando a velocidade ponderada também como aproximação para a cobertura sedimentar. Comprimentos, áreas e perímetros, medidos em planta, não dependeram da conversão de velocidade.
+Em que $h$ é a espessura, em metros; $t_{\mathrm{base}}$ e $t_{\mathrm{topo}}$ são os tempos duplos de percurso da base e do topo, em milissegundos; e $\overline{v}_e$ é a velocidade ponderada do evento, em metros por segundo. O módulo da diferença temporal permite expressar a espessura positiva, independentemente da convenção de sinal utilizada na exportação. A relação foi aplicada às espessuras mínima, média e máxima.
+
+O volume foi calculado pela integração da espessura convertida sobre a área do depósito. Como a velocidade foi mantida constante em cada evento, essa operação equivale a multiplicar a integral da espessura temporal pelo fator $\overline{v}_e/2000$.
 
 \subsubsection{Procedimentos que envolveram a coluna d'água}
 
