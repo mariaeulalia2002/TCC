@@ -1840,7 +1840,7 @@ Nota: Hs corresponde à altura entre As e Bs; Ss corresponde à inclinação do 
 
 ### 5.5.8 Alturas totais de queda e inclinações
 
-A altura total de queda e as inclinações do declive não deformado e da superfície receptora foram comparadas entre os depósitos e eventos com medidas disponíveis. As tabelas apresentam as diferenças temporais utilizadas na conversão, os resultados convertidos e suas incertezas parciais. Para o evento D do MTC 2, foi adotado provisoriamente o ponto inicial do eixo 1 como origem comum das duas trajetórias, mantendo-se os respectivos pontos finais.
+A altura total de queda e as inclinações do declive não deformado e da superfície receptora foram comparadas entre os depósitos e eventos com medidas disponíveis. As tabelas apresentam as diferenças temporais utilizadas na conversão, os resultados convertidos e suas incertezas parciais. Para o evento D do MTC 2, o ponto inicial do eixo 1 foi adotado como origem comum das duas trajetórias, mantendo-se os respectivos pontos finais.
 
 #### 5.5.8.1 Altura total de queda
 
@@ -1942,8 +1942,6 @@ Para a configuração adotada, as frequências fundamentais medianas foram de 0,
 ### 5.7.2 Frequências secundárias
 
 Além do pico fundamental, centrado em torno de 0,9 Hz, foram identificados picos secundários nas curvas HVSR (Figuras 48 e 49). O pico secundário mais consistente ocorreu em torno de ${f}_{1}=2,68$ Hz nas duas datas analisadas. Esse valor é próximo ao terceiro harmônico das frequências fundamentais obtidas pelo processamento principal ($3{f}_{0}\approx 2,57$ Hz para 01/02/2020 e $3{f}_{0}\approx 2,62$ Hz para 29/02/2020), motivo pelo qual ${f}_{1}$ foi interpretado preferencialmente como uma possível resposta harmônica, e não como evidência isolada de uma interface adicional. Um segundo máximo, classificado como ${f}_{2}$, também foi identificado, porém apresentou maior variação entre as duas aquisições, ocorrendo em aproximadamente 8,11 Hz em 01/02/2020 e 6,77 Hz em 29/02/2020. Essa menor estabilidade entre as datas indica que ${f}_{2}$ deve ser interpretado com maior cautela e não foi utilizado, neste estudo, para estimativas de profundidade.
-
-PENDÊNCIA: preencher os valores de frequência que ainda não aparecem neste parágrafo antes da revisão final.
 
 de.
 
@@ -2143,7 +2141,7 @@ Tabela D.1 — Coordenadas dos extremos utilizados nos cálculos entre A e C.
 | MTC 2-D | Eixo 1 — A comum–C1 | 740.770,81 | 7.289.216,64 | 742.886,64 | 7.264.223,92 |
 | MTC 2-D | Eixo 2 — A comum–C2 | 740.770,81 | 7.289.216,64 | 752.202,64 | 7.275.546,87 |
 
-*Nota: no MTC 2-D, adotou-se provisoriamente o ponto inicial do eixo 1 como origem comum das duas trajetórias. As coordenadas são apresentadas conforme os dados fornecidos. O sistema de referência de coordenadas deve ser identificado na versão final.*
+*Nota: no MTC 2-D, o ponto A originalmente definido para o eixo 1 foi adotado como origem comum das duas trajetórias. As coordenadas são apresentadas conforme os dados fornecidos. O sistema de referência de coordenadas deve ser identificado na versão final.*
 
 Tabela D.2 — Coordenadas dos pontos utilizados nas inclinações do declive não deformado e da superfície receptora.
 

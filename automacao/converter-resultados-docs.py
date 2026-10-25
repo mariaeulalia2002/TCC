@@ -117,6 +117,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None) -> 
         cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
         if ri == 0:
             cells = [f"\\textbf{{{c}}}" for c in cells]
+            cells = [c.replace("Depósito/evento", "Depósito/\\newline evento") for c in cells]
         out.append("    " + " & ".join(cells) + r" \\")
         if ri == 0:
             out.append(r"    \midrule")
@@ -149,7 +150,10 @@ def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], append
             elif level == 2:
                 out += [f"\\section{{{inline(title, crossrefs=False)}}}", ""]
             elif level == 3:
-                out += [f"\\subsection{{{inline(title, crossrefs=False)}}}", ""]
+                out.append(f"\\subsection{{{inline(title, crossrefs=False)}}}")
+                if title.casefold() == "velocidades utilizadas na análise hvsr".casefold():
+                    out.append(r"\label{subsec:resultados-velocidades-hvsr}")
+                out.append("")
             else:
                 out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}", ""]
             i += 1
@@ -177,6 +181,7 @@ def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], append
                     f"  \\includegraphics[width=\\textwidth,height=0.78\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}",
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
                     f"  \\label{{fig:resultado-{num}}}",
+                    *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 30 else []),
                     r"\end{figure}",
                     "",
                 ]
@@ -209,6 +214,11 @@ def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], append
             continue
         if s.startswith("PENDÊNCIA:"):
             out += [r"\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{" + inline(s) + "}}", ""]
+            i += 1
+            continue
+        if s.startswith("*\\*"):
+            highlighted = s[3:-1] if s.endswith("*") else s[3:]
+            out += [r"\noindent\colorbox{yellow}{\parbox{0.94\linewidth}{" + inline(highlighted) + "}}", ""]
             i += 1
             continue
         if s.lower().startswith("apresentar "):
