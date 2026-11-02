@@ -30,3 +30,15 @@ Valores que permanecem pendentes de confirmação científica pela autora, sem a
 - Foi adicionado um conversor reproduzível em `automacao/converter-resultados-docs.py` para atualizar os resultados, as imagens e o Apêndice D a partir das exportações do Google Docs.
 
 Pendências mantidas para preenchimento posterior pela autora: resultados da análise sísmica/estratigráfica, compartimentação em domínios e observações destacadas sobre valores que ainda exigem confirmação científica.
+
+## 2 de novembro de 2026 — nova organização dos resultados e configuração interna
+
+- O Google Docs permaneceu como fonte principal e foi exportado novamente para DOCX e Markdown.
+- A hierarquia dos resultados e da discussão foi reorganizada e a numeração das figuras foi conferida até a Figura 88.
+- O Quadro 1 recebeu legenda descritiva e foi convertido para o ambiente de quadro no LaTeX, com os seis exemplos sísmicos internos.
+- Foram acrescentadas e vinculadas as referências de Ford et al. (2021), Ford et al. (2023) e Hercos et al. (2023), com DOI conferido nas fontes editoriais.
+- O conversor passou a sincronizar os capítulos de Resultados e Discussão, além do Apêndice D, e a reconhecer figuras com travessão curto ou longo.
+- As observações destacadas foram preservadas. A pendência da classificação continua explicitamente marcada na Seção 5.9.
+- O PDF LaTeX foi recompilado após a sincronização.
+
+Pendência visual identificada: a legenda da Figura 80 está presente, mas a imagem correspondente não foi encontrada na exportação do Google Docs.

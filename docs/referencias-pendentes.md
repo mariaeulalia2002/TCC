@@ -7,3 +7,10 @@
 - **Figuras da metodologia ainda não inseridas** — permanecem marcações para o fluxograma, o cubo sísmico, exemplos de interpretação, perfis e pontos A–B–C. Elas não receberam números definitivos porque ainda não há imagens correspondentes no Google Docs.
 - **Anexos metodológicos** — os trechos que mencionam scripts e tabelas ainda usam “Anexo a definir”. Confirmar os arquivos e a distinção entre apêndice (produção da autora) e anexo (material de terceiros) antes da numeração final.
 - **Dados de interpolação e incerteza espacial** — os relatórios de interpolação, RMSE/MAE e a componente espacial quantitativa continuam marcados como pendências no texto; não foram inventados valores.
+
+## Conferência de 2 de novembro de 2026
+
+- As referências de **Ford et al. (2021)**, **Ford et al. (2023)** e **Hercos et al. (2023)** foram identificadas, conferidas e incluídas no Google Docs e no banco BibTeX.
+- A chamada “Comissão Internacional de Estratigrafia (2026)” corresponde à referência institucional já cadastrada como *International Commission on Stratigraphy*; não é uma lacuna bibliográfica.
+- A auditoria autor–ano não encontrou outra citação inequívoca sem entrada na lista final. Permanecem, contudo, as pendências de confirmação científica já listadas acima.
+- **Figura 80** — existe chamada e legenda para a compartimentação do evento A do MTC 1, mas não há imagem associada na exportação atual do Google Docs.

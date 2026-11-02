@@ -2310,8 +2310,7 @@ Em outras seções, o falhamento é mais evidente abaixo dos depósitos, sem des
 
 ### 6.2.2 Fatores condicionantes e possíveis gatilhos das rupturas
 
-### PRECISA REVISAR BASTANTEe
-
+PRECISA REVISAR BASTANTE  
 Os possíveis mecanismos de origem devem ser discutidos considerando a diferença entre fatores que tornam o talude progressivamente suscetível à ruptura e perturbações que desencadeiam o movimento. Essa distinção não é rígida, pois um mesmo processo pode exercer ambas as funções conforme sua intensidade e duração. Além disso, a ruptura pode resultar da interação entre diferentes mecanismos, sem que seja possível individualizar um único gatilho (Lee et al., 2007; Scarselli, 2020).  
 Para os MTDs 1 e 2 e, provavelmente, para o MTC 1-B, a hipótese principal envolve instabilidades relacionadas ao Canal de Santos. A evolução do canal pode favorecer rupturas por erosão de suas margens, remoção de suporte e aumento local da inclinação. A atuação de correntes e fluxos sedimentares também pode modificar a geometria dessas margens e contribuir para sua desestabilização (Lee et al., 2007; Scarselli, 2020). As relações interpretadas permitem associar esses depósitos ao sistema do canal, embora não determinem se a ruptura foi desencadeada por um episódio erosivo específico, por deformação progressiva das encostas ou pela combinação com outros processos.  
 Essa interpretação difere daquela proposta para os eventos MTC 1-A e MTC 1-C, que envolvem movimentos de abrangência mais regional e posterior deposição no canal. Para esses eventos, o Canal de Santos é interpretado principalmente como elemento receptor e condicionante do transporte e da acumulação. Sua presença no interior do canal não permite atribuir a origem das rupturas à instabilidade de suas margens. A identificação dos mecanismos desencadeadores depende, nesses casos, da caracterização das áreas-fonte e de sua conexão com os depósitos preservados.  

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 import re
 import shutil
 import sys
@@ -12,6 +13,7 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 DOCX = ROOT / "docs" / "template-tcc-geologia-ufsc.docx"
 MARKDOWN = ROOT / "docs" / "google-docs-latest.md"
+RAW_MARKDOWN = ROOT / "tmp" / "google-docs-final-2026-11-02.md"
 RESULTADOS = ROOT / "latex" / "capitulos" / "05-resultados.tex"
 DISCUSSAO = ROOT / "latex" / "capitulos" / "06-discussao.tex"
 APENDICE_D = ROOT / "latex" / "pos-textuais" / "apendice-d.tex"
@@ -121,6 +123,24 @@ def image_targets(docx: Path) -> dict[int, tuple[str, bytes]]:
             member = "word/" + target.replace("\\", "/")
             out[i] = (Path(target).suffix.lower(), zf.read(member))
         return out
+
+
+def image_targets_markdown(markdown: Path) -> dict[int, tuple[str, bytes]]:
+    """Read Google Docs image definitions without relying on DOCX relationship order."""
+    out: dict[int, tuple[str, bytes]] = {}
+    pattern = re.compile(
+        r"^\[image(\d+)\]:\s*<data:image/(png|jpe?g);base64,([^>]+)>\s*$"
+    )
+    with markdown.open("r", encoding="utf-8") as source:
+        for line in source:
+            match = pattern.match(line.rstrip("\r\n"))
+            if not match:
+                continue
+            number = int(match.group(1))
+            subtype = match.group(2).lower()
+            extension = ".jpg" if subtype in {"jpg", "jpeg"} else ".png"
+            out[number] = (extension, base64.b64decode(match.group(3)))
+    return out
 
 
 def table_tex(rows: list[list[str]], caption: str | None, label: str | None, environment: str = "table") -> list[str]:
@@ -287,7 +307,7 @@ def main() -> None:
         source_md = Path(sys.argv[1])
         MARKDOWN.write_text(source_md.read_text(encoding="utf-8"), encoding="utf-8")
     text = MARKDOWN.read_text(encoding="utf-8")
-    images = image_targets(DOCX)
+    images = image_targets_markdown(RAW_MARKDOWN) if RAW_MARKDOWN.exists() else image_targets(DOCX)
     resultados = between_headings(
         text,
         r"^#\s+\*\*5\s+RESULTADOS\*\*\s*$",
