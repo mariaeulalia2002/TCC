@@ -198,7 +198,7 @@ def parse_markdown(
                 out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}", ""]
             i += 1
             continue
-        mfig = re.match(r"Figura\s+(\d+)\s+[—-]\s*(.*)", s)
+        mfig = re.match(r"Figura\s+(\d+)\s+[—–-]\s*(.*)", s)
         if mfig:
             num, caption = int(mfig.group(1)), mfig.group(2).replace("\\.", ".")
             if pending_image is None or pending_image not in image_map:
@@ -223,7 +223,7 @@ def parse_markdown(
             pending_image = None
             i += 1
             continue
-        mtab = re.match(r"(Tabela|Quadro)\s+((?:D\.)?\d+)\s+[—-]\s*(.*)", s)
+        mtab = re.match(r"(Tabela|Quadro)\s+((?:D\.)?\d+)\s+[—–-]\s*(.*)", s)
         if mtab:
             kind, n, cap = mtab.group(1), mtab.group(2), mtab.group(3).replace("\\.", ".")
             prefix = "tab" if kind == "Tabela" else "qua"
