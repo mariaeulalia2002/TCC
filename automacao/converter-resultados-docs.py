@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCX = ROOT / "docs" / "template-tcc-geologia-ufsc.docx"
 MARKDOWN = ROOT / "docs" / "google-docs-latest.md"
 RESULTADOS = ROOT / "latex" / "capitulos" / "05-resultados.tex"
+DISCUSSAO = ROOT / "latex" / "capitulos" / "06-discussao.tex"
 APENDICE_D = ROOT / "latex" / "pos-textuais" / "apendice-d.tex"
 FIGDIR = ROOT / "latex" / "figuras" / "resultados"
 
@@ -30,9 +31,20 @@ def between(text: str, start: str, end: str) -> str:
     return text[a:b]
 
 
+def between_headings(text: str, start_pattern: str, end_pattern: str) -> str:
+    """Return a Markdown section, accepting Google Docs bold heading markers."""
+    start = re.search(start_pattern, text, flags=re.MULTILINE)
+    if not start:
+        raise ValueError(f"Cabeçalho inicial não encontrado: {start_pattern}")
+    end = re.search(end_pattern, text[start.end():], flags=re.MULTILINE)
+    if not end:
+        raise ValueError(f"Cabeçalho final não encontrado: {end_pattern}")
+    return text[start.start():start.end() + end.start()]
+
+
 def clean_heading(text: str) -> str:
     text = re.sub(r"^#+\s*", "", text).strip()
-    text = text.replace("**", "").strip()
+    text = text.strip("*").strip()
     text = re.sub(r"^(?:\d+(?:\.\d+)*|D\.\d+)\s+", "", text)
     return text.strip()
 
@@ -56,9 +68,13 @@ def protect_math(text: str):
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_")
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
+    text = re.sub(r"\[([^\]]+)\]\(https?://[^)]+\)", r"\1", text)
     text = text.replace("(Konno & Ohmachi, 1998)", r"\cite{konno1998}")
     text = text.replace("SESAME (2004)", r"SESAME \cite{sesame2004}")
     text = text.replace("(Vantassel et al., 2021)", r"\cite{vantassel2021}")
+    text = text.replace("Ford et al. (2021)", r"\citeonline{ford2021}")
+    text = text.replace("Ford et al. (2023)", r"\citeonline{ford2023}")
+    text = text.replace("Hercos et al. (2023)", r"\citeonline{hercos2023}")
     text, maths = protect_math(text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"\\textbf{\1}", text)
     text = re.sub(r"\*([^*]+)\*", r"\\textit{\1}", text)
@@ -67,9 +83,11 @@ def inline(text: str, crossrefs: bool = True) -> str:
         text = re.sub(r"\bFigura\s+(\d+)", r"Figura~\\ref{fig:resultado-\1}", text)
         text = re.sub(r"\bTabelas\s+(\d+)\s+e\s+(\d+)", r"Tabelas~\\ref{tab:resultado-\1} e \\ref{tab:resultado-\2}", text)
         text = re.sub(r"\bTabela\s+(\d+)", r"Tabela~\\ref{tab:resultado-\1}", text)
+        text = re.sub(r"\bQuadro\s+(\d+)", r"Quadro~\\ref{qua:resultado-\1}", text)
         text = text.replace("Apêndice D", r"Apêndice~\ref{ap:dados-morfometria}")
     placeholders = {}
-    for i, cmd in enumerate(re.findall(r"\\(?:cite|ref|textbf|textit)(?:online)?\{[^}]+\}", text)):
+    command_pattern = r"\\(?:cite|ref|textbf|textit)(?:online)?\{[^}]+\}|\\includegraphics(?:\[[^\]]+\])?\{[^}]+\}"
+    for i, cmd in enumerate(re.findall(command_pattern, text)):
         key = f"@@CMD{i}@@"
         placeholders[key] = cmd
         text = text.replace(cmd, key, 1)
@@ -90,7 +108,10 @@ def image_targets(docx: Path) -> dict[int, tuple[str, bytes]]:
         relroot = ET.fromstring(zf.read("word/_rels/document.xml.rels"))
         rels = {r.attrib["Id"]: r.attrib["Target"] for r in relroot}
         found: list[str] = []
-        for p in root.findall(".//w:body/w:p", NS):
+        body = root.find(".//w:body", NS)
+        if body is None:
+            return {}
+        for p in body.findall(".//w:p", NS):
             for blip in p.findall(".//a:blip", NS):
                 rid = blip.attrib.get(f"{{{NS['r']}}}embed")
                 if rid and rid in rels:
@@ -102,12 +123,13 @@ def image_targets(docx: Path) -> dict[int, tuple[str, bytes]]:
         return out
 
 
-def table_tex(rows: list[list[str]], caption: str | None, label: str | None) -> list[str]:
+def table_tex(rows: list[list[str]], caption: str | None, label: str | None, environment: str = "table") -> list[str]:
     if not rows:
         return []
     cols = max(len(r) for r in rows)
     spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
-    out = [r"\begin{table}[htbp]", r"  \centering"]
+    placement = "[htbp]" if environment == "table" else ""
+    out = [f"\\begin{{{environment}}}{placement}", r"  \centering"]
     if caption:
         out.append(f"  \\caption{{{inline(caption, crossrefs=False)}}}")
     if label:
@@ -121,14 +143,20 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None) -> 
         out.append("    " + " & ".join(cells) + r" \\")
         if ri == 0:
             out.append(r"    \midrule")
-    out += [r"    \bottomrule", r"  \end{tabularx}", r"\end{table}"]
+    out += [r"    \bottomrule", r"  \end{tabularx}", f"\\end{{{environment}}}"]
     return out
 
 
-def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], appendix: bool = False) -> str:
+def parse_markdown(
+    section: str,
+    image_map: dict[int, tuple[str, bytes]],
+    appendix: bool = False,
+    chapter_number: str = "5",
+    chapter_title: str = "Resultados",
+) -> str:
     lines = section.splitlines()
     out: list[str] = []
-    pending_caption: tuple[str, str] | None = None
+    pending_caption: tuple[str, str, str] | None = None
     pending_image: int | None = None
     table_count = 0
     i = 0
@@ -138,15 +166,27 @@ def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], append
         if not s:
             i += 1
             continue
+        mimg = re.search(r"\[image(\d+)\]", s)
+        if mimg:
+            pending_image = int(mimg.group(1))
+            i += 1
+            continue
         if s.startswith("#"):
             level = len(s) - len(s.lstrip("#"))
+            raw_title = re.sub(r"^#+\s*", "", s).strip().strip("*").strip()
             title = clean_heading(s)
+            chapter_heading = f"{chapter_number} {chapter_title.upper()}"
+            if not (raw_title == chapter_heading or re.match(rf"^{re.escape(chapter_number)}(?:\.\d+)*\s+\S", raw_title)):
+                out += [inline(title), ""]
+                i += 1
+                continue
             if level == 1:
                 if appendix:
                     title = re.sub(r"^APÊNDICE D\s*[—-]\s*", "", title, flags=re.IGNORECASE)
                     out += [f"\\chapter{{{inline(title, crossrefs=False)}}}\\label{{ap:dados-morfometria}}", ""]
                 else:
-                    out += [r"\chapter{Resultados}\label{cap:resultados}", ""]
+                    label = "resultados" if chapter_number == "5" else "discussao"
+                    out += [f"\\chapter{{{chapter_title}}}\\label{{cap:{label}}}", ""]
             elif level == 2:
                 out += [f"\\section{{{inline(title, crossrefs=False)}}}", ""]
             elif level == 3:
@@ -156,11 +196,6 @@ def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], append
                 out.append("")
             else:
                 out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}", ""]
-            i += 1
-            continue
-        mimg = re.search(r"\[image(\d+)\]", s)
-        if mimg:
-            pending_image = int(mimg.group(1))
             i += 1
             continue
         mfig = re.match(r"Figura\s+(\d+)\s+[—-]\s*(.*)", s)
@@ -188,10 +223,12 @@ def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], append
             pending_image = None
             i += 1
             continue
-        mtab = re.match(r"Tabela\s+((?:D\.)?\d+)\s+[—-]\s*(.*)", s)
+        mtab = re.match(r"(Tabela|Quadro)\s+((?:D\.)?\d+)\s+[—-]\s*(.*)", s)
         if mtab:
-            n, cap = mtab.group(1), mtab.group(2).replace("\\.", ".")
-            pending_caption = (cap, f"tab:resultado-{n.replace('.', '-')}")
+            kind, n, cap = mtab.group(1), mtab.group(2), mtab.group(3).replace("\\.", ".")
+            prefix = "tab" if kind == "Tabela" else "qua"
+            environment = "table" if kind == "Tabela" else "quadro"
+            pending_caption = (cap, f"{prefix}:resultado-{n.replace('.', '-')}", environment)
             i += 1
             continue
         if s.startswith("|"):
@@ -199,10 +236,25 @@ def parse_markdown(section: str, image_map: dict[int, tuple[str, bytes]], append
             while i < len(lines) and lines[i].strip().startswith("|"):
                 cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
                 if not all(re.fullmatch(r":?-{3,}:?", c) for c in cells):
+                    converted = []
+                    for cell in cells:
+                        def table_image(match):
+                            image_number = int(match.group(1))
+                            if image_number not in image_map:
+                                return "[imagem não encontrada]"
+                            ext, data = image_map[image_number]
+                            if ext not in {".png", ".jpg", ".jpeg", ".pdf"}:
+                                ext = ".png"
+                            filename = f"quadro-imagem-{image_number:03d}{ext}"
+                            FIGDIR.mkdir(parents=True, exist_ok=True)
+                            (FIGDIR / filename).write_bytes(data)
+                            return rf"\includegraphics[width=\linewidth]{{figuras/resultados/{filename}}}"
+                        converted.append(re.sub(r"!\[[^\]]*\]\[image(\d+)\]", table_image, cell))
+                    cells = converted
                     rows.append(cells)
                 i += 1
-            cap, lab = pending_caption if pending_caption else (None, None)
-            out += table_tex(rows, cap, lab) + [""]
+            cap, lab, environment = pending_caption if pending_caption else (None, None, "table")
+            out += table_tex(rows, cap, lab, environment) + [""]
             pending_caption = None
             table_count += 1
             continue
@@ -236,11 +288,29 @@ def main() -> None:
         MARKDOWN.write_text(source_md.read_text(encoding="utf-8"), encoding="utf-8")
     text = MARKDOWN.read_text(encoding="utf-8")
     images = image_targets(DOCX)
-    resultados = between(text, "# **5 RESULTADOS**", "# **6 DISCUSSÃO**")
-    apendice_d = between(text, "# **APÊNDICE D", "# REFERÊNCIAS")
+    resultados = between_headings(
+        text,
+        r"^#\s+\*\*5\s+RESULTADOS\*\*\s*$",
+        r"^#\s+\*\*6\s+DISCUSSÃO\*\*\s*$",
+    )
+    discussao = between_headings(
+        text,
+        r"^#\s+\*\*6\s+DISCUSSÃO\*\*\s*$",
+        r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
+    )
+    apendice_d = between_headings(
+        text,
+        r"^#\s+\*\*APÊNDICE D\b.*$",
+        r"^#\s+(?:\*\*)?REFERÊNCIAS(?:\*\*)?\s*$",
+    )
     RESULTADOS.write_text(parse_markdown(resultados, images), encoding="utf-8")
+    DISCUSSAO.write_text(
+        parse_markdown(discussao, images, chapter_number="6", chapter_title="Discussão"),
+        encoding="utf-8",
+    )
     APENDICE_D.write_text(parse_markdown(apendice_d, images, appendix=True), encoding="utf-8")
     print(f"Resultados: {RESULTADOS}")
+    print(f"Discussão: {DISCUSSAO}")
     print(f"Apêndice D: {APENDICE_D}")
 
 
