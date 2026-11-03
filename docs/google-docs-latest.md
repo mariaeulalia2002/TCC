@@ -2154,9 +2154,9 @@ Figura 78 – Compartimentação do MTD 2: (a–b) seção sísmica IL 11286 e m
 
 Figura 79 – Compartimentação do MTD 3 em domínios: (a-b) seção sísmica IL 8510 e mapa do MTD 3 
 
-Figura 80 – Compartimentação do evento A do MTC 1 em domínios: (a) seção sísmica IL 9878; (b) distribuição dos domínios em planta. A cicatriz de origem não foi identificada na área de estudo. 
-
 ![][image90]
+
+Figura 80 – Compartimentação do evento A do MTC 1 em domínios: (a) seção sísmica IL 9878; (b) distribuição dos domínios em planta. A cicatriz de origem não foi identificada na área de estudo. 
 
 Figura 81 – Compartimentação do evento C do MTC 1 em domínios: (a) seção sísmica IL 9878; (b) distribuição dos domínios em planta. A cicatriz de origem não foi identificada na área de estudo. 
 
@@ -2653,3 +2653,100 @@ Tabela 48 — Intervalos topo–base e velocidades representativas utilizadas na
 | Regional paleo | 262,787–359,340 | 1.655,91 | 1.761,10 | 1.707,62 |
 | Regional abaixo da Recorrência | Herdado do Regional paleo | — | — | 1.707,62 |
 | Recorrência | 265,065–339,015 | 1.646,21 | 1.730,96 | 1.715,30 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
