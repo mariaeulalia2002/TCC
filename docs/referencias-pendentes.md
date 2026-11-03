@@ -13,4 +13,4 @@
 - As referências de **Ford et al. (2021)**, **Ford et al. (2023)** e **Hercos et al. (2023)** foram identificadas, conferidas e incluídas no Google Docs e no banco BibTeX.
 - A chamada “Comissão Internacional de Estratigrafia (2026)” corresponde à referência institucional já cadastrada como *International Commission on Stratigraphy*; não é uma lacuna bibliográfica.
 - A auditoria autor–ano não encontrou outra citação inequívoca sem entrada na lista final. Permanecem, contudo, as pendências de confirmação científica já listadas acima.
-- **Figura 80** — existe chamada e legenda para a compartimentação do evento A do MTC 1, mas não há imagem associada na exportação atual do Google Docs.
+- **Figura 80 — resolvida em 03/11/2026:** a imagem estava presente como objeto flutuante no Google Docs; foi reposicionada antes da legenda e sincronizada com o LaTeX.

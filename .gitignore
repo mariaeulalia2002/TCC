@@ -5,6 +5,8 @@ Thumbs.db
 ~$*
 *.tmp
 tmp/
+__pycache__/
+*.pyc
 
 # Saídas de compilação LaTeX não selecionadas para versionamento
 latex/*.aux
