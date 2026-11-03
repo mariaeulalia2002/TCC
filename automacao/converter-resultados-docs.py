@@ -161,7 +161,7 @@ def convert_citations(text: str) -> str:
 
 
 def inline(text: str, crossrefs: bool = True) -> str:
-    text = text.strip().replace("\\.", ".").replace("\\_", "_")
+    text = text.strip().replace("\\.", ".").replace("\\_", "_").replace("\\=", "=")
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
     text = re.sub(r"\[([^\]]+)\]\(https?://[^)]+\)", r"\1", text)
     text = text.replace(
@@ -240,6 +240,21 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
         return []
     if environment == "quadro" and len(rows) > 4:
         header, body = rows[0], rows[1:]
+        if len(header) == 5:
+            column_spec = (
+                r">{\raggedright\arraybackslash}p{0.10\linewidth} "
+                r">{\raggedright\arraybackslash}p{0.14\linewidth} "
+                r">{\raggedright\arraybackslash}p{0.18\linewidth} "
+                r">{\raggedright\arraybackslash}X "
+                r">{\centering\arraybackslash}p{0.18\linewidth}"
+            )
+        else:
+            column_spec = (
+                r">{\raggedright\arraybackslash}p{0.15\linewidth} "
+                r">{\raggedright\arraybackslash}X "
+                r">{\raggedright\arraybackslash}p{0.20\linewidth} "
+                r">{\centering\arraybackslash}p{0.25\linewidth}"
+            )
         midpoint = (len(body) + 1) // 2
         parts = [body[:midpoint], body[midpoint:]]
         out: list[str] = []
@@ -259,7 +274,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
                 r"  \scriptsize",
                 r"  \setlength{\tabcolsep}{3pt}",
                 r"  \renewcommand{\arraystretch}{1.08}",
-                r"  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.15\linewidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{0.20\linewidth} >{\centering\arraybackslash}p{0.25\linewidth}}",
+                f"  \\begin{{tabularx}}{{\\linewidth}}{{{column_spec}}}",
                 r"    \toprule",
                 "    " + " & ".join(f"\\textbf{{{inline(c, crossrefs=False)}}}" for c in header) + " \\\\",
                 r"    \midrule",
