@@ -331,7 +331,8 @@ def parse_markdown(
             title = clean_heading(s)
             chapter_heading = f"{chapter_number} {chapter_title.upper()}"
             is_appendix_heading = appendix and raw_title.upper().startswith("APÊNDICE D")
-            if not (is_appendix_heading or raw_title == chapter_heading or re.match(rf"^{re.escape(chapter_number)}(?:\.\d+)*\s+\S", raw_title)):
+            is_acknowledgements = raw_title == "8 AGRADECIMENTOS"
+            if not (is_appendix_heading or is_acknowledgements or raw_title == chapter_heading or re.match(rf"^{re.escape(chapter_number)}(?:\.\d+)*\s+\S", raw_title)):
                 out += [inline(title), ""]
                 i += 1
                 continue
@@ -339,8 +340,14 @@ def parse_markdown(
                 if appendix:
                     title = re.sub(r"^APÊNDICE D\s*[—-]\s*", "", title, flags=re.IGNORECASE)
                     out += [f"\\chapter{{{inline(title, crossrefs=False)}}}\\label{{ap:dados-morfometria}}", ""]
+                elif is_acknowledgements:
+                    out += [r"\chapter{Agradecimentos}\label{cap:agradecimentos}", ""]
                 else:
-                    label = "resultados" if chapter_number == "5" else "discussao"
+                    label = {
+                        "5": "resultados",
+                        "6": "discussao",
+                        "7": "conclusoes",
+                    }.get(chapter_number, slug(chapter_title))
                     out += [f"\\chapter{{{chapter_title}}}\\label{{cap:{label}}}", ""]
                     if chapter_number == "5":
                         out += [r"\setcounter{figure}{28}", ""]
@@ -481,7 +488,7 @@ def main() -> None:
     conclusoes = between_headings(
         text,
         r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
-        r"^#\s+Apêndice A-\s+Link repositório GitHub\s*$",
+        r"^#\s+(?:\*\*)?Apêndice A-\s+Link repositório GitHub(?:\*\*)?\s*$",
     )
     apendice_d = between_headings(
         text,

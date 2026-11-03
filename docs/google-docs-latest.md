@@ -278,14 +278,14 @@ Equação 43 — Propagação da incerteza da profundidade
 SUMÁRIO  
 *Atualize este sumário no Word ou insira um sumário automático no Google Docs.*
 
-# 1 INTRODUÇÃO
+# **1 INTRODUÇÃO**
 
 Movimentos de massa submarinos constituem mecanismos frequentes e altamente eficientes de transferência de sedimentos da plataforma continental e do talude para bacias oceânicas profundas, processo conhecido como  transposição de sedimentos (*sediment bypassing)* (HAMPTON *et al.*, 1996). Em um único evento, volumes expressivos de sedimento podem ser mobilizados e transportados por centenas de quilômetros, inclusive em taludes de baixa inclinação, entre 0,5° e 3° (HAMPTON *et al.*, 1996).  
 A estabilidade do substrato marinho é controlada pela interação entre condições geológicas, tectônicas e oceanográficas, que regulam a atuação dos fatores condicionantes e desencadeadores de instabilidades em determinada área (HAMPTON *et al.*, 1996). A magnitude que esses eventos podem atingir é exemplificada pelo Deslizamento de Storegga, ocorrido na margem continental da Noruega, que mobilizou mais de 3.000 km³ de sedimentos e gerou um tsunami que atingiu as costas adjacentes com alturas estimadas entre 6 e 20 m (BONDEVIK *et al.*, 2005, 2012).  Porém, mesmo eventos de menor escala podem danificar plataformas de petróleo, dutos e cabos submarinos (TAPPIN *et al.*, 2001).  
 Nas últimas décadas, o aumento da disponibilidade e da resolução de dados geofísicos marinhos profundos (*offshore*) ampliou a identificação e a caracterização de movimentos de massa submarinos, incluindo seus mecanismos de ruptura, transporte e deposição. No Brasil, esse avanço ocorreu paralelamente à expansão da exploração de petróleo em águas profundas e dos potenciais impactos desses processos sobre infraestruturas submarinas e campos petrolíferos (BORGES *et al.*, 2015; KOWSMANN *et al.*, 2015).   
 Nesse contexto, este trabalho apresenta uma caracterização de depósitos (*Mass- transport deposits \-* MTD) e complexos (*Mass- transport complexes-* MTC) de transporte de massa na porção norte da Bacia de Santos. A análise baseou-se em parâmetros morfométricos e em critérios de classificação que consideram, principalmente, o número de eventos envolvidos (CLARE *et al.*, 2018), a relação entre os depósitos e suas áreas-fonte (MOSCARDELLI & WOOD, 2008), o possível mecanismo gatilho e o grau de confinamento dos depósitos (FREY-MARTÍNEZ *et al.*, 2006; GAMBOA & ALVES, 2016). Complementarmente, em uma porção da área de estudo, aplicou-se a técnica *Horizontal-to-Vertical Spectral Ratio* (HVSR) (NAKAMURA, 1989\) a registros de sismógrafos de fundo oceânico (*Ocean Bottom Seismometers* \- OBS), com o objetivo de identificar a frequência fundamental de ressonância e estimar a profundidade do primeiro contraste significativo de impedância na subsuperfície. Essa informação foi utilizada como subsídio à análise da estrutura interna rasa e à comparação entre as áreas associadas aos eventos investigados. 
 
-## 1.1 Objetivos
+## **1.1 Objetivos**
 
 ### 1.1.1 Objetivo geral
 
@@ -301,15 +301,15 @@ Caracterizar,  sob aspectos geométricos, morfométricos, estratigráficos e cla
 * Correlacionar os depósitos/complexos com idade de sedimentos datados na área de estudo;  
 * Estimar a profundidade do primeiro contraste significativo de impedância na subsuperfície por meio da técnica HVSR,
 
-## 1.2 Justificativa
+## **1.2 Justificativa**
 
 Apesar de serem menos estudados quando comparado aos deslizamentos terrestres, os movimentos de massa em ambiente marinho também são importantes em termos sociais, econômicos e ecológicos (CLARE *et al.*, 2018), uma vez que são fontes potenciais a gerar danos (VANNESTE *et al.*, 2014). Frequentemente, esses deslizamentos submarinos geram fluxos de dezenas a centenas de quilômetros, capazes de danificar a infraestrutura estratégica no fundo do mar, como cabos de telecomunicações, plataformas de produção e dutos de hidrocarbonetos (POPE *et al.*, 2017), os quais estão presentes na região norte da Bacia de Santos.   
 Sob soterramento, os depósitos de deslizamentos subaquáticos são elementos importantes nos sistemas petrolíferos, pois influenciam a distribuição dos reservatórios (KNELLER *et al.*, 2016), podem atuar como selos (CARDONA *et al.*, 2016\) e também como potenciais reservatórios (MECKEL, 2011).  
 Um dos maiores desafios de estudos sobre transportes de massa submarinos é a sua natureza, em mar aberto e longe da costa, o que dificulta a aquisição dos dados bem como a falta de informação consistente, por vezes, de baixa resolução (CLARE *et al.*, 2018). Assim, convergir conhecimentos da atividade sismoestratigráfica e sismológica, visando a identificação e caracterização de movimentos de massa, dará suporte para avançar no entendimento de processos atuantes na margem continental sudeste e, consequentemente, no planejamento de ações da indústria do petróleo na implantação e monitoramento de infraestrutura de exploração e produção de hidrocarbonetos, na região norte da Bacia de Santos..
 
-# 2 FUNDAMENTAÇÃO TEÓRICA
+# **2 FUNDAMENTAÇÃO TEÓRICA**
 
-## 2.1 Sísmica de reflexão
+## **2.1 Sísmica de reflexão**
 
 A sísmica de reflexão é um método geofísico eficaz para mapear a geologia de uma área, especialmente em ambientes submersos, a partir de fontes artificiais. O método baseia-se na propagação de pulsos sísmicos emitidos próximos à superfície da coluna d’água em direção ao interior da Terra. Ao encontrarem interfaces entre camadas litológicas com diferentes impedâncias acústicas, parte da energia das ondas é refletida e retorna à superfície (TÓTH, 2011).  
 A impedância acústica (Z) corresponde ao produto entre a densidade (ρ) do meio e a velocidade de propagação (c) da onda, considerando incidência normal à interface: Z \= ρc (YILMAZ, 2001). A reflexão ocorre, portanto, em interfaces com contrastes significativos de impedância acústica. Parte da energia é refletida, enquanto outra parte é transmitida e segue até encontrar novas interfaces, repetindo os processos de reflexão e transmissão (TÓTH, 2011).  
@@ -325,7 +325,7 @@ C(t) \= cos(φ(t)),    \[1\]
 em que C(t) corresponde ao cosseno da fase instantânea e φ(t) representa a fase instantânea do sinal sísmico no tempo t. A fase instantânea é determinada a partir do sinal analítico, cuja parte imaginária é obtida por meio da transformada de Hilbert. Esse procedimento permite separar as informações de fase e amplitude do traço sísmico (CHOPRA & MARFURT, 2007). O cálculo do cosseno da fase torna-se, assim, independente dos valores de amplitude, promovendo a normalização do traço sísmico e reduzindo as variações relacionadas à intensidade do sinal (MENESES, 2010).   
 Com a redução da influência dos contrastes de amplitude, esse atributo evidencia a geometria e a configuração dos refletores, permitindo que feições anteriormente pouco perceptíveis sejam visualizadas com maior clareza (CHOPRA & MARFURT, 2007). Dessa forma, o cosseno da fase instantânea contribui para realçar a continuidade lateral dos refletores, as mudanças no padrão de acamadamento e os limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados (ALVARENGA, 2016).
 
-## 2.2 Sismoestratigrafia
+## **2.2 Sismoestratigrafia**
 
 A sismoestratigrafia é um método de interpretação de dados sísmicos empregado na análise das relações estratigráficas e geometrias deposicionais em subsuperfície. Com base na configuração, continuidade e distribuição dos refletores, permite reconhecer unidades deposicionais, superfícies estratigráficas e mudanças nos padrões de sedimentação (RIBEIRO, 2001).  
 As reflexões sísmicas resultam predominantemente de contrastes de impedância acústica entre materiais geológicos. Dessa forma, os refletores podem representar superfícies associadas a eventos ou intervalos temporalmente correlacionáveis, sem necessariamente corresponderem a mudanças litológicas. Essas superfícies incluem superfícies estratais, que em geral acompanham os planos de acamadamento, e discordâncias, relacionadas à erosão ou à ausência de deposição. As discordâncias delimitam pacotes geneticamente distintos e permitem reconhecer sequências deposicionais, definidas como sucessões relativamente concordantes de estratos geneticamente relacionados, limitadas por discordâncias ou suas concordâncias correlativas (RIBEIRO, 2001; VAIL & MITCHUM JR., 1977; MITCHUM JR. *et al.*, 1977).
@@ -368,7 +368,7 @@ Figura 4 — Padrões de configuração interna dos refletores em geometrias de 
 
 Fonte: adaptado de MITCHUM JR. *et al.* (1977).
 
-## 2.3 Movimentos de massa submarinos
+## **2.3 Movimentos de massa submarinos**
 
 Os movimentos ou transporte de massa submarinos correspondem à remobilização e ao deslocamento de sedimentos ou rochas ao longo do fundo marinho sob a ação da gravidade. Ocorrem quando as forças que promovem o deslocamento superam a resistência ao cisalhamento do material, causando a ruptura do pacote sedimentar e seu transporte para porções mais profundas da bacia. Embora compartilhem princípios mecânicos com movimentos de massa subaéreos, no ambiente marinho são influenciados pela saturação dos sedimentos, pelo excesso de poropressão e pela interação entre a massa deslocada e a água (HAMPTON *et al.*, 1996).   
 Nas margens continentais, esses processos desempenham papel relevante na redistribuição de sedimentos. Em um único evento, grandes volumes de material podem ser removidos da plataforma ou do talude e transportados para regiões mais profundas, atravessando extensos trechos da margem com deposição limitada durante o percurso. Esse processo, denominado *sediment bypassing*, contribui para a transferência de sedimentos em direção ao sopé continental e às bacias oceânicas profundas. Movimentos de grandes dimensões também podem ocorrer em taludes com gradientes próximos ou inferiores a 3°, que seriam considerados estáveis em muitos ambientes continentais (HAMPTON *et al.*, 1996; TALLING *et al.*, 2014).   
@@ -443,7 +443,7 @@ Fonte: traduzido e adaptado de TALLING *et al.* (2014).
 
 Os processos associados à instabilidade podem atuar como fatores condicionantes ou mecanismos de gatilho. Os condicionantes atuam em períodos mais longos e tornam o talude progressivamente suscetível à ruptura, enquanto os gatilhos correspondem a perturbações que levam um sistema já fragilizado a ultrapassar seu limite de estabilidade. Essa distinção não é rígida: dependendo de sua intensidade e duração, um mesmo processo pode exercer ambas as funções. Além disso, a ruptura costuma resultar da combinação de mecanismos, e não da atuação isolada de um único fator (LEE *et al.*, 2007; SCARSELLI, 2020). As características litológicas e estratigráficas condicionam a resistência do talude; a sedimentação, a deformação tectônica ou a migração de fluidos aproximam o sistema da condição de ruptura; e um evento de curta duração, como um terremoto ou uma fase erosiva, pode atuar como gatilho final (TALLING *et al.*, 2014).
 
-#### *2.3.2.1 Sedimentação rápida*
+#### 2.3.2.1 Sedimentação rápida
 
 A sedimentação rápida é um importante condicionante, pois, quando a acumulação ocorre mais rapidamente que a drenagem dos fluidos intersticiais, aumenta simultaneamente a carga sobre o talude e a poropressão. A eficiência desse mecanismo depende da taxa de deposição, permeabilidade, compressibilidade e capacidade de drenagem dos sedimentos. Portanto, sua atuação é mais provável em áreas de grande aporte sedimentar e tende a exigir mecanismos adicionais em regiões de baixa taxa de sedimentação (LEE *et al.*, 2007; TALLING *et al.*, 2014; URLAUB *et al.*, 2015). Dois modelos conceituais de ruptura associados à acumulação rápida são apresentados na Figura 7\.
 
@@ -453,23 +453,23 @@ Figura 7 — Modelos de ruptura do talude continental associados à rápida acum
 
 Fonte: traduzido e adaptado de TALLING *et al.* (2014).
 
-#### *2.3.2.2 Abalos sísmicos*
+#### 2.3.2.2 Abalos sísmicos
 
 Os abalos sísmicos atuam principalmente como gatilhos, pois produzem carregamento cíclico e aumentam temporariamente as tensões de cisalhamento. Em sedimentos pouco consolidados, podem gerar liquefação, remoldamento e aumento da poropressão. Sua capacidade de desencadear rupturas depende da magnitude e duração do evento, da distância à fonte sísmica e das propriedades geotécnicas dos sedimentos (HAMPTON *et al.*, 1996; SULTAN *et al.*, 2004). 
 
-#### *2.3.2.3 Erosão e aumento da inclinação*
+#### 2.3.2.3 Erosão e aumento da inclinação
 
 A erosão associada a correntes de fundo, correntes de turbidez ou fluxos de detritos pode remover o suporte basal de encostas, aumentar localmente a inclinação e elevar a tensão cisalhante gravitacional. A incisão de canais e cânions também pode gerar paredes íngremes e favorecer rupturas retrogressivas. Desse modo, a erosão pode condicionar a instabilidade de forma gradual ou atuar como gatilho quando a remoção de suporte ocorre rapidamente (LEE *et al.*, 2007; SCARSELLI, 2020). 
 
-#### *2.3.2.4 Diapirismo e deformação tectônica*
+#### 2.3.2.4 Diapirismo e deformação tectônica
 
 A movimentação de camadas evaporíticas, denominada halocinese, produz estruturas como diápiros, domos e muralhas de sal, que deformam os estratos sobrejacentes, modificam a geometria do fundo marinho e aumentam localmente a inclinação do talude. Essa deformação pode favorecer falhas e fraturas, criando superfícies de fraqueza e caminhos para a migração de fluidos. Em geral, trata-se de um condicionante de longa duração, embora fases mais intensas de movimentação possam contribuir diretamente para a ruptura (KOWSMANN *et al.*, 2002; LEE *et al.*, 2007). 
 
-#### *2.3.2.5 Migração de fluidos e gases*
+#### 2.3.2.5 Migração de fluidos e gases
 
 A migração de fluidos e gases também pode reduzir a estabilidade ao gerar sobrepressão sob camadas de baixa permeabilidade. Falhas, fraturas e camadas permeáveis podem controlar a migração, enquanto feições como chaminés de gás, vulcões de lama e *pockmarks* podem indicar sua ocorrência. Contudo, tais feições não demonstram, isoladamente, uma relação causal com movimentos de massa, pois os condutos também podem favorecer a drenagem e a dissipação da sobrepressão (TALLING *et al.*, 2014). 
 
-#### *2.3.2.6 Dissociação de hidratos de gás*
+#### 2.3.2.6 Dissociação de hidratos de gás
 
 Os hidratos de gás são estáveis sob determinadas condições de pressão e temperatura. Mudanças no nível do mar, na temperatura da água de fundo ou no soterramento podem provocar sua dissociação, liberando água e gás no interior do sedimento. Essa liberação pode aumentar a poropressão e reduzir a resistência do pacote sedimentar.  
 A associação espacial entre depósitos de transporte de massa e a zona de estabilidade dos hidratos não demonstra, por si só, uma relação causal. A influência desse mecanismo depende das condições de profundidade, concentração de hidratos e variações de pressão e temperatura durante a ruptura (SULTAN *et al.*, 2004; TALLING *et al.*, 2014). Os mecanismos propostos para essa associação são sintetizados na Figura 8\.
@@ -480,12 +480,12 @@ Figura 8 — Síntese dos processos de dissociação de hidratos de gás propost
 
 Fonte: traduzido e adaptado de TALLING *et al.* (2014).
 
-#### *2.3.2.7 Ondas e carregamento hidrodinâmico*
+#### 2.3.2.7 Ondas e carregamento hidrodinâmico
 
 Ondas de tempestade e tsunamis podem modificar as pressões e os esforços atuantes no fundo marinho, favorecendo a instabilidade dos sedimentos. As diferenças de pressão entre cristas e cavas induzem tensões de cisalhamento, que podem contribuir para a ruptura de materiais pouco resistentes (SCARSELLI, 2020). Quando o carregamento cíclico gera excesso de poropressão e sua dissipação é insuficiente, ocorre redução das tensões efetivas e da resistência ao cisalhamento, favorecendo a mobilização gravitacional dos sedimentos e a formação de depósitos de transporte em massa (SCARSELLI, 2020).  
 Ondas internas, formadas em massas de água estratificadas, também podem atuar em ambientes profundos e são apontadas como possíveis desencadeadoras de deslizamentos submarinos (SCARSELLI, 2020). Sua interação com o escoamento próximo ao fundo pode gerar vórtices, intensificar os esforços sobre o leito e favorecer a ressuspensão dos sedimentos (STASTNA & LAMB, 2002). Em taludes previamente suscetíveis, esses processos podem contribuir para a instabilidade, embora a formação de vórtices e a ressuspensão, isoladamente, não comprovem a ocorrência de ruptura e a geração de MTDs (STASTNA & LAMB, 2002).
 
-#### *2.3.2.8 Ações antrópicas* 
+#### 2.3.2.8 Ações antrópicas 
 
 Intervenções antrópicas podem modificar as condições de estabilidade de taludes submarinos por meio da sobrecarga dos sedimentos e da alteração da geometria do fundo. A implantação de aterros e estruturas costeiras pode aumentar os esforços atuantes sobre materiais pouco resistentes, enquanto dragagens e escavações podem remover o suporte lateral ou basal e aumentar localmente a declividade. Essas alterações podem atuar como condicionantes ou desencadeadores da ruptura, favorecendo movimentos gravitacionais capazes de originar depósitos de transporte em massa (MTDs) (LEE *et al.*, 2007; DAN *et al.*, 2007).
 
@@ -533,7 +533,7 @@ Fonte: adaptado e traduzido de POSAMENTIER & WALKER (2006).
 A resolução sísmica estabelece um limite importante para o reconhecimento dessas feições. A resolução vertical pode ser estimada, como aproximação prática, em um quarto do comprimento de onda dominante (λ/4), equivalente a v/(4f), em que v representa a velocidade de propagação da onda no intervalo analisado e f, sua frequência dominante (YILMAZ, 2001). Interfaces separadas por distâncias inferiores a esse limite podem produzir reflexões sobrepostas, dificultando sua individualização, embora ainda possam gerar uma resposta sísmica detectável. Dessa forma, parte da organização interna de um depósito pode não ser reconhecida nos dados disponíveis. Superfícies que separam eventos sucessivos também podem não ser identificadas quando apresentam baixo contraste de impedância acústica ou foram removidas por erosão e amalgamação. Essas limitações dificultam a distinção entre um único depósito e a sobreposição de múltiplos eventos. Conforme a convenção adotada neste trabalho, a denominação MTC será utilizada apenas quando forem reconhecidas evidências claras de mais de um evento; quando essa separação não for possível, será mantido o termo MTD.   
 A identificação dos MTDs em dados sísmicos foi, portanto, baseada na ocorrência conjunta de uma superfície basal de ruptura, reflexões internas deformadas, limites laterais e superior reconhecíveis e estruturas associadas aos diferentes setores do movimento.
 
-#### *2.3.3.1 Arquitetura interna e domínios deformacionais* 
+#### 2.3.3.1 Arquitetura interna e domínios deformacionais 
 
 Os movimentos de massa submarinos frequentemente apresentam uma arquitetura dividida em três domínios: proximal ou extensional, translacional e distal ou compressional (Figuras 12 e 13). Essa divisão não ocorre de maneira igualmente clara em todos os depósitos, mas fornece um modelo útil para a interpretação das estruturas observadas na sísmica (BULL *et al.*, 2009; SCARSELLI, 2020).  
 O domínio proximal está associado à escarpa de cabeceira e é predominantemente extensional. Nele podem ser identificadas falhas normais, blocos rotacionados, cristas extensionais e setores parcialmente evacuados. Essas estruturas resultam do estiramento e da perda de suporte do material durante o início do deslocamento.  
@@ -569,13 +569,13 @@ Tabela 2 — Critérios utilizados na identificação de depósitos de movimento
 
 A classificação dos depósitos de movimentos de massa pode ser realizada a partir de diferentes critérios, como sua geometria e dimensões (morfometria), número de eventos (CLARE *et al.*, 2018), relação com a área-fonte (MOSCARDELLI & WOOD, 2008), morfometria (MOSCARDELLI & WOOD, 2016; CLARE *et al.*, 2018), grau de confinamento (OMOSANYA & ALVES, 2013; FREY-MARTÍNEZ *et al.*, 2006; GAMBOA & ALVES, 2016\) e estilo de deformação interna. Dessa forma, um mesmo MTD pode ser classificado simultaneamente quanto à relação com a área-fonte, ao grau de confinamento e às características de sua deformação interna. 
 
-#### *2.3.4.1 Caracterização morfométrica*
+#### 2.3.4.1 Caracterização morfométrica
 
 A morfometria corresponde à descrição quantitativa da geometria dos depósitos e permite compará-los em diferentes contextos geológicos. CLARE *et al.* (2018) propõem uma abordagem baseada na distinção entre as áreas de evacuação, transporte e deposição: a primeira corresponde à região de remoção do material, a segunda ao percurso da massa deslocada e a última à sua acumulação. Esses limites podem não estar completamente preservados em depósitos antigos, soterrados, erodidos ou formados por eventos sucessivos.  
 Os principais parâmetros morfométricos incluem comprimento, largura, espessura, área e volume, além de atributos como altura da escarpa, diferença de elevação entre a cabeceira e o limite distal, declividade da área-fonte e características das superfícies basal e superior. As relações entre esses parâmetros auxiliam na avaliação da escala e da geometria dos depósitos; MOSCARDELLI & WOOD (2016), por exemplo, identificaram correlações entre área, comprimento e volume, enquanto a espessura apresentou maior variabilidade espacial.  
 Nesta fundamentação, tais parâmetros são apresentados apenas como critérios de caracterização e classificação dos MTDs. Os procedimentos de delimitação dos depósitos e de cálculo dos parâmetros morfométricos a partir dos dados sísmicos são apresentados detalhadamente no capítulo de materiais e métodos.
 
-#### *2.3.4.2 Relação entre o depósito e sua área-fonte*
+#### 2.3.4.2 Relação entre o depósito e sua área-fonte
 
 MOSCARDELLI & WOOD (2008) classificaram os depósitos de movimentos de massa conforme sua relação espacial com a área-fonte em sistemas *attached e detached* (Figura 14). Essa classificação considera principalmente a continuidade reconhecível entre o depósito e a região de ruptura, além de sua posição na margem continental.  
 Os depósitos *attached* preservam ligação com a área-fonte, que pode estar associada à borda da plataforma ou a rupturas extensas no talude superior e intermediário. Sua origem pode ser indicada por escarpas regionais, cicatrizes de evacuação e pacotes sedimentares deformados. Em geral, esses sistemas apresentam maior continuidade espacial e podem transportar sedimentos por grandes distâncias. Já os depósitos *detached* não apresentam conexão observável com uma cicatriz regional ou com a plataforma. Costumam estar associados a instabilidades locais, como rupturas em paredes de cânions, flancos de diápiros, estruturas salinas, margens de canais e outros altos batimétricos, resultando frequentemente em corpos mais localizados.  
@@ -588,7 +588,7 @@ Figura 14 — Representação esquemática dos diferentes tipos de complexos de 
 
 Fonte: traduzido de MOSCARDELLI & WOOD (2008).
 
-#### *2.3.4.3 Confinamento frontal*
+#### 2.3.4.3 Confinamento frontal
 
 O confinamento frontal descreve a interação entre a porção distal do MTD e os estratos não deformados situados à sua frente. FREY-MARTÍNEZ *et al.* (2006) distinguem movimentos frontalmente emergentes e frontalmente confinados, considerados extremos de um contínuo (Figura 15).  
 Nos movimentos emergentes, a massa sobe por uma rampa frontal, abandona sua superfície basal original e avança sobre o fundo marinho ou estratos não deformados. Esse comportamento favorece maior deslocamento talude abaixo e pode gerar relevo positivo, lobos, dobras, cristas de pressão e falhas de empurrão no setor distal. Nos movimentos confinados, a massa permanece sobre a superfície basal e é barrada por uma rampa frontal, resultando em menor deslocamento, espessamento e deformação compressiva distal (FREY-MARTÍNEZ *et al.*, 2006).  
@@ -600,7 +600,7 @@ Figura 15 — Representação esquemática dos principais tipos de movimentos de
 
 Fonte: traduzido de FREY-MARTÍNEZ *et al.* (2006).
 
-#### *2.3.4.4 Geometrias tipo 1 e tipo 2*
+#### 2.3.4.4 Geometrias tipo 1 e tipo 2
 
 GAMBOA & ALVES (2016) propuseram uma classificação geométrica que relaciona a forma do depósito, a direção de transporte e o estilo de deformação interna (Figura 16). Diferentemente da proposta de FREY-MARTÍNEZ *et al.* (2006), voltada à terminação frontal, essa classificação utiliza a razão entre o comprimento da escarpa de cabeceira e a distância até o limite distal do depósito.  
 Os MTDs tipo 1 apresentam razão inferior a 1 e eixo maior aproximadamente paralelo à direção de transporte, resultando em corpos alongados no sentido do movimento. Em geral, exibem adelgaçamento, falhas extensionais e blocos rotacionados no setor proximal, além de maior espessamento e estruturas compressivas no setor distal. Podem ser frontalmente confinados, embora porções mais delgadas possam ultrapassar a rampa frontal.  
@@ -636,7 +636,7 @@ Além de influenciar a estabilidade do talude, a tectônica salífera pode contr
 
 A comparação entre a geometria dos MTDs e os horizontes adjacentes permite avaliar se a relação observada corresponde principalmente a um controle morfológico da deposição ou a uma deformação que também afetou o depósito após sua formação. Dessa forma, a análise dessa interação deve considerar tanto o relevo associado às estruturas salinas quanto as relações temporais entre a mobilidade do sal e a deposição dos MTDs.
 
-## 2.4 Síntese e implicações para a interpretação dos depósitos 
+## **2.4 Síntese e implicações para a interpretação dos depósitos** 
 
 A fundamentação apresentada estabelece as bases para o reconhecimento e a caracterização de depósitos de transporte de massa em dados sísmicos. A sísmica de reflexão fornece informações sobre a geometria e a organização das unidades em subsuperfície, enquanto a análise sismoestratigráfica permite interpretar suas superfícies limitantes, configurações internas e relações com os estratos adjacentes. Nesse contexto, o atributo cosseno da fase instantânea constitui um recurso complementar para realçar a configuração dos refletores, sem substituir a análise integrada das demais características sísmicas.  
 Para a identificação dos MTDs, a principal implicação da literatura discutida é a necessidade de combinar diferentes evidências. Reflexões caóticas, descontínuas ou transparentes devem ser avaliadas em conjunto com a superfície basal, a geometria externa, os limites do corpo e as estruturas deformacionais reconhecíveis. A ocorrência isolada de um desses padrões não permite uma interpretação conclusiva, uma vez que respostas semelhantes podem estar associadas a outros processos ou às condições de imageamento sísmico (HAMPTON *et al.*, 1996; POSAMENTIER & MARTINSEN, 2011; SCARSELLI, 2020).  
@@ -645,7 +645,7 @@ Além das limitações dos dados, a aplicação dos modelos e classificações a
 Os mecanismos de ruptura e os fatores condicionantes fornecem uma base para discutir as condições de instabilidade do talude. Contudo, reconhecer um depósito de transporte de massa não equivale a determinar o mecanismo que desencadeou sua formação. A atribuição de um gatilho específico exige evidências adicionais e deve considerar a possível atuação conjunta de diferentes processos (LEE *et al.*, 2007; SCARSELLI, 2020).  
 Assim, este trabalho adota uma interpretação baseada na integração das evidências sísmicas disponíveis e no reconhecimento de suas limitações. As classificações serão aplicadas quando os critérios necessários puderem ser observados, mantendo explícitas as incertezas relacionadas à delimitação dos corpos, à identificação da área-fonte e à individualização dos eventos.
 
-# 3 ÁREA DE ESTUDO
+# **3 ÁREA DE ESTUDO**
 
 A Bacia de Santos é uma bacia sedimentar de margem passiva localizada no Atlântico Sul Ocidental, entre os altos de Cabo Frio, ao norte, e de Florianópolis, ao sul. Ocupa aproximadamente 350.000 km² até a isóbata de 3.000 m e abrange a margem sudeste brasileira, desde o litoral do Rio de Janeiro até Santa Catarina (MOREIRA *et al.*, 2007). Sua origem está associada ao rifteamento e à posterior separação entre as placas Sul-Americana e Africana durante o Cretáceo Inferior, processo que condicionou a arquitetura tectonoestratigráfica e a expressiva espessura sedimentar da bacia (MACEDO, 1989; MOREIRA *et al.*, 2007).     
 A região de estudo apresenta gatilhos significativos para a ocorrência de depósitos de movimentos de massa, tais como a sismicidade relacionada à abertura do Atlântico, reativações neotectônicas, tectônica salífera e dissociação de gás (BORGES *et al.*, 2015). Além disso, outros mecanismos disparadores de movimentos de massa em margens continentais são a presença de ondas internas e de correntes de fundo vinculadas à circulação oceânica (HAMPTON *et al.*, 1996).   
@@ -655,7 +655,7 @@ Este trabalho concentra-se na porção norte do talude da Bacia de Santos, próx
 
 Figura 19 — Localização da área de estudo (Base de dados: IBGE, ANP, Google Satellite)
 
-## 3.1 Evolução tectonoestratigráfica
+## **3.1 Evolução tectonoestratigráfica**
 
 A evolução da Bacia de Santos está associada à fragmentação do Gondwana e à abertura do Atlântico Sul. A Figura 20 apresenta a carta cronoestratigráfica da Bacia de Santos, abrangendo o Cretáceo e o Cenozoico, com destaque para a deposição dos evaporitos aptianos da Formação Ariri e a evolução da cobertura pós-sal, incluindo as unidades cenozoicas de interesse deste estudo. A figura reúne as principais unidades estratigráficas, os ambientes deposicionais e os eventos de deformação associados à tectônica salífera. De forma simplificada, seu preenchimento compreende os estágios rifte, pós-rifte evaporítico e margem passiva. A fase rifte ocorreu entre o Barremiano e o Eoaptiano, quando a extensão litosférica gerou falhas normais, blocos basculados e depocentros lacustres. Nesse contexto foram depositadas as sucessões pré-sal do Grupo Guaratiba, que incluem rochas vulcânicas, depósitos siliciclásticos e carbonatos lacustres. Essas unidades registram a estruturação inicial da bacia e constituem importantes elementos de seu sistema petrolífero (MACEDO, 1989; MOREIRA *et al.*, 2007).  
 Durante o Aptiano, o enfraquecimento da tectônica extensional e a restrição progressiva da comunicação com o oceano favoreceram a deposição da espessa sequência evaporítica da Formação Ariri. O sal aptiano representa uma descontinuidade mecânica fundamental para a evolução posterior da bacia. Sua baixa densidade e comportamento dúctil permitiram sua mobilização em resposta à sobrecarga sedimentar, à inclinação regional do substrato e às variações na espessura da camada evaporítica. Embora depositado na fase pós-rifte, o sal passou a controlar de forma decisiva a deformação da seção pós-sal (ASSINE *et al.*, 2008; MOREIRA *et al.*, 2007).  
@@ -669,7 +669,7 @@ Figura 20 — Carta cronoestratigráfica da Bacia de Santos abrangendo o Cretác
 
 Fonte: adaptado e traduzido de MOREIRA *et al.*, 2007, apud DIÓRIO (2024, p. 34).
 
-## 3.2 Tectônica salífera na área de estudo 
+## **3.2 Tectônica salífera na área de estudo** 
 
 A Bacia de Santos contém uma das mais expressivas províncias evaporíticas do Atlântico Sul, representada pela Formação Ariri, depositada no Aptiano. A subsidência da margem, a progradação sedimentar e a sobrecarga diferencial promoveram a mobilização posterior do sal em direção aos setores mais profundos da bacia. Esse processo gerou domínios estruturais extensionais, translacionais e contracionais, além de deformação expressiva na cobertura pós-sal (DEMERCIAN *et al.*, 1993; MOHRIAK *et al.*, 1995; SZATMARI *et al.*, 1996; ASSINE *et al.*, 2008).  
 Na porção norte da bacia, a movimentação salífera está relacionada à Falha de Cabo Frio, a muralhas salinas, diápiros e minibacias, que controlam a distribuição dos depocentros e a arquitetura estratigráfica pós-sal (DEMERCIAN *et al.*, 1993; MOHRIAK *et al.*, 1995; SZATMARI *et al.*, 1996; ASSINE *et al.*, 2008).  
@@ -685,7 +685,7 @@ Fonte: DIÓRIO (2024), com tradução e reorganização da legenda.
 A tectônica salífera pode atuar como importante condicionante da instabilidade do talude. A ascensão de diápiros e muralhas salinas gera relevos positivos e aumenta localmente os gradientes, enquanto a retirada de sal promove subsidência diferencial e o desenvolvimento de minibacias. A deformação da cobertura pós-sal também pode produzir arqueamentos, falhas e zonas extensionais favoráveis ao desenvolvimento de superfícies de deslizamento. Entretanto, a proximidade espacial entre um MTD e uma estrutura salina não é suficiente para atribuir à halocinese o desencadeamento da ruptura (HAMPTON *et al.*, 1996; LOCAT & LEE, 2002; MASSON *et al.*, 2006).  
 Além de influenciar a estabilidade do talude, a tectônica salífera pode controlar a trajetória, o confinamento e a geometria dos MTDs. Altos diapíricos e muralhas podem desviar ou limitar o deslocamento da massa, enquanto minibacias e baixos estruturais favorecem seu confinamento e acumulação. Essa interação pode produzir variações de espessura, rampas, erosão basal e diferentes padrões de deformação interna (MOSCARDELLI & WOOD, 2008; GAMBOA & ALVES, 2016). A comparação entre a geometria dos MTDs e os horizontes adjacentes permite avaliar se a relação observada corresponde principalmente a um controle morfológico da deposição ou a uma deformação que também afetou o depósito após sua formação.
 
-## 3.3 Canal de Santos, circulação oceânica e depósitos contorníticos 
+## **3.3 Canal de Santos, circulação oceânica e depósitos contorníticos** 
 
 Contornitos são depósitos formados ou retrabalhados por correntes de fundo persistentes, geralmente paralelas às isóbatas. Diferem-se de turbiditos e MTDs, que resultam de processos gravitacionais encosta abaixo. Na Bacia de Santos, a interação entre correntes de fundo, disponibilidade sedimentar e fisiografia do talude favoreceu o desenvolvimento do Sistema de Drift de Santos, composto por *drifts*, superfícies erosivas, canais e depósitos de preenchimento (REBESCO, 2005; DUARTE & VIANA, 2007).   
 A circulação na porção norte da bacia é controlada principalmente pela Corrente do Brasil, pela Corrente de Contorno Intermediária e pela Corrente de Contorno Profunda, cujos sentidos de fluxo e faixas batimétricas distintas promovem erosão, transporte e deposição seletiva de sedimentos (Figura 22\) (DUARTE & VIANA, 2007; DUTRA, 2019; MAHIQUES *et al.*, 2022). A atuação dessas correntes, associada às clinoformas eocênicas e ao relevo produzido pela tectônica salífera, condicionou a formação do Sistema de Drift de Santos e de suas feições erosivas.   
@@ -699,7 +699,7 @@ A evolução do canal também é influenciada pela halocinese. Muralhas salinas,
 A relação entre o Canal de Santos e os MTDs é particularmente relevante neste estudo. A erosão das paredes do canal pelas correntes de fundo pode favorecer a instabilidade local e o aporte de material por movimentos de massa. Esses depósitos podem ser posteriormente retrabalhados pelas correntes, modificando parcialmente suas características originais. O preenchimento do canal registra, assim, a interação entre processos contorníticos e gravitacionais. DUTRA (2019) reconheceu essa associação pela intercalação de depósitos com refletores predominantemente paralelos e contínuos, atribuídos à ação das correntes de fundo, e depósitos com configurações caóticas e refletores descontínuos, interpretados como gravitacionais, incluindo MTDs (DUARTE & VIANA, 2007; DUTRA, 2019).   
 Por outro lado, a ocorrência de MTDs no topo e nas proximidades do canal mostra que processos gravitacionais também podem interromper ou modificar a evolução de sistemas contorníticos. DUTRA (2019) identificou MTDs quaternários sobre o Canal de Santos, posteriormente recobertos por *drapes* hemipelágicos, indicando redução da energia das correntes após sua deposição. A ocorrência conjunta dessas feições evidencia a interação entre processos contorníticos, gravitacionais e deformação relacionada à tectônica salífera na evolução do Canal de Santos. 
 
-# 4 MATERIAIS E MÉTODOS
+# **4 MATERIAIS E MÉTODOS**
 
 O fluxograma apresentado na Figura 23 sintetiza as principais etapas adotadas no desenvolvimento deste trabalho. 
 
@@ -707,7 +707,7 @@ O fluxograma apresentado na Figura 23 sintetiza as principais etapas adotadas no
 
 Figura 23 — Fluxograma simplificado das etapas adotadas.
 
-## 4.1 Sísmica
+## **4.1 Sísmica**
 
 O principal conjunto de dados utilizado neste trabalho foi o cubo sísmico 3D R0014\_BS\_500 (Figura 19), fornecido pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP), por meio do processo n° 48610.228683/2025-72 . O volume corresponde a um dado sísmico 3D PSTM (*Post-Stack Time Migration*), migrado em tempo e pós-processado.  
 O cubo abrange uma área de aproximadamente 9.201 km²,  é composto por 14.672.450 traços, com 2.126 amostras por traço e intervalo amostral de 4 ms, equivalente a uma frequência de amostragem de 250 Hz e frequência de Nyquist de 125 Hz. A consistência do intervalo amostral foi verificada no *binary header* e em 200 *trace headers*, por meio de script desenvolvido em *Python®* (Anexo 1); todos os registros analisados apresentaram intervalo de 4.000 µs.    
@@ -724,7 +724,7 @@ Figura 24 — Exemplo de MTD com as superfícies-limite de topo (verde) e base (
 
  Trocar figura
 
-#### *4.1.1.1 Cosseno de fase instantânea*
+#### 4.1.1.1 Cosseno de fase instantânea
 
 O atributo sísmico cosseno de fase instantânea foi aplicado ao cubo sísmico no software *Petrel®*, com o objetivo de apoiar o reconhecimento das superfícies-limite de topo e base dos depósitos, bem como auxiliar na distinção entre eventos que compõem os complexos de transporte de massa (MTCs), quando necessário.  
 Esse atributo contribui para o realce da continuidade lateral dos refletores, das mudanças nos padrões de acamadamento e dos limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados (ALVARENGA, 2016). A fundamentação teórica do atributo é apresentada na Seção 2.1.1.
@@ -736,7 +736,7 @@ As superfícies foram geradas no *Petrel®* pela ferramenta *Make Surface*, e ta
 A análise geomorfométrica do fundo marinho foi realizada no domínio do tempo sísmico, a partir do primeiro refletor identificado no volume sísmico, associado à interface entre a coluna d’água e o substrato sedimentar. Devido ao elevado contraste de impedância acústica nessa interface, esse refletor foi utilizado como referência para a caracterização da morfologia do fundo marinho, traçado por essa razão, com a ferramenta *Guided Autotracking*. Para facilitar sua visualização tridimensional, os valores temporais foram representados com sinal negativo, sem alteração da geometria relativa da superfície. A interpolação foi realizada no *Surfer® v. 11* por *krigagem* com variograma linear e resolução de 50 × 50 m. Posteriormente, o *grid* foi importado para o *QGIS®*, onde foram calculados os atributos de rugosidade e declividade. A rugosidade permitiu realçar escarpas, cicatrizes, canais e outras irregularidades morfológicas (RILEY *et al.*, 1999; WILSON *et al.*, 2007). Como os valores verticais correspondem a TWT, a declividade representa um gradiente temporal aparente, e não uma declividade batimétrica real, sendo utilizada para evidenciar mudanças abruptas na geometria do refletor (*QGIS®* Development Team, 2025).  
 As superfícies de topo e base dos MTDs foram interpoladas em grades regulares compatíveis com o espaçamento do mapeamento: 100 × 100 m para os eventos mais recentes e 200 × 200 m para os mais antigos. A resolução foi definida de acordo com a densidade dos pontos interpretados, evitando a geração de superfícies com detalhamento incompatível com os dados disponíveis. A extensão em planta de cada depósito foi delimitada por polígonos baseados nos limites reconhecidos na interpretação sísmica. Esses polígonos foram utilizados como máscaras para recortar as superfícies de topo e base e restringir os cálculos à área efetivamente interpretada. Os procedimentos de cálculo dos parâmetros morfométricos são descritos na seção de análise morfométrica (4.2).
 
-## 4.2 Caracterização morfométrica dos depósitos 
+## **4.2 Caracterização morfométrica dos depósitos** 
 
 A caracterização morfométrica dos depósitos foi baseada na proposta de CLARE *et al.* (2018), que estabelece parâmetros para a descrição quantitativa de movimentos de massa subaquáticos (Figura 25). Foram determinados, quando as feições apresentaram preservação e resolução sísmica suficientes, a profundidade do topo do depósito, o comprimento total (Lt), a altura da cicatriz (Hs), a altura total de queda (Ht), a espessura máxima do depósito (Tdmax), as inclinações da escarpa (Ss) e do declive adjacente não deformado (S), além de área, perímetro e volume preservado.  
 Os procedimentos de interpretação sísmica, definição do eixo longitudinal, seleção dos perfis e extração das medidas foram adaptados às características geométricas e ao grau de preservação de cada depósito. Os parâmetros foram obtidos somente quando sua identificação apresentou confiança suficiente.  
@@ -819,7 +819,7 @@ A medida caracteriza, portanto, a superfície receptora imediatamente à frente 
 
 A conversão das medidas temporais foi realizada com caráter aproximativo, para fornecer uma noção da escala espacial e das dimensões dos depósitos em metros. Foram utilizadas velocidades representativas dos intervalos sedimentares de cada evento, estimadas a partir de dados de poços fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP) e ponderadas pelo inverso da distância entre os poços e o ponto central de cada depósito (Figura 28). A tabela com as velocidades utilizadas encontra-se no Apêndice A. Os valores convertidos constituem estimativas condicionadas aos controles disponíveis e às simplificações adotadas; uma determinação mais precisa das dimensões requer uma conversão tempo–profundidade mais robusta, com um modelo de velocidades que represente adequadamente as variações verticais e laterais na área de estudo. Os procedimentos foram separados entre a conversão dos intervalos sedimentares e os cálculos que também envolveram o percurso da onda na coluna d’água.
 
-#### *4.2.8.1 Obtenção das velocidades nos poços*
+#### 4.2.8.1 Obtenção das velocidades nos poços
 
 As velocidades utilizadas na conversão tempo–profundidade foram estimadas a partir dos controles disponíveis nos poços 1-BRSA-137-RJS e 1-BRSA-127-RJS. Para considerar a posição dos eventos na coluna sedimentar, foram utilizados os tempos duplos médios do topo e da base de cada depósito, referenciados ao fundo marinho. O tempo médio da base foi obtido pela soma do tempo médio de soterramento do topo com a espessura temporal média do evento.  
 No poço 1-BRSA-137-RJS, a curva de velocidades foi obtida em script em *Python®* a partir das diferenças de profundidade e de tempo de percurso entre registros consecutivos do VSP. Dessa forma, os valores calculados representam velocidades intervalares entre os níveis de aquisição, e não velocidades instantâneas ou RMS. As velocidades foram associadas às profundidades médias dos respectivos intervalos.  
@@ -839,7 +839,7 @@ Para cada evento, os tempos duplos médios do topo e da base, referenciados ao f
 Essa correspondência foi estabelecida pela posição temporal abaixo do fundo marinho, sem pressupor equivalência de idade ou litologia entre os depósitos e os intervalos dos poços. Os intervalos médios selecionados também não representam necessariamente os extremos de soterramento e espessura observados em toda a extensão de cada depósito. As velocidades por evento constituem, portanto, aproximações baseadas nos modelos disponíveis.  
 O poço 3-BRSA-944A-RJS também foi avaliado, mas não integrou a estimativa central. Os dados disponíveis representavam um intervalo mais amplo e profundo, sem equivalência direta com os intervalos utilizados nos demais poços.
 
-#### *4.2.8.2 Ponderação pela distância aos depósitos*
+#### 4.2.8.2 Ponderação pela distância aos depósitos
 
 Foram utilizadas as distâncias horizontais entre o ponto central de cada depósito e os poços 1-BRSA-137-RJS e 1-BRSA-127-RJS. As velocidades equivalentes obtidas para o intervalo temporal de cada evento foram combinadas pela média ponderada pelo inverso da distância, com expoente igual a um:
 
@@ -848,7 +848,7 @@ v̄ₑ \= \[Σᵢ(vᵢ,ₑ / dᵢ,ₑ)\] / \[Σᵢ(1 / dᵢ,ₑ)\],    \[16\]
 Em que vi,e é a velocidade equivalente do intervalo do evento e no poço i, e di,e, a distância horizontal entre esse poço e o ponto central do depósito. Dessa forma, os controles mais próximos receberam maior peso.  
 Os eventos pertencentes a um mesmo complexo foram tratados individualmente, considerando seus respectivos intervalos temporais e as distâncias disponíveis. Foi obtida uma velocidade espacialmente constante para cada evento, sem variação célula a célula. A diferenciação entre eventos representa a resposta dos modelos de velocidade aos intervalos selecionados, permanecendo condicionada à distribuição esparsa dos controles. As distâncias, os pesos normalizados, as velocidades equivalentes em cada poço e as velocidades ponderadas encontram-se no Apêndice A.
 
-#### *4.2.8.3 Conversão dos intervalos sedimentares*
+#### 4.2.8.3 Conversão dos intervalos sedimentares
 
 As espessuras dos eventos foram convertidas utilizando a diferença de TWT entre topo e base e a velocidade ponderada do respectivo evento:
 
@@ -859,7 +859,7 @@ O volume foi calculado pela integração da espessura convertida sobre a área d
 Para o soterramento do topo, utilizou-se a diferença de TWT entre o topo do depósito e o fundo marinho, adotando-se a velocidade ponderada do evento como aproximação para a cobertura sedimentar. Como essa velocidade foi estimada para o intervalo entre topo e base do depósito, sua aplicação à cobertura constitui uma simplificação adicional. A sensibilidade a essa escolha foi avaliada separadamente pela comparação com as profundidades obtidas por integração dos perfis de velocidade desde o fundo marinho.  
 Comprimentos, áreas e perímetros, medidos em planta, não dependeram da conversão tempo–profundidade.
 
-#### *4.2.8.4 Procedimentos que envolveram a coluna d’água*
+#### 4.2.8.4 Procedimentos que envolveram a coluna d’água
 
 Adotou-se a velocidade de 1.500 m/s para a coluna d’água, valor usualmente empregado como aproximação para a velocidade do som em água do mar. Embora essa velocidade possa variar em função da temperatura, salinidade e pressão, sua adoção é adequada para a estimativa de primeira ordem realizada neste estudo (MACKENZIE, 1981). Essa velocidade foi utilizada na conversão dos tempos e dos desníveis dos perfis de cicatrizes medidos sobre o horizonte do fundo marinho   
 $\Delta z=\frac{\Delta t1500}{2000}$,    \[18\]  
@@ -869,7 +869,7 @@ Para pontos soterrados, a profundidade foi calculada separando o percurso na ág
 ${z}_{P}=\frac{{t}_{fundo,P}1500+({t}_{P}-{t}_{fundo,P}){\overline{v}}_{MTD}}{2000}$,    \[19\]  
 Em que ${t}_{P}$ é o tempo do ponto interpretado e ${t}_{fundo,P}$, o tempo do fundo marinho na mesma posição, ambos expressos como TWT positivo em milissegundos.  Essa separação foi utilizada para obter as profundidades dos pontos A, B e C e, posteriormente, calcular a altura de evacuação e a altura total de queda. Também foi aplicada aos pontos dos perfis do declive não deformado e da superfície receptora à frente do pé do depósito, cujos tempos foram lidos diretamente na sísmica. As inclinações foram calculadas a partir dos desníveis convertidos e das respectivas distâncias horizontais.
 
-#### *4.2.8.5 Limitações da conversão*
+#### 4.2.8.5 Limitações da conversão
 
 A conversão teve caráter aproximado, destinado a fornecer uma noção das dimensões em metros e dos volumes correspondentes. Os modelos dos poços incorporam variações verticais de velocidade, mas sua transferência aos depósitos por ponderação pela distância não permite representar adequadamente as variações laterais relacionadas à litologia, à compactação e ao soterramento. Além disso, os poços não constituem controles diretos sobre todos os depósitos, e a correspondência temporal abaixo do fundo marinho não demonstra equivalência estratigráfica entre eles. A utilização de uma velocidade constante por evento, a extensão da velocidade mais rasa até o fundo marinho e a aplicação da velocidade equivalente do depósito à cobertura sedimentar constituem simplificações adicionais. Portanto, os valores convertidos são estimativas de primeira ordem, mantendo-se as medidas em TWT como referência da interpretação sísmica.   
 Recomenda-se fortemente, para trabalhos futuros, a construção de um modelo de velocidades robusto e calibrado para a área e os intervalos investigados. Além disso, a adoção de uma velocidade constante de 1.500 m/s para a coluna d’água não contempla variações locais de temperatura, salinidade e pressão, devendo as profundidades e os desníveis associados serem interpretados como estimativas de primeira ordem.
@@ -878,7 +878,7 @@ Recomenda-se fortemente, para trabalhos futuros, a construção de um modelo de 
 
 As incertezas associadas às medidas morfométricas foram tratadas a partir das principais etapas envolvidas na obtenção dos parâmetros, desde a interpretação sísmica até a conversão das medidas em profundidade. A abordagem adotada segue os princípios de propagação de incertezas apresentados por TAYLOR (1997). As componentes quantificadas foram combinadas por propagação de primeira ordem, adotando-se operacionalmente a independência entre as entradas, sem estimativa das covariâncias. Os valores obtidos representam incertezas parciais, condicionadas às componentes disponíveis e às hipóteses adotadas. A resolução do dado sísmico foi tratada como uma limitação à separação vertical entre interfaces, e não como um erro aleatório a ser somado diretamente às demais componentes. 
 
-#### *4.2.9.1 Resolução vertical e conteúdo espectral do dado sísmico*
+#### 4.2.9.1 Resolução vertical e conteúdo espectral do dado sísmico
 
 O intervalo amostral do volume sísmico foi verificado diretamente no *binary header* e em uma amostra de 200 *trace headers* do arquivo SEG-Y, obtendo-se valor constante de 4 ms, correspondente a uma frequência de amostragem de 250 Hz e frequência de Nyquist de 125 Hz. O cabeçalho do dado também indica que o volume final foi reamostrado para 4 ms durante o processamento.  
 A frequência dominante foi estimada diretamente no intervalo estratigráfico dos MTDs. Foram selecionados 45 pontos de controle distribuídos entre os diferentes depósitos e, nos eventos regionais, entre setores rasos, intermediários e distais. Em cada posição foi considerada uma vizinhança de 3 × 3 traços. Os espectros de potência foram obtidos por transformada rápida de Fourier, após remoção da tendência linear e aplicação de janela de Hann.  
@@ -892,7 +892,7 @@ ${R}_{TWT}=\frac{500}{{f}_{dom}}$,    \[21\]
 
 Os valores obtidos variam aproximadamente entre 13 e 22 ms TWT, dependendo do evento e do setor analisado. Esses valores foram utilizados como referência para a capacidade de individualizar interfaces verticalmente próximas, e não como incerteza direta da posição dos horizontes. Espessuras próximas ou inferiores a essa faixa foram interpretadas com cautela, pois a detecção de uma resposta sísmica não implica necessariamente a resolução independente de seu topo e de sua base. A resolução vertical foi, portanto, apresentada separadamente das componentes utilizadas na propagação de incertezas.
 
-#### *4.2.9.2 Repetibilidade do picking*
+#### 4.2.9.2 Repetibilidade do picking
 
 A contribuição do intérprete foi avaliada por meio de um teste de repetibilidade realizado em um subconjunto de 12 pontos, distribuídos entre diferentes MTDs, profundidades e condições de imageamento. O mesmo refletor foi identificado novamente nas mesmas posições IL/XL, sem alteração dos horizontes originais, e o novo TWT foi comparado ao valor anteriormente interpretado.  
 Para cada ponto foi calculada a diferença:
@@ -905,7 +905,7 @@ resultando em aproximadamente:
 uₚᵢcₖ ≈ 0,4 ms,    \[24\]  
 Nos cálculos, utilizou-se uₚᵢcₖ \= 0,54/√2 ≈ 0,38184 ms, apresentado de forma arredondada como aproximadamente 0,4 ms. Esse valor representa a repetibilidade intraintérprete no subconjunto avaliado, e não a resolução vertical nem a acurácia absoluta dos horizontes.
 
-#### *4.2.9.3 Incerteza associada à interpolação*
+#### 4.2.9.3 Incerteza associada à interpolação
 
 Os horizontes interpretados no *Petrel®* foram exportados e utilizados na geração das superfícies posteriormente analisadas no *QGIS®*. Para as superfícies de topo e base dos depósitos, a componente associada à interpolação foi estimada pela raiz quadrada da variância média de krigagem, considerando a variância de estimativa fornecida pelo modelo geoestatístico (ISAAKS & SRIVASTAVA, 1989):
 
@@ -915,7 +915,7 @@ Em que Kj é a variância média de krigagem da superfície (j), expressa em ms�
 A variância de krigagem depende do modelo geoestatístico e da distribuição dos pontos de controle, não sendo equivalente a um RMSE obtido por validação independente (ISAAKS & SRIVASTAVA, 1989). Sua média foi utilizada como valor representativo da superfície, sem representar necessariamente a incerteza local nas posições dos valores mínimos e máximos.  
 Para o fundo marinho, utilizou-se o RMSE da superfície obtido no *Surfer®*, de aproximadamente 0,09826 ms, como componente operacional de incerteza temporal. Essa componente foi mantida separada da repetibilidade do *picking* dos horizontes dos depósitos e não foi interpretada como uma caracterização completa da incerteza de identificação do fundo marinho.
 
-#### *4.2.9.4 Resolução espacial e medidas planimétricas*
+#### 4.2.9.4 Resolução espacial e medidas planimétricas
 
 Observação: e para alturas e inclinações.  
 A geometria nominal do levantamento sísmico apresenta bin size de 25 × 12,5 m, enquanto as superfícies utilizadas na etapa final da análise morfométrica foram geradas com grade de 100 × 100 m. Esses valores representam escalas de amostragem e discretização e não foram considerados diretamente como uma incerteza de ±25 m ou ±100 m.  
@@ -923,7 +923,7 @@ A sensibilidade à discretização foi avaliada para o MTD 1,  MTC 1-C e MTC 2-D
 Não foram atribuídas incertezas quantitativas às áreas, aos perímetros e aos comprimentos. Os testes com diferentes espaçamentos de grade foram tratados como avaliações de sensibilidade à discretização, sem sua conversão em incerteza padrão ou transferência automática dos resultados para todos os eventos.  
 A incerteza associada à delimitação manual das bordas dos depósitos e ao posicionamento dos extremos dos comprimentos não foi quantificada. Consequentemente, as áreas utilizadas no cálculo dos volumes e as distâncias horizontais utilizadas no cálculo das inclinações foram mantidas fixas na propagação. Essa simplificação limita a abrangência das incertezas apresentadas.
 
-#### *4.2.9.5 Incerteza da velocidade de conversão*
+#### 4.2.9.5 Incerteza da velocidade de conversão
 
 As velocidades representativas dos eventos foram obtidas conforme o procedimento descrito na seção 4.2.8. Para cada depósito, as velocidades equivalentes dos intervalos temporalmente correspondentes nos poços 1-BRSA-137-RJS e 1-BRSA-127-RJS foram combinadas pelo inverso da distância ao ponto central do evento, com expoente igual a um. Essa ponderação atribuiu maior peso aos controles mais próximos, seguindo o princípio da ponderação pelo inverso da distância apresentado por SHEPARD (1968).  
 Definindo os pesos normalizados por:
@@ -942,13 +942,13 @@ uv \= √\[Σᵢ pᵢ(vᵢ − v̄)²\],    \[28\]
 Essa dispersão foi utilizada como componente operacional de incerteza, mantendo os mesmos pesos empregados na estimativa da velocidade. Não houve divisão pela raiz do número de poços. A componente representa a diferença entre os dois controles modelados, não constituindo erro-padrão da média nem uma estimativa completa da heterogeneidade vertical e lateral ou dos erros de calibração dos poços.  
 Para cada evento, obteve-se, portanto, uma velocidade representativa acompanhada de sua dispersão ponderada. Para o Regional abaixo da Recorrência, foram adotadas a velocidade e a dispersão do Regional paleo. Os valores utilizados encontram-se no Apêndice A.
 
-#### *4.2.9.6 Incertezas das alturas e inclinações*
+#### 4.2.9.6 Incertezas das alturas e inclinações
 
 Para a altura total de queda (Ht) e as inclinações do declive não deformado (S) e da superfície receptora (St), obtidas a partir de leituras diretas na sísmica, foram consideradas a repetibilidade do *picking*, a componente temporal do fundo marinho estimada pelo RMSE da superfície e a dispersão ponderada da velocidade sedimentar. Não foi incluída a variância de krigagem dos horizontes dos depósitos, pois essas medidas não foram extraídas das superfícies interpoladas. A aplicação do RMSE da superfície do fundo às leituras diretas foi adotada como aproximação operacional. As distâncias horizontais e a velocidade da água foram mantidas fixas, e as componentes foram propagadas conforme TAYLOR (1997), considerando a separação dos percursos na água e nos sedimentos e a utilização da mesma velocidade sedimentar nos extremos de cada medida.  
 Embora algumas incertezas calculadas tenham apresentado pequena magnitude, foram mantidas como estimativas parciais, sem interpretá-las como comprovação de precisão absoluta equivalente. Não foram quantificadas as contribuições da seleção dos pontos, das distâncias horizontais, da variabilidade da velocidade da água e dos possíveis vieses de interpretação e conversão.  
 As alturas (Hs) e inclinações (Ss) das cicatrizes foram estimadas a partir de perfis extraídos da superfície do fundo marinho no *QGIS®*, adotando-se velocidade constante de 1.500 m/s para a conversão das diferenças de tempo duplo em desníveis métricos. Esses valores constituem aproximações condicionadas à velocidade adotada, sem calibração local ou quantificação de sua variabilidade. Os resultados também dependem da precisão e da resolução espacial da superfície e da seleção dos pontos que delimitam a cicatriz e o segmento utilizado no cálculo da inclinação. A contribuição isolada do RMSE do fundo marinho foi avaliada, mas não representa a incerteza total dessas medidas. Assim, não foram atribuídas incertezas combinadas a Hs e Ss. Os gradientes temporais, expressos em ms/km, foram mantidos como medidas independentes da velocidade de conversão, embora sujeitos às limitações da superfície e da seleção dos pontos.
 
-#### *4.2.9.7 Propagação da incerteza para os parâmetros morfométricos*
+#### 4.2.9.7 Propagação da incerteza para os parâmetros morfométricos
 
 As diferentes fontes de incerteza não foram combinadas em um único valor geral, mas propagadas de acordo com as variáveis envolvidas no cálculo de cada parâmetro morfométrico. Utilizou-se a propagação de primeira ordem apresentada por TAYLOR (1997), adotando-se operacionalmente a independência entre as entradas e desprezando as covariâncias não estimadas:
 
@@ -1005,14 +1005,14 @@ Em que uθ é expresso em graus. Não foram incorporadas as incertezas de seleç
 A sensibilidade à escolha do modelo de conversão foi avaliada separadamente, comparando o soterramento calculado com a velocidade constante do evento àquele obtido pela integração dos perfis dos poços desde o fundo marinho. Essas diferenças não foram interpretadas como desvios-padrão nem incorporadas à soma quadrática.  
 Os valores apresentados como resultado ± incerteza correspondem às componentes quantificadas sob as hipóteses adotadas. Não constituem incertezas totais nem intervalos de confiança de 95%. Permanecem não quantificadas as contribuições relacionadas à representatividade dos poços, à extensão rasa dos modelos, à escolha dos intervalos, à variabilidade da velocidade da água e à delimitação e seleção dos pontos de medida.
 
-#### *4.2.9.8 Apresentação e arredondamento dos resultados*
+#### 4.2.9.8 Apresentação e arredondamento dos resultados
 
 Os cálculos foram realizados preservando os dígitos disponíveis nas entradas, com arredondamento apenas na apresentação final. Para os parâmetros acompanhados de incerteza, esta foi expressa com um ou dois algarismos significativos, e o resultado foi arredondado à mesma casa decimal da incerteza, conforme a orientação do Guia para a Expressão da Incerteza de Medição (JCGM, 2008).  
 Consequentemente, não foi adotado um número único de casas decimais para todos os parâmetros. A apresentação depende da unidade utilizada e da magnitude da incerteza estimada. Para as medidas sem incerteza quantitativa atribuída, o arredondamento constitui uma convenção de apresentação e não uma demonstração de precisão equivalente.  
 O número de casas decimais apresentado não foi determinado diretamente pela resolução sísmica. Esta foi utilizada para discutir a capacidade de separação entre interfaces, enquanto o arredondamento dos resultados com incerteza foi orientado pelas componentes propagadas. Como essas componentes são parciais, os dígitos apresentados não devem ser interpretados como comprovação de acurácia absoluta.  
 A partir da inspeção das incertezas relativas obtidas, adotou-se o patamar de 20% como critério operacional para destacar medidas que requerem maior cautela na comparação quantitativa. Esse patamar constitui uma convenção de apresentação deste trabalho, não um limite metrológico de aceitabilidade: valores superiores não implicam rejeição automática, e valores inferiores não asseguram a validade da medida. Independentemente desse critério, foram identificadas as medidas temporais inferiores a 13 ms e aquelas situadas entre 13 e 22 ms, considerando a faixa de resolução vertical estimada para o dado sísmico. A incerteza propagada e a resolução vertical foram avaliadas separadamente. 
 
-## 4.3 Determinação de domínios
+## **4.3 Determinação de domínios**
 
 A compartimentação dos MTDs em domínios de cabeceira, deflação e acumulação foi realizada pela integração entre a interpretação sísmica e os atributos geomorfológicos das superfícies analisadas, principalmente a do fundo marinho. Neste trabalho, esses domínios foram utilizados para distinguir setores predominantemente associados à ruptura, ao transporte e à deposição do material, respectivamente. A proposta de SCARSELLI (2020) foi adotada como referência conceitual para a análise da organização espacial e das feições cinemáticas dos MTDs (Seção x.x.x), enquanto a nomenclatura e a delimitação dos domínios foram ajustadas às características reconhecidas nos dados disponíveis, sem pressupor correspondência direta com todos os domínios e feições descritos pelo autor.   
 Inicialmente, foram definidos três conjuntos de pontos de referência em seções sísmicas sucessivas no *Petrel®*: A, associado ao topo da cicatriz; B, associado ao limite proximal do depósito; e C, associado à terminação distal do corpo. Os pontos foram acompanhados lateralmente em seções com incremento predominante de 20 *inlines*. Considerando o espaçamento aproximado de 25 m entre *inlines*, esse intervalo correspondeu a cerca de 500 m entre as seções interpretadas. Esse espaçamento refere-se ao levantamento dos pontos de referência e não à resolução das grades utilizadas nos cálculos morfométricos.  
@@ -1020,17 +1020,17 @@ Os conjuntos de pontos foram exportados do *Petrel®* em arquivos ASCII contendo
 O domínio de cabeceira foi reconhecido na porção proximal dos eventos, a partir da presença da escarpa principal e de feições associadas à extensão e à evacuação de material. O domínio de deflação correspondeu à porção intermediária dos MTDs, predominantemente associado ao transporte do material mobilizado, situado entre a cabeceira e a área de acumulação. O domínio de acumulação compreendeu o setor em que predominou a deposição do material transportado, reconhecido a partir da geometria e da distribuição dos depósitos nos dados sísmicos e geomorfológicos.   
 Os limites entre os domínios foram definidos a partir das transições estruturais e geomorfológicas reconhecidas nos dados, não sendo necessariamente abruptos. Os pontos A, B e C constituíram referências espaciais, enquanto a delimitação final dos domínios resultou da integração entre a geometria dos depósitos, o relevo da superfície basal, os mapas de aspecto e as feições cinemáticas interpretadas.A compartimentação adotada considerou, portanto, o processo predominante em cada setor, admitindo a coexistência de processos de transporte, erosão e deposição e a ocorrência de transições graduais entre os domínios. 
 
-## 4.4 Classificação de depósitos/complexos de transporte de massa
+## **4.4 Classificação de depósitos/complexos de transporte de massa**
 
 	Após a finalização dos cálculos morfométricos, os depósitos de movimentos de massa foram classificados quanto ao número de eventos, contexto de preservação, geometria geral, relação com a área-fonte, confinamentos lateral e frontal, estilo de deformação interna e provável mecanismo gatilho.   
 A distinção entre eventos individuais e complexos de múltiplos eventos seguiu CLARE *et al.* (2018). A relação com a área-fonte foi definida segundo as categorias *attached* e *detached* de MOSCARDELLI & WOOD (2008), complementadas por CLARE *et al.* (2018). O confinamento frontal foi classificado segundo FREY-MARTÍNEZ *et al.* (2006), enquanto as geometrias tipo 1 e tipo 2 seguiram GAMBOA & ALVES (2016). A estrutura interna foi descrita a partir da continuidade e organização dos refletores, distinguindo-se fácies caóticas, transparentes, descontínuas, convolutas e blocos coerentes, conforme BULL *et al.* (2009) e POSAMENTIER & MARTINSEN (2011). 
 
-## 4.5 Mapeamento de *pockmarks* 
+## **4.5 Mapeamento de pockmarks** 
 
 O mapeamento dos *pockmarks* foi realizado pela integração entre o raster de rugosidade do fundo marinho e a interpretação sísmica. O raster de rugosidade auxiliou na identificação e na delimitação das depressões, enquanto as seções sísmicas foram utilizadas para avaliar sua expressão em subsuperfície e a presença de evidências associadas à ocorrência ou à migração de fluidos. O levantamento foi restrito aos *pockmarks* espacialmente relacionados aos MTDs caracterizados neste estudo.  
 Os *pockmarks* foram diferenciados conforme a presença ou ausência de evidências sísmicas de fluidos em subsuperfície. Essa distinção foi adotada como critério interpretativo, sem implicar a comprovação de atividade ou inatividade atual, cuja determinação depende de evidências adicionais de exsudação no fundo marinho ou na coluna d’água (SPATOLA *et al.*, 2025).
 
-## 4.6 Técnica HVSR
+## **4.6 Técnica HVSR**
 
 O método da Razão Espectral Horizontal/Vertical (Horizontal-to-Vertical Spectral Ratio — HVSR) também conhecido como razão H/V, foi aplicado para identificar a frequência fundamental de ressonância (f₀) do pacote sedimentar e estimar a profundidade do principal contraste de impedância na subsuperfície. A técnica utiliza o ruído sísmico ambiental registrado nas componentes horizontais norte–sul (NS), leste–oeste (EW) e vertical (V). Por ser passiva e de baixo impacto operacional, é adequada à investigação de contrastes de rigidez no subsolo (NAKAMURA, 1989; KRYLOV *et al.*, 2022).  
 O ruído sísmico ambiental se caracteriza por vibrações contínuas de pequena amplitude, da ordem de 10⁻⁴ a 10⁻² cm (OKADA & SUTO, 2003). Esse ruído pode ser gerado pela interação das ondas oceânicas, por fenômenos atmosféricos e por atividades antrópicas. Pequenos sismos também podem contribuir na faixa de 2 a 10 Hz; no Brasil, a sismicidade é mais frequente na margem oceânica do que no interior continental (ASSUMPÇÃO *et al.*, 2014).  
@@ -1267,7 +1267,7 @@ Na XL 4180, altos salinos e depressões delimitam compartimentos de geometria co
 ![][image50]  
 Figura 46 — Relações entre o MTC 2 e as estruturas salinas nas seções em *crossline* de Búzios. (a) Seção XL 4026, mostrando uma minibacia no setor esquerdo e o arqueamento e falhamento da cobertura sobre o corpo salino central. (b) Seção XL 4180, evidenciando a alternância entre altos salinos e depressões sedimentares, além das variações geométricas do evento D. (c) Mapa de distribuição dos eventos do MTC 2 e localização dos perfis. As linhas tracejadas representam os planos de falha interpretados. 
 
-## **5.4 Relações com *pockmarks***
+## **5.4 Relações com pockmarks**
 
 O mapeamento das depressões interpretadas como *pockmarks* permitiu reconhecer sua distribuição no fundo marinho e examinar suas relações espaciais com os depósitos de transporte em massa (Figura 47). As feições foram divididas em duas categorias, conforme sua expressão nas seções sísmicas: *pockmarks* com realce de amplitude e *pockmarks* sem realce de amplitude. Essa classificação é descritiva e não implica, por si só, diferenças de idade, origem ou atividade atual de escape de fluidos.  
 As duas categorias ocorrem sobre as áreas dos depósitos mapeados e em setores adjacentes. Na região do MTC 1, observa-se uma distribuição ampla, com concentrações e alinhamentos locais, incluindo feições próximas ao bloco de alta amplitude. Em Búzios, os *pockmarks* concentram-se principalmente na área de ocorrência do evento D do MTC 2, onde também estão presentes exemplos das duas categorias (Figura 47). Essas relações espaciais orientaram a seleção das seções utilizadas para investigar a expressão das depressões em subsuperfície e suas possíveis associações com os depósitos e as estruturas salinas.
@@ -1275,7 +1275,7 @@ As duas categorias ocorrem sobre as áreas dos depósitos mapeados e em setores 
 ![][image51]  
 Figura 47 — Distribuição geral dos *pockmarks* e sua relação espacial com os depósitos de transporte em massa mapeados. Os pontos amarelos representam *pockmarks* com realce de amplitude, e os pontos magenta, *pockmarks* sem realce de amplitude. Os polígonos coloridos delimitam os depósitos e os eventos dos complexos, conforme a chave da figura, sobrepostos ao mapa de rugosidade do fundo marinho. O mapa de localização apresenta a posição da área de estudo na Bacia de Santos. 
 
-### 5.4.1 *Pockmarks* sem realce de amplitude 
+### 5.4.1 Pockmarks sem realce de amplitude 
 
 Os *pockmarks* sem realce de amplitude foram identificados nas áreas do MTC 1 e do MTC 2 (Figura 48). Nas seções sísmicas, essas feições apresentam depressões no fundo marinho acompanhadas por inflexões dos refletores subjacentes, sem aumento expressivo de amplitude no intervalo destacado. Sua identificação baseia-se, portanto, principalmente na geometria da depressão e em sua correspondência com as feições mapeadas em planta.   
 Na seção IL 10034, na área do MTC 1, observam-se depressões próximas entre si, com diferentes expressões nos refletores rasos (Figura 48a). As inflexões sob o fundo marinho ocorrem acima dos intervalos identificados como eventos A, B e C do complexo. A localização dessas feições em planta é apresentada na Figura 48b.  
@@ -1847,8 +1847,9 @@ Tabela 26 — Parâmetros da cicatriz 2 do evento D do MTC 2\.
 
 ![][image79]
 
-Figura 75 — Localização dos perfis avaliados e medidas das cicatrizes 1 e 2 do evento D do MTC 2\. (a) Superfície do fundo marinho com a delimitação das cicatrizes e a localização dos três perfis avaliados em cada uma, com destaque em amarelo para os perfis selecionados; (b) perfil direito da cicatriz 1; (c) perfil esquerdo da cicatriz 2\. Aₛ–Bₛ delimitam a altura da escarpa (Hₛ), e P–Q corresponde ao segmento utilizado no cálculo da inclinação máxima (Sₛ), detalhado abaixo de cada perfil. Os desníveis foram convertidos com velocidade de   
-1.500 m/s. 
+Figura 75 — Localização dos perfis avaliados e medidas das cicatrizes 1 e 2 do evento D do MTC 2\. (a) Superfície do fundo marinho com a delimitação das cicatrizes e a localização dos três perfis avaliados em cada uma, com destaque em amarelo para os perfis selecionados; (b) perfil direito da cicatriz 1; (c) perfil esquerdo da cicatriz 2\. Aₛ–Bₛ delimitam a altura da escarpa (Hₛ), e P–Q corresponde ao segmento utilizado no cálculo da inclinação máxima (Sₛ), detalhado abaixo de cada perfil. Os desníveis foram convertidos com velocidade de 
+
+## **1.500 m/s.** 
 
 ##### 5.6.5.4.4 Eixos e alturas totais de queda
 
@@ -2082,12 +2083,12 @@ Figura 82 – Compartimentação do evento D do MTC 2 em domínios: (a) seção 
 
 ## **5.9 Classificação dos depósitos e complexos de transporte de massa**
 
-A integração dos critérios classificatórios permitiu distinguir três depósitos associados a eventos individuais, denominados MTDs 1, 2 e 3, e dois complexos de transporte de massa, MTCs 1 e 2, constituídos por três e quatro eventos, respectivamente, conforme abordado em seções anteriores. (Quadro X; Figuras 34, 38 e 4 ). Quanto à relação com a área-fonte, os MTDs 1 e 2 foram classificados como *detached*, considerando suas relações espaciais com as margens do Canal de Santos (Figuras 30, 31,55, 59). O MTD 3 e os eventos do MTC 2 receberam o mesmo enquadramento por sua associação espacial com os altos salinos e as áreas de ruptura locais identificadas (Figuras 32, 33, 42, 45 e 46\. No MTC 1, os eventos A e C foram classificados como *attached* pela continuidade regional dos corpos em direção ao limite da área investigada, enquanto o evento B foi enquadrado como *detached* por sua relação com o sistema do Canal de Santos (Figuras 34 a 36).  
-Quanto ao confinamento frontal, os MTDs 1 e 2 foram interpretados como confinados pelo relevo associado ao Canal de Santos, conforme suas geometrias nas seções longitudinais (Figuras 30a–b e 31a–b). No MTD 3 e no MTC 2, o confinamento foi relacionado aos altos associados às estruturas salinas,observados nas seções que mostram a acomodação dos depósitos entre os compartimentos elevados (Figuras 32, 38 e 40). O MTC 1 apresentou variação espacial desse controle, envolvendo o relevo do Canal de Santos e os altos salinos, com interpretação de fluxo sobrepassante local nos eventos A e C (Figura 36).  
+A integração dos critérios classificatórios permitiu distinguir três depósitos associados a eventos individuais, denominados MTDs 1, 2 e 3, e dois complexos de transporte de massa, MTCs 1 e 2, constituídos por três e quatro eventos, respectivamente, conforme abordado em seções anteriores. (Quadro 1; Figuras 34, 38 e 40). Quanto à relação com a área-fonte, os MTDs 1 e 2 foram classificados como *detached*, considerando suas relações espaciais com as margens do Canal de Santos (Figuras 30, 31,55, 59). O MTD 3 e os eventos do MTC 2 receberam o mesmo enquadramento por sua associação espacial com os altos salinos e as áreas de ruptura locais identificadas (Figuras 32, 33, 42, 45 e 46). No MTC 1, os eventos A e C foram classificados como *attached* pela continuidade regional dos corpos em direção ao limite da área investigada, enquanto o evento B foi enquadrado como *detached* por sua relação com o sistema do Canal de Santos (Figuras 34 a 36).  
+Quanto ao confinamento frontal, os MTDs 1 e 2 foram interpretados como confinados pelo relevo associado ao Canal de Santos, conforme suas geometrias nas seções longitudinais (Figuras 30a–b e 31a–b). No MTD 3 e no MTC 2, o confinamento foi relacionado aos altos associados às estruturas salinas, observados nas seções que mostram a acomodação dos depósitos entre os compartimentos elevados (Figuras 32, 38 e 40). O MTC 1 apresentou variação espacial desse controle, envolvendo o relevo do Canal de Santos e os altos salinos, com interpretação de fluxo sobrepassante local nos eventos A e C (Figura 36).  
 As razões entre o comprimento das cicatrizes e a distância até a frente foram de 2,80 para o MTD 1 e 2,12 para o MTD 2, compatíveis com geometrias Tipo 2\. As cicatrizes e os eixos utilizados como referência são apresentados nas Figuras 55 e 56, para o MTD 1, e nas Figuras 59 e 60, para o MTD 2\. O MTD 3 apresentou razão de 0,73, compatível com geometria Tipo 1, sendo seu eixo de transporte apresentado na Figura 63\. Para o evento D do MTC 2, o comprimento conjunto das duas cicatrizes foi de 20,17 km (Figura 75), enquanto os dois eixos de transporte mediram 24,33 e 23,43 km (Figura 76). A utilização da média desses percursos, de 23,905 km, resultou em uma razão de 0,84, também compatível com geometria Tipo 1\. A classificação geométrica do MTC 1 não foi determinada, pois suas cicatrizes de cabeceira se encontram fora da área de estudo, e a distribuição mapeada representa apenas parte da extensão dos eventos regionais (Figuras 34b e 36c).  
-Quadro X — Síntese da classificação dos depósitos e complexos de transporte de massa quanto ao número de eventos, à relação com a área-fonte, ao confinamento frontal e à geometria. R corresponde à razão entre o comprimento da escarpa de cabeceira e a distância até a frente do depósito. 
+Quadro 1 — Síntese da classificação dos depósitos e complexos de transporte de massa quanto ao número de eventos, à relação com a área-fonte, ao confinamento frontal e à geometria. R corresponde à razão entre o comprimento da escarpa de cabeceira e a distância até a frente do depósito. 
 
-| Critério | Número de eventos (CLARE *et al.*, 2018\) | Relação com a área fonte (MOSCARDELLI & WOOD (2008) | Confinamento frontal (FREY-MARTÍNEZ *et al.* (2006) | Geometrias tipo 1 e 2 (GAMBOA & ALVES (2016) |
+| Critério | Número de eventos (CLARE *et al.*, 2018\) | Relação com a área-fonte (MOSCARDELLI & WOOD, 2008\) | Confinamento frontal (FREY-MARTÍNEZ et al., 2006\) | Geometrias tipo 1 e 2 (GAMBOA & ALVES, 2016\) |
 | :---- | :---- | :---- | :---- | :---- |
 | MTD 1 | Único | *Detached* | Frontalmente confinado pelo Canal de Santos | Tipo 2= (R= 2,80) |
 | MTD 2 | Único | *Detached* | Frontalmente confinado pelo Canal de Santos | Tipo 2 (R= 2,12) |
@@ -2244,7 +2245,7 @@ Nas seções aproximadamente longitudinais ao transporte, os depósitos frequent
 Os controles também variam ao longo do percurso. As cicatrizes reconhecidas situam-se mais afastadas dos setores onde a deformação salina é mais evidente, enquanto, a jusante, os depósitos ocupam compartimentos delimitados pelos altos da cobertura (Figuras 40–42, 45 e 46). Essa configuração permite discutir uma mudança nos elementos que condicionaram o deslocamento e a acomodação. Contudo, a deformação posterior impede considerar todo o relevo atual como anterior ao transporte.  
 As relações entre depósitos, altos da cobertura e minibacias encontram comparação na Bacia do Espírito Santo. GAMBOA & ALVES (2016) analisaram depósitos acumulados em uma minibacia salina e relacionaram sua geometria e deformação interna à orientação dos corpos e às estruturas delimitadoras. Na área estudada, a comparação é pertinente pela acomodação em depressões e pela limitação da distribuição por altos associados ao sal, especialmente no MTC 2\. Essas semelhanças indicam controles geomorfológicos comparáveis, mas não demonstram equivalência dos mecanismos de ruptura ou dos estilos de deformação interna.
 
-## **6.4 Distribuição dos *pockmarks* e relações com os depósitos**
+## **6.4 Distribuição dos pockmarks e relações com os depósitos**
 
 As depressões interpretadas como *pockmarks* apresentam diferentes relações espaciais e estratigráficas com os depósitos de transporte em massa. O conjunto inclui feições preservadas no fundo marinho, depressões na cobertura acima dos depósitos e possíveis paleopockmarks recobertos por eventos posteriores. Essa diversidade permite discutir diferentes momentos de formação, sem atribuir uma relação temporal única entre *pockmarks* e movimentos de massa.  
 A divisão entre feições com e sem realce de amplitude constitui uma classificação descritiva, sem implicar diferenças de atividade, composição dos fluidos ou idade (Figuras 47–49). Os exemplos sem realce foram reconhecidos principalmente pela geometria das depressões e pelas inflexões dos refletores subjacentes. A coexistência das duas categorias em um mesmo setor, como no MTC 1, mostra que a resposta de amplitude não estabelece uma sequência de formação (Figura 49a).  
@@ -2262,7 +2263,7 @@ Esses registros são compatíveis com diferentes episódios de formação de dep
 Um setor distinto reúne o bloco de alta amplitude, um bright spot subjacente, perturbação dos refletores e *pockmarks* ao redor e parcialmente acima do bloco (Figura 50). A estrutura salina em profundidade, associada à deformação da cobertura, acrescenta um possível controle estrutural. Contudo, não foram individualizados planos de falha bem definidos conectando todos esses elementos.  
 A associação permite considerar circulação de fluidos como hipótese, sem identificar a natureza do bloco ou a causa das amplitudes elevadas. Esse setor deve ser distinguido daquele das depressões soterradas entre A e C, cuja cronologia não pode ser transferida para o entorno do bloco.
 
-### 6.4.3 *Pockmarks* e controle estrutural no MTC 2
+### 6.4.3 Pockmarks e controle estrutural no MTC 2
 
 No MTC 2, os *pockmarks* ocorrem principalmente na cobertura sobre o evento D. Os exemplos com realce de amplitude predominam sobre as cicatrizes, enquanto os sem realce são mais frequentes no domínio interpretado como de deflação (Figuras 47, 48 e 51). Essa diferença caracteriza sua distribuição e expressão sísmica, sem determinar atividade ou composição dos fluidos.  
 Em alguns exemplos, a inflexão dos refletores pode ser acompanhada até o topo do evento D, indicando que a expressão da feição não se restringe aos sedimentos superficiais (Figura 51d). Em outros, a rugosidade do topo dificulta distinguir sua configuração própria daquela associada às depressões. A influência sobre esse horizonte deve, portanto, ser reconhecida individualmente.  
@@ -2281,7 +2282,7 @@ A morfometria distingue, assim, diferentes formas de organização: volume assoc
 
 ## **6.6 Integração dos critérios de classificação**
 
-Os critérios reunidos no Quadro X permitem comparar aspectos complementares: número de eventos, relação com a área-fonte, confinamento frontal e proporções geométricas. A distinção entre depósitos individuais e complexos expressa sua organização estratigráfica, enquanto os demais critérios caracterizam relações espaciais e geométricas. Sua integração amplia a comparação entre as unidades, sem pressupor que classificações semelhantes correspondam a um mesmo mecanismo de ruptura.  
+Os critérios reunidos no Quadro 1 permitem comparar aspectos complementares: número de eventos, relação com a área-fonte, confinamento frontal e proporções geométricas. A distinção entre depósitos individuais e complexos expressa sua organização estratigráfica, enquanto os demais critérios caracterizam relações espaciais e geométricas. Sua integração amplia a comparação entre as unidades, sem pressupor que classificações semelhantes correspondam a um mesmo mecanismo de ruptura.  
 A relação com a área-fonte, conforme MOSCARDELLI & WOOD (2008), requer atenção à continuidade dos corpos e à localização das rupturas. Nos MTDs 1 e 2, as cicatrizes bem definidas sustentam áreas-fonte próximas, enquanto, nos eventos A e C do MTC 1, a continuidade além da cobertura limita sua caracterização integral. Para o MTC 1-B e os eventos A e B do MTC 2, a ausência de cicatrizes seguramente individualizadas exige cautela no enquadramento. Essas limitações são qualitativas e devem acompanhar a interpretação do quadro.  
 As razões de 2,80 e 2,12 sustentam o enquadramento dos MTDs 1 e 2 como Tipo 2, enquanto os valores de 0,73 e 0,84 correspondem às geometrias Tipo 1 do MTD 3 e do evento D do MTC 2, segundo o critério aplicado de GAMBOA & ALVES (2016). Esses enquadramentos devem ser confrontados com o confinamento frontal de FREY-MARTÍNEZ *et al.* (2006), pois proporção geométrica e interação com barreiras descrevem características distintas. O percurso curto, isoladamente, não define o Tipo 2, assim como uma terminação junto a um alto não resolve toda a história do confinamento.
 
@@ -2421,17 +2422,15 @@ A investigação dos mecanismos desencadeadores deve priorizar a reconstrução 
 A integração de testemunhos, perfis geofísicos e ensaios geotécnicos permitiria investigar a existência de camadas mecanicamente frágeis junto às superfícies basais. Recomenda-se determinar a resistência ao cisalhamento, a permeabilidade, a compressibilidade e o estado de adensamento dos sedimentos, além de avaliar sua resposta ao carregamento cíclico. Esses dados possibilitariam testar se as rupturas poderiam ocorrer por aumento de pressão de poros, sobrecarga sedimentar ou perturbações sísmicas, distinguindo condições predisponentes dos processos capazes de iniciar o movimento.  
 Para avaliar a participação de fluidos, recomenda-se integrar o mapeamento de possíveis condutos e feições de escape com análises de gás e de água intersticial, medidas de pressão de poros e modelagem do fluxo na cobertura sedimentar. A cronologia dessas feições em relação às superfícies de ruptura seria essencial para investigar se a circulação antecedeu os eventos. A hipótese de dissociação de hidratos exigiria, adicionalmente, evidências de sua presença e a reconstrução das condições de pressão e temperatura relevantes.  
 O aprimoramento das idades dos depósitos também permitiria testar possíveis associações com episódios de sedimentação acelerada, mudanças na circulação oceânica e abalos sísmicos. A identificação de eventos aproximadamente contemporâneos em setores distintos poderia orientar a investigação de uma perturbação regional, embora a contemporaneidade, isoladamente, não comprove um gatilho comum.   
-Por fim, sugere-se ampliar o mapeamento de *pockmarks* para além dos depósitos e incorporar às análises de incerteza a delimitação dos contornos e as correlações entre superfícies e erros espaciais. Esse conjunto de avanços permitiria avaliar com maior consistência as relações entre transporte de massa, deformação salina e circulação de fluidos, bem como a relevância dessas relações para a suscetibilidade do talude.  
-8\. Agradecimentos   
+Por fim, sugere-se ampliar o mapeamento de *pockmarks* para além dos depósitos e incorporar às análises de incerteza a delimitação dos contornos e as correlações entre superfícies e erros espaciais. Esse conjunto de avanços permitiria avaliar com maior consistência as relações entre transporte de massa, deformação salina e circulação de fluidos, bem como a relevância dessas relações para a suscetibilidade do talude.
+
+# **8 AGRADECIMENTOS** 
+
 Agradeço a ANP (Agência Nacional de Petróleo, Gás Natural e Biocomustíveis) pela disponibilização dos dados sísmicos e de poços utilizados neste trabalho, concedida por meio do processo SEI nº 48610.232732/2025-71, de 03 de dezembro de 2025\. Ao projeto SISMO-OCEANO — Monitoramento Sismológico e Oceanográfico de um Segmento na Margem Sudeste do Brasil: Norte da Bacia de Santos ao Sul da Bacia do Espírito Santo, desenvolvido pela Universidade Federal de Santa Catarina (UFSC) em parceria com o Observatório Nacional (ON), com financiamento da Petrobras, agradeço pela disponibilização dos registros dos sismógrafos de fundo oceânico (OBS) utilizados nas análises de HVSR. Agradeço também ao Observatório Nacional e ao Centro de Pesquisas, Desenvolvimento e Inovação da Petrobras (CENPES/Petrobras) pelo acesso ao software *Petrel®*, fundamental para a interpretação dos dados sísmicos e o desenvolvimento desta pesquisa. 
 
-# Apêndice A- Link repositório GitHub
+# **Apêndice A- Link repositório GitHub**
 
-# 
-
-# 
-
-# APÊNDICE A — DISTÂNCIAS AOS POÇOS E VELOCIDADES PONDERADAS
+# **APÊNDICE A — DISTÂNCIAS AOS POÇOS E VELOCIDADES PONDERADAS**
 
 Tabela 45 — Distâncias dos poços aos MTDs/MTCs, pesos da ponderação pela distância e velocidades representativas.
 
@@ -2443,7 +2442,7 @@ Tabela 45 — Distâncias dos poços aos MTDs/MTCs, pesos da ponderação pela d
 | Complexo Búzios | 6,70 | 36,02 | 84,31% | 15,69% | 1549,7 m/s |
 | Recorrência | 44,08 | 9,99 | 18,48% | 81,52% | 1533,1 m/s |
 
-# APÊNDICES B E C — COMBINAÇÕES UTILIZADAS NA ESTIMATIVA DA PROFUNDIDADE POR HVSR
+# **APÊNDICES B E C — COMBINAÇÕES UTILIZADAS NA ESTIMATIVA DA PROFUNDIDADE POR HVSR**
 
 Tabela 46 — Cenários de profundidade por HVSR para 01/02/2020.
 
@@ -2491,12 +2490,12 @@ Tabela 47 — Cenários de profundidade por HVSR para 29/02/2020.
 | 29/02/2020 | f₊₁σ \= 0,894 | 1.649,58 | 0,47 | 392,46 | 109,72 |
 | 29/02/2020 | f₊₁σ \= 0,894 | 1.649,58 | 0,48 | 323,51 | 90,45 |
 
-# APÊNDICE D — DADOS DE ENTRADA E MEMÓRIA DE CÁLCULO DAS ALTURAS E INCLINAÇÕES
+# **APÊNDICE D — DADOS DE ENTRADA E MEMÓRIA DE CÁLCULO DAS ALTURAS E INCLINAÇÕES**
 
 Este apêndice reúne as coordenadas, os tempos duplos de percurso e os parâmetros utilizados no cálculo dos desníveis entre A e C e das inclinações do declive não deformado e da superfície receptora. As medidas foram obtidas diretamente na interpretação sísmica, considerando o tempo do horizonte e o tempo do fundo marinho na mesma posição. A localização dos pontos e dos segmentos é apresentada nas figuras dos respectivos depósitos no capítulo de resultados.  
 As denominações anteriores correspondem a: Santos — MTD 1; Continuação Santos — MTD 2; Recorrência — MTD 3; Regional recente — evento C do MTC 1; e Búzios recente — evento D do MTC 2\.
 
-## D.1 Identificação e localização dos pontos
+## **D.1 Identificação e localização dos pontos**
 
 A e C correspondem aos extremos utilizados no cálculo do desnível longitudinal. A identificação de A como topo da cicatriz ou extremo proximal do depósito deve acompanhar a interpretação de cada caso. C corresponde ao ponto basal na terminação distal. No evento D do MTC 2, os dois eixos utilizam o mesmo ponto A, correspondente ao ponto A originalmente definido para o eixo 1\. Apenas as terminações distais diferem, sendo identificadas como C1 e C2.  
 P1 e P2 delimitam o segmento do declive não deformado, externo à zona deformada. P3 e P4 delimitam o segmento da superfície receptora, à frente do pé do depósito.  
@@ -2526,7 +2525,7 @@ Tabela D.2 — Coordenadas dos pontos utilizados nas inclinações do declive n�
 
 Nota: inicial e final correspondem, respectivamente, a P1 e P2 para S e a P3 e P4 para St.
 
-## D.2 Tempos utilizados nos cálculos
+## **D.2 Tempos utilizados nos cálculos**
 
 As Tabelas D.3 e D.4 apresentam os tempos individuais dos pontos interpretados e do fundo marinho nas mesmas posições. Todos os valores são expressos em milissegundos de tempo duplo de percurso — ms TWT.  
 Tabela D.3 — Tempos dos extremos utilizados nos cálculos entre A e C.
@@ -2553,7 +2552,7 @@ Tabela D.4 — Tempos utilizados nos cálculos das inclinações.
 | MTC 1-C | P1–P2 — S | 1.194,48 | 1.125,68 | 2.269,85 | 2.047,60 |
 | MTC 1-C | P3–P4 — St | 2.236,91 | 1.978,65 | 2.249,61 | 2.029,46 |
 
-## D.3 Parâmetros de conversão e distâncias
+## **D.3 Parâmetros de conversão e distâncias**
 
 A velocidade da água foi mantida fixa em 1.500 m/s. Para o percurso sedimentar, foram utilizadas as velocidades representativas de cada evento e suas dispersões ponderadas, conforme a metodologia.  
 Tabela D.5 — Velocidades sedimentares e componentes de incerteza utilizadas na conversão.
@@ -2584,7 +2583,7 @@ Tabela D.6 — Distâncias horizontais utilizadas nas inclinações e compriment
 
 Nota: as distâncias dos segmentos foram mantidas conforme as medidas fornecidas. Cada eixo do MTC 2-D inclui 9 km de trecho comum e sua respectiva ramificação. As distâncias P1–P2 e P3–P4 não correspondem aos comprimentos totais dos eixos.
 
-# REFERÊNCIAS
+# **REFERÊNCIAS**
 
 AKI, K.; RICHARDS, P. G. Quantitative seismology. 2\. ed. Sausalito: University Science Books, 2002\.
 
