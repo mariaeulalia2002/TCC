@@ -222,7 +222,14 @@ def parse_markdown(
         mfig = re.match(r"Figura\s+(\d+)\s+[—–-]\s*(.*)", s)
         if mfig:
             num, caption = int(mfig.group(1)), mfig.group(2).replace("\\.", ".")
-            if pending_image is None or pending_image not in image_map:
+            figure_data = image_map.get(pending_image) if pending_image is not None else None
+            # No DOCX, a Figura 80 é um objeto menor/flutuante ancorado no
+            # parágrafo da legenda anterior e, por isso, não aparece no
+            # Markdown exportado. Recupera-se diretamente a mídia correta.
+            if figure_data is None and num == 80 and DOCX.exists():
+                with zipfile.ZipFile(DOCX) as archive:
+                    figure_data = (".png", archive.read("word/media/image1.png"))
+            if figure_data is None:
                 out += [
                     f"% PENDÊNCIA: imagem da Figura {num} não encontrada na exportação.",
                     r"\begin{figure}[htbp]",
@@ -234,7 +241,7 @@ def parse_markdown(
                     "",
                 ]
             else:
-                ext, data = image_map[pending_image]
+                ext, data = figure_data
                 if ext not in {".png", ".jpg", ".jpeg", ".pdf"}:
                     ext = ".png"
                 filename = f"figura-{num:02d}-{slug(caption)}{ext}"
