@@ -42,3 +42,12 @@ Pendências mantidas para preenchimento posterior pela autora: resultados da an�
 - O PDF LaTeX foi recompilado após a sincronização.
 
 Pendência visual identificada: a legenda da Figura 80 está presente, mas a imagem correspondente não foi encontrada na exportação do Google Docs.
+
+## 3 de novembro de 2026 — Figura 80, páginas em paisagem e Quadro 1
+
+- A Figura 80 foi identificada no Google Docs como objeto flutuante e reorganizada antes de sua legenda; a Figura 81 foi preservada e recolocada na sequência correta.
+- As Figuras 80 e 81 foram centralizadas, recortadas apenas para retirar o excesso de espaço branco e mantidas com largura uniforme.
+- As Figuras 30 a 46 passaram a ocupar páginas em paisagem no LaTeX, reproduzindo as quebras de seção existentes no documento principal.
+- O Quadro 1 foi reorganizado em duas páginas em paisagem, mantendo os seis padrões, todas as descrições, ocorrências e imagens, sem corte vertical.
+- A numeração das figuras do capítulo de resultados foi realinhada à sequência do Google Docs, iniciando na Figura 29, e o quadro passou a usar numeração contínua como Quadro 1.
+- O Google Docs não recebeu outras alterações de conteúdo após essa correção visual.

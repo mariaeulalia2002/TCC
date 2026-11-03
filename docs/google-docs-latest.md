@@ -2158,9 +2158,11 @@ Figura 79 – Compartimentação do MTD 3 em domínios: (a-b) seção sísmica I
 
 Figura 80 – Compartimentação do evento A do MTC 1 em domínios: (a) seção sísmica IL 9878; (b) distribuição dos domínios em planta. A cicatriz de origem não foi identificada na área de estudo. 
 
+![][image91]
+
 Figura 81 – Compartimentação do evento C do MTC 1 em domínios: (a) seção sísmica IL 9878; (b) distribuição dos domínios em planta. A cicatriz de origem não foi identificada na área de estudo. 
 
-![][image91]
+![][image92]
 
 Figura 82 – Compartimentação do evento D do MTC 2 em domínios: (a) seção sísmica IL 10063; (b) distribuição dos domínios em planta. 
 
@@ -2174,7 +2176,7 @@ PENDÊNCIA: inserir os resultados da classificação com base nos critérios def
 
 Foram geradas oito curvas HVSR para os dias 01/02/2020 e 29/02/2020, combinando duas durações de janela (120 s e 1.800 s) e os operadores de suavização Konno–Ohmachi e Parzen. A frequência fundamental (f₀) foi definida pela mediana lognormal das frequências de pico das janelas processadas. A variabilidade foi expressa pelo desvio-padrão no espaço logarítmico, σln(f₀), conforme Cox & Cheng (2020). Os limites de uma unidade de desvio-padrão foram calculados multiplicativamente por f₋₁σ \= f̃₀ exp\[−σln(f₀)\] e f₊₁σ \= f̃₀ exp\[+σln(f₀)\], correspondendo, sob a hipótese lognormal, a aproximadamente 68% da distribuição. 
 
-![][image92]
+![][image93]
 
 Figura 83 — Curvas HVSR referentes ao dia 01/02/2020.
 
@@ -2189,7 +2191,7 @@ Tabela 38 — Resultados de f₀ para o dia 01/02/2020.
 
 Nota: σln(f₀) representa o desvio-padrão no espaço logarítmico e, portanto, é adimensional. Os limites de uma unidade de desvio-padrão foram calculados de forma multiplicativa por f̃₀ exp\[±σln(f₀)\], conforme Cox & Cheng (2020). 
 
-![][image93]
+![][image94]
 
 Figura 84 — Curvas HVSR referentes ao dia 29/02/2020.
 
@@ -2206,7 +2208,7 @@ Nota: σln(f₀) representa o desvio-padrão no espaço logarítmico e, portanto
 
 As curvas processadas com Konno–Ohmachi preservaram melhor a definição dos picos em baixas frequências, em razão da suavização em escala logarítmica (Konno & Ohmachi, 1998). Em concordância com o projeto SESAME (2004), os cálculos de profundidade utilizaram esse operador, janela de 120 s e taper de Tukey de 0,10. A suavização de Parzen foi mantida como comparação, pois produziu curvas mais regularizadas e atenuou picos estreitos. A Figura 85 evidencia essa diferença entre os operadores.
 
-![][image94]
+![][image95]
 
 Figura 85 — Comparação entre os operadores de suavização. O parâmetro b está relacionado à largura absoluta da janela, em escala não logarítmica; os valores adotados correspondem ao padrão da visualização (Vantassel et al., 2021).
 
@@ -2218,11 +2220,11 @@ Além do pico fundamental, centrado em torno de 0,9 Hz, foram identificados pico
 
 de.
 
-![][image95]
+![][image96]
 
 Figura 86 — Picos secundários de frequência identificados na curva HVSR de 01/02/2020. H/V: amplitude da razão espectral horizontal/vertical.
 
-![][image96]
+![][image97]
 
 Figura 87 — Picos secundários de frequência identificados na curva HVSR de 29/02/2020. H/V: amplitude da razão espectral horizontal/vertical.
 
@@ -2285,7 +2287,7 @@ As estimativas de profundidade obtidas pelo HVSR para 01/02/2020 e 29/02/2020 ap
 Para a comparação com a sísmica, a Figura 88 apresenta o envelope de 29/02/2020, convertido para TWT e indicado aproximadamente entre 114 e 170 ms abaixo do fundo marinho. Na posição do OBS 18, a separação temporal medida diretamente entre o fundo marinho e a base do evento 2-D foi de aproximadamente 153 ms TWT, ficando, portanto, dentro desse envelope. Essa concordância indica que a profundidade da base sísmica é compatível com as profundidades estimadas para a interface associada ao pico fundamental do HVSR.  
 O contato entre os eventos 2-D e 2-C constitui uma interpretação plausível para essa interface, pois os dois pacotes apresentam configurações internas distintas na seção sísmica. Essas diferenças podem estar acompanhadas por variações de compactação e rigidez capazes de produzir um contraste de propriedades elásticas. Entretanto, como essas propriedades não foram medidas diretamente e o envelope abrange outras profundidades próximas, a comparação sustenta a possível associação do pico ao contato entre os eventos, sem demonstrar que ele corresponda exclusivamente à base do evento 2-D.
 
-![][image97]  
+![][image98]  
 Figura 88 — Integração entre os resultados do HVSR e a seção sísmica na posição do OBS 18\. (a) Seção sísmica com os horizontes interpretados dos eventos 2-D e 2-C e o envelope de cenários do HVSR para 29/02/2020, indicado aproximadamente entre 114 e 170 ms TWT abaixo do fundo marinho. A separação temporal medida diretamente até a base do evento 2-D, de aproximadamente 153 ms TWT, situa-se dentro desse envelope. (b) Atributo cosseno da fase instantânea, que evidencia diferenças na configuração interna dos dois eventos. 
 
 ## **6.2 Condicionamento dos depósitos e possíveis mecanismos de instabilidade**
@@ -2653,6 +2655,7 @@ Tabela 48 — Intervalos topo–base e velocidades representativas utilizadas na
 | Regional paleo | 262,787–359,340 | 1.655,91 | 1.761,10 | 1.707,62 |
 | Regional abaixo da Recorrência | Herdado do Regional paleo | — | — | 1.707,62 |
 | Recorrência | 265,065–339,015 | 1.646,21 | 1.730,96 | 1.715,30 |
+
 
 
 

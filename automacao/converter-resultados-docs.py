@@ -146,6 +146,46 @@ def image_targets_markdown(markdown: Path) -> dict[int, tuple[str, bytes]]:
 def table_tex(rows: list[list[str]], caption: str | None, label: str | None, environment: str = "table") -> list[str]:
     if not rows:
         return []
+    if environment == "quadro" and len(rows) > 4:
+        header, body = rows[0], rows[1:]
+        midpoint = (len(body) + 1) // 2
+        parts = [body[:midpoint], body[midpoint:]]
+        out: list[str] = []
+        for part_index, part in enumerate(parts):
+            out += [r"\begin{landscape}", r"\begin{quadro}", r"  \centering"]
+            if part_index == 0:
+                if caption:
+                    out.append(f"  \\caption{{{inline(caption, crossrefs=False)}}}")
+                if label:
+                    out.append(f"  \\label{{{label}}}")
+            else:
+                continuation = inline(caption or "", crossrefs=False)
+                out.append(
+                    f"  \\noindent\\textbf{{Quadro~\\thequadro{{}} — {continuation} (continuação).}}\\par\\smallskip"
+                )
+            out += [
+                r"  \scriptsize",
+                r"  \setlength{\tabcolsep}{3pt}",
+                r"  \renewcommand{\arraystretch}{1.08}",
+                r"  \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.15\linewidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{0.20\linewidth} >{\centering\arraybackslash}p{0.25\linewidth}}",
+                r"    \toprule",
+                "    " + " & ".join(f"\\textbf{{{inline(c, crossrefs=False)}}}" for c in header) + " \\\\",
+                r"    \midrule",
+            ]
+            for row in part:
+                cells = [inline(c, crossrefs=False) for c in row]
+                cells = [
+                    c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=\linewidth,height=2.2cm,keepaspectratio]")
+                    for c in cells
+                ]
+                out.append("    " + " & ".join(cells) + " \\\\")
+            out += [
+                r"    \bottomrule",
+                r"  \end{tabularx}",
+                r"\end{quadro}",
+                r"\end{landscape}",
+            ]
+        return out
     cols = max(len(r) for r in rows)
     spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
     placement = "[htbp]" if environment == "table" else ""
@@ -208,6 +248,8 @@ def parse_markdown(
                 else:
                     label = "resultados" if chapter_number == "5" else "discussao"
                     out += [f"\\chapter{{{chapter_title}}}\\label{{cap:{label}}}", ""]
+                    if chapter_number == "5":
+                        out += [r"\setcounter{figure}{28}", ""]
             elif level == 2:
                 out += [f"\\section{{{inline(title, crossrefs=False)}}}", ""]
             elif level == 3:
@@ -247,16 +289,23 @@ def parse_markdown(
                 filename = f"figura-{num:02d}-{slug(caption)}{ext}"
                 FIGDIR.mkdir(parents=True, exist_ok=True)
                 (FIGDIR / filename).write_bytes(data)
+                landscape_figure = 30 <= num <= 46
+                if landscape_figure:
+                    out.append(r"\begin{landscape}")
                 out += [
-                    r"\begin{figure}[htbp]",
+                    r"\begin{figure}[p]" if landscape_figure else r"\begin{figure}[htbp]",
                     r"  \centering",
-                    f"  \\includegraphics[width=\\textwidth,height=0.78\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}",
+                    (f"  \\includegraphics[width=\\linewidth,height=0.70\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"
+                     if landscape_figure else
+                     f"  \\includegraphics[width=\\textwidth,height=0.78\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"),
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
                     f"  \\label{{fig:resultado-{num}}}",
-                    *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 30 else []),
+                    *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
                     r"\end{figure}",
-                    "",
                 ]
+                if landscape_figure:
+                    out.append(r"\end{landscape}")
+                out.append("")
             pending_image = None
             i += 1
             continue
