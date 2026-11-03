@@ -196,7 +196,8 @@ def parse_markdown(
             raw_title = re.sub(r"^#+\s*", "", s).strip().strip("*").strip()
             title = clean_heading(s)
             chapter_heading = f"{chapter_number} {chapter_title.upper()}"
-            if not (raw_title == chapter_heading or re.match(rf"^{re.escape(chapter_number)}(?:\.\d+)*\s+\S", raw_title)):
+            is_appendix_heading = appendix and raw_title.upper().startswith("APÊNDICE D")
+            if not (is_appendix_heading or raw_title == chapter_heading or re.match(rf"^{re.escape(chapter_number)}(?:\.\d+)*\s+\S", raw_title)):
                 out += [inline(title), ""]
                 i += 1
                 continue
@@ -222,7 +223,16 @@ def parse_markdown(
         if mfig:
             num, caption = int(mfig.group(1)), mfig.group(2).replace("\\.", ".")
             if pending_image is None or pending_image not in image_map:
-                out.append(f"% PENDÊNCIA: imagem da Figura {num} não encontrada na exportação.")
+                out += [
+                    f"% PENDÊNCIA: imagem da Figura {num} não encontrada na exportação.",
+                    r"\begin{figure}[htbp]",
+                    r"  \centering",
+                    r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
+                    f"  \\caption{{{inline(caption, crossrefs=False)}}}",
+                    f"  \\label{{fig:resultado-{num}}}",
+                    r"\end{figure}",
+                    "",
+                ]
             else:
                 ext, data = image_map[pending_image]
                 if ext not in {".png", ".jpg", ".jpeg", ".pdf"}:
