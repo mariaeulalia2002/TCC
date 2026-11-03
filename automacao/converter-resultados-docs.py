@@ -13,11 +13,13 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 DOCX = ROOT / "docs" / "template-tcc-geologia-ufsc.docx"
 MARKDOWN = ROOT / "docs" / "google-docs-latest.md"
-RAW_MARKDOWN = ROOT / "tmp" / "google-docs-final-2026-11-02.md"
+RAW_MARKDOWN = ROOT / "tmp" / "google-docs-final-2026-11-03-pos-revisao.md"
 RESULTADOS = ROOT / "latex" / "capitulos" / "05-resultados.tex"
 DISCUSSAO = ROOT / "latex" / "capitulos" / "06-discussao.tex"
+CONCLUSOES = ROOT / "latex" / "capitulos" / "07-conclusoes.tex"
 APENDICE_D = ROOT / "latex" / "pos-textuais" / "apendice-d.tex"
 FIGDIR = ROOT / "latex" / "figuras" / "resultados"
+REFERENCIAS = ROOT / "latex" / "referencias.bib"
 
 NS = {
     "w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
@@ -46,7 +48,8 @@ def between_headings(text: str, start_pattern: str, end_pattern: str) -> str:
 
 def clean_heading(text: str) -> str:
     text = re.sub(r"^#+\s*", "", text).strip()
-    text = text.strip("*").strip()
+    if text.startswith("**") and text.endswith("**"):
+        text = text[2:-2].strip()
     text = re.sub(r"^(?:\d+(?:\.\d+)*|D\.\d+)\s+", "", text)
     return text.strip()
 
@@ -67,16 +70,105 @@ def protect_math(text: str):
     return re.sub(r"\$[^$]+\$", repl, text), parts
 
 
+def normalize_author(value: str) -> str:
+    value = value.replace("{", "").replace("}", "")
+    value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode()
+    value = re.sub(r"\s+", " ", value).strip().upper()
+    return value
+
+
+def citation_keys() -> dict[tuple[str, str], str]:
+    """Index BibTeX keys by first author and year for Docs citation conversion."""
+    bib = REFERENCIAS.read_text(encoding="utf-8")
+    result: dict[tuple[str, str], str] = {}
+    entries = re.finditer(r"(?ms)^@\w+\{([^,]+),(.*?)(?=^@\w+\{|\Z)", bib)
+    for entry in entries:
+        key, fields = entry.group(1).strip(), entry.group(2)
+        year = re.search(r"(?i)\byear\s*=\s*[\{\"](\d{4})", fields)
+        author = re.search(r"(?is)\bauthor\s*=\s*\{(.+?)\}\s*,", fields)
+        if not (year and author):
+            continue
+        first = author.group(1).split(" and ", 1)[0].strip()
+        if "," in first:
+            surname = first.split(",", 1)[0]
+        else:
+            surname = first.split()[-1]
+        result[(normalize_author(surname), year.group(1))] = key
+
+    # Corporate authors and conventional citation forms used in the TCC.
+    aliases = {
+        ("SESAME", "2004"): "sesame2004",
+        ("ICS", "2026"): "ics2026",
+        ("INTERNATIONAL COMMISSION ON STRATIGRAPHY", "2026"): "ics2026",
+        ("JCGM", "2008"): "jcgm2008",
+        ("BROWN JR.", "1980"): "brownfisher1980",
+        ("MITCHUM JR.", "1977"): "mitchum1977",
+        ("MECKEL", "2011"): "meckel2011",
+    }
+    result.update(aliases)
+    return result
+
+
+CITATION_KEYS = citation_keys()
+
+
+def lookup_citation(author: str, year: str) -> str | None:
+    author = re.sub(r"\*?et al\.\*?", "", author, flags=re.IGNORECASE).strip()
+    author = author.split("&", 1)[0].strip()
+    return CITATION_KEYS.get((normalize_author(author), year))
+
+
+def convert_citations(text: str) -> str:
+    """Convert ABNT author-date citations exported by Google Docs to BibTeX links."""
+
+    def parenthetical(match: re.Match[str]) -> str:
+        content = match.group(1)
+        if not re.search(r"(?:19|20)\d{2}", content):
+            return match.group(0)
+        keys: list[str] = []
+        current_author: str | None = None
+        for part in [p.strip() for p in content.split(";")]:
+            item = re.fullmatch(
+                r"(.+?),\s*((?:19|20)\d{2})(?:,\s*((?:19|20)\d{2}))?",
+                part,
+            )
+            if not item:
+                return match.group(0)
+            current_author = item.group(1).strip()
+            years = [item.group(2)] + ([item.group(3)] if item.group(3) else [])
+            for year in years:
+                key = lookup_citation(current_author, year)
+                if not key:
+                    return match.group(0)
+                keys.append(key)
+        return "\\cite{" + ",".join(keys) + "}"
+
+    # Parenthetical citations, including multiple authors separated by semicolons
+    # and repeated years for the same first author.
+    text = re.sub(r"\(([^()]+)\)", parenthetical, text)
+
+    narrative = re.compile(
+        r"\b([A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ][A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ’' .-]*?"
+        r"(?:\s*&\s*[A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ][A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ’' .-]*|\s+\*?et al\.\*?)?)"
+        r"\s*\(((?:19|20)\d{2})\)"
+    )
+
+    def narrative_repl(match: re.Match[str]) -> str:
+        key = lookup_citation(match.group(1), match.group(2))
+        return f"\\citeonline{{{key}}}" if key else match.group(0)
+
+    return narrative.sub(narrative_repl, text)
+
+
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_")
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
     text = re.sub(r"\[([^\]]+)\]\(https?://[^)]+\)", r"\1", text)
-    text = text.replace("(Konno & Ohmachi, 1998)", r"\cite{konno1998}")
-    text = text.replace("SESAME (2004)", r"SESAME \cite{sesame2004}")
-    text = text.replace("(Vantassel et al., 2021)", r"\cite{vantassel2021}")
-    text = text.replace("Ford et al. (2021)", r"\citeonline{ford2021}")
-    text = text.replace("Ford et al. (2023)", r"\citeonline{ford2023}")
-    text = text.replace("Hercos et al. (2023)", r"\citeonline{hercos2023}")
+    text = text.replace(
+        "Comissão Internacional de Estratigrafia (2026)",
+        r"Comissão Internacional de Estratigrafia \cite{ics2026}",
+    )
+    text = convert_citations(text)
     text, maths = protect_math(text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"\\textbf{\1}", text)
     text = re.sub(r"\*([^*]+)\*", r"\\textit{\1}", text)
@@ -233,7 +325,9 @@ def parse_markdown(
             continue
         if s.startswith("#"):
             level = len(s) - len(s.lstrip("#"))
-            raw_title = re.sub(r"^#+\s*", "", s).strip().strip("*").strip()
+            raw_title = re.sub(r"^#+\s*", "", s).strip()
+            if raw_title.startswith("**") and raw_title.endswith("**"):
+                raw_title = raw_title[2:-2].strip()
             title = clean_heading(s)
             chapter_heading = f"{chapter_number} {chapter_title.upper()}"
             is_appendix_heading = appendix and raw_title.upper().startswith("APÊNDICE D")
@@ -384,9 +478,14 @@ def main() -> None:
         r"^#\s+\*\*6\s+DISCUSSÃO\*\*\s*$",
         r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
     )
+    conclusoes = between_headings(
+        text,
+        r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
+        r"^#\s+Apêndice A-\s+Link repositório GitHub\s*$",
+    )
     apendice_d = between_headings(
         text,
-        r"^#\s+\*\*APÊNDICE D\b.*$",
+        r"^#\s+(?:\*\*)?APÊNDICE D\b.*$",
         r"^#\s+(?:\*\*)?REFERÊNCIAS(?:\*\*)?\s*$",
     )
     RESULTADOS.write_text(parse_markdown(resultados, images), encoding="utf-8")
@@ -394,9 +493,14 @@ def main() -> None:
         parse_markdown(discussao, images, chapter_number="6", chapter_title="Discussão"),
         encoding="utf-8",
     )
+    CONCLUSOES.write_text(
+        parse_markdown(conclusoes, images, chapter_number="7", chapter_title="Conclusões"),
+        encoding="utf-8",
+    )
     APENDICE_D.write_text(parse_markdown(apendice_d, images, appendix=True), encoding="utf-8")
     print(f"Resultados: {RESULTADOS}")
     print(f"Discussão: {DISCUSSAO}")
+    print(f"Conclusões: {CONCLUSOES}")
     print(f"Apêndice D: {APENDICE_D}")
 
 
