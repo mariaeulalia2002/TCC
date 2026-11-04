@@ -493,11 +493,11 @@ def main() -> None:
     resultados = between_headings(
         text,
         r"^#\s+\*\*5\s+RESULTADOS\*\*\s*$",
-        r"^#\s+\*\*6\s+DISCUSSÃO\*\*\s*$",
+        r"^#\s+\*\*6\s+DISCUSS(?:ÃO|ÕES)\*\*\s*$",
     )
     discussao = between_headings(
         text,
-        r"^#\s+\*\*6\s+DISCUSSÃO\*\*\s*$",
+        r"^#\s+\*\*6\s+DISCUSS(?:ÃO|ÕES)\*\*\s*$",
         r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
     )
     conclusoes = between_headings(
@@ -512,7 +512,7 @@ def main() -> None:
     )
     RESULTADOS.write_text(parse_markdown(resultados, images), encoding="utf-8")
     DISCUSSAO.write_text(
-        parse_markdown(discussao, images, chapter_number="6", chapter_title="Discussão"),
+        parse_markdown(discussao, images, chapter_number="6", chapter_title="Discussões"),
         encoding="utf-8",
     )
     CONCLUSOES.write_text(
