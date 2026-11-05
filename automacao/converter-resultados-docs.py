@@ -338,6 +338,17 @@ def parse_markdown(
             pending_image = int(mimg.group(1))
             i += 1
             continue
+        mbold_heading = re.fullmatch(
+            rf"\*\*({re.escape(chapter_number)}(?:\.\d+)+)\s+(.+?)\*\*",
+            s,
+        )
+        if mbold_heading:
+            depth = mbold_heading.group(1).count(".")
+            title = inline(mbold_heading.group(2), crossrefs=False)
+            command = "section" if depth == 1 else "subsection" if depth == 2 else "subsubsection"
+            out += [f"\\{command}{{{title}}}", ""]
+            i += 1
+            continue
         if s.startswith("#"):
             level = len(s) - len(s.lstrip("#"))
             raw_title = re.sub(r"^#+\s*", "", s).strip()
@@ -377,7 +388,7 @@ def parse_markdown(
                 out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}", ""]
             i += 1
             continue
-        mfig = re.match(r"Figura\s+(\d+)\s+[—–-]\s*(.*)", s)
+        mfig = re.match(r"Figura\s+(\d+)\s*[—–-]\s*(.*)", s)
         if mfig:
             num, caption = int(mfig.group(1)), mfig.group(2).replace("\\.", ".")
             figure_data = image_map.get(pending_image) if pending_image is not None else None

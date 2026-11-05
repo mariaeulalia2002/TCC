@@ -1,5 +1,14 @@
 # Histórico de sincronização
 
+## 5 de novembro de 2026 — referências contínuas e nova revisão textual
+
+- Foram removidas duas duplicatas exatas no início da lista de referências (Aki e Alberton).
+- As 106 referências foram restauradas como parágrafos contínuos, com espaçamento simples e sem quebra de página individual.
+- A versão atual do Google Docs foi exportada integralmente para DOCX e Markdown.
+- As alterações recentes de metodologia, resultados, discussões, conclusão, títulos, legendas e figuras foram sincronizadas com o LaTeX.
+- O conversor passou a aceitar legendas sem espaço antes do travessão, preservando a Figura 48, e títulos numerados exportados apenas em negrito.
+- A compilação de verificação foi concluída sem citações ou referências cruzadas indefinidas.
+
 ## 18 de outubro de 2026 — equações, símbolos, tabelas e hierarquia
 
 - Versão Git anterior ao ciclo de revisão: `010079e` (`Padroniza tabelas e atualiza lista de tabelas`).
