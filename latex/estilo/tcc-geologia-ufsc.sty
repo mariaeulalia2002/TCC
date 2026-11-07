@@ -36,6 +36,7 @@
 \RequirePackage{tikz}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
+\RequirePackage{placeins}
 \RequirePackage{csquotes}
 \RequirePackage{pdfpages}
 \RequirePackage{hyperref}
@@ -63,6 +64,19 @@
 \setlength{\parskip}{0pt}
 \setlength{\ABNTEXcitacaorecuo}{4cm}
 \setlist{nosep}
+
+% Mantém cada figura e tabela dentro da seção em que foi inserida. Sem essas
+% barreiras, o mecanismo de floats pode empurrar uma ilustração para um
+% subtópico posterior, separando-a do texto que a apresenta.
+\pretocmd{\chapter}{\FloatBarrier}{}{}
+\pretocmd{\section}{\FloatBarrier}{}{}
+\pretocmd{\subsection}{\FloatBarrier}{}{}
+\pretocmd{\subsubsection}{\FloatBarrier}{}{}
+\pretocmd{\paragraph}{\FloatBarrier}{}{}
+
+% Legendas de ilustrações e tabelas em 10 pt (\footnotesize no corpo de 12 pt).
+\captionnamefont{\footnotesize}
+\captiontitlefont{\footnotesize}
 
 \renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
