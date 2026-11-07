@@ -615,9 +615,9 @@ def parse_markdown(
                 out += [
                     r"\begin{figure}[p]" if landscape_figure else r"\begin{figure}[htbp]",
                     r"  \centering",
-                    (f"  \\includegraphics[width=\\linewidth,height=0.80\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"
+                    (f"  \\includegraphics[width=\\linewidth,height=0.78\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"
                      if landscape_figure else
-                     f"  \\includegraphics[width=\\textwidth,height=0.82\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"),
+                     f"  \\includegraphics[width=\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"),
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
                     f"  \\label{{fig:resultado-{num}}}",
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
