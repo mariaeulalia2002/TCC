@@ -569,7 +569,7 @@ def parse_markdown(
                     }.get(chapter_number, slug(chapter_title))
                     out += [f"\\chapter{{{chapter_title}}}\\label{{cap:{label}}}", ""]
                     if chapter_number == "5":
-                        out += [r"\setcounter{figure}{28}", ""]
+                        out += [r"\setcounter{figure}{27}", ""]
             elif level == 2:
                 out += [f"\\section{{{inline(title, crossrefs=False)}}}", ""]
             elif level == 3:

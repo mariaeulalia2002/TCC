@@ -93,15 +93,15 @@ O perímetro do polígono de máscara utilizado na geração da isócrona foi ca
 
 \subsection{Definição do eixo, dos marcos operacionais e cálculo dos comprimentos}
 
-Para operacionalizar a extração dos comprimentos propostos por \citeauthoronline{clare2018} (\citeyear{clare2018}), foram definidos três marcos ao longo do eixo principal de cada movimento de massa: A, correspondente ao topo da cicatriz; B, ao início do depósito; e C, à sua terminação distal. Esses limites foram identificados manualmente, quando possível, em seções sísmicas sucessivas no \textit{Petrel\textsuperscript{\textregistered}} (Figura~\ref{fig:marcos-comprimentos}A).
+Para operacionalizar a extração dos comprimentos propostos por \citeauthoronline{clare2018} (\citeyear{clare2018}), foram definidos três marcos ao longo do eixo principal de cada movimento de massa: A, correspondente ao topo da cicatriz; B, ao início do depósito; e C, à sua terminação distal. Esses limites foram identificados manualmente, quando possível, em seções sísmicas sucessivas no \textit{Petrel\textsuperscript{\textregistered}}.
 
 O marco A foi posicionado no topo da escarpa principal. O marco B corresponde ao limite proximal do depósito, a partir do qual os horizontes de topo e base delimitam um corpo com espessura positiva e continuidade lateral reconhecível. O marco C foi definido na terminação distal, caracterizada pelo afinamento do corpo e pela convergência entre os horizontes de topo e base. Para representar a variação lateral, os limites foram acompanhados em seções sucessivas, com incremento predominante de 20 \textit{inlines}, equivalente a cerca de 500~m. Esse espaçamento refere-se apenas ao levantamento dos limites, não à resolução das grades morfométricas.
 
-Os conjuntos de pontos A, B e C foram exportados do \textit{Petrel\textsuperscript{\textregistered}} em arquivos ASCII, contendo \textit{inline}, \textit{crossline}, coordenadas X e Y e tempo sísmico Z. No \textit{QGIS\textsuperscript{\textregistered}}, foram organizados segundo a sequência das \textit{inlines} e convertidos em três linhas: topo da cicatriz, início do depósito e terminação distal (Figura~\ref{fig:marcos-comprimentos}B).
+Os conjuntos de pontos A, B e C foram exportados do \textit{Petrel\textsuperscript{\textregistered}} em arquivos ASCII, contendo \textit{inline}, \textit{crossline}, coordenadas X e Y e tempo sísmico Z. No \textit{QGIS\textsuperscript{\textregistered}}, foram organizados segundo a sequência das \textit{inlines} e convertidos em três linhas: topo da cicatriz, início do depósito e terminação distal.
 
-O eixo principal de cada movimento de massa foi definido em planta pela integração da cicatriz, geometria do depósito, relevo da superfície basal, mapa de aspecto (Figura~\ref{fig:marcos-comprimentos}C) e perfis extraídos com o \textit{Profile Tool}. O aspecto permitiu reconhecer mudanças no mergulho, talvegues, flancos, altos estruturais e possíveis trajetórias preferenciais, mas não foi utilizado isoladamente para definir o transporte. O eixo foi digitalizado como uma polilinha que acompanha a trajetória interpretada, incluindo mudanças de direção associadas à geometria do depósito ou ao relevo estrutural.
+O eixo principal de cada movimento de massa foi definido em planta pela integração da cicatriz, geometria do depósito, relevo da superfície basal, mapa de aspecto e perfis extraídos com o \textit{Profile Tool}. O aspecto permitiu reconhecer mudanças no mergulho, talvegues, flancos, altos estruturais e possíveis trajetórias preferenciais, mas não foi utilizado isoladamente para definir o transporte. O eixo foi digitalizado como uma polilinha que acompanha a trajetória interpretada, incluindo mudanças de direção associadas à geometria do depósito ou ao relevo estrutural.
 
-As três linhas foram intersectadas com o eixo, definindo as posições A, B e C. A polilinha foi dividida nesses pontos, originando os segmentos A--B e B--C (Figura~\ref{fig:marcos-comprimentos}C). Os comprimentos foram calculados no \textit{QGIS\textsuperscript{\textregistered}} com a Calculadora de Campo e convertidos para quilômetros pela expressão \texttt{\$length / 1000}.
+As três linhas foram intersectadas com o eixo, definindo as posições A, B e C. A polilinha foi dividida nesses pontos, originando os segmentos A--B e B--C. Os comprimentos foram calculados no \textit{QGIS\textsuperscript{\textregistered}} com a Calculadora de Campo e convertidos para quilômetros pela expressão \texttt{\$length / 1000}.
 
 O comprimento total ($L_t$) corresponde à distância ao longo do eixo entre o topo da cicatriz e a terminação distal do depósito:
 
@@ -122,14 +122,6 @@ L_e=L_{A-B}=L_t-L_d
 \]
 
 Embora $L_e$ seja útil para descrever a área de remoção de material, foi empregada como medida complementar. Os parâmetros padronizados de \citeauthoronline{clare2018} (\citeyear{clare2018}) utilizados para comparação entre os depósitos são $L_t$ e $L_d$.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{figuras/metodologia/figura-27-marcos-comprimentos.png}
-  \caption{Definição dos marcos e comprimentos morfométricos: (A) pontos A, B e C em seção sísmica; (B) distribuição espacial dos pontos A, B e C sobre a superfície de declividade do fundo marinho; e (C) mapa de aspecto com delimitação do eixo e dos comprimentos.}
-  \label{fig:marcos-comprimentos}
-  \fonte{Elaboração própria.}
-\end{figure}
 
 \subsection{Altura da zona evacuada e altura total de queda}
 
