@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import io
 import re
 import shutil
 import sys
@@ -9,17 +10,19 @@ import zipfile
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+from PIL import Image
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCX = ROOT / "docs" / "template-tcc-geologia-ufsc.docx"
 MARKDOWN = ROOT / "docs" / "google-docs-latest.md"
-RAW_MARKDOWN = ROOT / "tmp" / "google-docs-final-2026-11-03-pos-revisao.md"
 RESULTADOS = ROOT / "latex" / "capitulos" / "05-resultados.tex"
 DISCUSSAO = ROOT / "latex" / "capitulos" / "06-discussao.tex"
 CONCLUSOES = ROOT / "latex" / "capitulos" / "07-conclusoes.tex"
 APENDICE_D = ROOT / "latex" / "pos-textuais" / "apendice-d.tex"
 FIGDIR = ROOT / "latex" / "figuras" / "resultados"
 REFERENCIAS = ROOT / "latex" / "referencias.bib"
+LANDSCAPE_FIGURES: set[int] = set()
 
 NS = {
     "w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
@@ -148,9 +151,10 @@ def convert_citations(text: str) -> str:
     text = re.sub(r"\(([^()]+)\)", parenthetical, text)
 
     narrative = re.compile(
-        r"\b([A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ][A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ’' .-]*?"
-        r"(?:\s*&\s*[A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ][A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ’' .-]*|\s+\*?et al\.\*?)?)"
-        r"\s*\(((?:19|20)\d{2})\)"
+        r"\b([A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ][\wÁÀÂÃÉÊÍÓÔÕÚÜÇáàâãéêíóôõúüç’'.-]*"
+        r"(?:\s+Jr\.)?"
+        r"(?:\s*&\s*[A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ][\wÁÀÂÃÉÊÍÓÔÕÚÜÇáàâãéêíóôõúüç’'.-]*(?:\s+Jr\.)?"
+        r"|\s+\*?et al\.\*?)?)\s*\(((?:19|20)\d{2})\)"
     )
 
     def narrative_repl(match: re.Match[str]) -> str:
@@ -201,19 +205,40 @@ def image_targets(docx: Path) -> dict[int, tuple[str, bytes]]:
         root = ET.fromstring(zf.read("word/document.xml"))
         relroot = ET.fromstring(zf.read("word/_rels/document.xml.rels"))
         rels = {r.attrib["Id"]: r.attrib["Target"] for r in relroot}
-        found: list[str] = []
+        found: list[tuple[str, dict[str, str]]] = []
         body = root.find(".//w:body", NS)
         if body is None:
             return {}
         for p in body.findall(".//w:p", NS):
-            for blip in p.findall(".//a:blip", NS):
+            for drawing in p.findall(".//w:drawing", NS):
+                blip = drawing.find(".//a:blip", NS)
+                if blip is None:
+                    continue
                 rid = blip.attrib.get(f"{{{NS['r']}}}embed")
                 if rid and rid in rels:
-                    found.append(rels[rid])
+                    crop = drawing.find(".//a:srcRect", NS)
+                    found.append((rels[rid], dict(crop.attrib) if crop is not None else {}))
         out = {}
-        for i, target in enumerate(found, 1):
+        for i, (target, crop) in enumerate(found, 1):
             member = "word/" + target.replace("\\", "/")
-            out[i] = (Path(target).suffix.lower(), zf.read(member))
+            extension = Path(target).suffix.lower()
+            data = zf.read(member)
+            if crop and any(int(crop.get(side, "0")) for side in ("l", "t", "r", "b")):
+                with Image.open(io.BytesIO(data)) as source:
+                    width, height = source.size
+                    left = round(width * int(crop.get("l", "0")) / 100000)
+                    top = round(height * int(crop.get("t", "0")) / 100000)
+                    right = round(width * (1 - int(crop.get("r", "0")) / 100000))
+                    bottom = round(height * (1 - int(crop.get("b", "0")) / 100000))
+                    cropped = source.crop((left, top, right, bottom))
+                    buffer = io.BytesIO()
+                    if extension in {".jpg", ".jpeg"}:
+                        cropped.convert("RGB").save(buffer, format="JPEG", quality=95, subsampling=0)
+                    else:
+                        extension = ".png"
+                        cropped.save(buffer, format="PNG")
+                    data = buffer.getvalue()
+            out[i] = (extension, data)
         return out
 
 
@@ -233,6 +258,46 @@ def image_targets_markdown(markdown: Path) -> dict[int, tuple[str, bytes]]:
             extension = ".jpg" if subtype in {"jpg", "jpeg"} else ".png"
             out[number] = (extension, base64.b64decode(match.group(3)))
     return out
+
+
+def landscape_figure_numbers(docx: Path) -> set[int]:
+    """Return figures that belong to landscape sections in the Docs DOCX.
+
+    In WordprocessingML, section properties stored in a paragraph describe the
+    section that ends at that paragraph. Grouping body paragraphs this way
+    preserves the portrait/landscape choices made in Google Docs instead of
+    relying on a hard-coded figure-number interval.
+    """
+    with zipfile.ZipFile(docx) as archive:
+        root = ET.fromstring(archive.read("word/document.xml"))
+    body = root.find(".//w:body", NS)
+    if body is None:
+        return set()
+    current: list[str] = []
+    result: set[int] = set()
+
+    def finish(section_properties: ET.Element | None) -> None:
+        if section_properties is None:
+            current.clear()
+            return
+        page_size = section_properties.find("w:pgSz", NS)
+        orientation = page_size.attrib.get(f"{{{NS['w']}}}orient") if page_size is not None else None
+        if orientation == "landscape":
+            for paragraph in current:
+                match = re.match(r"Figura\s+(\d+)\s*[—–-]", paragraph)
+                if match:
+                    result.add(int(match.group(1)))
+        current.clear()
+
+    for child in list(body):
+        if child.tag == f"{{{NS['w']}}}p":
+            current.append("".join(node.text or "" for node in child.findall(".//w:t", NS)))
+            finish_at = child.find("w:pPr/w:sectPr", NS)
+            if finish_at is not None:
+                finish(finish_at)
+        elif child.tag == f"{{{NS['w']}}}sectPr":
+            finish(child)
+    return result
 
 
 def table_tex(rows: list[list[str]], caption: str | None, label: str | None, environment: str = "table") -> list[str]:
@@ -292,6 +357,41 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
                 r"\end{quadro}",
                 r"\end{landscape}",
             ]
+        return out
+    if environment == "table" and len(rows) >= 12:
+        cols = max(len(r) for r in rows)
+        first_width = 0.20 if cols <= 6 else 0.16
+        other_width = (0.90 - first_width) / max(cols - 1, 1)
+        spec_parts = [rf">{{\raggedright\arraybackslash}}p{{{first_width:.3f}\linewidth}}"]
+        spec_parts += [rf">{{\centering\arraybackslash}}p{{{other_width:.3f}\linewidth}}"] * (cols - 1)
+        spec = "@{} " + " ".join(spec_parts) + " @{}"
+        header = [inline(c, crossrefs=False) for c in rows[0]] + [""] * (cols - len(rows[0]))
+        header_line = "    " + " & ".join(f"\\textbf{{{c}}}" for c in header) + r" \\"
+        continuation = inline(caption or "", crossrefs=False)
+        out = [
+            r"{\scriptsize",
+            r"\setlength{\tabcolsep}{2pt}",
+            r"\renewcommand{\arraystretch}{1.08}",
+            f"\\begin{{longtable}}{{{spec}}}",
+        ]
+        if caption:
+            out.append(f"  \\caption{{{inline(caption, crossrefs=False)}}}" + (f"\\label{{{label}}}" if label else "") + r" \\")
+        elif label:
+            out.append(f"  \\label{{{label}}}\\")
+        out += [r"    \toprule", header_line, r"    \midrule", r"    \endfirsthead"]
+        if caption:
+            out.append(f"  \\caption[]{{{continuation} (continuação)}} \\")
+        out += [r"    \toprule", header_line, r"    \midrule", r"    \endhead"]
+        out += [
+            rf"    \midrule \multicolumn{{{cols}}}{{r}}{{\textit{{continua}}}} \\",
+            r"    \endfoot",
+            r"    \bottomrule",
+            r"    \endlastfoot",
+        ]
+        for row in rows[1:]:
+            cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
+            out.append("    " + " & ".join(cells) + r" \\")
+        out += [r"\end{longtable}", r"}"]
         return out
     cols = max(len(r) for r in rows)
     spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
@@ -416,15 +516,15 @@ def parse_markdown(
                 filename = f"figura-{num:02d}-{slug(caption)}{ext}"
                 FIGDIR.mkdir(parents=True, exist_ok=True)
                 (FIGDIR / filename).write_bytes(data)
-                landscape_figure = 30 <= num <= 46
+                landscape_figure = num in LANDSCAPE_FIGURES
                 if landscape_figure:
                     out.append(r"\begin{landscape}")
                 out += [
                     r"\begin{figure}[p]" if landscape_figure else r"\begin{figure}[htbp]",
                     r"  \centering",
-                    (f"  \\includegraphics[width=\\linewidth,height=0.70\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"
+                    (f"  \\includegraphics[width=\\linewidth,height=0.80\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"
                      if landscape_figure else
-                     f"  \\includegraphics[width=\\textwidth,height=0.78\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"),
+                     f"  \\includegraphics[width=\\textwidth,height=0.82\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"),
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
                     f"  \\label{{fig:resultado-{num}}}",
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
@@ -496,11 +596,16 @@ def parse_markdown(
 
 
 def main() -> None:
+    global LANDSCAPE_FIGURES
     if len(sys.argv) == 2:
         source_md = Path(sys.argv[1])
         MARKDOWN.write_text(source_md.read_text(encoding="utf-8"), encoding="utf-8")
     text = MARKDOWN.read_text(encoding="utf-8")
-    images = image_targets_markdown(RAW_MARKDOWN) if RAW_MARKDOWN.exists() else image_targets(DOCX)
+    # The Markdown export scales many Docs images down to roughly 605 px.
+    # The DOCX keeps the embedded originals (commonly up to 2048 px), so it is
+    # the authoritative image source for the LaTeX build.
+    images = image_targets(DOCX)
+    LANDSCAPE_FIGURES = landscape_figure_numbers(DOCX)
     resultados = between_headings(
         text,
         r"^#\s+\*\*5\s+RESULTADOS\*\*\s*$",
