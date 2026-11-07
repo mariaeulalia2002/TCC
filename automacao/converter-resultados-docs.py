@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import base64
 import io
+import math
 import re
 import shutil
 import sys
@@ -10,7 +11,7 @@ import zipfile
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from PIL import Image
+from PIL import Image, ImageChops, ImageOps, ImageStat
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -246,7 +247,7 @@ def image_targets_markdown(markdown: Path) -> dict[int, tuple[str, bytes]]:
     """Read Google Docs image definitions without relying on DOCX relationship order."""
     out: dict[int, tuple[str, bytes]] = {}
     pattern = re.compile(
-        r"^\[image(\d+)\]:\s*<data:image/(png|jpe?g);base64,([^>]+)>\s*$"
+        r"^\[image(\d+)\]:\s*<data:image/(png|jpe?g);base64,([^>]+)>.*$"
     )
     with markdown.open("r", encoding="utf-8") as source:
         for line in source:
@@ -258,6 +259,67 @@ def image_targets_markdown(markdown: Path) -> dict[int, tuple[str, bytes]]:
             extension = ".jpg" if subtype in {"jpg", "jpeg"} else ".png"
             out[number] = (extension, base64.b64decode(match.group(3)))
     return out
+
+
+def high_resolution_image_targets(docx: Path, markdown: Path) -> dict[int, tuple[str, bytes]]:
+    """Match Markdown image IDs to their full-resolution DOCX drawings.
+
+    Google Docs keeps image IDs in the Markdown, but the DOCX relationship
+    order can contain an extra floating drawing. A small order-preserving
+    image comparison finds that extra object and retains the correct mapping.
+    """
+    docx_images = image_targets(docx)
+    markdown_images = image_targets_markdown(markdown)
+
+    def feature(data: bytes) -> tuple[float, Image.Image]:
+        with Image.open(io.BytesIO(data)) as source:
+            ratio = source.width / source.height
+            thumb = ImageOps.autocontrast(ImageOps.fit(source.convert("L"), (32, 32)))
+        return ratio, thumb
+
+    docx_features = {key: feature(value[1]) for key, value in docx_images.items()}
+    markdown_features = {key: feature(value[1]) for key, value in markdown_images.items()}
+    docx_keys = sorted(docx_images)
+    markdown_keys = sorted(markdown_images)
+    rows, columns = len(docx_keys), len(markdown_keys)
+    infinity = float("inf")
+    costs = [[infinity] * (columns + 1) for _ in range(rows + 1)]
+    previous: list[list[tuple[str, int, int] | None]] = [[None] * (columns + 1) for _ in range(rows + 1)]
+    costs[0][0] = 0.0
+
+    def match_cost(docx_key: int, markdown_key: int) -> float:
+        docx_ratio, docx_thumb = docx_features[docx_key]
+        markdown_ratio, markdown_thumb = markdown_features[markdown_key]
+        difference = ImageChops.difference(docx_thumb, markdown_thumb)
+        mean_difference = ImageStat.Stat(difference).mean[0] / 255
+        return 0.65 * mean_difference + 0.35 * abs(math.log(docx_ratio / markdown_ratio))
+
+    for row in range(rows + 1):
+        for column in range(columns + 1):
+            current = costs[row][column]
+            if row < rows and current + 0.35 < costs[row + 1][column]:
+                costs[row + 1][column] = current + 0.35
+                previous[row + 1][column] = ("skip-docx", row, column)
+            if column < columns and current + 1.5 < costs[row][column + 1]:
+                costs[row][column + 1] = current + 1.5
+                previous[row][column + 1] = ("skip-markdown", row, column)
+            if row < rows and column < columns:
+                candidate = current + match_cost(docx_keys[row], markdown_keys[column])
+                if candidate < costs[row + 1][column + 1]:
+                    costs[row + 1][column + 1] = candidate
+                    previous[row + 1][column + 1] = ("match", row, column)
+
+    mapping: dict[int, tuple[str, bytes]] = {}
+    row, column = rows, columns
+    while row or column:
+        step = previous[row][column]
+        if step is None:
+            break
+        operation, prior_row, prior_column = step
+        if operation == "match":
+            mapping[markdown_keys[prior_column]] = docx_images[docx_keys[prior_row]]
+        row, column = prior_row, prior_column
+    return mapping
 
 
 def landscape_figure_numbers(docx: Path) -> set[int]:
@@ -604,7 +666,7 @@ def main() -> None:
     # The Markdown export scales many Docs images down to roughly 605 px.
     # The DOCX keeps the embedded originals (commonly up to 2048 px), so it is
     # the authoritative image source for the LaTeX build.
-    images = image_targets(DOCX)
+    images = high_resolution_image_targets(DOCX, MARKDOWN)
     LANDSCAPE_FIGURES = landscape_figure_numbers(DOCX)
     resultados = between_headings(
         text,
