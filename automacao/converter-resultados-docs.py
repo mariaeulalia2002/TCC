@@ -728,7 +728,15 @@ def main() -> None:
         parse_markdown(conclusoes, images, chapter_number="7", chapter_title="Conclusões"),
         encoding="utf-8",
     )
-    APENDICE_D.write_text(parse_markdown(apendice_d, images, appendix=True), encoding="utf-8")
+    apendice_d_tex = parse_markdown(apendice_d, images, appendix=True)
+    # The full caption is slightly wider than the printable area in Times New
+    # Roman. Keep its wording and add only a visual line break.
+    apendice_d_tex = apendice_d_tex.replace(
+        "\\caption{Distâncias horizontais utilizadas nas inclinações e comprimentos dos eixos do MTC 2-D.}",
+        "\\caption[Distâncias horizontais utilizadas nas inclinações e comprimentos dos eixos do MTC 2-D.]"
+        "{Distâncias horizontais utilizadas nas inclinações e\\protect\\\\ comprimentos dos eixos do MTC 2-D.}",
+    )
+    APENDICE_D.write_text(apendice_d_tex, encoding="utf-8")
     print(f"Resultados: {RESULTADOS}")
     print(f"Discussão: {DISCUSSAO}")
     print(f"Conclusões: {CONCLUSOES}")
