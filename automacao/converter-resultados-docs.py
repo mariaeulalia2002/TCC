@@ -186,12 +186,27 @@ def inline(text: str, crossrefs: bool = True) -> str:
     text = re.sub(r"\*\*([^*]+)\*\*", r"\\textbf{\1}", text)
     text = re.sub(r"\*([^*]+)\*", r"\\textit{\1}", text)
     if crossrefs:
+        # Normaliza também a abreviação informal "Fig." usada em alguns
+        # trechos do Docs e preserva a letra do painel na referência cruzada.
+        text = re.sub(
+            r"\bFig\.?\s*(\d+)(?:[.\-]?([a-z]))?",
+            lambda match: (
+                rf"Figura~\ref{{fig:resultado-{match.group(1)}}}"
+                + (match.group(2) or "")
+            ),
+            text,
+            flags=re.IGNORECASE,
+        )
         text = re.sub(r"\bFiguras\s+(\d+)\s+e\s+(\d+)", r"Figuras~\\ref{fig:resultado-\1} e \\ref{fig:resultado-\2}", text)
         text = re.sub(r"\bFigura\s+(\d+)", r"Figura~\\ref{fig:resultado-\1}", text)
         text = re.sub(r"\bTabelas\s+(\d+)\s+e\s+(\d+)", r"Tabelas~\\ref{tab:resultado-\1} e \\ref{tab:resultado-\2}", text)
         text = re.sub(r"\bTabela\s+(\d+)", r"Tabela~\\ref{tab:resultado-\1}", text)
         text = re.sub(r"\bQuadro\s+(\d+)", r"Quadro~\\ref{qua:resultado-\1}", text)
         text = text.replace("Apêndice D", r"Apêndice~\ref{ap:dados-morfometria}")
+        # O parágrafo do MTD 1 ainda conserva duas chamadas antigas à Figura
+        # 30 no Docs; os painéis correspondentes pertencem à Figura 29.
+        if text.startswith("O MTD 1, destacado em rosa"):
+            text = text.replace("fig:resultado-30", "fig:resultado-29")
     placeholders = {}
     command_pattern = r"\\(?:cite|ref|textbf|textit)(?:online)?\{[^}]+\}|\\includegraphics(?:\[[^\]]+\])?\{[^}]+\}"
     for i, cmd in enumerate(re.findall(command_pattern, text)):
