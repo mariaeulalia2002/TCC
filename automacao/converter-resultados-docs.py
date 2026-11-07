@@ -130,22 +130,28 @@ def convert_citations(text: str) -> str:
         if not re.search(r"(?:19|20)\d{2}", content):
             return match.group(0)
         keys: list[str] = []
+        postnote: str | None = None
         current_author: str | None = None
         for part in [p.strip() for p in content.split(";")]:
             item = re.fullmatch(
-                r"(.+?),\s*((?:19|20)\d{2})(?:,\s*((?:19|20)\d{2}))?",
+                r"(.+?),\s*((?:19|20)\d{2})(?:,\s*((?:19|20)\d{2}))?(?:,\s*(.+))?",
                 part,
             )
             if not item:
                 return match.group(0)
             current_author = item.group(1).strip()
             years = [item.group(2)] + ([item.group(3)] if item.group(3) else [])
+            if item.group(4):
+                if postnote is not None or len(content.split(";")) > 1:
+                    return match.group(0)
+                postnote = item.group(4).strip()
             for year in years:
                 key = lookup_citation(current_author, year)
                 if not key:
                     return match.group(0)
                 keys.append(key)
-        return "\\cite{" + ",".join(keys) + "}"
+        optional = f"[{postnote.replace(' ', '~')}]" if postnote else ""
+        return "\\cite" + optional + "{" + ",".join(keys) + "}"
 
     # Parenthetical citations, including multiple authors separated by semicolons
     # and repeated years for the same first author.
@@ -167,6 +173,8 @@ def convert_citations(text: str) -> str:
 
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_").replace("\\=", "=")
+    text = text.replace("Figura Iv.6", "Figura IV.6")
+    text = text.replace("*et al.,*", "*et al.*,")
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
     text = re.sub(r"\[([^\]]+)\]\(https?://[^)]+\)", r"\1", text)
     text = text.replace(
