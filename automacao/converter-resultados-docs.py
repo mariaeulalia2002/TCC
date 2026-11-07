@@ -319,6 +319,29 @@ def high_resolution_image_targets(docx: Path, markdown: Path) -> dict[int, tuple
         if operation == "match":
             mapping[markdown_keys[prior_column]] = docx_images[docx_keys[prior_row]]
         row, column = prior_row, prior_column
+    # If Docs applied a visual crop that was not serialized as a:srcRect,
+    # retain the Markdown display aspect ratio while keeping DOCX pixels.
+    for key, (extension, data) in list(mapping.items()):
+        with Image.open(io.BytesIO(data)) as source, Image.open(io.BytesIO(markdown_images[key][1])) as display:
+            source_ratio = source.width / source.height
+            display_ratio = display.width / display.height
+            if abs(source_ratio - display_ratio) / max(source_ratio, display_ratio) <= 0.03:
+                continue
+            if source_ratio > display_ratio:
+                target_width = round(source.height * display_ratio)
+                left = (source.width - target_width) // 2
+                cropped = source.crop((left, 0, left + target_width, source.height))
+            else:
+                target_height = round(source.width / display_ratio)
+                top = (source.height - target_height) // 2
+                cropped = source.crop((0, top, source.width, top + target_height))
+            buffer = io.BytesIO()
+            if extension in {".jpg", ".jpeg"}:
+                cropped.convert("RGB").save(buffer, format="JPEG", quality=95, subsampling=0)
+            else:
+                extension = ".png"
+                cropped.save(buffer, format="PNG")
+            mapping[key] = (extension, buffer.getvalue())
     return mapping
 
 
