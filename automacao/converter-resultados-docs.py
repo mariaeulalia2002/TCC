@@ -465,7 +465,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
             out.append(f"  \\label{{{label}}}\\")
         out += [r"    \toprule", header_line, r"    \midrule", r"    \endfirsthead"]
         if caption:
-            out.append(f"  \\caption[]{{{continuation} (continuação)}} \\")
+            out.append(f"  \\caption[]{{{continuation} (continuação)}}" + r" \\")
         out += [r"    \toprule", header_line, r"    \midrule", r"    \endhead"]
         out += [
             rf"    \midrule \multicolumn{{{cols}}}{{r}}{{\textit{{continua}}}} \\",
