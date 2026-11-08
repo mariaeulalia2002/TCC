@@ -520,7 +520,8 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
         return out
     cols = max(len(r) for r in rows)
     spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
-    placement = "[htbp]" if environment == "table" else ""
+    is_appendix_table = bool(label and re.fullmatch(r"tab:resultado-[A-F]-\d+", label))
+    placement = "[H]" if environment == "table" and is_appendix_table else "[htbp]" if environment == "table" else ""
     out = [f"\\begin{{{environment}}}{placement}", r"  \centering"]
     if caption:
         out.append(f"  \\caption{{{inline(caption, crossrefs=False)}}}")
@@ -615,6 +616,8 @@ def parse_markdown(
                     out += [
                         f"\\chapter{{{inline(title, crossrefs=False)}}}"
                         f"\\label{{{appendix_labels[appendix_letter]}}}",
+                        f"\\setcounter{{figure}}{{0}}\\renewcommand{{\\thefigure}}{{{appendix_letter}.\\arabic{{figure}}}}",
+                        f"\\setcounter{{table}}{{0}}\\renewcommand{{\\thetable}}{{{appendix_letter}.\\arabic{{table}}}}",
                         "",
                     ]
                 elif is_acknowledgements:

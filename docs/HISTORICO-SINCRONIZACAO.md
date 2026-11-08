@@ -1,5 +1,16 @@
 # Histórico de sincronização
 
+## 8 de novembro de 2026 — padronização ABNT e apêndices A–F
+
+- Revisão sincronizada do Google Docs: `AHj4eMQyq0p5NKerjo5oHVSAK9dwGjz6JwB0KzLKMqM20-SKVd6ABHEDAGllD8L2gxW19osXYliXExcq7zHCmDPYcXW0gPxqxdKJXDNyZzg`.
+- Foram padronizados fonte, alinhamento, entrelinhas, recuos, títulos, legendas, notas e tabelas no Google Docs, preservando as observações e os destaques da autora.
+- A lista de tabelas e as chamadas internas foram atualizadas para as Tabelas C.1–C.6, D.1–D.4, E.1–E.6 e F.1–F.2.
+- A Tabela D.2 foi compactada para manter todos os valores dentro das margens, sem quebra de números, e passou a iniciar junto de sua legenda.
+- Os cabeçalhos das tabelas extensas foram configurados para repetição nas páginas seguintes.
+- Os símbolos de velocidade que apresentavam falha na exportação foram substituídos por `Velocidade P` e `Velocidade S` nos cabeçalhos correspondentes.
+- O conversor Docs–LaTeX passou a importar todos os apêndices A–F, a Figura B.1 e a numeração alfanumérica das tabelas e figuras dos apêndices.
+- O PDF LaTeX foi recompilado com 247 páginas, sem citações ou referências cruzadas indefinidas.
+
 ## 5 de novembro de 2026 — referências contínuas e nova revisão textual
 
 - Foram removidas duas duplicatas exatas no início da lista de referências (Aki e Alberton).
