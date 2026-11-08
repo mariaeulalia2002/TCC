@@ -20,7 +20,10 @@ MARKDOWN = ROOT / "docs" / "google-docs-latest.md"
 RESULTADOS = ROOT / "latex" / "capitulos" / "05-resultados.tex"
 DISCUSSAO = ROOT / "latex" / "capitulos" / "06-discussao.tex"
 CONCLUSOES = ROOT / "latex" / "capitulos" / "07-conclusoes.tex"
-APENDICE_D = ROOT / "latex" / "pos-textuais" / "apendice-d.tex"
+APENDICES = {
+    letter: ROOT / "latex" / "pos-textuais" / f"apendice-{letter.lower()}.tex"
+    for letter in "ABCDEF"
+}
 FIGDIR = ROOT / "latex" / "figuras" / "resultados"
 REFERENCIAS = ROOT / "latex" / "referencias.bib"
 LANDSCAPE_FIGURES: set[int] = set()
@@ -54,7 +57,7 @@ def clean_heading(text: str) -> str:
     text = re.sub(r"^#+\s*", "", text).strip()
     if text.startswith("**") and text.endswith("**"):
         text = text[2:-2].strip()
-    text = re.sub(r"^(?:\d+(?:\.\d+)*|D\.\d+)\s+", "", text)
+    text = re.sub(r"^(?:\d+(?:\.\d+)*|[A-F]\.\d+(?:\.\d+)*)\s+", "", text)
     return text.strip()
 
 
@@ -202,7 +205,21 @@ def inline(text: str, crossrefs: bool = True) -> str:
         text = re.sub(r"\bTabelas\s+(\d+)\s+e\s+(\d+)", r"Tabelas~\\ref{tab:resultado-\1} e \\ref{tab:resultado-\2}", text)
         text = re.sub(r"\bTabela\s+(\d+)", r"Tabela~\\ref{tab:resultado-\1}", text)
         text = re.sub(r"\bQuadro\s+(\d+)", r"Quadro~\\ref{qua:resultado-\1}", text)
-        text = text.replace("Apêndice D", r"Apêndice~\ref{ap:dados-morfometria}")
+        appendix_labels = {
+            "A": "ap:codigos",
+            "B": "ap:localizacao-medidas",
+            "C": "ap:medicoes-cicatrizes",
+            "D": "ap:distancias-velocidades",
+            "E": "ap:dados-morfometria",
+            "F": "ap:hvsr",
+        }
+        for letter, label in appendix_labels.items():
+            text = text.replace(f"Apêndice {letter}", rf"Apêndice~\ref{{{label}}}")
+        text = re.sub(
+            r"\bTabela\s+([A-F])\.(\d+)",
+            r"Tabela~\\ref{tab:resultado-\1-\2}",
+            text,
+        )
         # O parágrafo do MTD 1 ainda conserva duas chamadas antigas à Figura
         # 30 no Docs; os painéis correspondentes pertencem à Figura 29.
         if text.startswith("O MTD 1, destacado em rosa"):
@@ -525,7 +542,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
 def parse_markdown(
     section: str,
     image_map: dict[int, tuple[str, bytes]],
-    appendix: bool = False,
+    appendix_letter: str | None = None,
     chapter_number: str = "5",
     chapter_title: str = "Resultados",
 ) -> str:
@@ -546,8 +563,9 @@ def parse_markdown(
             pending_image = int(mimg.group(1))
             i += 1
             continue
+        heading_prefix = appendix_letter or chapter_number
         mbold_heading = re.fullmatch(
-            rf"\*\*({re.escape(chapter_number)}(?:\.\d+)+)\s+(.+?)\*\*",
+            rf"\*\*({re.escape(heading_prefix)}(?:\.\d+)+)\s+(.+?)\*\*",
             s,
         )
         if mbold_heading:
@@ -564,16 +582,36 @@ def parse_markdown(
                 raw_title = raw_title[2:-2].strip()
             title = clean_heading(s)
             chapter_heading = f"{chapter_number} {chapter_title.upper()}"
-            is_appendix_heading = appendix and raw_title.upper().startswith("APÊNDICE D")
+            is_appendix_heading = bool(
+                appendix_letter
+                and re.match(rf"^APÊNDICE\s+{re.escape(appendix_letter)}\b", raw_title, re.IGNORECASE)
+            )
             is_acknowledgements = raw_title == "8 AGRADECIMENTOS"
             if not (is_appendix_heading or is_acknowledgements or raw_title == chapter_heading or re.match(rf"^{re.escape(chapter_number)}(?:\.\d+)*\s+\S", raw_title)):
                 out += [inline(title), ""]
                 i += 1
                 continue
             if level == 1:
-                if appendix:
-                    title = re.sub(r"^APÊNDICE D\s*[—-]\s*", "", title, flags=re.IGNORECASE)
-                    out += [f"\\chapter{{{inline(title, crossrefs=False)}}}\\label{{ap:dados-morfometria}}", ""]
+                if appendix_letter:
+                    title = re.sub(
+                        rf"^APÊNDICE\s+{re.escape(appendix_letter)}\s*(?:\\?-|—|–)\s*",
+                        "",
+                        title,
+                        flags=re.IGNORECASE,
+                    )
+                    appendix_labels = {
+                        "A": "ap:codigos",
+                        "B": "ap:localizacao-medidas",
+                        "C": "ap:medicoes-cicatrizes",
+                        "D": "ap:distancias-velocidades",
+                        "E": "ap:dados-morfometria",
+                        "F": "ap:hvsr",
+                    }
+                    out += [
+                        f"\\chapter{{{inline(title, crossrefs=False)}}}"
+                        f"\\label{{{appendix_labels[appendix_letter]}}}",
+                        "",
+                    ]
                 elif is_acknowledgements:
                     out += [r"\chapter{Agradecimentos}\label{cap:agradecimentos}", ""]
                 else:
@@ -596,9 +634,12 @@ def parse_markdown(
                 out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}", ""]
             i += 1
             continue
-        mfig = re.match(r"Figura\s+(\d+)\s*[—–-]\s*(.*)", s)
+        mfig = re.match(r"Figura\s+((?:[A-F]\.)?\d+)\s*[—–-]\s*(.*)", s)
         if mfig:
-            num, caption = int(mfig.group(1)), mfig.group(2).replace("\\.", ".")
+            number, caption = mfig.group(1), mfig.group(2).replace("\\.", ".")
+            numeric_figure = number.isdigit()
+            num = int(number) if numeric_figure else number
+            label_number = str(number).replace(".", "-")
             figure_data = image_map.get(pending_image) if pending_image is not None else None
             # No DOCX, a Figura 80 é um objeto menor/flutuante ancorado no
             # parágrafo da legenda anterior e, por isso, não aparece no
@@ -613,7 +654,7 @@ def parse_markdown(
                     r"  \centering",
                     r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
-                    f"  \\label{{fig:resultado-{num}}}",
+                    f"  \\label{{fig:resultado-{label_number}}}",
                     r"\end{figure}",
                     "",
                 ]
@@ -621,10 +662,14 @@ def parse_markdown(
                 ext, data = figure_data
                 if ext not in {".png", ".jpg", ".jpeg", ".pdf"}:
                     ext = ".png"
-                filename = f"figura-{num:02d}-{slug(caption)}{ext}"
+                filename = (
+                    f"figura-{num:02d}-{slug(caption)}{ext}"
+                    if numeric_figure
+                    else f"figura-{label_number}-{slug(caption)}{ext}"
+                )
                 FIGDIR.mkdir(parents=True, exist_ok=True)
                 (FIGDIR / filename).write_bytes(data)
-                landscape_figure = num in LANDSCAPE_FIGURES
+                landscape_figure = numeric_figure and num in LANDSCAPE_FIGURES
                 if landscape_figure:
                     out.append(r"\begin{landscape}")
                 out += [
@@ -634,7 +679,7 @@ def parse_markdown(
                      if landscape_figure else
                      f"  \\includegraphics[width=\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"),
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
-                    f"  \\label{{fig:resultado-{num}}}",
+                    f"  \\label{{fig:resultado-{label_number}}}",
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
                     r"\end{figure}",
                 ]
@@ -644,7 +689,7 @@ def parse_markdown(
             pending_image = None
             i += 1
             continue
-        mtab = re.match(r"(Tabela|Quadro)\s+((?:D\.)?\d+)\s+[—–-]\s*(.*)", s)
+        mtab = re.match(r"(Tabela|Quadro)\s+((?:[A-F]\.)?\d+)\s+[—–-]\s*(.*)", s)
         if mtab:
             kind, n, cap = mtab.group(1), mtab.group(2), mtab.group(3).replace("\\.", ".")
             prefix = "tab" if kind == "Tabela" else "qua"
@@ -727,13 +772,23 @@ def main() -> None:
     conclusoes = between_headings(
         text,
         r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
-        r"^#\s+(?:\*\*)?Apêndice A-\s+Link repositório GitHub(?:\*\*)?\s*$",
+        r"^#\s+\*\*REFERÊNCIAS\*\*\s*$",
     )
-    apendice_d = between_headings(
-        text,
-        r"^#\s+(?:\*\*)?APÊNDICE D\b.*$",
-        r"^#\s+(?:\*\*)?REFERÊNCIAS(?:\*\*)?\s*$",
-    )
+    appendix_sections: dict[str, str] = {}
+    for index, letter in enumerate("ABCDEF"):
+        start_pattern = rf"^#\s+\*\*APÊNDICE\s+{letter}\b.*$"
+        if letter != "F":
+            next_letter = chr(ord(letter) + 1)
+            appendix_sections[letter] = between_headings(
+                text,
+                start_pattern,
+                rf"^#\s+\*\*APÊNDICE\s+{next_letter}\b.*$",
+            )
+        else:
+            start = re.search(start_pattern, text, flags=re.MULTILINE)
+            if not start:
+                raise ValueError(f"Cabeçalho inicial não encontrado: {start_pattern}")
+            appendix_sections[letter] = text[start.start():]
     RESULTADOS.write_text(parse_markdown(resultados, images), encoding="utf-8")
     DISCUSSAO.write_text(
         parse_markdown(discussao, images, chapter_number="6", chapter_title="Discussões"),
@@ -743,19 +798,14 @@ def main() -> None:
         parse_markdown(conclusoes, images, chapter_number="7", chapter_title="Conclusões"),
         encoding="utf-8",
     )
-    apendice_d_tex = parse_markdown(apendice_d, images, appendix=True)
-    # The full caption is slightly wider than the printable area in Times New
-    # Roman. Keep its wording and add only a visual line break.
-    apendice_d_tex = apendice_d_tex.replace(
-        "\\caption{Distâncias horizontais utilizadas nas inclinações e comprimentos dos eixos do MTC 2-D.}",
-        "\\caption[Distâncias horizontais utilizadas nas inclinações e comprimentos dos eixos do MTC 2-D.]"
-        "{Distâncias horizontais utilizadas nas inclinações e\\protect\\\\ comprimentos dos eixos do MTC 2-D.}",
-    )
-    APENDICE_D.write_text(apendice_d_tex, encoding="utf-8")
+    for letter, section in appendix_sections.items():
+        appendix_tex = parse_markdown(section, images, appendix_letter=letter)
+        APENDICES[letter].write_text(appendix_tex, encoding="utf-8")
     print(f"Resultados: {RESULTADOS}")
     print(f"Discussão: {DISCUSSAO}")
     print(f"Conclusões: {CONCLUSOES}")
-    print(f"Apêndice D: {APENDICE_D}")
+    for letter, path in APENDICES.items():
+        print(f"Apêndice {letter}: {path}")
 
 
 if __name__ == "__main__":

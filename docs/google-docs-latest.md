@@ -2736,10 +2736,11 @@ Tabela C.5 — Medidas obtidas nos perfis avaliados na cicatriz 2 do evento D do
 | Central | 339,113 | 1.017,338 | 45,647 | 678,225 | 34,23 | 17,936 | 203,468 | 88,15 | 3,78 |
 | Direito | 512,228 | 922,011 | 26,089 | 409,783 | 19,57 | 12,879 | 153,668 | 83,81 | 3,60 |
 
-Nota: as posições de Aₛ e Bₛ correspondem às distâncias acumuladas ao longo de cada perfil. O perfil esquerdo foi selecionado por apresentar o maior valor de Sₛ. Os valores adotados para a cicatriz 2 foram Hs \= 40,60 m e Sₛ \= 3,91°.  
-C.5 Síntese dos perfis selA síntese dos perfis selecionados é apresentada na Tabela C.6.
+Nota: as posições de Aₛ e Bₛ correspondem às distâncias acumuladas ao longo de cada perfil. O perfil esquerdo foi selecionado por apresentar o maior valor de Sₛ. Os valores adotados para a cicatriz 2 foram Hs \= 40,60 m e Sₛ \= 3,91°.
 
-## **ecionados**
+## **C.5 Síntese dos perfis selecionados**
+
+A síntese dos perfis selecionados é apresentada na Tabela C.6.
 
 Tabela C.6 — Síntese dos perfis e parâmetros adotados na caracterização das cicatrizes.
 
