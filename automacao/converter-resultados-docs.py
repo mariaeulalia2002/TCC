@@ -587,7 +587,12 @@ def parse_markdown(
                 and re.match(rf"^APÊNDICE\s+{re.escape(appendix_letter)}\b", raw_title, re.IGNORECASE)
             )
             is_acknowledgements = raw_title == "8 AGRADECIMENTOS"
-            if not (is_appendix_heading or is_acknowledgements or raw_title == chapter_heading or re.match(rf"^{re.escape(chapter_number)}(?:\.\d+)*\s+\S", raw_title)):
+            if not (
+                is_appendix_heading
+                or is_acknowledgements
+                or raw_title == chapter_heading
+                or re.match(rf"^{re.escape(heading_prefix)}(?:\.\d+)*\s+\S", raw_title)
+            ):
                 out += [inline(title), ""]
                 i += 1
                 continue
