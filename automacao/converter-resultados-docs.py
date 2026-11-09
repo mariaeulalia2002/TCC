@@ -808,6 +808,11 @@ def main() -> None:
     )
     for letter, section in appendix_sections.items():
         appendix_tex = parse_markdown(section, images, appendix_letter=letter)
+        if letter == "A":
+            appendix_tex = appendix_tex.replace(
+                r"Link: https\://github.com/mariaeulalia2002/codigos\_tcc",
+                r"Link: \url{https://github.com/mariaeulalia2002/codigos_tcc}",
+            )
         APENDICES[letter].write_text(appendix_tex, encoding="utf-8")
     print(f"Resultados: {RESULTADOS}")
     print(f"Discussão: {DISCUSSAO}")
