@@ -428,6 +428,7 @@ def landscape_figure_numbers(docx: Path) -> set[int]:
 def table_tex(rows: list[list[str]], caption: str | None, label: str | None, environment: str = "table") -> list[str]:
     if not rows:
         return []
+    is_appendix_table = bool(label and re.fullmatch(r"tab:resultado-[A-F]-\d+", label))
     if environment == "quadro" and len(rows) > 4:
         header, body = rows[0], rows[1:]
         if len(header) == 5:
@@ -513,14 +514,15 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
             r"    \bottomrule",
             r"    \endlastfoot",
         ]
-        for row in rows[1:]:
+        for row_index, row in enumerate(rows[1:]):
             cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
             out.append("    " + " & ".join(cells) + r" \\")
+            if is_appendix_table and row_index < len(rows[1:]) - 1:
+                out.append(r"    \midrule")
         out += [r"\end{longtable}", r"}"]
         return out
     cols = max(len(r) for r in rows)
     spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
-    is_appendix_table = bool(label and re.fullmatch(r"tab:resultado-[A-F]-\d+", label))
     placement = "[H]" if environment == "table" and is_appendix_table else "[htbp]" if environment == "table" else ""
     out = [f"\\begin{{{environment}}}{placement}", r"  \centering"]
     if caption:
@@ -535,6 +537,8 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
             cells = [c.replace("Depósito/evento", "Depósito/\\newline evento") for c in cells]
         out.append("    " + " & ".join(cells) + r" \\")
         if ri == 0:
+            out.append(r"    \midrule")
+        elif is_appendix_table and ri < len(rows) - 1:
             out.append(r"    \midrule")
     out += [r"    \bottomrule", r"  \end{tabularx}", f"\\end{{{environment}}}"]
     return out
