@@ -268,6 +268,59 @@ def convert_object_references(text: str) -> str:
 
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_").replace("\\=", "=")
+    # A API do Google Docs ainda devolve alguns objetos de equação nativa sem
+    # o conteúdo da fórmula. Restaura os símbolos em linha a partir das
+    # próprias equações numeradas e das definições mantidas no documento.
+    inline_equation_repairs = {
+        "em que  é o acréscimo de TWT no intervalo , em milissegundos;  é a sua espessura , em metros; e é a média das velocidades nos dois extremos do intervalo.":
+            r"em que $\Delta t_i$ é o acréscimo de TWT no intervalo $i$, em milissegundos; $\Delta z_i$ é a sua espessura, em metros; e $\overline{v}_i$ é a média das velocidades nos dois extremos do intervalo.",
+        "Em que h é a espessura, em metros; t<sub>base</sub> e t<sub>topo</sub> são os tempos duplos de percurso da <sub>base</sub> e do <sub>topo</sub>, em milissegundos; e v̄ₑ é a velocidade ponderada do evento":
+            r"Em que $h$ é a espessura, em metros; $t_{\mathrm{base}}$ e $t_{\mathrm{topo}}$ são os tempos duplos de percurso da base e do topo, em milissegundos; e $\overline{v}_e$ é a velocidade ponderada do evento",
+        "Em que  é a profundidade em metros e , o TWT em milissegundos.":
+            r"Em que $z_{\mathrm{agua}}$ é a profundidade em metros e $t_{\mathrm{agua}}$, o TWT em milissegundos.",
+        "Em que  é a profundidade do ponto interpretado, em metros;  o tempo do ponto interpretado; e , o tempo do fundo marinho na mesma posição, ambos expressos como TWT positivo em milissegundos; e  é a velocidade ponderada do evento":
+            r"Em que $z_P$ é a profundidade do ponto interpretado, em metros; $t_P$, o tempo do ponto interpretado; e $t_{\mathrm{fundo},P}$, o tempo do fundo marinho na mesma posição, ambos expressos como TWT positivo em milissegundos; e $\overline{v}_e$ é a velocidade ponderada do evento",
+        "em que  é o desvio-padrão das diferenças entre as duas interpretações, em milissegundos. Nos cálculos, utilizou-se  ms":
+            r"em que $s_d$ é o desvio-padrão das diferenças entre as duas interpretações, em milissegundos. Nos cálculos, utilizou-se $u_{\mathrm{pick}}=0{,}38$ ms",
+        "em que  é a variância média de krigagem da superfície , em ms², e  é sua componente temporal, em milissegundos.":
+            r"em que $K_j$ é a variância média de krigagem da superfície $j$, em ms², e $u_{\mathrm{interp},j}$ é sua componente temporal, em milissegundos.",
+        "Para o fundo marinho, adotou-se  ms":
+            r"Para o fundo marinho, adotou-se $u_f=0{,}14$ ms",
+        "em que  é a velocidade equivalente no poço ,  é a velocidade ponderada do evento e  é o peso normalizado do poço.":
+            r"em que $v_i$ é a velocidade equivalente no poço $i$, $\overline{v}_e$ é a velocidade ponderada do evento e $p_i$ é o peso normalizado do poço.",
+        "em que  é a medida calculada,  são suas variáveis de entrada e  são as respectivas componentes de incerteza.":
+            r"em que $F$ é a medida calculada, $x_i$ são suas variáveis de entrada e $u_{x_i}$ são as respectivas componentes de incerteza.",
+        "em que  e  são as variâncias médias de krigagem, em ms², e  é a componente temporal do fundo marinho":
+            r"em que $K_{\mathrm{topo}}$ e $K_{\mathrm{base}}$ são as variâncias médias de krigagem, em ms², e $u_f$ é a componente temporal do fundo marinho",
+        "Para uma medida convertida pela relação , a incerteza em metros":
+            r"Para uma medida convertida pela relação $z=\overline{v}_e t/2000$, a incerteza em metros",
+        "em que  é o intervalo de TWT utilizado no cálculo, em milissegundos, e  corresponde a  ou , conforme a medida.":
+            r"em que $t$ é o intervalo de TWT utilizado no cálculo, em milissegundos, e $u_t$ corresponde a $u_{t,\mathrm{esp}}$ ou $u_{t,\mathrm{sot}}$, conforme a medida.",
+        "conforme a expressão de  apresentada anteriormente.":
+            r"conforme a expressão de $u_{t,\mathrm{esp}}$ apresentada anteriormente.",
+        "em que  é a área do depósito, em metros quadrados, e  é a componente de incerteza da integral temporal":
+            r"em que $A$ é a área do depósito, em metros quadrados, e $u_I$ é a componente de incerteza da integral temporal",
+        "em que  é a integral da espessura temporal, em ms·m²;  é a velocidade ponderada do evento; e  é sua dispersão ponderada":
+            r"em que $I$ é a integral da espessura temporal, em ms·m²; $\overline{v}_e$ é a velocidade ponderada do evento; e $u_v$ é sua dispersão ponderada",
+        "O fator  reúne a conversão do tempo duplo em milissegundos e a expressão do volume em quilômetros cúbicos.":
+            r"O fator $2\times10^{12}$ reúne a conversão do tempo duplo em milissegundos e a expressão do volume em quilômetros cúbicos.",
+        "em que  é a diferença de TWT entre os pontos do horizonte interpretado e  é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos;  é a velocidade sedimentar adotada para o evento, em metros por segundo; e  é sua dispersão ponderada. As componentes temporais foram definidas por  e , considerando independência entre os extremos.":
+            r"em que $\Delta t_h$ é a diferença de TWT entre os pontos do horizonte interpretado e $\Delta t_f$ é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos; $\overline{v}_e$ é a velocidade sedimentar adotada para o evento, em metros por segundo; e $u_v$ é sua dispersão ponderada. As componentes temporais foram definidas por $u_{\Delta t_h}=\sqrt{2}\,u_{\mathrm{pick}}$ e $u_{\Delta t_f}=\sqrt{2}\,u_f$, considerando independência entre os extremos.",
+        "Para a altura total de queda, adotou-se .":
+            r"Para a altura total de queda, adotou-se $\Delta t_h=t_C-t_A$ e $\Delta t_f=t_{\mathrm{fundo},C}-t_{\mathrm{fundo},A}$.",
+        "Para as inclinações, calculadas por , a propagação foi realizada mantendo a distância horizontal  fixa:":
+            r"Para as inclinações, calculadas por $\theta=\arctan(|\Delta z|/L)$, a propagação foi realizada mantendo a distância horizontal $L$ fixa:",
+        "em que  é a incerteza angular, em graus;  é a incerteza do desnível, em metros; e  é a distância horizontal entre os pontos, em metros. Essa expressão foi aplicada às inclinações do declive não deformado () e da superfície receptora ().":
+            r"em que $u_\theta$ é a incerteza angular, em graus; $u_{\Delta z}$ é a incerteza do desnível, em metros; e $L$ é a distância horizontal entre os pontos, em metros. Essa expressão foi aplicada às inclinações do declive não deformado ($S$) e da superfície receptora ($S_t$).",
+        "Adotou-se o critério de um quarto do comprimento de onda dominante, apresentado por":
+            "Adotou-se o critério de um quarto do comprimento de onda dominante, apresentado por",
+        "segundo o qual a resolução vertical em profundidade é estimada por . Expressando essa espessura em tempo duplo de percurso, pela relação , e convertendo segundos para milissegundos, obtém-se:":
+            r"segundo o qual a resolução vertical em profundidade é estimada por $R_z=v/(4f_{\mathrm{dom}})$. Expressando essa espessura em tempo duplo de percurso, pela relação $R_{\mathrm{TWT}}=2000R_z/v$, e convertendo segundos para milissegundos, obtém-se:",
+        "em que  é a frequência dominante, em hertz, e  é a resolução vertical temporal":
+            r"em que $f_{\mathrm{dom}}$ é a frequência dominante, em hertz, e $R_{\mathrm{TWT}}$ é a resolução vertical temporal",
+    }
+    for old, new in inline_equation_repairs.items():
+        text = text.replace(old, new)
     text = re.sub(r"<br\s*/?>", r"\\newline ", text, flags=re.IGNORECASE)
     text = re.sub(r"<sub>(.*?)</sub>", r"$_{\1}$", text)
     text = re.sub(r"<sup>(.*?)</sup>", r"$^{\1}$", text)
