@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import base64
 import io
+import json
 import math
 import re
 import shutil
@@ -16,7 +17,18 @@ from PIL import Image, ImageChops, ImageOps, ImageStat
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCX = ROOT / "docs" / "template-tcc-geologia-ufsc.docx"
-MARKDOWN = ROOT / "docs" / "google-docs-latest.md"
+MARKDOWN = ROOT / "docs" / "google-docs-current.md"
+IMAGE_MANIFEST = ROOT / "docs" / "google-docs-image-manifest.json"
+IMAGE_CACHE = ROOT / "docs" / ".google-docs-images-current"
+CHAPTERS = {
+    "1": ROOT / "latex" / "capitulos" / "01-introducao.tex",
+    "2": ROOT / "latex" / "capitulos" / "02-fundamentacao-teorica.tex",
+    "3": ROOT / "latex" / "capitulos" / "03-area-estudo.tex",
+    "4": ROOT / "latex" / "capitulos" / "04-materiais-metodos.tex",
+    "5": ROOT / "latex" / "capitulos" / "05-resultados.tex",
+    "6": ROOT / "latex" / "capitulos" / "06-discussao.tex",
+    "7": ROOT / "latex" / "capitulos" / "07-conclusoes.tex",
+}
 RESULTADOS = ROOT / "latex" / "capitulos" / "05-resultados.tex"
 DISCUSSAO = ROOT / "latex" / "capitulos" / "06-discussao.tex"
 CONCLUSOES = ROOT / "latex" / "capitulos" / "07-conclusoes.tex"
@@ -24,7 +36,7 @@ APENDICES = {
     letter: ROOT / "latex" / "pos-textuais" / f"apendice-{letter.lower()}.tex"
     for letter in "ABCDEF"
 }
-FIGDIR = ROOT / "latex" / "figuras" / "resultados"
+FIGDIR = ROOT / "latex" / "figuras" / "google-docs"
 REFERENCIAS = ROOT / "latex" / "referencias.bib"
 LANDSCAPE_FIGURES: set[int] = set()
 
@@ -34,6 +46,51 @@ NS = {
     "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
     "pr": "http://schemas.openxmlformats.org/package/2006/relationships",
 }
+
+# Conteúdo matemático confirmado no texto. A API do Google Docs informa a
+# posição de objetos de equação, mas não expõe a expressão interna; por isso a
+# sincronização usa esta tabela explícita em vez de tentar adivinhar símbolos.
+EQUATIONS: dict[int, tuple[str, str, str]] = {
+    1: (r"C(t)=\cos\bigl(\phi(t)\bigr)", "eq:cosseno-fase", "Cosseno da fase instantânea"),
+    2: (r"FS=\frac{\tau_f}{\tau_m}", "eq:fator-seguranca", "Fator de segurança"),
+    3: (r"\tau_f=c'+\sigma'_n\tan\varphi'", "eq:mohr-coulomb", "Critério de ruptura de Mohr--Coulomb"),
+    4: (r"\sigma'_n=\sigma_n-u", "eq:tensao-efetiva", "Tensão normal efetiva"),
+    5: (r"\tau_f=c'+(\sigma_n-u)\tan\varphi'", "eq:mohr-coulomb-poropressao", "Resistência ao cisalhamento em função da poropressão"),
+    6: (r"FS=\frac{c'+(\sigma_n-u)\tan\varphi'}{\tau_m}", "eq:fator-seguranca-completo", "Fator de segurança em função da poropressão"),
+    7: (r"\Delta t(x,y)=t_{\mathrm{topo}}(x,y)-t_{\mathrm{base}}(x,y)", "eq:espessura-temporal", "Espessura temporal da isócrona"),
+    8: (r"t_t=t_C-t_A", "eq:diferenca-altura-total", "Diferença temporal da altura total de queda"),
+    9: (r"H_t=\lvert z_C-z_A\rvert", "eq:altura-total", "Altura total de queda"),
+    10: (r"H_s=z_{B_s}-z_{A_s}", "eq:altura-cicatriz", "Altura da cicatriz"),
+    11: (r"S_s=\arctan\!\left(\frac{\lvert z_Q-z_P\rvert}{L_{P-Q}}\right)\frac{180}{\pi}", "eq:inclinacao-cicatriz", "Inclinação máxima da cicatriz"),
+    12: (r"S=\arctan\!\left(\frac{\lvert z_{P2}-z_{P1}\rvert}{L_{P1-P2}}\right)\frac{180}{\pi}", "eq:inclinacao-declive", "Inclinação do declive não deformado"),
+    13: (r"S_t=\arctan\!\left(\frac{\lvert z_{P4}-z_{P3}\rvert}{L_{P3-P4}}\right)\frac{180}{\pi}", "eq:inclinacao-superficie-receptora", "Inclinação da superfície receptora"),
+    14: (r"\Delta t_i=\frac{2000\,\Delta z_i}{\overline{v}_i}", "eq:acrescimo-twt", "Acréscimo de TWT no modelo de velocidade do poço 137"),
+    15: (r"v_{\mathrm{int}}=\frac{2000(z_2-z_1)}{t_2-t_1}", "eq:velocidade-intervalar", "Velocidade intervalar no poço 127"),
+    16: (r"\overline{v}_e=\frac{\sum_i v_{i,e}/d_{i,e}}{\sum_i 1/d_{i,e}}", "eq:velocidade-ponderada", "Velocidade ponderada pelo inverso da distância"),
+    17: (r"h=\frac{\lvert t_{\mathrm{base}}-t_{\mathrm{topo}}\rvert\,\overline{v}_e}{2000}", "eq:conversao-espessura", "Conversão da espessura temporal em profundidade"),
+    18: (r"z_{\mathrm{agua}}=\frac{1500\,t_{\mathrm{agua}}}{2000}", "eq:conversao-agua", "Conversão do TWT na coluna d'água em profundidade"),
+    19: (r"z_P=\frac{1500\,t_{\mathrm{fundo},P}+\overline{v}_e(t_P-t_{\mathrm{fundo},P})}{2000}", "eq:profundidade-ponto", "Profundidade de ponto soterrado"),
+    20: (r"u_{\mathrm{pick}}=\frac{s_d}{\sqrt{2}}", "eq:repetibilidade", "Incerteza de repetibilidade da interpretação"),
+    21: (r"u_{\mathrm{interp},j}=\sqrt{K_j}", "eq:interpolacao", "Incerteza de interpolação"),
+    22: (r"u_v=\sqrt{\sum_i p_i(v_i-\overline{v}_e)^2}", "eq:dispersao-velocidade", "Dispersão ponderada da velocidade"),
+    23: (r"u_F=\sqrt{\sum_i\left(\frac{\partial F}{\partial x_i}\right)^2u_{x_i}^2}", "eq:propagacao-geral", "Propagação geral de incertezas"),
+    24: (r"u_{t,\mathrm{esp}}=\sqrt{2u_{\mathrm{pick}}^2+K_{\mathrm{topo}}+K_{\mathrm{base}}}", "eq:incerteza-temporal-espessura", "Incerteza temporal da espessura"),
+    25: (r"u_{t,\mathrm{sot}}=\sqrt{u_{\mathrm{pick}}^2+K_{\mathrm{topo}}+u_f^2}", "eq:incerteza-temporal-soterramento", "Incerteza temporal do soterramento"),
+    26: (r"u_z=\sqrt{\left(\frac{\overline{v}_e u_t}{2000}\right)^2+\left(\frac{t u_v}{2000}\right)^2}", "eq:incerteza-profundidade", "Incerteza da medida convertida em profundidade"),
+    27: (r"u_I=A\,u_{t,\mathrm{esp}}", "eq:incerteza-integral-temporal", "Incerteza da integral temporal do volume"),
+    28: (r"u_V=\sqrt{\left(\frac{\overline{v}_e u_I}{2\times10^{12}}\right)^2+\left(\frac{Iu_v}{2\times10^{12}}\right)^2}", "eq:incerteza-volume", "Incerteza do volume"),
+    29: (r"u_{\Delta z}=\sqrt{\left(\frac{\overline{v}_e u_{\Delta t_h}}{2000}\right)^2+\left(\frac{(1500-\overline{v}_e)u_{\Delta t_f}}{2000}\right)^2+\left(\frac{(\Delta t_h-\Delta t_f)u_v}{2000}\right)^2}", "eq:incerteza-desnivel", "Incerteza do desnível"),
+    30: (r"u_\theta=\frac{180}{\pi}\frac{u_{\Delta z}}{L\left[1+(\Delta z/L)^2\right]}", "eq:incerteza-inclinacao", "Incerteza da inclinação"),
+    31: (r"R_{\mathrm{TWT}}=\frac{500}{f_{\mathrm{dom}}}", "eq:resolucao-vertical", "Resolução vertical temporal"),
+    32: (r"\operatorname{HVSR}(f)=\frac{\sqrt{\left([NS(f)]^2+[EW(f)]^2\right)/2}}{V(f)}", "eq:hvsr", "Razão espectral horizontal/vertical"),
+    33: (r"H\approx\frac{V_s}{4f_0}", "eq:quarto-comprimento", "Profundidade da interface pelo modelo de quarto de comprimento de onda"),
+    34: (r"f_{\pm1\sigma}=\widetilde{f}_0\exp\!\left[\pm\sigma_{\ln(f_0)}\right]", "eq:intervalo-lognormal", "Limites lognormais de frequência"),
+    35: (r"V_s=V_p\sqrt{\frac{1-2\nu}{2(1-\nu)}}", "eq:vp-vs", "Conversão de $V_p$ para $V_s$ pelo coeficiente de Poisson"),
+    36: (r"H_c=\frac{H_{\min}+H_{\max}}{2}", "eq:ponto-medio-envelope", "Ponto médio do envelope de profundidade"),
+    37: (r"\Delta H_{\mathrm{abs}}=\frac{H_{\max}-H_{\min}}{2}", "eq:semi-amplitude-envelope", "Semi-amplitude do envelope de profundidade"),
+    38: (r"\Delta H_{\mathrm{rel}}(\%)=\frac{\Delta H_{\mathrm{abs}}}{H_c}\times100", "eq:semi-amplitude-relativa", "Semi-amplitude relativa do envelope de profundidade"),
+}
+EQUATION_LABELS = {number: values[1] for number, values in EQUATIONS.items()}
 
 
 def between(text: str, start: str, end: str) -> str:
