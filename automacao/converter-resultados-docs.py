@@ -168,6 +168,7 @@ def citation_keys() -> dict[tuple[str, str], str]:
         ("BROWN JR.", "1980"): "brownfisher1980",
         ("MITCHUM JR.", "1977"): "mitchum1977",
         ("MECKEL", "2011"): "meckel2011",
+        ("SMITH", "2011"): "smith2011",
     }
     result.update(aliases)
     return result
@@ -249,6 +250,7 @@ def inline(text: str, crossrefs: bool = True) -> str:
     )
     text = text.replace("Figura Iv.6", "Figura IV.6")
     text = text.replace("*et al.,*", "*et al.*,")
+    text = re.sub(r"(\*?et al\.\*?),\s*\(", r"\1 (", text, flags=re.IGNORECASE)
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
     text = re.sub(r"\[([^\]]+)\]\(https?://[^)]+\)", r"\1", text)
     text = text.replace(
