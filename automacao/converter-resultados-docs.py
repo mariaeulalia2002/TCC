@@ -233,6 +233,13 @@ def convert_citations(text: str) -> str:
 
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_").replace("\\=", "=")
+    text = re.sub(r"<sub>(.*?)</sub>", r"$ _{\1} $", text)
+    text = re.sub(r"<sup>(.*?)</sup>", r"$ ^{\1} $", text)
+    text = re.sub(
+        r"==(.+?)==",
+        lambda match: r"\colorbox{yellow}{\strut " + match.group(1) + "}",
+        text,
+    )
     text = text.replace("Figura Iv.6", "Figura IV.6")
     text = text.replace("*et al.,*", "*et al.*,")
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
@@ -262,6 +269,12 @@ def inline(text: str, crossrefs: bool = True) -> str:
         text = re.sub(r"\bTabelas\s+(\d+)\s+e\s+(\d+)", r"Tabelas~\\ref{tab:resultado-\1} e \\ref{tab:resultado-\2}", text)
         text = re.sub(r"\bTabela\s+(\d+)", r"Tabela~\\ref{tab:resultado-\1}", text)
         text = re.sub(r"\bQuadro\s+(\d+)", r"Quadro~\\ref{qua:resultado-\1}", text)
+        for number, label in EQUATION_LABELS.items():
+            text = re.sub(
+                rf"\bEquação\s+{number}\b",
+                rf"Equação~\\eqref{{{label}}}",
+                text,
+            )
         appendix_labels = {
             "A": "ap:codigos",
             "B": "ap:localizacao-medidas",
@@ -440,6 +453,75 @@ def high_resolution_image_targets(docx: Path, markdown: Path) -> dict[int, tuple
                 cropped.save(buffer, format="PNG")
             mapping[key] = (extension, buffer.getvalue())
     return mapping
+
+
+def api_image_targets(manifest_path: Path, cache_dir: Path) -> dict[int, tuple[str, bytes]]:
+    """Load the current Docs images and apply the crop stored by Google Docs."""
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    result: dict[int, tuple[str, bytes]] = {}
+    for item in manifest:
+        object_id = item["objectId"]
+        candidates = [
+            path for path in cache_dir.glob(f"{object_id}.*")
+            if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}
+        ]
+        if not candidates:
+            continue
+        source_path = candidates[0]
+        crop = item.get("crop") or {}
+        with Image.open(source_path) as source:
+            source.load()
+            left = round(source.width * float(crop.get("offsetLeft", 0)))
+            right = round(source.width * (1 - float(crop.get("offsetRight", 0))))
+            top = round(source.height * float(crop.get("offsetTop", 0)))
+            bottom = round(source.height * (1 - float(crop.get("offsetBottom", 0))))
+            left = max(0, min(left, source.width - 1))
+            right = max(left + 1, min(right, source.width))
+            top = max(0, min(top, source.height - 1))
+            bottom = max(top + 1, min(bottom, source.height))
+            cropped = source.crop((left, top, right, bottom))
+            buffer = io.BytesIO()
+            if source_path.suffix.lower() in {".jpg", ".jpeg"}:
+                extension = ".jpg"
+                cropped.convert("RGB").save(
+                    buffer, format="JPEG", quality=98, subsampling=0, optimize=True
+                )
+            else:
+                extension = ".png"
+                cropped.save(buffer, format="PNG", optimize=True)
+        result[int(item["order"])] = (extension, buffer.getvalue())
+    return result
+
+
+def replace_gdoc_images(text: str, manifest_path: Path) -> str:
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    by_id = {item["objectId"]: int(item["order"]) for item in manifest}
+
+    def replacement(match: re.Match[str]) -> str:
+        object_id = match.group(1)
+        number = by_id.get(object_id)
+        return f"![Imagem][image{number}]" if number is not None else match.group(0)
+
+    return re.sub(
+        r"!\[[^\]]*\]\(gdoc://([^)]+)\)",
+        replacement,
+        text,
+    )
+
+
+def landscape_figure_numbers_api(text: str) -> set[int]:
+    result: set[int] = set()
+    landscape = False
+    for line in text.splitlines():
+        section = re.match(r"<!-- SECTION (portrait|landscape)", line.strip())
+        if section:
+            landscape = section.group(1) == "landscape"
+            continue
+        if landscape:
+            figure = re.match(r"Figura\s+(\d+)\s*[—–-]", line.strip())
+            if figure:
+                result.add(int(figure.group(1)))
+    return result
 
 
 def landscape_figure_numbers(docx: Path) -> set[int]:
@@ -685,13 +767,15 @@ def parse_markdown(
                     out += [r"\chapter{Agradecimentos}\label{cap:agradecimentos}", ""]
                 else:
                     label = {
+                        "1": "introducao",
+                        "2": "fundamentacao",
+                        "3": "area-estudo",
+                        "4": "metodos",
                         "5": "resultados",
                         "6": "discussao",
                         "7": "conclusoes",
                     }.get(chapter_number, slug(chapter_title))
                     out += [f"\\chapter{{{chapter_title}}}\\label{{cap:{label}}}", ""]
-                    if chapter_number == "5":
-                        out += [r"\setcounter{figure}{27}", ""]
             elif level == 2:
                 out += [f"\\section{{{inline(title, crossrefs=False)}}}", ""]
             elif level == 3:
@@ -699,13 +783,38 @@ def parse_markdown(
                 if title.casefold() == "velocidades utilizadas na análise hvsr".casefold():
                     out.append(r"\label{subsec:resultados-velocidades-hvsr}")
                 out.append("")
-            else:
+            elif level == 4:
                 out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}", ""]
+            else:
+                out += [f"\\paragraph{{{inline(title, crossrefs=False)}}}", ""]
             i += 1
             continue
+        mequation = re.fullmatch(r"(.*?),?\s*\[(\d+)\]", s)
+        if mequation:
+            number = int(mequation.group(2))
+            if number in EQUATIONS:
+                expression, label, description = EQUATIONS[number]
+                out += [
+                    r"\begin{equation}",
+                    f"  {expression}",
+                    f"  \\label{{{label}}}",
+                    r"\end{equation}",
+                    f"\\equationdescription{{{description}}}",
+                    "",
+                ]
+                i += 1
+                continue
         mfig = re.match(r"Figura\s+((?:[A-F]\.)?\d+)\s*[—–-]\s*(.*)", s)
         if mfig:
             number, caption = mfig.group(1), mfig.group(2).replace("\\.", ".")
+            source_line: str | None = None
+            source_index = i + 1
+            while source_index < len(lines) and not lines[source_index].strip():
+                source_index += 1
+            if source_index < len(lines) and lines[source_index].strip().startswith("Fonte:"):
+                source_line = re.sub(
+                    r"^Fonte:\s*", "", lines[source_index].strip()
+                ).rstrip(".")
             numeric_figure = number.isdigit()
             num = int(number) if numeric_figure else number
             label_number = str(number).replace(".", "-")
@@ -721,9 +830,10 @@ def parse_markdown(
                     f"% PENDÊNCIA: imagem da Figura {num} não encontrada na exportação.",
                     r"\begin{figure}[htbp]",
                     r"  \centering",
-                    r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
+                    r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
+                    *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
                     r"\end{figure}",
                     "",
                 ]
@@ -744,19 +854,20 @@ def parse_markdown(
                 out += [
                     r"\begin{figure}[p]" if landscape_figure else r"\begin{figure}[htbp]",
                     r"  \centering",
-                    (f"  \\includegraphics[width=\\linewidth,height=0.78\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"
-                     if landscape_figure else
-                     f"  \\includegraphics[width=\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/resultados/{filename}}}"),
                     f"  \\caption{{{inline(caption, crossrefs=False)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
+                    (f"  \\includegraphics[width=\\linewidth,height=0.78\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"
+                     if landscape_figure else
+                     f"  \\includegraphics[width=\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"),
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
+                    *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
                     r"\end{figure}",
                 ]
                 if landscape_figure:
                     out.append(r"\end{landscape}")
                 out.append("")
             pending_image = None
-            i += 1
+            i = source_index + 1 if source_line else i + 1
             continue
         mtab = re.match(r"(Tabela|Quadro)\s+((?:[A-F]\.)?\d+)\s+[—–-]\s*(.*)", s)
         if mtab:
@@ -769,7 +880,10 @@ def parse_markdown(
         if s.startswith("|"):
             rows = []
             while i < len(lines) and lines[i].strip().startswith("|"):
-                cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                cells = [
+                    c.replace(r"\|", "|").strip()
+                    for c in re.split(r"(?<!\\)\|", lines[i].strip().strip("|"))
+                ]
                 if not all(re.fullmatch(r":?-{3,}:?", c) for c in cells):
                     converted = []
                     for cell in cells:
@@ -783,7 +897,7 @@ def parse_markdown(
                             filename = f"quadro-imagem-{image_number:03d}{ext}"
                             FIGDIR.mkdir(parents=True, exist_ok=True)
                             (FIGDIR / filename).write_bytes(data)
-                            return rf"\includegraphics[width=\linewidth]{{figuras/resultados/{filename}}}"
+                            return rf"\includegraphics[width=\linewidth]{{figuras/google-docs/{filename}}}"
                         converted.append(re.sub(r"!\[[^\]]*\]\[image(\d+)\]", table_image, cell))
                     cells = converted
                     rows.append(cells)
@@ -819,54 +933,46 @@ def parse_markdown(
 
 def main() -> None:
     global LANDSCAPE_FIGURES
-    if len(sys.argv) == 2:
-        source_md = Path(sys.argv[1])
-        MARKDOWN.write_text(source_md.read_text(encoding="utf-8"), encoding="utf-8")
     text = MARKDOWN.read_text(encoding="utf-8")
-    # The Markdown export scales many Docs images down to roughly 605 px.
-    # The DOCX keeps the embedded originals (commonly up to 2048 px), so it is
-    # the authoritative image source for the LaTeX build.
-    images = high_resolution_image_targets(DOCX, MARKDOWN)
-    LANDSCAPE_FIGURES = landscape_figure_numbers(DOCX)
-    resultados = between_headings(
-        text,
-        r"^#\s+\*\*5\s+RESULTADOS\*\*\s*$",
-        r"^#\s+\*\*6\s+DISCUSS(?:ÃO|ÕES)\*\*\s*$",
-    )
-    discussao = between_headings(
-        text,
-        r"^#\s+\*\*6\s+DISCUSS(?:ÃO|ÕES)\*\*\s*$",
-        r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
-    )
-    conclusoes = between_headings(
-        text,
-        r"^#\s+\*\*7\s+CONCLUSÕES\*\*\s*$",
-        r"^#\s+\*\*REFERÊNCIAS\*\*\s*$",
-    )
+    text = replace_gdoc_images(text, IMAGE_MANIFEST)
+    images = api_image_targets(IMAGE_MANIFEST, IMAGE_CACHE)
+    LANDSCAPE_FIGURES = landscape_figure_numbers_api(text)
+
+    chapter_specs = {
+        "1": ("Introdução", r"^#\s+1\s+INTRODUÇÃO\s*$", r"^#\s+2\s+FUNDAMENTAÇÃO TEÓRICA\s*$"),
+        "2": ("Fundamentação teórica", r"^#\s+2\s+FUNDAMENTAÇÃO TEÓRICA\s*$", r"^#\s+3\s+ÁREA DE ESTUDO\s*$"),
+        "3": ("Área de estudo", r"^#\s+3\s+ÁREA DE ESTUDO\s*$", r"^#\s+4\s+MATERIAIS E MÉTODOS\s*$"),
+        "4": ("Materiais e métodos", r"^#\s+4\s+MATERIAIS E MÉTODOS\s*$", r"^#\s+5\s+RESULTADOS\s*$"),
+        "5": ("Resultados", r"^#\s+5\s+RESULTADOS\s*$", r"^#\s+6\s+DISCUSS(?:ÃO|ÕES)\s*$"),
+        "6": ("Discussões", r"^#\s+6\s+DISCUSS(?:ÃO|ÕES)\s*$", r"^#\s+7\s+CONCLUSÕES\s*$"),
+        "7": ("Conclusões", r"^#\s+7\s+CONCLUSÕES\s*$", r"^#\s+REFERÊNCIAS\s*$"),
+    }
+    for chapter_number, (chapter_title, start, end) in chapter_specs.items():
+        section = between_headings(text, start, end)
+        CHAPTERS[chapter_number].write_text(
+            parse_markdown(
+                section,
+                images,
+                chapter_number=chapter_number,
+                chapter_title=chapter_title,
+            ),
+            encoding="utf-8",
+        )
     appendix_sections: dict[str, str] = {}
     for index, letter in enumerate("ABCDEF"):
-        start_pattern = rf"^#\s+\*\*APÊNDICE\s+{letter}\b.*$"
+        start_pattern = rf"^#\s+APÊNDICE\s+{letter}\b.*$"
         if letter != "F":
             next_letter = chr(ord(letter) + 1)
             appendix_sections[letter] = between_headings(
                 text,
                 start_pattern,
-                rf"^#\s+\*\*APÊNDICE\s+{next_letter}\b.*$",
+                rf"^#\s+APÊNDICE\s+{next_letter}\b.*$",
             )
         else:
             start = re.search(start_pattern, text, flags=re.MULTILINE)
             if not start:
                 raise ValueError(f"Cabeçalho inicial não encontrado: {start_pattern}")
             appendix_sections[letter] = text[start.start():]
-    RESULTADOS.write_text(parse_markdown(resultados, images), encoding="utf-8")
-    DISCUSSAO.write_text(
-        parse_markdown(discussao, images, chapter_number="6", chapter_title="Discussões"),
-        encoding="utf-8",
-    )
-    CONCLUSOES.write_text(
-        parse_markdown(conclusoes, images, chapter_number="7", chapter_title="Conclusões"),
-        encoding="utf-8",
-    )
     for letter, section in appendix_sections.items():
         appendix_tex = parse_markdown(section, images, appendix_letter=letter)
         if letter == "A":
@@ -875,9 +981,8 @@ def main() -> None:
                 r"Link: \url{https://github.com/mariaeulalia2002/codigos_tcc}",
             )
         APENDICES[letter].write_text(appendix_tex, encoding="utf-8")
-    print(f"Resultados: {RESULTADOS}")
-    print(f"Discussão: {DISCUSSAO}")
-    print(f"Conclusões: {CONCLUSOES}")
+    for number, path in CHAPTERS.items():
+        print(f"Capítulo {number}: {path}")
     for letter, path in APENDICES.items():
         print(f"Apêndice {letter}: {path}")
 
