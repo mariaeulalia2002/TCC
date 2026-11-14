@@ -384,12 +384,16 @@ def inline(text: str, crossrefs: bool = True) -> str:
     # Corrige duas chamadas herdadas da renumeração das figuras do MTD 1.
     text = text.replace("Na seção inline (Fig 30-a)", "Na seção inline (Figura 29a)")
     text = text.replace("Na seção crossline (Fig 30-d)", "Na seção crossline (Figura 29d)")
+    text = text.replace("seção inline 11986 (Fig 30a--b)", "seção inline 11986 (Figura 29a--b)")
+    text = text.replace("seção crossline 6656 (Fig 30d--e)", "seção crossline 6656 (Figura 29d--e)")
+    text = text.replace("seção inline 11986 (Figura 30a–b)", "seção inline 11986 (Figura 29a–b)")
+    text = text.replace("seção crossline 6656 (Figura 30d–e)", "seção crossline 6656 (Figura 29d–e)")
     text = convert_citations(text)
     text, maths = protect_math(text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"\\textbf{\1}", text)
     text = re.sub(r"\*([^*]+)\*", r"\\textit{\1}", text)
     if crossrefs:
-        text = re.sub(r"\bFig\.?\s*", "Figura ", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bFig(?:\.\s*|\s+)", "Figura ", text, flags=re.IGNORECASE)
         text = convert_object_references(text)
         appendix_labels = {
             "A": "ap:codigos",
