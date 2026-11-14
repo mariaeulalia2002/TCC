@@ -381,12 +381,15 @@ def inline(text: str, crossrefs: bool = True) -> str:
         "Os três termos da Equação 27 representam",
         r"Os três termos da Equação~\eqref{eq:incerteza-desnivel} representam",
     )
+    # Corrige duas chamadas herdadas da renumeração das figuras do MTD 1.
+    text = text.replace("Na seção inline (Fig 30-a)", "Na seção inline (Figura 29a)")
+    text = text.replace("Na seção crossline (Fig 30-d)", "Na seção crossline (Figura 29d)")
     text = convert_citations(text)
     text, maths = protect_math(text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"\\textbf{\1}", text)
     text = re.sub(r"\*([^*]+)\*", r"\\textit{\1}", text)
     if crossrefs:
-        text = re.sub(r"\bFig\.\s*", "Figura ", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bFig\.?\s*", "Figura ", text, flags=re.IGNORECASE)
         text = convert_object_references(text)
         appendix_labels = {
             "A": "ap:codigos",
