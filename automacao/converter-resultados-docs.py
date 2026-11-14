@@ -305,7 +305,7 @@ def inline(text: str, crossrefs: bool = True) -> str:
         "O fator  reúne a conversão do tempo duplo em milissegundos e a expressão do volume em quilômetros cúbicos.":
             r"O fator $2\times10^{12}$ reúne a conversão do tempo duplo em milissegundos e a expressão do volume em quilômetros cúbicos.",
         "em que  é a diferença de TWT entre os pontos do horizonte interpretado e  é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos;  é a velocidade sedimentar adotada para o evento, em metros por segundo; e  é sua dispersão ponderada. As componentes temporais foram definidas por  e , considerando independência entre os extremos.":
-            r"em que $\Delta t_h$ é a diferença de TWT entre os pontos do horizonte interpretado e $\Delta t_f$ é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos; $\overline{v}_e$ é a velocidade sedimentar adotada para o evento, em metros por segundo; e $u_v$ é sua dispersão ponderada. As componentes temporais foram definidas por $u_{\Delta t_h}=\sqrt{2}\,u_{\mathrm{pick}}$ e $u_{\Delta t_f}=\sqrt{2}\,u_f$, considerando independência entre os extremos.",
+            r"em que $\Delta t_h$ é a diferença de TWT entre os pontos do horizonte interpretado e $\Delta t_f$ é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos; $\overline{v}_e$ é a velocidade sedimentar adotada para o evento, em metros por segundo; e $u_v$ é sua dispersão ponderada. As componentes temporais foram definidas por $u_{\Delta t_h}=\sqrt{2}\;u_{\mathrm{pick}}$ e $u_{\Delta t_f}=\sqrt{2}\;u_f$, considerando independência entre os extremos.",
         "Para a altura total de queda, adotou-se .":
             r"Para a altura total de queda, adotou-se $\Delta t_h=t_C-t_A$ e $\Delta t_f=t_{\mathrm{fundo},C}-t_{\mathrm{fundo},A}$.",
         "Para as inclinações, calculadas por , a propagação foi realizada mantendo a distância horizontal  fixa:":
@@ -318,6 +318,38 @@ def inline(text: str, crossrefs: bool = True) -> str:
             r"segundo o qual a resolução vertical em profundidade é estimada por $R_z=v/(4f_{\mathrm{dom}})$. Expressando essa espessura em tempo duplo de percurso, pela relação $R_{\mathrm{TWT}}=2000R_z/v$, e convertendo segundos para milissegundos, obtém-se:",
         "em que  é a frequência dominante, em hertz, e  é a resolução vertical temporal":
             r"em que $f_{\mathrm{dom}}$ é a frequência dominante, em hertz, e $R_{\mathrm{TWT}}$ é a resolução vertical temporal",
+        "Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como  e :":
+            r"Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como $A_s$ e $B_s$:",
+        "Dentro do intervalo –, foram selecionados":
+            r"Dentro do intervalo $A_s$--$B_s$, foram selecionados",
+        "a inclinação máxima .":
+            r"a inclinação máxima $S_s$.",
+        "A inclinação do declive, , foi determinada":
+            r"A inclinação do declive, $S$, foi determinada",
+        "O parâmetro , identificado na tabela como inclinação da base":
+            r"O parâmetro $S_t$, identificado na tabela como inclinação da base",
+        "em que  e  representam os espectros de amplitude das componentes horizontais norte–sul e leste–oeste, respectivamente;  representa o espectro da componente vertical; e  é a frequência.":
+            r"em que $NS(f)$ e $EW(f)$ representam os espectros de amplitude das componentes horizontais norte--sul e leste--oeste, respectivamente; $V(f)$ representa o espectro da componente vertical; e $f$ é a frequência.",
+        "determinação da frequência fundamental  foram":
+            r"determinação da frequência fundamental $f_0$ foram",
+        "possíveis frequências secundárias  e , sem modificar a frequência fundamental  determinada":
+            r"possíveis frequências secundárias $f_1$ e $f_2$, sem modificar a frequência fundamental $f_0$ determinada",
+        "A frequência fundamental  foi mantida":
+            r"A frequência fundamental $f_0$ foi mantida",
+        "classificados como  e .":
+            r"classificados como $f_1$ e $f_2$.",
+        "Os valores mínimo () e máximo () delimitaram":
+            r"Os valores mínimo ($H_{\min}$) e máximo ($H_{\max}$) delimitaram",
+        "O pico secundário mais consistente ocorreu em torno de  Hz":
+            r"O pico secundário mais consistente ocorreu em torno de $2{,}68$ Hz",
+        "( Hz para 01/02/2020 e  Hz para 29/02/2020)":
+            r"($2{,}57$ Hz para 01/02/2020 e $2{,}62$ Hz para 29/02/2020)",
+        "motivo pelo qual  foi interpretado":
+            r"motivo pelo qual $f_1$ foi interpretado",
+        "classificado como , também":
+            r"classificado como $f_2$, também",
+        "indica que  deve ser interpretado":
+            r"indica que $f_2$ deve ser interpretado",
     }
     for old, new in inline_equation_repairs.items():
         text = text.replace(old, new)
@@ -336,6 +368,7 @@ def inline(text: str, crossrefs: bool = True) -> str:
         text,
     )
     text = text.replace("Figura Iv.6", "Figura IV.6")
+    text = text.replace("*et al*.", "*et al.*")
     text = text.replace("*et al.,*", "*et al.*,")
     text = re.sub(r"(\*?et al\.\*?),\s*\(", r"\1 (", text, flags=re.IGNORECASE)
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
@@ -343,6 +376,10 @@ def inline(text: str, crossrefs: bool = True) -> str:
     text = text.replace(
         "Comissão Internacional de Estratigrafia (2026)",
         r"Comissão Internacional de Estratigrafia \cite{ics2026}",
+    )
+    text = text.replace(
+        "Os três termos da Equação 27 representam",
+        r"Os três termos da Equação~\eqref{eq:incerteza-desnivel} representam",
     )
     text = convert_citations(text)
     text, maths = protect_math(text)

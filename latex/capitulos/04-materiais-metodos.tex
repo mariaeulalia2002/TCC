@@ -140,7 +140,7 @@ Esses parâmetros foram determinados nos eventos com cicatriz bem definida e exp
 
 Para cada evento, foram examinados três perfis, posicionados nos setores esquerdo, central e direito da cicatriz. Em cada perfil, a diferença vertical entre os limites superior e inferior forneceu a altura local. A comparação entre os perfis permitiu reconhecer a variação lateral e selecionar o perfil de maior inclinação, no qual foi determinada a altura da cicatriz (Figura~\ref{fig:resultado-26}). A memória das medições realizadas nos diferentes perfis e a identificação dos perfis selecionados são apresentadas no Apêndice~\ref{ap:medicoes-cicatrizes}.
 
-Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como  e :
+Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como $A_s$ e $B_s$:
 
 \begin{equation}
   H_s=z_{B_s}-z_{A_s}
@@ -156,7 +156,7 @@ A inclinação máxima da cicatriz foi determinada separadamente. Dentro do inte
 \end{equation}
 \equationdescription{Inclinação máxima da cicatriz}
 
-Assim, a altura foi medida entre as quebras que delimitam a escarpa, enquanto a inclinação máxima foi medida no trecho mais íngreme de sua face. A altura da cicatriz foi determinada no mesmo perfil em que se identificou a inclinação máxima . Para os perfis medidos sobre a cicatriz expressa no fundo marinho, as diferenças de TWT foram convertidas utilizando a velocidade de propagação do som na água, de 1.500 m/s. As medições de todos os perfis testados encontram-se no Apêndice~\ref{ap:medicoes-cicatrizes}.
+Assim, a altura foi medida entre as quebras que delimitam a escarpa, enquanto a inclinação máxima foi medida no trecho mais íngreme de sua face. A altura da cicatriz foi determinada no mesmo perfil em que se identificou a inclinação máxima $S_s$. Para os perfis medidos sobre a cicatriz expressa no fundo marinho, as diferenças de TWT foram convertidas utilizando a velocidade de propagação do som na água, de 1.500 m/s. As medições de todos os perfis testados encontram-se no Apêndice~\ref{ap:medicoes-cicatrizes}.
 
 % PENDÊNCIA: imagem da Figura 26 não encontrada na exportação.
 \begin{figure}[htbp]
@@ -168,7 +168,7 @@ Assim, a altura foi medida entre as quebras que delimitam a escarpa, enquanto a 
 
 \subsection{Inclinações do declive não deformado e superfície receptora}
 
-A inclinação do declive, , foi determinada em um perfil lateral ao movimento de massa, posicionado fora da zona de cicatriz e do depósito. A orientação foi aproximadamente paralela à direção geral de transporte, permitindo caracterizar o gradiente de uma superfície preservada adjacente à feição.
+A inclinação do declive, $S$, foi determinada em um perfil lateral ao movimento de massa, posicionado fora da zona de cicatriz e do depósito. A orientação foi aproximadamente paralela à direção geral de transporte, permitindo caracterizar o gradiente de uma superfície preservada adjacente à feição.
 
 No Petrel®, foram selecionados dois pontos, P$_{1}$ e P$_{2}$, sobre o mesmo refletor sísmico contínuo, interpretado como representativo do paleodeclive não deformado. Também foi registrado o TWT do fundo marinho acima de cada ponto, necessário à conversão das profundidades.
 
@@ -184,7 +184,7 @@ O comprimento e a posição do perfil foram mantidos associados à medida, uma v
 
 \subsection{Inclinação à frente do pé do depósito}
 
-O parâmetro , identificado na tabela como inclinação da base, foi medido à frente da terminação distal do depósito. A seção foi traçada aproximadamente como prolongamento do eixo principal, incluindo a terminação do corpo para permitir reconhecer sua relação com o terreno receptor.
+O parâmetro $S_t$, identificado na tabela como inclinação da base, foi medido à frente da terminação distal do depósito. A seção foi traçada aproximadamente como prolongamento do eixo principal, incluindo a terminação do corpo para permitir reconhecer sua relação com o terreno receptor.
 
 O cálculo utilizou apenas o trecho externo ao depósito, delimitado pelos pontos P$_{3}$ e P$_{4}$. P$_{3}$ foi posicionado a jusante de C, onde o corpo já havia terminado e o refletor apresentava continuidade fora da zona deformada. P$_{4}$ foi selecionado mais adiante sobre o mesmo refletor, antes de outra deformação ou mudança significativa da superfície.
 
@@ -412,9 +412,9 @@ A incerteza do desnível foi calculada pela aplicação da propagação de prime
 \end{equation}
 \equationdescription{Incerteza do desnível}
 
-em que $\Delta t_h$ é a diferença de TWT entre os pontos do horizonte interpretado e $\Delta t_f$ é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos; $\overline{v}_e$ é a velocidade sedimentar adotada para o evento, em metros por segundo; e $u_v$ é sua dispersão ponderada. As componentes temporais foram definidas por $u_{\Delta t_h}=\sqrt{2},u_{\mathrm{pick}}$ e $u_{\Delta t_f}=\sqrt{2},u_f$, considerando independência entre os extremos.
+em que $\Delta t_h$ é a diferença de TWT entre os pontos do horizonte interpretado e $\Delta t_f$ é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos; $\overline{v}_e$ é a velocidade sedimentar adotada para o evento, em metros por segundo; e $u_v$ é sua dispersão ponderada. As componentes temporais foram definidas por $u_{\Delta t_h}=\sqrt{2}\;u_{\mathrm{pick}}$ e $u_{\Delta t_f}=\sqrt{2}\;u_f$, considerando independência entre os extremos.
 
-Os três termos da Equação~\eqref{eq:incerteza-integral-temporal} representam, respectivamente, as contribuições da interpretação do horizonte, do fundo marinho e da velocidade sedimentar para a incerteza do desnível. Para a altura total de queda, adotou-se $\Delta t_h=t_C-t_A$ e $\Delta t_f=t_{\mathrm{fundo},C}-t_{\mathrm{fundo},A}$.
+Os três termos da Equação~\eqref{eq:incerteza-desnivel} representam, respectivamente, as contribuições da interpretação do horizonte, do fundo marinho e da velocidade sedimentar para a incerteza do desnível. Para a altura total de queda, adotou-se $\Delta t_h=t_C-t_A$ e $\Delta t_f=t_{\mathrm{fundo},C}-t_{\mathrm{fundo},A}$.
 
 Para as inclinações, calculadas por $\theta=\arctan(|\Delta z|/L)$, a propagação foi realizada mantendo a distância horizontal $L$ fixa:
 
@@ -488,7 +488,7 @@ Foram utilizados registros do ruído ambiental de  um sismógrafo de fundo oceâ
 
 O OBS 18 foi instalado no âmbito do Projeto de Monitoramento Sismo-Oceanográfico, desenvolvido em cooperação entre o Laboratório de Oceanografia Costeira da Universidade Federal de Santa Catarina (LOC-UFSC), o Observatório Nacional, a Petrobras e outras instituições. O equipamento permaneceu na região do Campo de Búzios (Figura~\ref{fig:resultado-19}), a 1.772 m de profundidade, entre julho de 2019 e junho de 2020, totalizando 11 meses de aquisição e 24,5 GB de dados.
 
-A seleção do período de análise foi baseada na caracterização do ruído ambiente ao longo de aproximadamente um ano de registros do OBS 18, utilizando distribuições probabilísticas da densidade espectral de potência (\textit{Probabilistic Power Spectral Density} — PPSD). Essa técnica permite avaliar a distribuição dos níveis de energia do ruído em função da frequência e comparar sua variabilidade temporal (McNamara \& Buland, 2004). Sua aplicação aos registros de OBS permite considerar as particularidades ambientais e instrumentais que influenciam o ruído em cada estação (Webb, 1998; Janiszewski et al., 2023).
+A seleção do período de análise foi baseada na caracterização do ruído ambiente ao longo de aproximadamente um ano de registros do OBS 18, utilizando distribuições probabilísticas da densidade espectral de potência (\textit{Probabilistic Power Spectral Density} — PPSD). Essa técnica permite avaliar a distribuição dos níveis de energia do ruído em função da frequência e comparar sua variabilidade temporal \cite{mcnamara2004}. Sua aplicação aos registros de OBS permite considerar as particularidades ambientais e instrumentais que influenciam o ruído em cada estação \cite{webb1998,janiszewski2023}.
 
 A comparação entre as distribuições mensais indicou menores níveis de densidade espectral de potência em fevereiro, na faixa de frequência de interesse para o HVSR. A partir dessa caracterização, foram selecionados registros horários, em formato miniSEED, dos dias 1 e 29 de fevereiro de 2020. A escolha do mês fundamentou-se no comportamento observado nos dados do próprio OBS 18, buscando períodos com menor energia de ruído na faixa analisada. Essa seleção foi complementada pela inspeção das janelas individuais e das curvas HVSR resultantes.
 
@@ -514,7 +514,7 @@ em que Vₛ corresponde à velocidade média da onda S na camada acima da interf
 
 \subsection{Cálculo das curvas HVSR}
 
-O processamento principal das curvas HVSR foi realizado em ambiente Python®, utilizando os notebooks disponibilizados no repositório hvsrweb e as rotinas da biblioteca hvsrpy, desenvolvidos por \citeonline{vantassel2021}. Os códigos originais foram mantidos, sendo alterados apenas os caminhos dos arquivos de entrada e os parâmetros necessários à configuração desta análise. Portanto, as etapas de segmentação dos sinais, aplicação do taper, combinação das componentes horizontais, suavização espectral, cálculo das curvas HVSR, tratamento estatístico lognormal e determinação da frequência fundamental  foram executadas pelas rotinas do hvsrweb e do hvsrpy. As configurações adotadas foram orientadas pelas recomendações do projeto \citeonline{sesame2004} e estão sintetizadas na Tabela~\ref{tab:resultado-3} .
+O processamento principal das curvas HVSR foi realizado em ambiente Python®, utilizando os notebooks disponibilizados no repositório hvsrweb e as rotinas da biblioteca hvsrpy, desenvolvidos por \citeonline{vantassel2021}. Os códigos originais foram mantidos, sendo alterados apenas os caminhos dos arquivos de entrada e os parâmetros necessários à configuração desta análise. Portanto, as etapas de segmentação dos sinais, aplicação do taper, combinação das componentes horizontais, suavização espectral, cálculo das curvas HVSR, tratamento estatístico lognormal e determinação da frequência fundamental $f_0$ foram executadas pelas rotinas do hvsrweb e do hvsrpy. As configurações adotadas foram orientadas pelas recomendações do projeto \citeonline{sesame2004} e estão sintetizadas na Tabela~\ref{tab:resultado-3} .
 
 Os sinais contínuos, correspondentes a 24 horas para cada dia,  foram divididos em janelas de 120 s, utilizadas na determinação estatística de f₀, e de 1.800 s, empregadas como teste de estabilidade espectral. Aplicou-se taper de Tukey, com larguras de 0,10 e 0,05, respectivamente, a fim de reduzir o vazamento espectral nas extremidades das janelas. O taper é uma função aplicada às extremidades de cada janela temporal para reduzir gradualmente a amplitude do sinal a zero, evitando descontinuidades e o vazamento espectral durante a transformação para o domínio da frequência. Neste estudo, utilizou-se o taper de Tukey, conforme recomendações para o processamento HVSR \cite{sesame2004,vantassel2021}. As componentes horizontais foram combinadas por média geométrica, procedimento recomendado para a obtenção de uma única curva H/V representativa \cite{coxcheng2020}. Foram testadas as suavizações de Konno--Ohmachi e Parzen. A primeira foi adotada para a definição final de f₀, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências \cite{konno1998,sesame2004}.
 
@@ -547,11 +547,11 @@ A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individ
   \end{tabularx}
 \end{table}
 
-A identificação dos picos secundários constituiu uma etapa realizada por meio de código em \textit{Python} desenvolvido pela discente. Esse código não integra o hvsrweb nem o hvsrpy e foi aplicado posteriormente aos arquivos CSV exportados pelo processamento principal. Sua finalidade foi identificar e individualizar possíveis frequências secundárias  e , sem modificar a frequência fundamental  determinada pelo hvsrpy e sem interferir na seleção ou rejeição das janelas temporais.
+A identificação dos picos secundários constituiu uma etapa realizada por meio de código em \textit{Python} desenvolvido pela discente. Esse código não integra o hvsrweb nem o hvsrpy e foi aplicado posteriormente aos arquivos CSV exportados pelo processamento principal. Sua finalidade foi identificar e individualizar possíveis frequências secundárias $f_1$ e $f_2$, sem modificar a frequência fundamental $f_0$ determinada pelo hvsrpy e sem interferir na seleção ou rejeição das janelas temporais.
 
 Após a remoção de valores numéricos inválidos, a curva HVSR obtida foi agrupada em intervalos de 0,2 Hz para reduzir flutuações locais, e os máximos foram identificados pelo algoritmo find\_peaks, adotando-se altura mínima de H/V = 1,5 e proeminência mínima de 0,4. Os limites de H/V ≥ 1,5 e de proeminência ≥ 0,4 foram definidos empiricamente a partir de testes no conjunto de dados analisado e da inspeção visual das curvas espectrais, buscando preservar máximos claramente reconhecíveis e, simultaneamente, reduzir a identificação de pequenas oscilações locais como picos independentes. De modo semelhante, adotou-se uma diferença mínima de 15\% em frequência relativa entre máximos sucessivos; picos com separação inferior a esse valor foram considerados parte de uma mesma feição espectral, evitando a contabilização duplicada de máximos associados ao mesmo pico. Esses valores constituem critérios operacionais definidos para este conjunto de dados e não limites universais do método HVSR.
 
-A frequência fundamental  foi mantida conforme determinada previamente pelo processamento estatístico das janelas no hvsrpy. Os máximos de frequência superior identificados pelo algoritmo foram então ordenados em frequência crescente e classificados como  e . Esses critérios foram empregados exclusivamente na identificação e individualização dos picos secundários, não sendo utilizados para rejeitar janelas temporais.
+A frequência fundamental $f_0$ foi mantida conforme determinada previamente pelo processamento estatístico das janelas no hvsrpy. Os máximos de frequência superior identificados pelo algoritmo foram então ordenados em frequência crescente e classificados como $f_1$ e $f_2$. Esses critérios foram empregados exclusivamente na identificação e individualização dos picos secundários, não sendo utilizados para rejeitar janelas temporais.
 
 \subsection{Obtenção de velocidades e incertezas}
 
@@ -599,7 +599,7 @@ Foram adotados valores de ν entre 0,46 e 0,48, compatíveis com sedimentos fino
 
 A profundidade foi estimada para todas as combinações entre três valores de frequência — inferior, central e superior —, duas estimativas de velocidade de onda P (V$_{p}$) e três valores do coeficiente de Poisson (ν), totalizando 18 cenários para cada data. Os valores inferior e superior de frequência foram definidos a partir da dispersão das frequências de pico entre as janelas processadas, conforme o tratamento estatístico descrito na seção 4.6.1.
 
-Adotando a distinção entre incerteza absoluta e relativa apresentada por \citeonline{taylor1997}, a variabilidade entre os cenários calculados foi sintetizada neste estudo por meio de um envelope. Os valores mínimo () e máximo () delimitaram o intervalo, cujo ponto médio foi utilizado como valor de referência:
+Adotando a distinção entre incerteza absoluta e relativa apresentada por \citeonline{taylor1997}, a variabilidade entre os cenários calculados foi sintetizada neste estudo por meio de um envelope. Os valores mínimo ($H_{\min}$) e máximo ($H_{\max}$) delimitaram o intervalo, cujo ponto médio foi utilizado como valor de referência:
 
 \begin{equation}
   H_c=\frac{H_{\min}+H_{\max}}{2}
