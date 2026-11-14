@@ -233,6 +233,7 @@ def convert_citations(text: str) -> str:
 
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_").replace("\\=", "=")
+    text = re.sub(r"<br\s*/?>", r"\\newline ", text, flags=re.IGNORECASE)
     text = re.sub(r"<sub>(.*?)</sub>", r"$_{\1}$", text)
     text = re.sub(r"<sup>(.*?)</sup>", r"$^{\1}$", text)
     # O Google Docs exporta o nome do campo do QGIS como ``$length``. O
