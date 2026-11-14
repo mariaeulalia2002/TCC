@@ -236,7 +236,7 @@ def convert_object_references(text: str) -> str:
     """Transforma chamadas numéricas do Docs em referências cruzadas LaTeX."""
 
     pattern = re.compile(
-        r"\b(Figuras?|Tabelas?|Quadros?|Equações?)\s+"
+        r"\b(Figuras?|Tabelas?|Quadros?|Equação|Equações)\s+"
         r"((?:[A-F]\.)?\d+(?:[.\-]?[a-z])?"
         r"(?:(?:\s*(?:,|e|a|--|–|-)\s*)"
         r"(?:(?:[A-F]\.)?\d+(?:[.\-]?[a-z])?|[a-z]))*)"
@@ -617,7 +617,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
             out += [r"\begin{landscape}", r"\begin{quadro}", r"  \centering"]
             if part_index == 0:
                 if caption:
-                    out.append(f"  \\caption{{{inline(caption, crossrefs=False)}}}")
+                    out.append(f"  \\caption{{{inline(caption)}}}")
                 if label:
                     out.append(f"  \\label{{{label}}}")
             else:
@@ -665,7 +665,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
             f"\\begin{{longtable}}{{{spec}}}",
         ]
         if caption:
-            out.append(f"  \\caption{{{inline(caption, crossrefs=False)}}}" + (f"\\label{{{label}}}" if label else "") + r" \\")
+            out.append(f"  \\caption{{{inline(caption)}}}" + (f"\\label{{{label}}}" if label else "") + r" \\")
         elif label:
             out.append(f"  \\label{{{label}}}\\")
         out += [r"    \toprule", header_line, r"    \midrule", r"    \endfirsthead"]
@@ -690,7 +690,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
     placement = "[H]" if environment == "table" and is_appendix_table else "[htbp]" if environment == "table" else ""
     out = [f"\\begin{{{environment}}}{placement}", r"  \centering"]
     if caption:
-        out.append(f"  \\caption{{{inline(caption, crossrefs=False)}}}")
+        out.append(f"  \\caption{{{inline(caption)}}}")
     if label:
         out.append(f"  \\label{{{label}}}")
     out += [r"  \scriptsize", r"  \setlength{\tabcolsep}{2.5pt}", f"  \\begin{{tabularx}}{{\\textwidth}}{{{spec}}}", r"    \toprule"]
@@ -860,7 +860,7 @@ def parse_markdown(
                     f"% PENDÊNCIA: imagem da Figura {num} não encontrada na exportação.",
                     r"\begin{figure}[htbp]",
                     r"  \centering",
-                    f"  \\caption{{{inline(caption, crossrefs=False)}}}",
+                    f"  \\caption{{{inline(caption)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
                     r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
                     *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
@@ -884,7 +884,7 @@ def parse_markdown(
                 out += [
                     r"\begin{figure}[p]" if landscape_figure else r"\begin{figure}[htbp]",
                     r"  \centering",
-                    f"  \\caption{{{inline(caption, crossrefs=False)}}}",
+                    f"  \\caption{{{inline(caption)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
                     (f"  \\includegraphics[width=\\linewidth,height=0.78\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"
                      if landscape_figure else
