@@ -232,6 +232,40 @@ def convert_citations(text: str) -> str:
     return narrative.sub(narrative_repl, text)
 
 
+def convert_object_references(text: str) -> str:
+    """Transforma chamadas numéricas do Docs em referências cruzadas LaTeX."""
+
+    pattern = re.compile(
+        r"\b(Figuras?|Tabelas?|Quadros?|Equações?)\s+"
+        r"((?:[A-F]\.)?\d+(?:[.\-]?[a-z])?"
+        r"(?:(?:\s*(?:,|e|a|--|–|-)\s*)"
+        r"(?:(?:[A-F]\.)?\d+(?:[.\-]?[a-z])?|[a-z]))*)"
+    )
+
+    def replacement(match: re.Match[str]) -> str:
+        kind, sequence = match.group(1), match.group(2)
+        sequence = re.sub(r"((?:[A-F]\.)?\d+)[.\-]([a-z])", r"\1\2", sequence)
+
+        def one_ref(item: re.Match[str]) -> str:
+            raw_number, panel = item.group(1), item.group(2) or ""
+            label_number = raw_number.replace(".", "-")
+            if kind.startswith("Figura"):
+                command = rf"\ref{{fig:resultado-{label_number}}}"
+            elif kind.startswith("Tabela"):
+                command = rf"\ref{{tab:resultado-{label_number}}}"
+            elif kind.startswith("Quadro"):
+                command = rf"\ref{{qua:resultado-{label_number}}}"
+            else:
+                label = EQUATION_LABELS.get(int(raw_number)) if raw_number.isdigit() else None
+                command = rf"\eqref{{{label}}}" if label else raw_number
+            return command + (f"({panel})" if panel else "")
+
+        converted = re.sub(r"\b((?:[A-F]\.)?\d+)([a-z])?", one_ref, sequence)
+        return f"{kind}~{converted}"
+
+    return pattern.sub(replacement, text)
+
+
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_").replace("\\=", "=")
     text = re.sub(r"<br\s*/?>", r"\\newline ", text, flags=re.IGNORECASE)
@@ -262,28 +296,8 @@ def inline(text: str, crossrefs: bool = True) -> str:
     text = re.sub(r"\*\*([^*]+)\*\*", r"\\textbf{\1}", text)
     text = re.sub(r"\*([^*]+)\*", r"\\textit{\1}", text)
     if crossrefs:
-        # Normaliza também a abreviação informal "Fig." usada em alguns
-        # trechos do Docs e preserva a letra do painel na referência cruzada.
-        text = re.sub(
-            r"\bFig\.?\s*(\d+)(?:[.\-]?([a-z]))?",
-            lambda match: (
-                rf"Figura~\ref{{fig:resultado-{match.group(1)}}}"
-                + (match.group(2) or "")
-            ),
-            text,
-            flags=re.IGNORECASE,
-        )
-        text = re.sub(r"\bFiguras\s+(\d+)\s+e\s+(\d+)", r"Figuras~\\ref{fig:resultado-\1} e \\ref{fig:resultado-\2}", text)
-        text = re.sub(r"\bFigura\s+(\d+)", r"Figura~\\ref{fig:resultado-\1}", text)
-        text = re.sub(r"\bTabelas\s+(\d+)\s+e\s+(\d+)", r"Tabelas~\\ref{tab:resultado-\1} e \\ref{tab:resultado-\2}", text)
-        text = re.sub(r"\bTabela\s+(\d+)", r"Tabela~\\ref{tab:resultado-\1}", text)
-        text = re.sub(r"\bQuadro\s+(\d+)", r"Quadro~\\ref{qua:resultado-\1}", text)
-        for number, label in EQUATION_LABELS.items():
-            text = re.sub(
-                rf"\bEquação\s+{number}\b",
-                rf"Equação~\\eqref{{{label}}}",
-                text,
-            )
+        text = re.sub(r"\bFig\.\s*", "Figura ", text, flags=re.IGNORECASE)
+        text = convert_object_references(text)
         appendix_labels = {
             "A": "ap:codigos",
             "B": "ap:localizacao-medidas",
@@ -713,6 +727,11 @@ def parse_markdown(
         if not s:
             i += 1
             continue
+        # Marcadores internos usados para registrar as seções do Google Docs
+        # servem apenas à conversão e nunca devem aparecer no texto final.
+        if s.startswith("<!--") and s.endswith("-->"):
+            i += 1
+            continue
         mimg = re.search(r"\[image(\d+)\]", s)
         if mimg:
             pending_image = int(mimg.group(1))
@@ -948,6 +967,12 @@ def main() -> None:
     text = replace_gdoc_images(text, IMAGE_MANIFEST)
     images = api_image_targets(IMAGE_MANIFEST, IMAGE_CACHE)
     LANDSCAPE_FIGURES = landscape_figure_numbers_api(text)
+    # Regra editorial já definida para este TCC: as pranchas de relações
+    # estratigráficas e de tectônica salífera ficam em paisagem; as figuras de
+    # pockmarks permanecem em retrato. A API do Docs nem sempre expõe a
+    # orientação visual das quebras de seção, por isso mantemos o intervalo
+    # explicitamente como salvaguarda.
+    LANDSCAPE_FIGURES.update(range(29, 46))
 
     chapter_specs = {
         "1": ("Introdução", r"^#\s+1\s+INTRODUÇÃO\s*$", r"^#\s+2\s+FUNDAMENTAÇÃO TEÓRICA\s*$"),
