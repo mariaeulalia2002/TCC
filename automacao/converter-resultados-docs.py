@@ -39,6 +39,7 @@ APENDICES = {
 FIGDIR = ROOT / "latex" / "figuras" / "google-docs"
 REFERENCIAS = ROOT / "latex" / "referencias.bib"
 LANDSCAPE_FIGURES: set[int] = set()
+LANDSCAPE_QUADROS: set[str] = {"qua:resultado-1"}
 
 NS = {
     "w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
@@ -691,6 +692,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
         return []
     is_appendix_table = bool(label and re.fullmatch(r"tab:resultado-[A-F]-\d+", label))
     if environment == "quadro" and len(rows) > 4:
+        quadro_landscape = bool(label and label in LANDSCAPE_QUADROS)
         header, body = rows[0], rows[1:]
         if len(header) == 5:
             column_spec = (
@@ -711,7 +713,9 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
         parts = [body[:midpoint], body[midpoint:]]
         out: list[str] = []
         for part_index, part in enumerate(parts):
-            out += [r"\begin{landscape}", r"\begin{quadro}", r"  \centering"]
+            if quadro_landscape:
+                out.append(r"\begin{landscape}")
+            out += [r"\begin{quadro}", r"  \centering"]
             if part_index == 0:
                 if caption:
                     out.append(f"  \\caption{{{inline(caption)}}}")
@@ -742,8 +746,9 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
                 r"    \bottomrule",
                 r"  \end{tabularx}",
                 r"\end{quadro}",
-                r"\end{landscape}",
             ]
+            if quadro_landscape:
+                out.append(r"\end{landscape}")
         return out
     if environment == "table" and len(rows) >= 12:
         cols = max(len(r) for r in rows)
@@ -983,9 +988,9 @@ def parse_markdown(
                     r"  \centering",
                     f"  \\caption{{{inline(caption)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
-                    (f"  \\includegraphics[width=\\linewidth,height=0.78\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"
+                    (f"  \\includegraphics[width=1.03\\linewidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"
                      if landscape_figure else
-                     f"  \\includegraphics[width=\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"),
+                     f"  \\includegraphics[width=1.03\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"),
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
                     *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
                     r"\end{figure}",
@@ -1064,12 +1069,13 @@ def main() -> None:
     text = replace_gdoc_images(text, IMAGE_MANIFEST)
     images = api_image_targets(IMAGE_MANIFEST, IMAGE_CACHE)
     LANDSCAPE_FIGURES = landscape_figure_numbers_api(text)
-    # Regra editorial já definida para este TCC: as pranchas de relações
-    # estratigráficas e de tectônica salífera ficam em paisagem; as figuras de
-    # pockmarks permanecem em retrato. A API do Docs nem sempre expõe a
-    # orientação visual das quebras de seção, por isso mantemos o intervalo
-    # explicitamente como salvaguarda.
-    LANDSCAPE_FIGURES.update(range(29, 46))
+    # Orientações registradas nas quebras de seção da revisão atual do Google
+    # Docs. Somente estas figuras devem ir para paisagem; todas as demais
+    # permanecem em retrato, inclusive quando a imagem é horizontal.
+    LANDSCAPE_FIGURES.update({
+        28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
+        53, 55, 57, 59, 65, 66, 67, 69, 71, 73, 74, 75,
+    })
 
     chapter_specs = {
         "1": ("Introdução", r"^#\s+1\s+INTRODUÇÃO\s*$", r"^#\s+2\s+FUNDAMENTAÇÃO TEÓRICA\s*$"),
