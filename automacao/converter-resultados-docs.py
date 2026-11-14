@@ -369,6 +369,7 @@ def inline(text: str, crossrefs: bool = True) -> str:
         text,
     )
     text = text.replace("Figura Iv.6", "Figura IV.6")
+    text = text.replace("sísmicas.Para", "sísmicas. Para")
     text = text.replace("*et al*.", "*et al.*")
     text = text.replace("*et al.,*", "*et al.*,")
     text = re.sub(r"(\*?et al\.\*?),\s*\(", r"\1 (", text, flags=re.IGNORECASE)
@@ -724,7 +725,7 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
             else:
                 continuation = inline(caption or "", crossrefs=False)
                 out.append(
-                    f"  \\noindent\\textbf{{Quadro~\\thequadro{{}} — {continuation} (continuação).}}\\par\\smallskip"
+                    f"  \\begin{{center}}\\footnotesize Quadro~\\thequadro{{}} — {continuation} (continuação).\\end{{center}}\\smallskip"
                 )
             out += [
                 r"  \scriptsize",
