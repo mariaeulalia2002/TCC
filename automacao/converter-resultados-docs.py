@@ -233,8 +233,14 @@ def convert_citations(text: str) -> str:
 
 def inline(text: str, crossrefs: bool = True) -> str:
     text = text.strip().replace("\\.", ".").replace("\\_", "_").replace("\\=", "=")
-    text = re.sub(r"<sub>(.*?)</sub>", r"$ _{\1} $", text)
-    text = re.sub(r"<sup>(.*?)</sup>", r"$ ^{\1} $", text)
+    text = re.sub(r"<sub>(.*?)</sub>", r"$_{\1}$", text)
+    text = re.sub(r"<sup>(.*?)</sup>", r"$^{\1}$", text)
+    # O Google Docs exporta o nome do campo do QGIS como ``$length``. O
+    # cifrão é parte do nome do campo, não um delimitador matemático. Tokens
+    # temporários evitam que o protetor de expressões confunda esse texto com
+    # o início de uma fórmula.
+    text = text.replace("$length / 1000", "@@QLENGTHKM@@")
+    text = text.replace("$length", "@@QLENGTH@@")
     text = re.sub(
         r"==(.+?)==",
         lambda match: r"\colorbox{yellow}{\strut " + match.group(1) + "}",
@@ -308,6 +314,8 @@ def inline(text: str, crossrefs: bool = True) -> str:
         text = text.replace(key, cmd)
     for i, math in enumerate(maths):
         text = text.replace(f"@@MATH{i}@@", math)
+    text = text.replace("@@QLENGTHKM@@", r"\texttt{\$length / 1000}")
+    text = text.replace("@@QLENGTH@@", r"\texttt{\$length}")
     return text
 
 
