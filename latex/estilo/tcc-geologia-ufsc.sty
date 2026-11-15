@@ -170,7 +170,7 @@
 \newcommand{\AssinaturaTCC}[3]{%
   \vspace{1.15cm}
   \noindent\rule{10cm}{0.4pt}\\[-2pt]
-  #1\\#2\\#3\par
+  #1\\#2\ifstrempty{#3}{}{\\#3}\par
 }
 
 \newcommand{\imprimircapaGeologia}{%
@@ -185,7 +185,7 @@
     \vfill
     {\bfseries\MakeUppercase{\AutorTCC}\par}
     \vfill
-    {\bfseries\MakeUppercase{\TituloCompletoTCC}\par}
+    {\bfseries\MakeUppercase{\TituloCapaTCC}\par}
     \vfill
     {\bfseries\MakeUppercase{\CidadeTCC}\par}
     {\bfseries\AnoTCC\par}
@@ -197,7 +197,7 @@
     \centering\OnehalfSpacing
     {\bfseries\MakeUppercase{\AutorTCC}\par}
     \vfill
-    {\bfseries\MakeUppercase{\TituloCompletoTCC}\par}
+    {\bfseries\MakeUppercase{\TituloFolhaRostoTCC}\par}
     \vfill
     \begin{adjustwidth}{8cm}{0cm}
       \SingleSpacing\small
@@ -213,15 +213,11 @@
 
 \newcommand{\imprimirfichacatalograficaModelo}{%
   \clearpage\thispagestyle{empty}
-  \vspace*{\fill}
   \begin{center}
-  \fbox{\begin{minipage}[c][7.2cm][c]{0.86\textwidth}
-    \centering\small
-    \textbf{Ficha de identificação da obra}\\[0.7cm]
-    \TextoModelo{Substitua esta página pela ficha gerada no serviço oficial da BU/UFSC.}\\[0.4cm]
-    \url{https://ficha.bu.ufsc.br/}
-  \end{minipage}}
+    \textbf{FICHA CATALOGRÁFICA}
   \end{center}
+  \vspace{1cm}
+  \noindent\textit{Substitua esta página pela ficha catalográfica emitida pelo sistema da Biblioteca Universitária da UFSC. Se a ficha for fornecida em PDF ou imagem, insira-a ocupando a área útil desta página.}
 }
 
 \newcommand{\imprimirfolhadeaprovacaoGeologia}{%
@@ -229,19 +225,15 @@
     \centering\OnehalfSpacing
     {\bfseries\AutorTCC\par}
     \vspace{1cm}
-    {\bfseries\MakeUppercase{\TituloCompletoTCC}\par}
+    {\bfseries\MakeUppercase{\TituloAprovacaoTCC}\par}
     \vspace{1cm}
-    Este Trabalho de Conclusão de Curso foi julgado adequado para obtenção do título de \GrauTCC\ e aprovado em sua forma final pelo Curso de Graduação em Geologia.\par
+    Este Trabalho de Conclusão de Curso foi julgado adequado para a obtenção do título de \GrauTCC\ e aprovado em sua forma final pelo Curso de Graduação em Geologia da Universidade Federal de Santa Catarina.\par
     \vspace{0.5cm}
     \CidadeTCC, \DataDefesaTCC.\par
     \vspace{0.6cm}
-    \textbf{Coordenação do curso}\par
-    \AssinaturaTCC{\CoordenadorTCC}{Coordenação do Curso de Geologia}{Universidade Federal de Santa Catarina}
-    \vspace{0.3cm}
-    \textbf{Banca examinadora}\par
-    \AssinaturaTCC{\OrientadorTCC}{Orientador}{Universidade Federal de Santa Catarina}
-    \AssinaturaTCC{\MembroUmTCC}{Membro}{\InstituicaoMembroUm}
-    \AssinaturaTCC{\MembroDoisTCC}{Membro}{\InstituicaoMembroDois}
+    \AssinaturaTCC{\OrientadorTCC}{Orientador}{}
+    \AssinaturaTCC{\MembroUmTCC}{\InstituicaoMembroUm}{}
+    \AssinaturaTCC{\MembroDoisTCC}{\InstituicaoMembroDois}{}
   \end{folhadeaprovacao}
 }
 
