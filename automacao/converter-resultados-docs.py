@@ -988,13 +988,25 @@ def parse_markdown(
         if mfig:
             number, caption = mfig.group(1), mfig.group(2).replace("\\.", ".")
             source_line: str | None = None
+            note_line: str | None = None
             source_index = i + 1
-            while source_index < len(lines) and not lines[source_index].strip():
-                source_index += 1
-            if source_index < len(lines) and lines[source_index].strip().startswith("Fonte:"):
-                source_line = re.sub(
-                    r"^Fonte:\s*", "", lines[source_index].strip()
-                ).rstrip(".")
+            consumed_index = i + 1
+            while source_index < len(lines):
+                candidate = lines[source_index].strip().strip("*")
+                if not candidate:
+                    source_index += 1
+                    continue
+                if candidate.startswith("Fonte:"):
+                    source_line = re.sub(r"^Fonte:\s*", "", candidate).rstrip(".")
+                    consumed_index = source_index + 1
+                    source_index += 1
+                    continue
+                if candidate.startswith("Nota:"):
+                    note_line = re.sub(r"^Nota:\s*", "", candidate).rstrip(".")
+                    consumed_index = source_index + 1
+                    source_index += 1
+                    continue
+                break
             numeric_figure = number.isdigit()
             num = int(number) if numeric_figure else number
             label_number = str(number).replace(".", "-")
@@ -1017,10 +1029,11 @@ def parse_markdown(
                     f"% PENDÊNCIA: imagem da Figura {num} não encontrada na exportação.",
                     r"\begin{figure}[htbp]",
                     r"  \centering",
+                    r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
                     f"  \\caption{{{inline(caption)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
-                    r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
                     *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
+                    *([f"  \\nota{{{inline(note_line)}}}"] if note_line else []),
                     r"\end{figure}",
                     "",
                 ]
@@ -1039,22 +1052,23 @@ def parse_markdown(
                 if landscape_figure:
                     out.append(r"\begin{landscape}")
                 out += [
-                    r"\begin{figure}[p]" if landscape_figure else r"\begin{figure}[htbp]",
+                    r"\begin{figure}[p]" if landscape_figure else (r"\begin{figure}[H]" if num == 52 else r"\begin{figure}[htbp]"),
                     r"  \centering",
-                    f"  \\caption{{{inline(caption)}}}",
-                    f"  \\label{{fig:resultado-{label_number}}}",
                     (f"  \\includegraphics[width=1.03\\linewidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"
                      if landscape_figure else
                      f"  \\includegraphics[width=1.03\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"),
+                    f"  \\caption{{{inline(caption)}}}",
+                    f"  \\label{{fig:resultado-{label_number}}}",
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
                     *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
+                    *([f"  \\nota{{{inline(note_line)}}}"] if note_line else []),
                     r"\end{figure}",
                 ]
                 if landscape_figure:
                     out.append(r"\end{landscape}")
                 out.append("")
             pending_image = None
-            i = source_index + 1 if source_line else i + 1
+            i = consumed_index
             continue
         mtab = re.match(r"(Tabela|Quadro)\s+((?:[A-F]\.)?\d+)\s+[—–-]\s*(.*)", s)
         if mtab:
@@ -1090,7 +1104,16 @@ def parse_markdown(
                     rows.append(cells)
                 i += 1
             cap, lab, environment = pending_caption if pending_caption else (None, None, "table")
-            out += table_tex(rows, cap, lab, environment) + [""]
+            note: str | None = None
+            note_index = i
+            while note_index < len(lines) and not lines[note_index].strip():
+                note_index += 1
+            if note_index < len(lines):
+                candidate = lines[note_index].strip().strip("*")
+                if candidate.startswith("Nota:") or candidate.startswith("Nota específica:"):
+                    note = re.sub(r"^Nota(?: específica)?:\s*", "", candidate)
+                    i = note_index + 1
+            out += table_tex(rows, cap, lab, environment, note=note) + [""]
             pending_caption = None
             table_count += 1
             continue
@@ -1121,8 +1144,10 @@ def parse_markdown(
 def main() -> None:
     global LANDSCAPE_FIGURES
     text = MARKDOWN.read_text(encoding="utf-8")
-    text = replace_gdoc_images(text, IMAGE_MANIFEST)
-    images = api_image_targets(IMAGE_MANIFEST, IMAGE_CACHE)
+    if re.search(r"(?m)^\[image\d+\]:\s*<data:image/", text):
+        images = high_resolution_image_targets(DOCX, MARKDOWN)
+    else:
+        images = image_targets(DOCX)
     LANDSCAPE_FIGURES = landscape_figure_numbers_api(text)
     # Orientações registradas nas quebras de seção da revisão atual do Google
     # Docs. Somente estas figuras devem ir para paisagem; todas as demais
@@ -1133,13 +1158,13 @@ def main() -> None:
     })
 
     chapter_specs = {
-        "1": ("Introdução", r"^#\s+1\s+INTRODUÇÃO\s*$", r"^#\s+2\s+FUNDAMENTAÇÃO TEÓRICA\s*$"),
-        "2": ("Fundamentação teórica", r"^#\s+2\s+FUNDAMENTAÇÃO TEÓRICA\s*$", r"^#\s+3\s+ÁREA DE ESTUDO\s*$"),
-        "3": ("Área de estudo", r"^#\s+3\s+ÁREA DE ESTUDO\s*$", r"^#\s+4\s+MATERIAIS E MÉTODOS\s*$"),
-        "4": ("Materiais e métodos", r"^#\s+4\s+MATERIAIS E MÉTODOS\s*$", r"^#\s+5\s+RESULTADOS\s*$"),
-        "5": ("Resultados", r"^#\s+5\s+RESULTADOS\s*$", r"^#\s+6\s+DISCUSS(?:ÃO|ÕES)\s*$"),
-        "6": ("Discussões", r"^#\s+6\s+DISCUSS(?:ÃO|ÕES)\s*$", r"^#\s+7\s+CONCLUSÕES\s*$"),
-        "7": ("Conclusões", r"^#\s+7\s+CONCLUSÕES\s*$", r"^#\s+REFERÊNCIAS\s*$"),
+        "1": ("Introdução", r"^#\s+(?:\*\*)?1\s+INTRODUÇÃO(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?2\s+FUNDAMENTAÇÃO TEÓRICA(?:\*\*)?\s*$"),
+        "2": ("Fundamentação teórica", r"^#\s+(?:\*\*)?2\s+FUNDAMENTAÇÃO TEÓRICA(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?3\s+ÁREA DE ESTUDO(?:\*\*)?\s*$"),
+        "3": ("Área de estudo", r"^#\s+(?:\*\*)?3\s+ÁREA DE ESTUDO(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?4\s+MATERIAIS E MÉTODOS(?:\*\*)?\s*$"),
+        "4": ("Materiais e métodos", r"^#\s+(?:\*\*)?4\s+MATERIAIS E MÉTODOS(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?5\s+RESULTADOS(?:\*\*)?\s*$"),
+        "5": ("Resultados", r"^#\s+(?:\*\*)?5\s+RESULTADOS(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?6\s+DISCUSS(?:ÃO|ÕES)(?:\*\*)?\s*$"),
+        "6": ("Discussões", r"^#\s+(?:\*\*)?6\s+DISCUSS(?:ÃO|ÕES)(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?7\s+CONCLUSÕES(?:\*\*)?\s*$"),
+        "7": ("Conclusões", r"^#\s+(?:\*\*)?7\s+CONCLUSÕES(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?REFERÊNCIAS(?:\*\*)?\s*$"),
     }
     for chapter_number, (chapter_title, start, end) in chapter_specs.items():
         section = between_headings(text, start, end)
@@ -1154,13 +1179,13 @@ def main() -> None:
         )
     appendix_sections: dict[str, str] = {}
     for index, letter in enumerate("ABCDEF"):
-        start_pattern = rf"^#\s+APÊNDICE\s+{letter}\b.*$"
+        start_pattern = rf"^#\s+(?:\*\*)?APÊNDICE\s+{letter}\b.*?(?:\*\*)?\s*$"
         if letter != "F":
             next_letter = chr(ord(letter) + 1)
             appendix_sections[letter] = between_headings(
                 text,
                 start_pattern,
-                rf"^#\s+APÊNDICE\s+{next_letter}\b.*$",
+                rf"^#\s+(?:\*\*)?APÊNDICE\s+{next_letter}\b.*?(?:\*\*)?\s*$",
             )
         else:
             start = re.search(start_pattern, text, flags=re.MULTILINE)

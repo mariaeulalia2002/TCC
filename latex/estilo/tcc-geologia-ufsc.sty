@@ -43,7 +43,8 @@
 \RequirePackage{bookmark}
 \RequirePackage[brazilian,hyperpageref]{backref}
 % Convenção adotada neste trabalho: dois autores ligados por "&" e
-% três ou mais autores abreviados por "et al." nas citações e referências.
+% três ou mais autores abreviados por "et al." nas citações. A lista de
+% referências preserva todos os autores.
 \RequirePackage[alf]{abntex2cite}
 
 \definecolor{cinzaPlaceholder}{RGB}{95,95,95}
@@ -64,6 +65,11 @@
 \setlength{\parskip}{0pt}
 \setlength{\ABNTEXcitacaorecuo}{4cm}
 \setlist{nosep}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\intextsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{12pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{5pt}
+\setlength{\belowcaptionskip}{0pt}
 
 % Mantém cada figura e tabela dentro da seção em que foi inserida. Sem essas
 % barreiras, o mecanismo de floats pode empurrar uma ilustração para um
@@ -74,9 +80,10 @@
 \pretocmd{\subsubsection}{\FloatBarrier}{}{}
 \pretocmd{\paragraph}{\FloatBarrier}{}{}
 
-% Legendas de ilustrações e tabelas em 10 pt (\footnotesize no corpo de 12 pt).
-\captionnamefont{\footnotesize}
-\captiontitlefont{\footnotesize}
+% Legendas, fontes e notas de ilustrações e tabelas em 10 pt.
+\captionnamefont{\fontsize{10}{12}\selectfont}
+\captiontitlefont{\fontsize{10}{12}\selectfont}
+\renewcommand{\listfigurename}{Lista de figuras}
 
 \renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
@@ -109,7 +116,7 @@
 \aliaspagestyle{chapter}{tccgeologia}
 
 \newcommand{\TextoModelo}[1]{\textcolor{cinzaPlaceholder}{\textit{[#1]}}}
-\newcommand{\FonteTCC}[1]{\par\vspace{2pt}{\footnotesize Fonte: #1.}}
+\newcommand{\FonteTCC}[1]{\par\vspace{2pt}{\fontsize{10}{12}\selectfont Fonte: #1.}}
 \newcommand{\coordenadas}[2]{\mbox{#1; #2}}
 \newcommand{\dadoestrutural}[3]{\ensuremath{#1}: \mbox{#2/#3}}
 \newcommand{\unidadegeologica}[1]{\textit{#1}}
@@ -117,8 +124,8 @@
 \newcommand{\figuratcc}[5][0.82\textwidth]{%
   \begin{figure}[H]
     \centering
-    \caption{#3}\label{#5}
     \includegraphics[width=#1]{#2}
+    \caption{#3}\label{#5}
     \FonteTCC{#4}
   \end{figure}
 }
@@ -126,10 +133,10 @@
 \newcommand{\figuraplaceholder}[4][0.72\textwidth]{%
   \begin{figure}[H]
     \centering
-    \caption{#2}\label{#4}
     \fcolorbox{black!45}{cinzaFundo}{%
       \parbox[c][5.2cm][c]{#1}{\centering\color{cinzaPlaceholder}%
       INSIRA AQUI\\[4pt]mapa, perfil, fotografia ou diagrama}}
+    \caption{#2}\label{#4}
     \FonteTCC{#3}
   \end{figure}
 }
@@ -203,7 +210,7 @@
     {\bfseries\MakeUppercase{\TituloFolhaRostoTCC}\par}
     \vfill
     \begin{adjustwidth}{8cm}{0cm}
-      \SingleSpacing\small
+      \SingleSpacing\fontsize{10}{12}\selectfont
       \PreambuloTCC\par\medskip
       Orientador: \OrientadorTCC\par
       \ifdefempty{\CoorientadorTCC}{}{Coorientadores: \CoorientadorTCC\par}
