@@ -2,27 +2,21 @@
 
 \section{Sísmica de reflexão}
 
-A sísmica de reflexão é um método geofísico eficaz para mapear a geologia de uma área, especialmente em ambientes submersos, a partir de fontes artificiais. O método baseia-se na propagação de pulsos sísmicos emitidos próximos à superfície da coluna d’água em direção ao interior da Terra. Ao encontrarem interfaces entre camadas litológicas com diferentes impedâncias acústicas, parte da energia das ondas é refletida e retorna à superfície \cite{toth2011}.
-
-A impedância acústica (Z) corresponde ao produto entre a densidade (ρ) do meio e a velocidade de propagação (c) da onda, considerando incidência normal à interface: Z = ρc \cite{yilmaz2001}. A reflexão ocorre, portanto, em interfaces com contrastes significativos de impedância acústica. Parte da energia é refletida, enquanto outra parte é transmitida e segue até encontrar novas interfaces, repetindo os processos de reflexão e transmissão \cite{toth2011}.
+A sísmica de reflexão é um método geofísico eficaz para mapear a geologia de uma área, especialmente em ambientes submersos, a partir de fontes artificiais. O método baseia-se na propagação de pulsos sísmicos emitidos próximos à superfície da coluna d’água em direção ao interior da Terra. Ao encontrarem interfaces entre camadas litológicas com diferentes impedâncias acústicas, parte da energia das ondas é refletida e retorna à superfície  enquanto outra parte é transmitida e segue até encontrar novas interfaces, repetindo os processos de reflexão e transmissão \cite{toth2011}. A impedância acústica (Z) corresponde ao produto entre a densidade (ρ) do meio e a velocidade de propagação (c) da onda, considerando incidência normal à interface: Z = ρc \cite{yilmaz2001}.
 
 A técnica analisa os intervalos de tempo entre a emissão do sinal e a chegada das ondas refletidas aos receptores, além de suas amplitudes. Esse intervalo, denominado tempo duplo de percurso (two-way travel time — TWT), corresponde ao trajeto da onda até o refletor e seu retorno à superfície. Assim, os refletores são inicialmente posicionados em tempo, geralmente em segundos ou milissegundos, e não em profundidade. A conversão para profundidade depende do conhecimento ou da estimativa das velocidades de propagação nos materiais atravessados \cite{yilmaz2001}.
 
-Cada receptor registra as variações de amplitude das ondas retornantes ao longo do tempo, formando um traço sísmico. A disposição de vários traços lado a lado gera uma seção sísmica, na qual continuidade, geometria e amplitude das reflexões permitem identificar interfaces e estruturas geológicas em subsuperfície. Dessa forma, a sísmica de reflexão baseia-se no processamento e na interpretação das reflexões registradas na superfície \cite{kearey2009,yilmaz2001}.
+Cada receptor registra as variações de amplitude das ondas retornantes ao longo do tempo, formando um traço sísmico. A disposição de vários traços lado a lado gera uma seção sísmica, na qual continuidade, geometria e amplitude das reflexões permitem identificar interfaces e estruturas geológicas em subsuperfície \cite{kearey2009,yilmaz2001}.
 
 \subsection{Cosseno de fase instantânea}
 
 O atributo sísmico cosseno da fase instantânea é obtido a partir do cálculo do cosseno da fase instantânea do sinal sísmico, conforme a seguinte equação:
 
-\begin{equation}
-  C(t)=\cos\bigl(\phi(t)\bigr)
-  \label{eq:cosseno-fase}
-\end{equation}
-\equationdescription{Cosseno da fase instantânea}
+C(t) = cos(φ(t)),    [1]
 
 em que C(t) corresponde ao cosseno da fase instantânea e φ(t) representa a fase instantânea do sinal sísmico no tempo t. A fase instantânea é determinada a partir do sinal analítico, cuja parte imaginária é obtida por meio da transformada de Hilbert. Esse procedimento permite separar as informações de fase e amplitude do traço sísmico \cite{chopra2007}. O cálculo do cosseno da fase torna-se, assim, independente dos valores de amplitude, promovendo a normalização do traço sísmico e reduzindo as variações relacionadas à intensidade do sinal \cite{meneses2010}.
 
-Com a redução da influência dos contrastes de amplitude, esse atributo evidencia a geometria e a configuração dos refletores, permitindo que feições anteriormente pouco perceptíveis sejam visualizadas com maior clareza \cite{chopra2007}. Dessa forma, o cosseno da fase instantânea contribui para realçar a continuidade lateral dos refletores, as mudanças no padrão de acamadamento e os limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados \cite{alvarenga2016}.
+O atributo evidencia a geometria e a configuração dos refletores, permitindo que feições anteriormente pouco perceptíveis sejam visualizadas com maior clareza \cite{chopra2007}. Dessa forma, o cosseno da fase instantânea contribui para realçar a continuidade lateral dos refletores, as mudanças no padrão de acamadamento e os limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados \cite{alvarenga2016}.
 
 \section{Sismoestratigrafia}
 
@@ -42,17 +36,17 @@ Assim, a geometria externa e a distribuição espacial das sismofácies permitem
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-01-esquemas-de-padroes-de-configuracao-dos-refletor.png}
   \caption{Esquemas de padrões de configuração dos refletores}
   \label{fig:resultado-1}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-01-esquemas-de-padroes-de-configuracao-dos-refletor.png}
   \FonteTCC{adaptado de \citeonline{mitchum1977}}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-02-padroes-de-terminacao-de-refletores-de-natureza-.png}
   \caption{Padrões de terminação de refletores de natureza erosiva ou sindeposicional}
   \label{fig:resultado-2}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-02-padroes-de-terminacao-de-refletores-de-natureza-.png}
   \FonteTCC{adaptado de \citeonline{vail1987} apud \citeonline{severianoribeiro2001}}
 \end{figure}
 
@@ -64,9 +58,9 @@ As fácies em lençol ou drapes correspondem a pacotes tabulares, geralmente com
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-03-formas-externas-das-facies-sismicas-a-lencois-on.png}
   \caption{Formas externas das fácies sísmicas: (A) lençóis ondulados ou drapes; (B) montiformas; (C) geometria de preenchimento}
   \label{fig:resultado-3}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-03-formas-externas-das-facies-sismicas-a-lencois-on.png}
   \FonteTCC{adaptado de \citeonline{mitchum1977}}
 \end{figure}
 
@@ -74,9 +68,9 @@ As geometrias de preenchimento (Figura~\ref{fig:resultado-4}) representam depós
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-04-padroes-de-configuracao-interna-dos-refletores-e.png}
   \caption{Padrões de configuração interna dos refletores em geometrias de preenchimento: (A) em onlap; (B) progradante; (C) montiforma “onlapante”; (D) caótico; (E) divergente; (F) complexo}
   \label{fig:resultado-4}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-04-padroes-de-configuracao-interna-dos-refletores-e.png}
   \FonteTCC{adaptado de \citeonline{mitchum1977}}
 \end{figure}
 
@@ -90,9 +84,9 @@ Os movimentos de massa podem ser classificados de acordo com o comportamento do 
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-05-classificacao-dos-movimentos-de-massa-de-acordo-.png}
   \caption{Classificação dos movimentos de massa de acordo com a velocidade, o comportamento do material e o grau de interação entre os grãos}
   \label{fig:resultado-5}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-05-classificacao-dos-movimentos-de-massa-de-acordo-.png}
   \FonteTCC{traduzido e adaptado de \citeonline{posamentier2011}}
 \end{figure}
 
@@ -108,87 +102,65 @@ Neste trabalho, MTD será adotado como denominação padrão para unidades inter
 
 \subsection{Mecanismos de ruptura}
 
-Os movimentos de massa submarinos ocorrem quando as tensões que favorecem o deslocamento ao longo do talude superam a resistência ao cisalhamento dos sedimentos ou das rochas. A gravidade constitui a principal força motriz, enquanto processos como acúmulo sedimentar, erosão, terremotos, deformação tectônica e migração de fluidos podem aumentar as tensões atuantes ou reduzir a resistência do material. A estabilidade do talude depende, portanto, do equilíbrio entre forças resistentes e forças que favorecem o deslocamento \cite{hampton1996}.
+A estabilidade dos taludes submarinos pode ser modificada por processos como acúmulo sedimentar, erosão, terremotos, deformação tectônica e migração de fluidos, que aumentam os esforços atuantes ou reduzem a resistência dos materiais \cite{hampton1996}. A relação entre a resistência disponível e a tensão cisalhante mobilizada ao longo de uma superfície potencial de ruptura pode ser expressa pelo fator de segurança (FS), definido pela razão entre a resistência disponível ao cisalhamento e a tensão cisalhante mobilizada ao longo de uma superfície potencial de ruptura.
 
-Essa condição pode ser expressa pelo fator de segurança (FS), definido pela razão entre a resistência disponível ao cisalhamento e a tensão cisalhante mobilizada ao longo de uma superfície potencial de ruptura.
-
-\begin{equation}
-  FS=\frac{\tau_f}{\tau_m}
-  \label{eq:fator-seguranca}
-\end{equation}
-\equationdescription{Fator de segurança}
+FS = τf / τm,    [2]
 
 onde:
 
-- FS é o fator de segurança;
+* FS é o fator de segurança;
 
-- τ$_{f}$ é a resistência ao cisalhamento do material;
+* τf é a resistência ao cisalhamento do material;
 
-- τ$_{m}$ é a tensão cisalhante mobilizada ao longo da superfície potencial de ruptura.
+* τm é a tensão cisalhante mobilizada ao longo da superfície potencial de ruptura.
 
 Quando FS é superior a 1, a resistência disponível excede a tensão mobilizada e o talude é considerado estável. Na condição limite, FS é igual a 1; valores inferiores a 1 indicam ruptura. Embora simplificada, essa relação permite compreender como processos geológicos e ambientais alteram a estabilidade do talude.
 
 A resistência ao cisalhamento pode ser descrita pelo critério de Mohr--Coulomb \cite{caputo1988}:
 
-\begin{equation}
-  \tau_f=c'+\sigma'_n\tan\varphi'
-  \label{eq:mohr-coulomb}
-\end{equation}
-\equationdescription{Critério de ruptura de Mohr--Coulomb}
+τf = c′ \+ σ′n tan φ′,    [3]
 
 em que:
 
-- τ$_{f}$ é a resistência ao cisalhamento;
+* τf é a resistência ao cisalhamento;
 
-- c′ é a coesão efetiva do material;
+* c′ é a coesão efetiva do material;
 
-- σ′$_{n}$ é a tensão normal efetiva atuante sobre a superfície de ruptura;
+* σ′n é a tensão normal efetiva atuante sobre a superfície de ruptura;
 
-- φ′ é o ângulo de atrito interno efetivo;
+* φ′ é o ângulo de atrito interno efetivo;
 
-- tan φ′ representa o coeficiente de atrito interno.
+* tan φ′ representa o coeficiente de atrito interno.
 
 A coesão está relacionada às forças que mantêm as partículas unidas, como cimentação e interações físico-químicas. O ângulo de atrito interno representa a resistência produzida pelo atrito e pelo imbricamento entre os grãos. Em sedimentos marinhos inconsolidados, a resistência é frequentemente controlada pela tensão efetiva e pelo atrito interno, embora camadas cimentadas ou sedimentos coesivos também possam apresentar uma parcela significativa de coesão.
 
 Como os sedimentos marinhos estão saturados, parte da tensão total aplicada ao pacote sedimentar é sustentada pelo fluido presente nos poros. De acordo com o princípio da tensão efetiva de \citeonline{terzaghi1925}, a tensão normal efetiva pode ser expressa por:
 
-\begin{equation}
-  \sigma'_n=\sigma_n-u
-  \label{eq:tensao-efetiva}
-\end{equation}
-\equationdescription{Tensão normal efetiva}
+σ′n = σn $-$ u,    [4]
 
 em que:
 
-- σ′$_{n}$ é a tensão normal efetiva;
+* σ′n é a tensão normal efetiva;
 
-- σ$_{n}$ é a tensão normal total;
+* σn é a tensão normal total;
 
-- u é a pressão do fluido nos poros, ou poropressão.
+* u é a pressão do fluido nos poros, ou poropressão.
 
 Substituindo a Equação~\eqref{eq:mohr-coulomb} no critério de Mohr-Coulomb, obtém-se:
 
-\begin{equation}
-  \tau_f=c'+(\sigma_n-u)\tan\varphi'
-  \label{eq:mohr-coulomb-poropressao}
-\end{equation}
-\equationdescription{Resistência ao cisalhamento em função da poropressão}
+τf = c′ \+ (σn $-$ u) tan φ′,    [5]
 
 Com isso, o fator de segurança pode ser representado de forma simplificada por \cite{caputo1988}:
 
-\begin{equation}
-  FS=\frac{c'+(\sigma_n-u)\tan\varphi'}{\tau_m}
-  \label{eq:fator-seguranca-completo}
-\end{equation}
-\equationdescription{Fator de segurança em função da poropressão}
+FS = [c′ \+ (σn $-$ u) tan φ′] / τm,    [6]
 
 As forças atuantes sobre um bloco sedimentar em um talude e o equilíbrio entre a componente tangencial do peso e a resistência ao cisalhamento são representados na Figura~\ref{fig:resultado-6}(a). Nos sedimentos saturados, a água ocupa os espaços entre os grãos e o excesso de poropressão reduz o contato efetivo entre eles, como ilustrado na Figura~\ref{fig:resultado-6}(b). Assim, o aumento da poropressão reduz a tensão efetiva e, consequentemente, a resistência ao cisalhamento. Quando a poropressão se aproxima da tensão normal total, mesmo pequenas elevações da tensão cisalhante podem levar o sedimento à ruptura \cite{hampton1996,talling2014}.
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-06-relacoes-de-forca-e-condicoes-de-estabilidade-em.png}
   \caption{Relações de força e condições de estabilidade em sedimentos marinhos: (a) equilíbrio entre a força motriz e a resistência ao cisalhamento em um talude; (b) excesso de poropressão no espaço poroso do sedimento; (c) variação da tensão total, da poropressão e da tensão efetiva com a profundidade}
   \label{fig:resultado-6}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-06-relacoes-de-forca-e-condicoes-de-estabilidade-em.png}
   \FonteTCC{traduzido e adaptado de \citeonline{talling2014}}
 \end{figure}
 
@@ -202,9 +174,9 @@ A sedimentação rápida é um importante condicionante, pois, quando a acumula�
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-07-modelos-de-ruptura-do-talude-continental-associa.png}
   \caption{Modelos de ruptura do talude continental associados à rápida acumulação de sedimentos de baixa permeabilidade: (a) ruptura iniciada em águas rasas sob elevada taxa de sedimentação; (b) ruptura iniciada em águas profundas pelo fluxo lateral do fluido intersticial em direção ao sopé do talude, com propagação retrogressiva para as porções superiores}
   \label{fig:resultado-7}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-07-modelos-de-ruptura-do-talude-continental-associa.png}
   \FonteTCC{traduzido e adaptado de \citeonline{talling2014}}
 \end{figure}
 
@@ -232,9 +204,9 @@ A associação espacial entre depósitos de transporte de massa e a zona de esta
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-08-sintese-dos-processos-de-dissociacao-de-hidratos.png}
   \caption{Síntese dos processos de dissociação de hidratos de gás propostos como possíveis causas de movimentos de massa submarinos ou de emissões de metano}
   \label{fig:resultado-8}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-08-sintese-dos-processos-de-dissociacao-de-hidratos.png}
   \FonteTCC{traduzido e adaptado de \citeonline{talling2014}}
 \end{figure}
 
@@ -265,9 +237,8 @@ A Tabela~\ref{tab:resultado-1} sintetiza os processos discutidos e seus principa
     Antrópicos & Aterros, estruturas costeiras, dragagens e escavações. & Sobrecarga e alterações na geometria e no suporte dos sedimentos. \\
     \bottomrule
   \end{tabularx}
+  \nota{os processos podem atuar conjuntamente, aumentando os esforços atuantes e/ou reduzindo a resistência dos sedimentos até a ruptura. As categorias representam o domínio predominante de atuação ou a origem da intervenção.}
 \end{table}
-
-\nota{os processos podem atuar conjuntamente, aumentando os esforços atuantes e/ou reduzindo a resistência dos sedimentos até a ruptura. As categorias representam o domínio predominante de atuação ou a origem da intervenção.}
 
 \subsection{Identificação dos depósitos de movimentos de massa em dados sísmicos}
 
@@ -275,9 +246,9 @@ Os depósitos de movimentos de massa podem ser reconhecidos em dados de sísmica
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-09-principais-elementos-geometricos-de-um-movimento.png}
   \caption{Principais elementos geométricos de um movimento de massa submarino. O esquema representa uma configuração simplificada e não contempla todos os tipos de movimentos de massa.}
   \label{fig:resultado-9}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-09-principais-elementos-geometricos-de-um-movimento.png}
   \FonteTCC{traduzido e adaptado de \citeonline{hampton1996}}
 \end{figure}
 
@@ -289,9 +260,9 @@ Além da base, a identificação do topo, das margens laterais e da escarpa de c
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-10-exemplo-de-movimento-de-massa-submarino-em-dados.png}
   \caption{Exemplo de movimento de massa submarino em dados de sísmica de reflexão: (a) mapa estrutural da superfície de topo, com a distribuição do depósito e as escarpas de cabeceira; (b) seção sísmica vertical, com a superfície de topo, a superfície basal de cisalhamento e a massa sedimentar deformada.}
   \label{fig:resultado-10}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-10-exemplo-de-movimento-de-massa-submarino-em-dados.png}
   \FonteTCC{traduzido e adaptado de \citeonline{scarselli2020}}
 \end{figure}
 
@@ -301,9 +272,9 @@ Em alguns depósitos, parte da estratificação original permanece preservada co
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-11-expressao-sismoestratigrafica-interna-dos-deposi.png}
   \caption{Expressão sismoestratigráfica interna dos depósitos de movimentos de massa indicados pelas setas brancas: fácies caóticas nos painéis A, B, C . As feições são apresentadas em seção transversal (A, B e C) e também mostram erosão variável na base dos depósitos.}
   \label{fig:resultado-11}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-11-expressao-sismoestratigrafica-interna-dos-deposi.png}
   \FonteTCC{adaptado e traduzido de \citeonline{posamentierwalker2006}}
 \end{figure}
 
@@ -323,17 +294,17 @@ No domínio distal, a redução da velocidade e a resistência imposta pelo subs
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-12-sintese-das-principais-estruturas-associadas-aos.png}
   \caption{Síntese das principais estruturas associadas aos movimentos de massa submarinos, agrupadas segundo o domínio em que tendem a ocorrer.}
   \label{fig:resultado-12}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-12-sintese-das-principais-estruturas-associadas-aos.png}
-  \FonteTCC{modificado de \citeonline{bull2009}. Essa figura tá incompleta}
+  \FonteTCC{modificado de \citeonline{bull2009}}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-13-ilustracao-esquematica-da-morfologia-e-das-estru.png}
   \caption{Ilustração esquemática da morfologia e das estruturas de um movimento de massa submarino.}
   \label{fig:resultado-13}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-13-ilustracao-esquematica-da-morfologia-e-das-estru.png}
   \FonteTCC{compilado de \citeonline{prior1984} e \citeonline{bull2009}}
 \end{figure}
 
@@ -361,7 +332,7 @@ Os principais critérios utilizados na identificação dos depósitos de movimen
 
 \subsection{Classificação dos depósitos de movimentos de massa}
 
-A classificação dos depósitos de movimentos de massa pode ser realizada a partir de diferentes critérios, como sua geometria e dimensões (morfometria), número de eventos \cite{clare2018}, relação com a área-fonte \cite{moscardelli2008}, morfometria \cite{moscardelli2016,clare2018}, grau de confinamento \cite{omosanya2013,frey2006,gamboa2016} e estilo de deformação interna. Dessa forma, um mesmo MTD pode ser classificado simultaneamente quanto à relação com a área-fonte, ao grau de confinamento e às características de sua deformação interna.
+A classificação dos depósitos de movimentos de massa pode ser realizada a partir de diferentes critérios, como sua geometria e dimensões, número de eventos \cite{clare2018}, relação com a área-fonte \cite{moscardelli2008}, morfometria \cite{moscardelli2016,clare2018}, grau de confinamento \cite{omosanya2013,frey2006,gamboa2016} e estilo de deformação interna. Dessa forma, um mesmo MTD pode ser classificado simultaneamente quanto à relação com a área-fonte, ao grau de confinamento e às características de sua deformação interna.
 
 \subsubsection{Caracterização morfométrica}
 
@@ -383,9 +354,9 @@ Embora depósitos attached tendam a apresentar maior extensão, suas dimensões 
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-14-representacao-esquematica-dos-diferentes-tipos-d.png}
   \caption{Representação esquemática dos diferentes tipos de complexos de transporte de massa e dos processos associados à sua origem: (A) complexo anexo (attached) ao talude; (B) complexo anexo (attached) à plataforma; e complexos destacados( detached) associados (C) ao colapso do flanco de um diápiro, (D) à margem de uma minibacia e (E) a um complexo canal--levee.}
   \label{fig:resultado-14}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-14-representacao-esquematica-dos-diferentes-tipos-d.png}
   \FonteTCC{traduzido de \citeonline{moscardelli2008}}
 \end{figure}
 
@@ -399,9 +370,9 @@ O confinamento pode variar ao longo da frente de um mesmo depósito. \citeonline
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-15-representacao-esquematica-dos-principais-tipos-d.png}
   \caption{Representação esquemática dos principais tipos de movimentos de massa submarinos de acordo com sua terminação frontal: (A) movimento frontalmente emergente, no qual a massa abandona a superfície basal de cisalhamento e avança sobre o substrato não deformado; e (B) movimento frontalmente confinado, no qual a massa é barrada contra a rampa frontal e permanece sobre sua superfície basal original.}
   \label{fig:resultado-15}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-15-representacao-esquematica-dos-principais-tipos-d.png}
   \FonteTCC{traduzido de \citeonline{frey2006}}
 \end{figure}
 
@@ -417,9 +388,9 @@ Neste trabalho, os termos tipo 1 e tipo 2 serão empregados exclusivamente confo
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-16-representacao-esquematica-das-caracteristicas-in.png}
   \caption{Representação esquemática das características internas dos MTDs: (A) tipo 1, marcado por deformação interna significativa e eixo maior paralelo à direção de transporte; e (B) tipo 2, caracterizado pela presença de grandes lajes com deformação moderada e eixo maior perpendicular à direção de transporte. HL: comprimento da escarpa de cabeceira; DtT: distância até o limite distal.}
   \label{fig:resultado-16}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-16-representacao-esquematica-das-caracteristicas-in.png}
   \FonteTCC{traduzido de \citeonline{gamboa2016}}
 \end{figure}
 
@@ -429,9 +400,9 @@ A tectônica salífera compreende a deformação e a mobilização de evaporitos
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-17-estilos-de-falhas-e-deformacoes-associados-a-ant.png}
   \caption{Estilos de falhas e deformações associados a anticlinais salinos e cristas salinas. Os painéis a--c representam mecanismos extensionais da cobertura; os painéis d--f, estruturas contracionais; e os painéis g--j, geometrias de falhamento e arqueamento associadas a cristas salinas.}
   \label{fig:resultado-17}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-17-estilos-de-falhas-e-deformacoes-associados-a-ant.png}
   \FonteTCC{traduzido de \citeonline{jackson2017}}
 \end{figure}
 
@@ -439,9 +410,9 @@ A redistribuição do sal é controlada pela geometria de sua base, pela espessu
 
 \begin{figure}[htbp]
   \centering
+  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-18-geometrias-salinas-superficies-de-bacias-primari.png}
   \caption{Geometrias salinas, superfícies de bacias primárias e estilos de armadilhas em minibacias. A tectônica salífera controla a formação de soldaduras, cristas salinas, minibacias encapsuladas e estruturas tartaruga, influenciando a distribuição de fácies e a compartimentação estrutural.}
   \label{fig:resultado-18}
-  \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-18-geometrias-salinas-superficies-de-bacias-primari.png}
   \FonteTCC{traduzido de \citeonline{pilcher2011}}
 \end{figure}
 
@@ -453,14 +424,8 @@ A comparação entre a geometria dos MTDs e os horizontes adjacentes permite ava
 
 \section{Síntese e implicações para a interpretação dos depósitos}
 
-A fundamentação apresentada estabelece as bases para o reconhecimento e a caracterização de depósitos de transporte de massa em dados sísmicos. A sísmica de reflexão fornece informações sobre a geometria e a organização das unidades em subsuperfície, enquanto a análise sismoestratigráfica permite interpretar suas superfícies limitantes, configurações internas e relações com os estratos adjacentes. Nesse contexto, o atributo cosseno da fase instantânea constitui um recurso complementar para realçar a configuração dos refletores, sem substituir a análise integrada das demais características sísmicas.
+O reconhecimento dos depósitos de transporte de massa em dados sísmicos depende da associação entre geometria externa, superfícies limitantes e configuração das reflexões internas. Padrões caóticos, descontínuos ou transparentes ganham significado quando associados a superfícies basais de ruptura, cicatrizes, margens e estruturas deformacionais. A análise conjunta de seções sísmicas e mapas permite examinar essas relações e distinguir os depósitos das sucessões adjacentes \cite{hampton1996,posamentier2011,scarselli2020}.
 
-Para a identificação dos MTDs, a principal implicação da literatura discutida é a necessidade de combinar diferentes evidências. Reflexões caóticas, descontínuas ou transparentes devem ser avaliadas em conjunto com a superfície basal, a geometria externa, os limites do corpo e as estruturas deformacionais reconhecíveis. A ocorrência isolada de um desses padrões não permite uma interpretação conclusiva, uma vez que respostas semelhantes podem estar associadas a outros processos ou às condições de imageamento sísmico \cite{hampton1996,posamentier2011,scarselli2020}.
+A caracterização morfométrica e as classificações apresentadas permitem comparar as dimensões, a relação com a área-fonte, o confinamento e a organização interna dos corpos. As relações de sobreposição e a presença de superfícies separando unidades sustentam a individualização de eventos e a distinção entre depósitos e complexos de transporte de massa \cite{ortizkarpf2016,clare2018}. Na aplicação desses critérios, a cobertura e a resolução dos dados determinam quais feições podem ser reconhecidas e o nível de detalhamento da caracterização.
 
-As classificações apresentadas abordam aspectos complementares dos depósitos, incluindo suas dimensões, a relação com a área-fonte, o confinamento e a organização da deformação. Sua aplicação, entretanto, depende da preservação das feições e da cobertura e resolução dos dados. A ausência de uma conexão visível com a área-fonte, por exemplo, deve ser avaliada considerando essas limitações. Da mesma forma, a impossibilidade de individualizar eventos sucessivos limita a distinção entre um depósito individual e um complexo de transporte de massa \cite{ortizkarpf2016,clare2018}.
-
-Além das limitações dos dados, a aplicação dos modelos e classificações apresentados exige considerar o contexto geológico em que foram desenvolvidos. Características como a configuração do relevo, o controle estrutural, as propriedades dos sedimentos e as condições de deposição podem conferir particularidades aos depósitos de cada região. Dessa forma, os padrões descritos na literatura nem sempre são integralmente reconhecidos ou diretamente aplicáveis à área de estudo. Esses modelos devem, portanto, orientar a interpretação, sem pressupor que todos os depósitos se enquadrem nas categorias propostas. Eventuais diferenças devem ser discutidas à luz das características locais e das limitações dos dados disponíveis.
-
-Os mecanismos de ruptura e os fatores condicionantes fornecem uma base para discutir as condições de instabilidade do talude. Contudo, reconhecer um depósito de transporte de massa não equivale a determinar o mecanismo que desencadeou sua formação. A atribuição de um gatilho específico exige evidências adicionais e deve considerar a possível atuação conjunta de diferentes processos \cite{lee2007,scarselli2020}.
-
-Assim, este trabalho adota uma interpretação baseada na integração das evidências sísmicas disponíveis e no reconhecimento de suas limitações. As classificações serão aplicadas quando os critérios necessários puderem ser observados, mantendo explícitas as incertezas relacionadas à delimitação dos corpos, à identificação da área-fonte e à individualização dos eventos.
+O contexto geomorfológico e estrutural orienta a interpretação do percurso e da acumulação dos materiais. Calhas e depressões podem concentrar os depósitos, enquanto altos estruturais podem limitar ou desviar seu transporte. As relações entre os corpos, o substrato e as falhas permitem também distinguir o confinamento deposicional da deformação posterior \cite{moscardelli2008,gamboa2016}. Essas observações, associadas aos mecanismos de ruptura discutidos, fundamentam a avaliação dos condicionantes da instabilidade e a formulação de hipóteses de desencadeamento para os eventos investigados \cite{lee2007,scarselli2020}.
