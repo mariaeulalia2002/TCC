@@ -714,7 +714,13 @@ def landscape_figure_numbers(docx: Path) -> set[int]:
     return result
 
 
-def table_tex(rows: list[list[str]], caption: str | None, label: str | None, environment: str = "table") -> list[str]:
+def table_tex(
+    rows: list[list[str]],
+    caption: str | None,
+    label: str | None,
+    environment: str = "table",
+    note: str | None = None,
+) -> list[str]:
     if not rows:
         return []
     is_appendix_table = bool(label and re.fullmatch(r"tab:resultado-[A-F]-\d+", label))
@@ -723,18 +729,18 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
         header, body = rows[0], rows[1:]
         if len(header) == 5:
             column_spec = (
-                r">{\raggedright\arraybackslash}p{0.10\linewidth} "
-                r">{\raggedright\arraybackslash}p{0.14\linewidth} "
-                r">{\raggedright\arraybackslash}p{0.18\linewidth} "
-                r">{\raggedright\arraybackslash}X "
-                r">{\centering\arraybackslash}p{0.18\linewidth}"
+                r"|>{\raggedright\arraybackslash}p{0.10\linewidth}"
+                r"|>{\raggedright\arraybackslash}p{0.14\linewidth}"
+                r"|>{\raggedright\arraybackslash}p{0.18\linewidth}"
+                r"|>{\raggedright\arraybackslash}X"
+                r"|>{\centering\arraybackslash}p{0.18\linewidth}|"
             )
         else:
             column_spec = (
-                r">{\raggedright\arraybackslash}p{0.15\linewidth} "
-                r">{\raggedright\arraybackslash}X "
-                r">{\raggedright\arraybackslash}p{0.20\linewidth} "
-                r">{\centering\arraybackslash}p{0.25\linewidth}"
+                r"|>{\raggedright\arraybackslash}p{0.15\linewidth}"
+                r"|>{\raggedright\arraybackslash}X"
+                r"|>{\raggedright\arraybackslash}p{0.20\linewidth}"
+                r"|>{\centering\arraybackslash}p{0.25\linewidth}|"
             )
         midpoint = (len(body) + 1) // 2
         parts = [body[:midpoint], body[midpoint:]]
@@ -758,9 +764,9 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
                 r"  \setlength{\tabcolsep}{3pt}",
                 r"  \renewcommand{\arraystretch}{1.08}",
                 f"  \\begin{{tabularx}}{{\\linewidth}}{{{column_spec}}}",
-                r"    \toprule",
+                r"    \hline",
                 "    " + " & ".join(f"\\textbf{{{inline(c, crossrefs=False)}}}" for c in header) + " \\\\",
-                r"    \midrule",
+                r"    \hline",
             ]
             for row in part:
                 cells = [inline(c, crossrefs=False) for c in row]
@@ -768,10 +774,10 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
                     c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=\linewidth,height=2.2cm,keepaspectratio]")
                     for c in cells
                 ]
-                out.append("    " + " & ".join(cells) + " \\\\")
+                out.append("    " + " & ".join(cells) + r" \\ \hline")
             out += [
-                r"    \bottomrule",
                 r"  \end{tabularx}",
+                *([f"  \\nota{{{inline(note)}}}"] if note and part_index == len(parts) - 1 else []),
                 r"\end{quadro}",
             ]
             if quadro_landscape:
@@ -812,28 +818,43 @@ def table_tex(rows: list[list[str]], caption: str | None, label: str | None, env
             out.append("    " + " & ".join(cells) + r" \\")
             if is_appendix_table and row_index < len(rows[1:]) - 1:
                 out.append(r"    \midrule")
-        out += [r"\end{longtable}", r"}"]
+        out.append(r"\end{longtable}")
+        if note:
+            out.append(f"\\nota{{{inline(note)}}}")
+        out.append(r"}")
         return out
     cols = max(len(r) for r in rows)
-    spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
-    placement = "[H]" if environment == "table" and is_appendix_table else "[htbp]" if environment == "table" else ""
+    if environment == "quadro":
+        spec = "|>{\\raggedright\\arraybackslash}X|" + "".join([">{\\centering\\arraybackslash}X|"] * (cols - 1))
+    else:
+        spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
+    force_here = bool(label and re.fullmatch(r"tab:resultado-[5-7]", label))
+    placement = "[H]" if environment == "table" and (is_appendix_table or force_here) else "[htbp]" if environment == "table" else ""
     out = [f"\\begin{{{environment}}}{placement}", r"  \centering"]
     if caption:
         out.append(f"  \\caption{{{inline(caption)}}}")
     if label:
         out.append(f"  \\label{{{label}}}")
-    out += [r"  \scriptsize", r"  \setlength{\tabcolsep}{2.5pt}", f"  \\begin{{tabularx}}{{\\textwidth}}{{{spec}}}", r"    \toprule"]
+    first_rule = r"    \hline" if environment == "quadro" else r"    \toprule"
+    out += [r"  \scriptsize", r"  \setlength{\tabcolsep}{2.5pt}", f"  \\begin{{tabularx}}{{\\textwidth}}{{{spec}}}", first_rule]
     for ri, row in enumerate(rows):
         cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
         if ri == 0:
             cells = [f"\\textbf{{{c}}}" for c in cells]
             cells = [c.replace("Depósito/evento", "Depósito/\\newline evento") for c in cells]
         out.append("    " + " & ".join(cells) + r" \\")
-        if ri == 0:
+        if environment == "quadro":
+            out.append(r"    \hline")
+        elif ri == 0:
             out.append(r"    \midrule")
         elif is_appendix_table and ri < len(rows) - 1:
             out.append(r"    \midrule")
-    out += [r"    \bottomrule", r"  \end{tabularx}", f"\\end{{{environment}}}"]
+    if environment != "quadro":
+        out.append(r"    \bottomrule")
+    out.append(r"  \end{tabularx}")
+    if note:
+        out.append(f"  \\nota{{{inline(note)}}}")
+    out.append(f"\\end{{{environment}}}")
     return out
 
 
