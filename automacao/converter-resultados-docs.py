@@ -37,6 +37,13 @@ APENDICES = {
     for letter in "ABCDEF"
 }
 FIGDIR = ROOT / "latex" / "figuras" / "google-docs"
+RECOVERED_FIGURE_26 = (
+    ROOT
+    / "latex"
+    / "figuras"
+    / "metodologia"
+    / "figura-28-altura-inclinacao-cicatriz.png"
+)
 REFERENCIAS = ROOT / "latex" / "referencias.bib"
 LANDSCAPE_FIGURES: set[int] = set()
 LANDSCAPE_QUADROS: set[str] = {"qua:resultado-1"}
@@ -971,6 +978,13 @@ def parse_markdown(
             num = int(number) if numeric_figure else number
             label_number = str(number).replace(".", "-")
             figure_data = image_map.get(pending_image) if pending_image is not None else None
+            # A Figura 26 é o único objeto flutuante do Google Docs. A exportação
+            # Markdown/DOCX usada pelo sincronizador não a associa ao parágrafo
+            # da legenda, embora o objeto continue presente no documento. Usa-se
+            # a cópia original já versionada para impedir que a figura volte a
+            # ser substituída por um marcador em sincronizações futuras.
+            if figure_data is None and num == 26 and RECOVERED_FIGURE_26.exists():
+                figure_data = (".png", RECOVERED_FIGURE_26.read_bytes())
             # No DOCX, a Figura 80 é um objeto menor/flutuante ancorado no
             # parágrafo da legenda anterior e, por isso, não aparece no
             # Markdown exportado. Recupera-se diretamente a mídia correta.
