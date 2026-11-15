@@ -32,6 +32,10 @@
 \input{pre-textuais/resumo}
 \input{pre-textuais/abstract}
 
+% O abnTeX2 redefine este nome como "Lista de ilustrações" ao carregar o
+% idioma. Reaplicamos o título imediatamente antes da lista, que neste
+% trabalho contém exclusivamente figuras.
+\renewcommand{\listfigurename}{Lista de figuras}
 \pdfbookmark[0]{\listfigurename}{lof}
 {\SingleSpacing\listoffigures*}
 \cleardoublepage
