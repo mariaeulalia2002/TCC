@@ -4,7 +4,7 @@
 
 A sísmica de reflexão é um método geofísico eficaz para mapear a geologia de uma área, especialmente em ambientes submersos, a partir de fontes artificiais. O método baseia-se na propagação de pulsos sísmicos emitidos próximos à superfície da coluna d’água em direção ao interior da Terra. Ao encontrarem interfaces entre camadas litológicas com diferentes impedâncias acústicas, parte da energia das ondas é refletida e retorna à superfície  enquanto outra parte é transmitida e segue até encontrar novas interfaces, repetindo os processos de reflexão e transmissão \cite{toth2011}. A impedância acústica (Z) corresponde ao produto entre a densidade (ρ) do meio e a velocidade de propagação (c) da onda, considerando incidência normal à interface: Z = ρc \cite{yilmaz2001}.
 
-A técnica analisa os intervalos de tempo entre a emissão do sinal e a chegada das ondas refletidas aos receptores, além de suas amplitudes. Esse intervalo, denominado tempo duplo de percurso (two-way travel time — TWT), corresponde ao trajeto da onda até o refletor e seu retorno à superfície. Assim, os refletores são inicialmente posicionados em tempo, geralmente em segundos ou milissegundos, e não em profundidade. A conversão para profundidade depende do conhecimento ou da estimativa das velocidades de propagação nos materiais atravessados \cite{yilmaz2001}.
+A técnica analisa os intervalos de tempo entre a emissão do sinal e a chegada das ondas refletidas aos receptores, além de suas amplitudes. Esse intervalo, denominado tempo duplo de percurso (\textit{two-way travel time} — TWT), corresponde ao trajeto da onda até o refletor e seu retorno à superfície. Assim, os refletores são inicialmente posicionados em tempo, geralmente em segundos ou milissegundos, e não em profundidade. A conversão para profundidade depende do conhecimento ou da estimativa das velocidades de propagação nos materiais atravessados \cite{yilmaz2001}.
 
 Cada receptor registra as variações de amplitude das ondas retornantes ao longo do tempo, formando um traço sísmico. A disposição de vários traços lado a lado gera uma seção sísmica, na qual continuidade, geometria e amplitude das reflexões permitem identificar interfaces e estruturas geológicas em subsuperfície \cite{kearey2009,yilmaz2001}.
 
@@ -108,11 +108,11 @@ FS = τf / τm,    [2]
 
 onde:
 
-* FS é o fator de segurança;
-
-* τf é a resistência ao cisalhamento do material;
-
-* τm é a tensão cisalhante mobilizada ao longo da superfície potencial de ruptura.
+\begin{itemize}
+  \item FS é o fator de segurança;
+  \item τf é a resistência ao cisalhamento do material;
+  \item τm é a tensão cisalhante mobilizada ao longo da superfície potencial de ruptura.
+\end{itemize}
 
 Quando FS é superior a 1, a resistência disponível excede a tensão mobilizada e o talude é considerado estável. Na condição limite, FS é igual a 1; valores inferiores a 1 indicam ruptura. Embora simplificada, essa relação permite compreender como processos geológicos e ambientais alteram a estabilidade do talude.
 
@@ -122,15 +122,13 @@ A resistência ao cisalhamento pode ser descrita pelo critério de Mohr--Coulomb
 
 em que:
 
-* τf é a resistência ao cisalhamento;
-
-* c′ é a coesão efetiva do material;
-
-* σ′n é a tensão normal efetiva atuante sobre a superfície de ruptura;
-
-* φ′ é o ângulo de atrito interno efetivo;
-
-* tan φ′ representa o coeficiente de atrito interno.
+\begin{itemize}
+  \item τf é a resistência ao cisalhamento;
+  \item c′ é a coesão efetiva do material;
+  \item σ′n é a tensão normal efetiva atuante sobre a superfície de ruptura;
+  \item φ′ é o ângulo de atrito interno efetivo;
+  \item tan φ′ representa o coeficiente de atrito interno.
+\end{itemize}
 
 A coesão está relacionada às forças que mantêm as partículas unidas, como cimentação e interações físico-químicas. O ângulo de atrito interno representa a resistência produzida pelo atrito e pelo imbricamento entre os grãos. Em sedimentos marinhos inconsolidados, a resistência é frequentemente controlada pela tensão efetiva e pelo atrito interno, embora camadas cimentadas ou sedimentos coesivos também possam apresentar uma parcela significativa de coesão.
 
@@ -140,11 +138,11 @@ Como os sedimentos marinhos estão saturados, parte da tensão total aplicada ao
 
 em que:
 
-* σ′n é a tensão normal efetiva;
-
-* σn é a tensão normal total;
-
-* u é a pressão do fluido nos poros, ou poropressão.
+\begin{itemize}
+  \item σ′n é a tensão normal efetiva;
+  \item σn é a tensão normal total;
+  \item u é a pressão do fluido nos poros, ou poropressão.
+\end{itemize}
 
 Substituindo a Equação~\eqref{eq:mohr-coulomb} no critério de Mohr-Coulomb, obtém-se:
 
@@ -194,7 +192,7 @@ A movimentação de camadas evaporíticas, denominada halocinese, produz estrutu
 
 \subsubsection{Migração de fluidos e gases}
 
-A migração de fluidos e gases também pode reduzir a estabilidade ao gerar sobrepressão sob camadas de baixa permeabilidade. Falhas, fraturas e camadas permeáveis podem controlar a migração, enquanto feições como chaminés de gás, vulcões de lama e pockmarks podem indicar sua ocorrência. Contudo, tais feições não demonstram, isoladamente, uma relação causal com movimentos de massa, pois os condutos também podem favorecer a drenagem e a dissipação da sobrepressão \cite{talling2014}.
+A migração de fluidos e gases também pode reduzir a estabilidade ao gerar sobrepressão sob camadas de baixa permeabilidade. Falhas, fraturas e camadas permeáveis podem controlar a migração, enquanto feições como chaminés de gás, vulcões de lama e \textit{pockmarks} podem indicar sua ocorrência. Contudo, tais feições não demonstram, isoladamente, uma relação causal com movimentos de massa, pois os condutos também podem favorecer a drenagem e a dissipação da sobrepressão \cite{talling2014}.
 
 \subsubsection{Dissociação de hidratos de gás}
 
@@ -344,18 +342,18 @@ Nesta fundamentação, tais parâmetros são apresentados apenas como critérios
 
 \subsubsection{Relação entre o depósito e sua área-fonte}
 
-\citeonline{moscardelli2008} classificaram os depósitos de movimentos de massa conforme sua relação espacial com a área-fonte em sistemas attached e detached (Figura~\ref{fig:resultado-14}). Essa classificação considera principalmente a continuidade reconhecível entre o depósito e a região de ruptura, além de sua posição na margem continental.
+\citeonline{moscardelli2008} classificaram os depósitos de movimentos de massa conforme sua relação espacial com a área-fonte em sistemas \textit{attached} e \textit{detached} (Figura~\ref{fig:resultado-14}). Essa classificação considera principalmente a continuidade reconhecível entre o depósito e a região de ruptura, além de sua posição na margem continental.
 
-Os depósitos attached preservam ligação com a área-fonte, que pode estar associada à borda da plataforma ou a rupturas extensas no talude superior e intermediário. Sua origem pode ser indicada por escarpas regionais, cicatrizes de evacuação e pacotes sedimentares deformados. Em geral, esses sistemas apresentam maior continuidade espacial e podem transportar sedimentos por grandes distâncias. Já os depósitos detached não apresentam conexão observável com uma cicatriz regional ou com a plataforma. Costumam estar associados a instabilidades locais, como rupturas em paredes de cânions, flancos de diápiros, estruturas salinas, margens de canais e outros altos batimétricos, resultando frequentemente em corpos mais localizados.
+Os depósitos \textit{attached} preservam ligação com a área-fonte, que pode estar associada à borda da plataforma ou a rupturas extensas no talude superior e intermediário. Sua origem pode ser indicada por escarpas regionais, cicatrizes de evacuação e pacotes sedimentares deformados. Em geral, esses sistemas apresentam maior continuidade espacial e podem transportar sedimentos por grandes distâncias. Já os depósitos \textit{detached} não apresentam conexão observável com uma cicatriz regional ou com a plataforma. Costumam estar associados a instabilidades locais, como rupturas em paredes de cânions, flancos de diápiros, estruturas salinas, margens de canais e outros altos batimétricos, resultando frequentemente em corpos mais localizados.
 
-Embora depósitos attached tendam a apresentar maior extensão, suas dimensões não devem ser utilizadas como critério isolado, pois ambos os tipos podem atingir espessuras expressivas. A classificação deve integrar a continuidade com a área-fonte, a presença de escarpas, a posição do depósito na margem e sua relação com a estratigrafia adjacente \cite{moscardelli2008}.
+Embora depósitos \textit{attached} tendam a apresentar maior extensão, suas dimensões não devem ser utilizadas como critério isolado, pois ambos os tipos podem atingir espessuras expressivas. A classificação deve integrar a continuidade com a área-fonte, a presença de escarpas, a posição do depósito na margem e sua relação com a estratigrafia adjacente \cite{moscardelli2008}.
 
-\citeonline{clare2018} adotam uma definição semelhante, distinguindo depósitos attached e detached da cicatriz. Neste trabalho, será considerado attached o depósito que apresentar continuidade reconhecível com sua área-fonte, e detached aquele sem continuidade observável. Quando a cobertura sísmica, a erosão ou a resolução dos dados não permitirem estabelecer essa relação com segurança, a classificação será indicada como indeterminada.
+\citeonline{clare2018} adotam uma definição semelhante, distinguindo depósitos \textit{attached} e \textit{detached} da cicatriz. Neste trabalho, será considerado \textit{attached} o depósito que apresentar continuidade reconhecível com sua área-fonte, e \textit{detached} aquele sem continuidade observável. Quando a cobertura sísmica, a erosão ou a resolução dos dados não permitirem estabelecer essa relação com segurança, a classificação será indicada como indeterminada.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-14-representacao-esquematica-dos-diferentes-tipos-d.png}
-  \caption{Representação esquemática dos diferentes tipos de complexos de transporte de massa e dos processos associados à sua origem: (A) complexo anexo (attached) ao talude; (B) complexo anexo (attached) à plataforma; e complexos destacados( detached) associados (C) ao colapso do flanco de um diápiro, (D) à margem de uma minibacia e (E) a um complexo canal--levee.}
+  \caption{Representação esquemática dos diferentes tipos de complexos de transporte de massa e dos processos associados à sua origem: (A) complexo anexo (\textit{attached}) ao talude; (B) complexo anexo (\textit{attached}) à plataforma; e complexos destacados( \textit{detached}) associados (C) ao colapso do flanco de um diápiro, (D) à margem de uma minibacia e (E) a um complexo canal--levee.}
   \label{fig:resultado-14}
   \FonteTCC{traduzido de \citeonline{moscardelli2008}}
 \end{figure}

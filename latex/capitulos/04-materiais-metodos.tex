@@ -19,7 +19,7 @@ O registro sísmico possui duração aproximada de 8,5 s. O produto final foi re
 
 Os projetos desenvolvidos no QGIS e no Surfer adotaram o sistema de referência de coordenadas SIRGAS 2000 / UTM zona 23S (EPSG:31983) para a integração dos dados, a elaboração dos mapas e as medições planimétricas. Os produtos da interpretação sísmica exportados do Petrel foram reprojetados para esse sistema antes de serem integrados às demais camadas.
 
-\subsection{Reconhecimento de depósitos e complexos de transporte de mass\textbf{a}}
+\subsection{Reconhecimento de depósitos e complexos de transporte de massa}
 
 A interpretação sísmica foi realizada no software Petrel® v. 2024.11. Para cada depósito ou complexo de transporte de massa, foram identificados os horizontes correspondentes às superfícies limite de topo e base de ruptura de cada evento (Figura~\ref{fig:resultado-24}), priorizando-se, sempre que possível, os refletores de maior continuidade, delimitando fácies predominantemente caótica ou transparente, normalmente associadas aos transportes de massa \cite{posamentier2011}.  Por se tratar de um reconhecimento regional, o mapeamento priorizou os depósitos e complexos de maior extensão, com o objetivo de investigar os controles sobre sua distribuição e os possíveis mecanismos de instabilidade à escala do talude norte da Bacia de Santos.
 
@@ -29,7 +29,7 @@ O mapeamento foi realizado manualmente por meio da ferramenta Manual Interpretat
 
 Como controle de qualidade da interpretação, foi aplicado o método de loop tie, no qual os horizontes foram correlacionados entre inlines e crosslines sucessivas, formando circuitos fechados. Nos pontos de interseção, verificou-se a continuidade do refletor sísmico interpretado e, ao final de cada circuito, avaliou-se se a interpretação retornava ao mesmo evento no ponto inicial. Eventuais mis-ties foram revisados, reduzindo erros de correlação entre refletores adjacentes e aumentando a consistência tridimensional dos horizontes interpretados \cite{tearpock2003}.
 
-Feições relevantes associadas aos depósitos e complexos, tais como falhas, blocos preservados, estruturas de escape de gás (pockmarks) e blocos de alta amplitude, foram documentadas e posteriormente caracterizadas em seções sísmicas de interesse. A estrutura interna foi descrita a partir da continuidade e organização dos refletores, distinguindo-se fácies caóticas, transparentes, descontínuas, convolutas e blocos coerentes, conforme \citeonline{bull2009} e \citeonline{posamentier2011}.
+Feições relevantes associadas aos depósitos e complexos, tais como falhas, blocos preservados, estruturas de escape de gás (\textit{pockmarks}) e blocos de alta amplitude, foram documentadas e posteriormente caracterizadas em seções sísmicas de interesse. A estrutura interna foi descrita a partir da continuidade e organização dos refletores, distinguindo-se fácies caóticas, transparentes, descontínuas, convolutas e blocos coerentes, conforme \citeonline{bull2009} e \citeonline{posamentier2011}.
 
 \begin{figure}[htbp]
   \centering
@@ -38,7 +38,7 @@ Feições relevantes associadas aos depósitos e complexos, tais como falhas, bl
   \label{fig:resultado-24}
 \end{figure}
 
-\subsubsection{Cosseno de fase instantâne\textit{\textbf{a}}}
+\subsubsection{Cosseno de fase instantânea}
 
 O atributo sísmico cosseno de fase instantânea foi aplicado ao cubo sísmico no software Petrel®, com o objetivo de apoiar o reconhecimento das superfícies-limite de topo e base dos depósitos, bem como auxiliar na distinção entre eventos que compõem os complexos de transporte de massa (MTCs), quando necessário.
 
@@ -56,11 +56,11 @@ A análise geomorfométrica do fundo marinho foi realizada no domínio do tempo 
 
 As superfícies de topo e base dos MTDs foram interpoladas em grades regulares compatíveis com o espaçamento do mapeamento. A resolução foi definida de acordo com a densidade dos pontos interpretados, evitando a geração de superfícies com detalhamento incompatível com os dados disponíveis. A extensão em planta de cada depósito foi delimitada por polígonos baseados nos limites reconhecidos na interpretação sísmica. Esses polígonos foram utilizados como máscaras para recortar as superfícies de topo e base e restringir os cálculos à área efetivamente interpretada. Os procedimentos de cálculo dos parâmetros morfométricos são descritos na seção de análise morfométrica (4.3).
 
-\section{Mapeamento de pockmarks}
+\section{Mapeamento de \textit{pockmarks}}
 
-O mapeamento dos pockmarks foi realizado pela integração entre o raster de rugosidade do fundo marinho e a interpretação sísmica. O raster de rugosidade auxiliou na identificação e na delimitação das depressões, enquanto as seções sísmicas foram utilizadas para avaliar sua expressão em subsuperfície e a presença de evidências associadas à ocorrência ou à migração de fluidos. O levantamento foi restrito aos pockmarks espacialmente relacionados aos MTDs caracterizados neste estudo.
+O mapeamento dos \textit{pockmarks} foi realizado pela integração entre o raster de rugosidade do fundo marinho e a interpretação sísmica. O raster de rugosidade auxiliou na identificação e na delimitação das depressões, enquanto as seções sísmicas foram utilizadas para avaliar sua expressão em subsuperfície e a presença de evidências associadas à ocorrência ou à migração de fluidos. O levantamento foi restrito aos \textit{pockmarks} espacialmente relacionados aos MTDs caracterizados neste estudo.
 
-As depressões interpretadas como pockmarks foram diferenciadas em duas categorias descritivas, conforme a presença ou ausência de realce de amplitude nos refletores associados às feições nas seções sísmicas. A identificação das depressões considerou sua expressão morfológica em planta e em seção, enquanto a resposta de amplitude foi utilizada como característica complementar. Essa distinção não foi empregada para determinar a composição dos fluidos ou a atividade atual das feições.
+As depressões interpretadas como \textit{pockmarks} foram diferenciadas em duas categorias descritivas, conforme a presença ou ausência de realce de amplitude nos refletores associados às feições nas seções sísmicas. A identificação das depressões considerou sua expressão morfológica em planta e em seção, enquanto a resposta de amplitude foi utilizada como característica complementar. Essa distinção não foi empregada para determinar a composição dos fluidos ou a atividade atual das feições.
 
 \section{Caracterização morfométrica dos depósitos}
 
@@ -78,7 +78,7 @@ As medidas foram inicialmente obtidas em unidades horizontais métricas e em tem
   \FonteTCC{traduzido de \citeonline{clare2018}}
 \end{figure}
 
-\subsection{Cálculo das espessura\textbf{s}}
+\subsection{Cálculo das espessuras}
 
 A espessura em tempo foi calculada na aba \textit{Operations} , do Petrel®, subtraindo-se a superfície de base da superfície de topo. As superfícies utilizadas nas operações apresentavam valores negativos de TWT, tornando-se mais negativos com o aumento da profundidade.
 
@@ -88,15 +88,15 @@ O resultado corresponde a variação de espessura do depósito, expressa em mili
 
 Em seguida, as superfícies geradas foram exportadas em formato Surfer® Binary Grid (.grd) para o QGIS®, onde duas estatísticas foram extraídas pela ferramenta Estatísticas Zonais, utilizando a máscara do depósito. Foram obtidos o número de células válidas, a soma, a média, a mediana, o desvio-padrão, os valores mínimo e máximo e a amplitude da espessura temporal. Também foram calculados contornos de mesma espessura temporal (isócronas) para cada superfície utilizando a ferramenta Raster- extrair contornos, também no QGIS.
 
-\subsection{Área, volume e perímetr\textbf{o}}
+\subsection{Área, volume e perímetro}
 
 A área em m² e o volume em ms·m² foram obtidos por meio da aba Operations no Petrel®, realizando a operação Volume Below Surface na isócrona previamente calculada.
 
 O perímetro do polígono de máscara utilizado na geração da isócrona foi calculado no Petrel® através da aba Operations e operação Length (2D).
 
-\subsection{Definição do eixo e cálculos de comprimento e largur\textbf{a}}
+\subsection{Definição do eixo e cálculos de comprimento e largura}
 
-\subsubsection{Comprimento longitudinal, largura transversal e eixo de transport\textit{\textbf{e}}}
+\subsubsection{Comprimento longitudinal, largura transversal e eixo de transporte}
 
 O comprimento longitudinal máximo e a largura transversal máxima foram medidos em planta no QGIS®, a partir dos polígonos de delimitação dos depósitos e eventos. O comprimento longitudinal foi definido pelo maior segmento retilíneo entre os limites do corpo, aproximadamente paralelo à direção geral de transporte interpretada. A largura transversal máxima foi medida aproximadamente perpendicular a essa direção, no setor de maior extensão transversal, sem necessidade de coincidir com a porção central do depósito. A orientação longitudinal não foi definida pelo maior alongamento do polígono, de modo que a largura pode superar o comprimento. Nos casos em que a direção de transporte não pôde ser estabelecida com segurança, as orientações dos segmentos foram utilizadas como referências geométricas de medição.
 
@@ -122,7 +122,7 @@ Hₜ = \|zC $-$ zA\|,    [9]
 
 Nos eventos com mais de um eixo de transporte interpretado, o parâmetro foi determinado separadamente para cada trajetória, utilizando os respectivos extremos proximal e distal. Quando as trajetórias convergiram para uma mesma terminação distal, o ponto C foi compartilhado entre as medidas.
 
-\subsection{Altura e inclinação da cicatri\textbf{z}}
+\subsection{Altura e inclinação da cicatriz}
 
 Esses parâmetros foram determinados nos eventos com cicatriz bem definida e expressa no fundo marinho. A altura da cicatriz (Hs) foi medida em perfis gerados com o Profile Tool, na superfície do fundo marinho, aproximadamente perpendiculares à feição e orientados na direção de maior declive. Os perfis foram distribuídos lateralmente para representar a variação morfológica, adotando-se como Hs o maior desnível entre a quebra superior (As) e a base da escarpa (Bs), no perfil de maior inclinação.
 
@@ -145,7 +145,7 @@ Assim, a altura foi medida entre as quebras que delimitam a escarpa, enquanto a 
   \label{fig:resultado-26}
 \end{figure}
 
-\subsection{Inclinações do declive não deformado e superfície receptor\textbf{a}}
+\subsection{Inclinações do declive não deformado e superfície receptora}
 
 A inclinação do declive, $S$, foi determinada em um perfil lateral ao movimento de massa, posicionado fora da zona de cicatriz e do depósito. A orientação foi aproximadamente paralela à direção geral de transporte, permitindo caracterizar o gradiente de uma superfície preservada adjacente à feição.
 
@@ -157,7 +157,7 @@ $S=\arctan \left({\frac{|{z}_{P2}-{z}_{P1}|}{{L}_{P1-P2}}}\right)\frac{180}{\pi 
 
 O comprimento e a posição do perfil foram mantidos associados à medida, uma vez que a inclinação depende do trecho considerado.
 
-\subsection{Inclinação à frente do pé do depósit\textbf{o}}
+\subsection{Inclinação à frente do pé do depósito}
 
 O parâmetro ${S}_{t}$, identificado na tabela como inclinação da base, foi medido à frente da terminação distal do depósito. A seção foi traçada aproximadamente como prolongamento do eixo principal, incluindo a terminação do corpo para permitir reconhecer sua relação com o terreno receptor.
 
@@ -169,13 +169,13 @@ ${S}_{t}=\arctan \left({\frac{|{z}_{P4}-{z}_{P3}|}{{L}_{P3-P4}}}\right)\frac{180
 
 A medida caracteriza, portanto, a superfície receptora imediatamente à frente do pé do depósito.
 
-\subsection{Conversão tempo--profundidade das medidas morfométrica\textbf{s}}
+\subsection{Conversão tempo--profundidade das medidas morfométricas}
 
 A conversão das medidas temporais foi realizada com caráter aproximativo, para fornecer uma noção da escala espacial e das dimensões dos depósitos em metros. Foram empregadas velocidades representativas dos intervalos sedimentares de cada evento, obtidas a partir de dados dos poços 1-BRSA-137-RJS e 1-BRSA-127-RJS, fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP), e combinadas por ponderação pelo inverso da distância ao ponto central de cada depósito (Figura~\ref{fig:resultado-27}). Os dados de entrada, os intervalos temporais, as velocidades equivalentes, as distâncias e os pesos empregados são apresentados no Apêndice~\ref{ap:distancias-velocidades}.
 
 As equações de conversão apresentadas nesta seção fundamentam-se na relação entre tempo duplo de percurso, velocidade de propagação e profundidade, cujo princípio foi descrito na Seção 2.1 \cite{yilmaz2001}. Considerando propagação vertical, essa relação é expressa por (z=vt/2), com o tempo em segundos. As Equações~\eqref{eq:acrescimo-twt}, \eqref{eq:velocidade-intervalar}, \eqref{eq:conversao-espessura}, \eqref{eq:conversao-agua} e \eqref{eq:profundidade-ponto} correspondem a rearranjos ou aplicações dessa relação aos intervalos sedimentares e à coluna d’água, com as respectivas conversões de unidades. A Equação~\eqref{eq:velocidade-ponderada} corresponde à ponderação das velocidades pelo inverso da distância, fundamentada separadamente na Seção 4.3.8.2.
 
-\subsubsection{Obtenção das velocidades nos poço\textit{\textbf{s}}}
+\subsubsection{Obtenção das velocidades nos poços}
 
 As velocidades utilizadas na conversão tempo--profundidade foram estimadas a partir dos controles disponíveis nos poços 1-BRSA-137-RJS e 1-BRSA-127-RJS. Para considerar a posição dos eventos na coluna sedimentar, foram utilizados os tempos duplos médios do topo e da base de cada depósito, referenciados ao fundo marinho. O tempo médio da base foi obtido pela soma do tempo médio de soterramento do topo com a espessura temporal média do evento.
 
@@ -201,7 +201,7 @@ Para cada evento, os tempos duplos médios do topo e da base, referenciados ao f
 
 O poço 3-BRSA-944A-RJS também foi avaliado, mas não integrou a estimativa central utilizada na conversão morfométrica. Os dados disponíveis, identificados nos registros como velocidades RMS, representavam um intervalo mais amplo e profundo, sem equivalência direta com os intervalos rasos selecionados nos demais poços.
 
-\subsubsection{Ponderação pela distância aos depósito\textit{\textbf{s}}}
+\subsubsection{Ponderação pela distância aos depósitos}
 
 As velocidades equivalentes dos dois poços foram combinadas pelo inverso da distância, segundo o princípio de atribuir maior influência aos controles espacialmente mais próximos, empregado nos métodos de ponderação por distância \cite{shepard1968}. Neste trabalho, adotou-se expoente igual a um e utilizaram-se as distâncias horizontais entre os poços e o ponto central de cada depósito:
 
@@ -211,7 +211,7 @@ Em que vi,e é a velocidade equivalente do intervalo do evento e no poço i, e d
 
 Os eventos pertencentes a um mesmo complexo foram tratados individualmente, considerando seus respectivos intervalos temporais e as distâncias aos poços. Para cada evento, obteve-se uma velocidade ponderada, aplicada de forma espacialmente constante à conversão das medidas morfométricas. As distâncias, os pesos normalizados, as velocidades equivalentes de cada poço e as velocidades ponderadas adotadas são apresentados nas Tabelas~\ref{tab:resultado-D-3} e \ref{tab:resultado-D-4}.
 
-\subsubsection{Conversão dos intervalos sedimentare\textit{\textbf{s}}}
+\subsubsection{Conversão dos intervalos sedimentares}
 
 As espessuras dos eventos foram convertidas utilizando a diferença de TWT entre topo e base e a velocidade ponderada do respectivo evento:
 
@@ -223,7 +223,7 @@ O volume foi calculado pela integração da espessura convertida sobre a área d
 
 O soterramento do topo foi calculado a partir da diferença de TWT entre o topo do depósito e o fundo marinho, utilizando-se a velocidade ponderada do respectivo evento também para a cobertura sedimentar. Comprimentos, áreas e perímetros foram medidos em planta e não dependeram da conversão tempo--profundidade.
 
-\subsubsection{Procedimentos que envolveram a coluna d’águ\textit{\textbf{a}}}
+\subsubsection{Procedimentos que envolveram a coluna d’água}
 
 Para a coluna d’água, adotou-se a velocidade constante de 1.500 m/s, valor de referência para a propagação do som na água do mar indicado pela National Oceanic and Atmospheric Administration \cite{noaa2024}. A dependência dessa velocidade em relação à temperatura, à salinidade e à profundidade é descrita por \citeonline{mackenzie1981}. O valor adotado foi utilizado na conversão dos tempos e dos desníveis dos perfis de cicatrizes medidos sobre o horizonte do fundo marinho:
 
@@ -245,11 +245,11 @@ A avaliação das medidas morfométricas compreendeu a estimativa das incertezas
 
 As velocidades e os pesos utilizados na conversão encontram-se no Apêndice~\ref{ap:distancias-velocidades}. Os dados dos pontos e segmentos empregados nos cálculos de alturas e inclinações são apresentados no Apêndice~\ref{ap:dados-morfometria}.
 
-\subsubsection{Componentes utilizadas na estimativa das incerteza\textit{\textbf{s}}}
+\subsubsection{Componentes utilizadas na estimativa das incertezas}
 
 \paragraph{Repetibilidade da interpretação}
 
-A contribuição da interpretação foi avaliada em 12 pontos distribuídos entre diferentes depósitos, profundidades e condições de imageamento. O mesmo refletor foi identificado novamente nas mesmas posições de inline e crossline, sem alteração dos horizontes originais. Para cada ponto, calculou-se a diferença entre os tempos duplos da segunda e da primeira interpretação.
+A contribuição da interpretação foi avaliada em 12 pontos distribuídos entre diferentes depósitos, profundidades e condições de imageamento. O mesmo refletor foi identificado novamente nas mesmas posições de \textit{inline} e \textit{crossline}, sem alteração dos horizontes originais. Para cada ponto, calculou-se a diferença entre os tempos duplos da segunda e da primeira interpretação.
 
 A média das diferenças foi de aproximadamente 0,15 ms, e seu desvio-padrão foi de aproximadamente 0,54 ms. Considerando duas determinações independentes com igual variância, a componente de uma interpretação individual foi calculada por:
 
@@ -273,7 +273,7 @@ u\_v = √[Σ\_i p\_i(v\_i $-$ v̄\_e)²],    [22]
 
 em que ${v}_{i}$ é a velocidade equivalente no poço $i$, ${\bar{v}}_{e}$ é a velocidade ponderada do evento e ${p}_{i}$ é o peso normalizado do poço. Foram mantidos os pesos pelo inverso da distância utilizados na Seção 4.3.8.2, cuja soma é igual a um. A dispersão foi utilizada diretamente, sem divisão pela raiz do número de poços. As velocidades e os pesos encontram-se no Apêndice~\ref{ap:distancias-velocidades}.
 
-\subsubsection{Propagação para as medidas morfométrica\textit{\textbf{s}}}
+\subsubsection{Propagação para as medidas morfométricas}
 
 As componentes foram combinadas pela propagação de primeira ordem, considerando independência entre as entradas e sem inclusão de covariâncias, conforme \citeonline{taylor1997}:
 
@@ -351,7 +351,7 @@ em que ${f}_{dom}$ é a frequência dominante, em hertz, e ${R}_{TWT}$ é a reso
 
 A sensibilidade à discretização foi avaliada para o MTD 1, o MTC 1-C e o MTC 2-D, comparando-se o volume, a espessura máxima e o soterramento máximo obtidos nas grades de 50 × 50 e 200 × 200 m com os valores correspondentes na grade de referência de 100 × 100 m. Para cada parâmetro e evento, calculou-se o módulo da diferença entre o valor obtido em cada grade testada e aquele obtido na grade de referência. Entre as duas diferenças, selecionou-se a maior, que também foi expressa como porcentagem do valor de referência. Os resultados foram tratados como medidas de sensibilidade das versões testadas, sem incorporação à propagação de incertezas ou extrapolação aos demais eventos.
 
-\subsubsection{Apresentação dos resultado\textit{\textbf{s}}}
+\subsubsection{Apresentação dos resultados}
 
 Os cálculos preservaram os dígitos disponíveis nas entradas, com arredondamento apenas na apresentação final. As incertezas foram apresentadas com um ou dois algarismos significativos, e os valores das medidas foram arredondados para a mesma casa decimal, conforme as orientações do \textit{Joint Committee for Guides in Metrology} \cite{jcgm2008}. Os valores apresentados na forma “resultado ± incerteza” correspondem às componentes quantificadas pelo procedimento descrito, sem associação a um intervalo de confiança de 95\%.
 
@@ -365,7 +365,7 @@ A compartimentação dos MTDs em domínios de cabeceira, deflação e acumulaç�
 
 Inicialmente, foram definidos três conjuntos de pontos de referência em seções sísmicas sucessivas no Petrel®: A, associado ao topo da cicatriz; B, associado ao limite proximal do depósito; e C, associado à terminação distal do corpo. Os pontos foram acompanhados lateralmente em seções com incremento predominante de 20 inlines. Considerando o espaçamento aproximado de 25 m entre inlines, esse intervalo correspondeu a cerca de 500 m entre as seções interpretadas. Esse espaçamento refere-se ao levantamento dos pontos de referência e não à resolução das grades utilizadas nos cálculos morfométricos.
 
-Os conjuntos de pontos foram exportados do Petrel® em arquivos ASCII contendo inline, crossline, coordenadas X e Y e tempo sísmico Z. No QGIS®, os pontos foram organizados segundo a sequência das inlines e convertidos em linhas representativas do topo da cicatriz, do limite proximal do depósito e de sua terminação distal. Essas linhas foram utilizadas como referências espaciais para a delimitação dos domínios ao longo do eixo principal do movimento de massa.
+Os conjuntos de pontos foram exportados do Petrel® em arquivos ASCII contendo \textit{inline}, \textit{crossline}, coordenadas X e Y e tempo sísmico Z. No QGIS®, os pontos foram organizados segundo a sequência das inlines e convertidos em linhas representativas do topo da cicatriz, do limite proximal do depósito e de sua terminação distal. Essas linhas foram utilizadas como referências espaciais para a delimitação dos domínios ao longo do eixo principal do movimento de massa.
 
 O domínio de cabeceira foi reconhecido na porção proximal dos eventos, a partir da presença da escarpa principal e de feições associadas à extensão e à evacuação de material. O domínio de deflação correspondeu à porção intermediária dos MTDs, predominantemente associado ao transporte do material mobilizado, situado entre a cabeceira e a área de acumulação. O domínio de acumulação compreendeu o setor em que predominou a deposição do material transportado, reconhecido a partir da geometria e da distribuição dos depósitos nos dados sísmicos e geomorfológicos.
 
@@ -375,7 +375,7 @@ Os limites entre os domínios foram definidos a partir das transições estrutur
 
 Após a finalização dos cálculos morfométricos, os depósitos de movimentos de massa foram classificados quanto ao número de eventos, contexto de preservação, geometria geral, relação com a área-fonte e confinamento frontal. A configuração interna e as relações com o relevo lateral foram descritas separadamente e integradas à discussão dos processos de transporte e dos possíveis condicionantes das rupturas.
 
-A distinção entre eventos individuais e complexos de múltiplos eventos seguiu \citeonline{clare2018}. A relação com a área-fonte foi definida segundo as categorias attached e detached de \citeonline{moscardelli2008}, complementadas por \citeonline{clare2018}. Neste trabalho, o enquadramento em sistemas attached ou detached considera conjuntamente a relação com a área-fonte, a abrangência espacial e o contexto geomorfológico dos depósitos. Nos casos em que a conexão com a região de origem não foi acompanhada na cobertura sísmica, as categorias são apresentadas como interpretações possíveis, apoiadas nas relações espaciais reconhecidas. A ausência de uma cicatriz na área investigada não foi utilizada, isoladamente, como critério de classificação.
+A distinção entre eventos individuais e complexos de múltiplos eventos seguiu \citeonline{clare2018}. A relação com a área-fonte foi definida segundo as categorias \textit{attached} e \textit{detached} de \citeonline{moscardelli2008}, complementadas por \citeonline{clare2018}. Neste trabalho, o enquadramento em sistemas \textit{attached} ou \textit{detached} considera conjuntamente a relação com a área-fonte, a abrangência espacial e o contexto geomorfológico dos depósitos. Nos casos em que a conexão com a região de origem não foi acompanhada na cobertura sísmica, as categorias são apresentadas como interpretações possíveis, apoiadas nas relações espaciais reconhecidas. A ausência de uma cicatriz na área investigada não foi utilizada, isoladamente, como critério de classificação.
 
 O confinamento frontal foi classificado segundo \citeonline{frey2006}. A classificação geométrica baseou-se na razão entre o comprimento da cicatriz de cabeceira e a distância da cabeceira à frente distal do depósito, proposta por \citeonline{gamboa2016}. Neste trabalho, essa distância foi aproximada pelo comprimento do eixo de transporte interpretado.
 
@@ -407,7 +407,7 @@ $H\approx \frac{{V}_{s}}{4{f}_{0}}$,    [33]
 
 em que Vₛ corresponde à velocidade média da onda S na camada acima da interface \cite{nakamura1989,krylov2020}.
 
-\subsection{Cálculo das curvas HVS\textbf{R}}
+\subsection{Cálculo das curvas HVSR}
 
 O processamento principal das curvas HVSR foi realizado em ambiente Python®, utilizando os notebooks disponibilizados no repositório hvsrweb e as rotinas da biblioteca hvsrpy, desenvolvidos por \citeonline{vantassel2021}. Os códigos originais foram mantidos, sendo alterados apenas os caminhos dos arquivos de entrada e os parâmetros necessários à configuração desta análise. Portanto, as etapas de segmentação dos sinais, aplicação do taper, combinação das componentes horizontais, suavização espectral, cálculo das curvas HVSR, tratamento estatístico lognormal e determinação da frequência fundamental ${f}_{0}$ foram executadas pelas rotinas do hvsrweb e do hvsrpy. As configurações adotadas foram orientadas pelas recomendações do projeto \citeonline{sesame2004} e estão sintetizadas na Tabela~\ref{tab:resultado-3} .
 
@@ -444,7 +444,7 @@ Após a remoção de valores numéricos inválidos, a curva HVSR obtida foi agru
 
 A frequência fundamental ${f}_{0}$ foi mantida conforme determinada previamente pelo processamento estatístico das janelas no hvsrpy. Os máximos de frequência superior identificados pelo algoritmo foram então ordenados em frequência crescente e classificados como ${f}_{1}$ e ${f}_{2}$. Esses critérios foram empregados exclusivamente na identificação e individualização dos picos secundários, não sendo utilizados para rejeitar janelas temporais.
 
-\subsection{Obtenção de velocidades e incerteza\textbf{s}}
+\subsection{Obtenção de velocidades e incertezas}
 
 A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS, 1-BRSA-137-RJS e 3-BRSA-944A-RJS, disponibilizados pela ANP (Figura~\ref{fig:resultado-27}). Para o poço 1-BRSA-137-RJS, que possui perfil VSP (Figura~\ref{fig:resultado-29}), os valores rasos de velocidade foram extraídos da curva suavizada pelo filtro Savitzky--Golay \cite{savitzky1964}. A escolha desse filtro teve como objetivo atenuar as oscilações locais do perfil, preservando a tendência de variação da velocidade com a profundidade. O procedimento utiliza ajustes polinomiais locais por mínimos quadrados, permitindo suavizar os dados e conservar características da forma da curva. Nos demais poços, foram utilizados os valores disponíveis nas menores profundidades investigadas (Tabela~\ref{tab:resultado-4}).
 

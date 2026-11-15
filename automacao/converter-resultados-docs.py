@@ -120,8 +120,11 @@ def between_headings(text: str, start_pattern: str, end_pattern: str) -> str:
 
 def clean_heading(text: str) -> str:
     text = re.sub(r"^#+\s*", "", text).strip()
-    if text.startswith("**") and text.endswith("**"):
-        text = text[2:-2].strip()
+    # A exportação do Google Docs pode fragmentar o negrito/itálico do título
+    # nas últimas letras (por exemplo, ``poço***s***``). O destaque do título é
+    # definido pela hierarquia no LaTeX, portanto esses marcadores não devem
+    # ser interpretados como ênfase interna.
+    text = text.replace("*", "").replace("_", "")
     text = re.sub(r"^(?:\d+(?:\.\d+)*|[A-F]\.\d+(?:\.\d+)*)\s+", "", text)
     return text.strip()
 
@@ -420,6 +423,36 @@ def inline(text: str, crossrefs: bool = True) -> str:
     text, maths = protect_math(text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"\\textbf{\1}", text)
     text = re.sub(r"\*([^*]+)\*", r"\\textit{\1}", text)
+    protected_italics: dict[str, str] = {}
+    for match in re.finditer(r"\\textit\{[^{}]+\}", text):
+        token = f"@@ITALIC{len(protected_italics)}@@"
+        protected_italics[token] = match.group(0)
+        text = text.replace(match.group(0), token, 1)
+    english_terms = [
+        "two-way travel time",
+        "Post-Stack Time Migration",
+        "paleopockmarks",
+        "pockmarks",
+        "pockmark",
+        "bright spot",
+        "crossline",
+        "inline",
+        "offshore",
+        "slumping",
+        "attached",
+        "detached",
+        "chirp",
+        "pool",
+    ]
+    for term in english_terms:
+        text = re.sub(
+            rf"(?<![\w@]){re.escape(term)}(?![\w@])",
+            lambda match: rf"\textit{{{match.group(0)}}}",
+            text,
+            flags=re.IGNORECASE,
+        )
+    for token, value in protected_italics.items():
+        text = text.replace(token, value)
     if crossrefs:
         text = re.sub(r"\bFig(?:\.\s*|\s+)", "Figura ", text, flags=re.IGNORECASE)
         text = convert_object_references(text)
@@ -969,7 +1002,16 @@ def parse_markdown(
                 out += [f"\\paragraph{{{inline(title, crossrefs=False)}}}", ""]
             i += 1
             continue
-        mequation = re.fullmatch(r"(.*?),?\s*\[(\d+)\]", s)
+        if s.startswith("* "):
+            items: list[str] = []
+            while i < len(lines) and lines[i].strip().startswith("* "):
+                items.append(lines[i].strip()[2:].strip())
+                i += 1
+            out += [r"\begin{itemize}"]
+            out += [f"  \\item {inline(item)}" for item in items]
+            out += [r"\end{itemize}", ""]
+            continue
+        mequation = re.fullmatch(r"(.*?),?\s*\\?\[(\d+)\\?\]", s)
         if mequation:
             number = int(mequation.group(2))
             if number in EQUATIONS:
