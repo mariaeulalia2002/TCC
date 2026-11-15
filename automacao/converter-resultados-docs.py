@@ -432,7 +432,9 @@ def inline(text: str, crossrefs: bool = True) -> str:
         "two-way travel time",
         "Post-Stack Time Migration",
         "Southern Ocean Current",
+        "Horizontal-to-Vertical Spectral Ratio",
         "sediment bypassing",
+        "en masse",
         "mass-transport deposit",
         "mass-transport complex",
         "Volume Below Surface",
@@ -448,13 +450,23 @@ def inline(text: str, crossrefs: bool = True) -> str:
         "Grapher",
         "QGIS",
         "Python",
+        "hvsrweb",
+        "hvsrpy",
+        "Raster",
+        "raster",
+        "levee",
         "paleopockmarks",
         "pockmarks",
         "pockmark",
         "bright spot",
         "channel-levee",
+        "Manual Interpretation",
+        "loop tie",
+        "mis-ties",
         "crossline",
+        "crosslines",
         "inline",
+        "inlines",
         "offshore",
         "rollovers",
         "rollover",
@@ -465,6 +477,7 @@ def inline(text: str, crossrefs: bool = True) -> str:
         "downlap",
         "toplap",
         "onlap",
+        "onlapante",
         "slumping",
         "attached",
         "detached",
@@ -486,6 +499,14 @@ def inline(text: str, crossrefs: bool = True) -> str:
         )
     for token, value in protected_italics.items():
         text = text.replace(token, value)
+    # Mantém o símbolo de marca registrada no mesmo destaque tipográfico do
+    # nome do software, conforme o padrão adotado no texto do trabalho.
+    text = re.sub(
+        r"\\textit\{(Petrel|Surfer|Grapher|QGIS|Python)\}®",
+        r"\\textit{\1®}",
+        text,
+    )
+    text = re.sub(r"(?<![\w@])find_peaks(?![\w@])", r"\\texttt{find\_peaks}", text)
     if crossrefs:
         text = re.sub(r"\bFig(?:\.\s*|\s+)", "Figura ", text, flags=re.IGNORECASE)
         text = convert_object_references(text)
@@ -509,7 +530,7 @@ def inline(text: str, crossrefs: bool = True) -> str:
         if text.startswith("O MTD 1, destacado em rosa"):
             text = text.replace("fig:resultado-30", "fig:resultado-29")
     placeholders = {}
-    command_pattern = r"\\(?:cite|ref|textbf|textit)(?:online)?\{[^}]+\}|\\includegraphics(?:\[[^\]]+\])?\{[^}]+\}"
+    command_pattern = r"\\(?:cite|ref|textbf|textit|texttt)(?:online)?\{[^}]+\}|\\includegraphics(?:\[[^\]]+\])?\{[^}]+\}"
     for i, cmd in enumerate(re.findall(command_pattern, text)):
         key = f"@@CMD{i}@@"
         placeholders[key] = cmd

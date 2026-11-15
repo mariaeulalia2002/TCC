@@ -160,7 +160,6 @@
 \newcommand{\listofequationsname}{Lista de equações}
 \newcommand{\listofequations}{%
   \chapter*{\listofequationsname}%
-  \addcontentsline{toc}{chapter}{\listofequationsname}%
   \@starttoc{loe}%
 }
 \newcommand*{\l@equation}{\@dottedtocline{1}{0em}{5.2em}}
@@ -205,7 +204,7 @@
 \newcommand{\imprimirfolhaderostoGeologia}{%
   \begin{titlingpage}
     \centering\OnehalfSpacing
-    {\bfseries\MakeUppercase{\AutorTCC}\par}
+    {\MakeUppercase{\AutorTCC}\par}
     \vfill
     {\bfseries\MakeUppercase{\TituloFolhaRostoTCC}\par}
     \vfill
@@ -216,8 +215,8 @@
       \ifdefempty{\CoorientadorTCC}{}{Coorientadores: \CoorientadorTCC\par}
     \end{adjustwidth}
     \vfill
-    {\bfseries\MakeUppercase{\CidadeTCC}\par}
-    {\bfseries\AnoTCC\par}
+    {\MakeUppercase{\CidadeTCC}\par}
+    {\AnoTCC\par}
   \end{titlingpage}
 }
 
