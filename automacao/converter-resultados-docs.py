@@ -170,6 +170,13 @@ def citation_keys() -> dict[tuple[str, str], str]:
         ("MITCHUM JR.", "1977"): "mitchum1977",
         ("MECKEL", "2011"): "meckel2011",
         ("SMITH", "2011"): "smith2011",
+        ("RIBEIRO", "2001"): "severianoribeiro2001",
+        ("ORTIZ-KARPF", "2016"): "ortizkarpf2016",
+        ("ORTIZ KARPF", "2016"): "ortizkarpf2016",
+        ("QGIS DEVELOPMENT TEAM", "2025"): "qgis2025",
+        ("NOAA", "2024"): "noaa2024",
+        ("NATIONAL OCEANIC AND ATMOSPHERIC ADMINISTRATION", "2024"): "noaa2024",
+        ("DAVIDOVICI", "1985"): "davidovici1985",
     }
     result.update(aliases)
     return result
@@ -378,6 +385,18 @@ def inline(text: str, crossrefs: bool = True) -> str:
     text = text.replace(
         "Comissão Internacional de Estratigrafia (2026)",
         r"Comissão Internacional de Estratigrafia \cite{ics2026}",
+    )
+    text = text.replace(
+        "(Güralp Systems Limited, s.d.)",
+        r"\cite{guralp}",
+    )
+    text = text.replace(
+        "Vail *et al.* (1987 apud Ribeiro, 2001)",
+        r"\citeonline{vail1987} apud \citeonline{severianoribeiro2001}",
+    )
+    text = text.replace(
+        "MOREIRA *et al.*, 2007, apud Diório (2024, p. 34)",
+        r"\citeonline{moreira2007} apud \citeonline[p.~34]{diorio2024}",
     )
     text = text.replace(
         "Os três termos da Equação 27 representam",
