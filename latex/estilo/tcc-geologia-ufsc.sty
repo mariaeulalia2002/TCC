@@ -143,6 +143,9 @@
 % Numeração contínua, igual à lista mantida no Google Docs.
 \counterwithout{quadro}{chapter}
 \newcommand{\listofquadrosname}{Lista de quadros}
+% newfloat reaproveita internamente a lista de figuras; troque o prefixo
+% somente ao imprimir a lista de quadros para evitar entradas "Figura 1".
+\PrepareListOf{quadro}{\renewcommand{\figurename}{Quadro}}
 
 % Lista de equações alimentada por \equationdescription imediatamente após
 % cada ambiente equation. A numeração continua sendo produzida pelo amsmath.
