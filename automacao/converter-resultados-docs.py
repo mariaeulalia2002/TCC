@@ -847,7 +847,7 @@ def table_tex(
                     f"  \\begin{{center}}\\footnotesize Quadro~\\thequadro{{}} — {continuation} (continuação).\\end{{center}}\\smallskip"
                 )
             out += [
-                r"  \scriptsize",
+                r"  \small",
                 r"  \setlength{\tabcolsep}{3pt}",
                 r"  \renewcommand{\arraystretch}{1.08}",
                 f"  \\begin{{tabularx}}{{\\linewidth}}{{{column_spec}}}",
@@ -881,7 +881,7 @@ def table_tex(
         header_line = "    " + " & ".join(f"\\textbf{{{c}}}" for c in header) + r" \\"
         continuation = inline(caption or "", crossrefs=False)
         out = [
-            r"{\scriptsize",
+            r"{\small",
             r"\setlength{\tabcolsep}{2pt}",
             r"\renewcommand{\arraystretch}{1.08}",
             f"\\begin{{longtable}}{{{spec}}}",
@@ -923,7 +923,7 @@ def table_tex(
     if label:
         out.append(f"  \\label{{{label}}}")
     first_rule = r"    \hline" if environment == "quadro" else r"    \toprule"
-    out += [r"  \scriptsize", r"  \setlength{\tabcolsep}{2.5pt}", f"  \\begin{{tabularx}}{{\\textwidth}}{{{spec}}}", first_rule]
+    out += [r"  \small", r"  \setlength{\tabcolsep}{2.5pt}", f"  \\begin{{tabularx}}{{\\textwidth}}{{{spec}}}", first_rule]
     for ri, row in enumerate(rows):
         cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
         if ri == 0:
@@ -1147,12 +1147,13 @@ def parse_markdown(
                 landscape_figure = numeric_figure and num in LANDSCAPE_FIGURES
                 if landscape_figure:
                     out.append(r"\begin{landscape}")
+                max_height = "0.62\\textheight" if num == 48 else "0.80\\textheight"
                 out += [
                     r"\begin{figure}[p]" if landscape_figure else (r"\begin{figure}[H]" if num == 52 else r"\begin{figure}[htbp]"),
                     r"  \centering",
-                    (f"  \\includegraphics[width=1.03\\linewidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"
+                    (f"  \\includegraphics[width=1.03\\linewidth,height={max_height},keepaspectratio]{{figuras/google-docs/{filename}}}"
                      if landscape_figure else
-                     f"  \\includegraphics[width=1.03\\textwidth,height=0.80\\textheight,keepaspectratio]{{figuras/google-docs/{filename}}}"),
+                     f"  \\includegraphics[width=1.03\\textwidth,height={max_height},keepaspectratio]{{figuras/google-docs/{filename}}}"),
                     f"  \\caption{{{inline(caption)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
@@ -1244,14 +1245,11 @@ def main() -> None:
         images = high_resolution_image_targets(DOCX, MARKDOWN)
     else:
         images = image_targets(DOCX)
-    LANDSCAPE_FIGURES = landscape_figure_numbers_api(text)
-    # Orientações registradas nas quebras de seção da revisão atual do Google
-    # Docs. Somente estas figuras devem ir para paisagem; todas as demais
-    # permanecem em retrato, inclusive quando a imagem é horizontal.
-    LANDSCAPE_FIGURES.update({
-        28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
-        53, 55, 57, 59, 65, 66, 67, 69, 71, 73, 74, 75,
-    })
+    # A orientação vem das quebras de seção da própria exportação do Docs.
+    # Assim, apenas as figuras que a autora colocou em páginas paisagem são
+    # giradas no LaTeX, sem depender de uma lista manual que fica obsoleta.
+    LANDSCAPE_FIGURES = landscape_figure_numbers(DOCX)
+    LANDSCAPE_FIGURES.update(landscape_figure_numbers_api(text))
 
     chapter_specs = {
         "1": ("Introdução", r"^#\s+(?:\*\*)?1\s+INTRODUÇÃO(?:\*\*)?\s*$", r"^#\s+(?:\*\*)?2\s+FUNDAMENTAÇÃO TEÓRICA(?:\*\*)?\s*$"),

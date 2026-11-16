@@ -17,7 +17,7 @@ O cubo abrange uma área de aproximadamente 9.201 km²,  é composto por 14.672.
 
 O registro sísmico possui duração aproximada de 8,5 s. O produto final foi reamostrado para 4 ms durante o processamento na ANP. A geometria nominal do levantamento apresenta \textit{bin size} de 25 × 12,5 m, com coordenadas referidas ao datum SAD69 e à projeção UTM, zona 23S.
 
-Os projetos desenvolvidos no \textit{QGIS} e no \textit{Surfer} adotaram o sistema de referência de coordenadas SIRGAS 2000 / UTM zona 23S (EPSG:31983) para a integração dos dados, a elaboração dos mapas e as medições planimétricas. Os produtos da interpretação sísmica exportados do \textit{Petrel} foram reprojetados para esse sistema antes de serem integrados às demais camadas.
+Os projetos desenvolvidos no \textit{QGIS®} e no \textit{Surfer®} adotaram o sistema de referência de coordenadas SIRGAS 2000 / UTM zona 23S (EPSG:31983) para a integração dos dados, a elaboração dos mapas e as medições planimétricas. Os produtos da interpretação sísmica exportados do \textit{Petrel®} foram reprojetados para esse sistema antes de serem integrados às demais camadas.
 
 \subsection{Reconhecimento de depósitos e complexos de transporte de massa}
 
@@ -25,11 +25,11 @@ A interpretação sísmica foi realizada no \textit{software} \textit{Petrel®} 
 
 A individualização dos eventos baseou-se no reconhecimento de corpos com superfícies-limite próprias e relações de sobreposição identificáveis, considerando também as mudanças de configuração interna dos refletores e a continuidade lateral dos intervalos interpretados. Foram considerados complexos de transporte de massa os conjuntos de eventos espacialmente associados que registram episódios sucessivos de mobilização e deposição em um mesmo setor. O agrupamento em um complexo não pressupõe uma mesma área-fonte ou um mecanismo de ruptura comum a todos os eventos.
 
-O mapeamento foi realizado manualmente por meio da ferramenta \textit{Manual Interpretation}. Os eventos mais recentes foram interpretados com espaçamento de 100 × 100 m entre os pontos de controle, em \textit{inlines} e \textit{crosslines}. Parte dos eventos mais antigos foi interpretada com espaçamento de 200 × 200 m, em função do tempo disponível para esta etapa. Optou-se pela interpretação manual com o objetivo de minimizar possíveis erros de correlação associados a procedimentos automatizados.
+O mapeamento foi realizado manualmente por meio da ferramenta \textit{Manual Interpretation.} Os eventos mais recentes foram interpretados com espaçamento de 100 × 100 m entre os pontos de controle, em \textit{inlines} e \textit{crosslines}. Parte dos eventos mais antigos foi interpretada com espaçamento de 200 × 200 m, em função do tempo disponível para esta etapa. Optou-se pela interpretação manual com o objetivo de minimizar possíveis erros de correlação associados a procedimentos automatizados.
 
 Como controle de qualidade da interpretação, foi aplicado o método de \textit{loop tie}, no qual os horizontes foram correlacionados entre \textit{inlines} e \textit{crosslines} sucessivas, formando circuitos fechados. Nos pontos de interseção, verificou-se a continuidade do refletor sísmico interpretado e, ao final de cada circuito, avaliou-se se a interpretação retornava ao mesmo evento no ponto inicial. Eventuais \textit{mis-ties} foram revisados, reduzindo erros de correlação entre refletores adjacentes e aumentando a consistência tridimensional dos horizontes interpretados \cite{tearpock2003}.
 
-Feições relevantes associadas aos depósitos e complexos, tais como falhas, blocos preservados, estruturas de escape de gás (\textit{pockmarks}) e blocos de alta amplitude, foram documentadas e posteriormente caracterizadas em seções sísmicas de interesse. A estrutura interna foi descrita a partir da continuidade e organização dos refletores, distinguindo-se fácies caóticas, transparentes, descontínuas, convolutas e blocos coerentes, conforme \citeonline{bull2009} e \citeonline{posamentier2011}.
+Feições associadas aos depósitos e complexos, como falhas, depressões interpretadas como \textit{pockmarks} e o bloco de alta amplitude, foram documentadas e caracterizadas em seções sísmicas. A configuração sísmica interna dos depósitos foi descrita com base na continuidade, na disposição e na amplitude relativa dos refletores, em seções de amplitude e com auxílio do atributo cosseno da fase instantânea. A descrição tomou como referência \citeonline{bull2009} e \citeonline{posamentier2011}, e as configurações reconhecidas nos dados são apresentadas no Quadro~\ref{qua:resultado-1}.
 
 \begin{figure}[htbp]
   \centering
@@ -42,23 +42,21 @@ Feições relevantes associadas aos depósitos e complexos, tais como falhas, bl
 
 O atributo sísmico cosseno de fase instantânea foi aplicado ao cubo sísmico no \textit{software} \textit{Petrel®}, com o objetivo de apoiar o reconhecimento das superfícies-limite de topo e base dos depósitos, bem como auxiliar na distinção entre eventos que compõem os complexos de transporte de massa (MTCs), quando necessário.
 
-Esse atributo contribui para o realce da continuidade lateral dos refletores, das mudanças nos padrões de acamadamento e dos limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados \cite{alvarenga2016}. A fundamentação teórica do atributo é apresentada na Seção 2.1.1.
-
 \subsection{Geração de superfícies sísmicas e análise geomorfométrica}
 
-A geração de superfícies a partir de horizontes sísmicos permite representar a geometria de refletores de interesse e investigar padrões de acomodação e distribuição sedimentar \cite{preissler2016}. Neste trabalho, foram geradas superfícies para o fundo marinho e para os horizontes de topo e base dos depósitos de transporte de massa. Essas superfícies subsidiaram a análise geomorfométrica do fundo marinho e a caracterização morfométrica dos MTDs.
+A geração de superfícies a partir de horizontes sísmicos permite representar a geometria dos refletores e investigar padrões de acomodação e distribuição sedimentar \cite{preissler2016}. Neste trabalho, foram geradas superfícies para a análise geomorfométrica do fundo marinho e para a caracterização morfométrica dos depósitos de transporte de massa.
 
-As superfícies de topo e base dos depósitos foram geradas no \textit{Petrel®}, pela ferramenta \textit{Make Surface},  enquanto a superfície do fundo marinho foi interpolada no \textit{Surfer®} versão 11.0, pelo mesmo método. Para os cálculos morfométricos, adotou-se a o método de interpoação krigagem por permitir a obtenção de suas respectivas variâncias de estimação. Essas variâncias, condicionadas à distribuição espacial dos pontos interpretados, forneceram uma componente da incerteza de interpolação incorporada aos cálculos. A avaliação comparativa dos métodos teve caráter qualitativo.
+Após a comparação qualitativa dos métodos de interpolação, adotou-se o método da \textit{krigagem} para a interpolação das superfícies. A krigagem estima o tempo sísmico nos nós da grade a partir dos valores dos pontos interpretados na vizinhança, atribuindo pesos conforme a distribuição espacial desses pontos \cite{davis2002}. As variâncias de estimação utilizadas nos cálculos de incerteza são descritas na Seção 4.3.9. Antes das análises, foram verificadas a compatibilidade dos sistemas de coordenadas, a resolução espacial e o alinhamento das células. As superfícies também foram plotadas e inspecionadas visualmente no \textit{Surfer®}.
 
-A krigagem foi adotada nas demais superfícies para manter um procedimento comum de interpolação. Antes das análises, foram verificadas a compatibilidade dos sistemas de coordenadas, a resolução espacial e o alinhamento das células. As superfícies também foram visualizadas no \textit{Surfer®} versão 11.0 para inspeção e controle de qualidade.
+O fundo marinho foi interpretado no domínio do tempo sísmico a partir do primeiro refletor identificado no volume, correspondente à interface entre a coluna d’água e o substrato sedimentar. O elevado contraste de impedância acústica nessa interface favoreceu o traçado do refletor com a ferramenta \textit{Guided Autotracking}. A superfície foi interpolada no \textit{Surfer®} 11.0 com variograma linear e grade de 50 × 50 m. Para a representação tridimensional, os valores de tempo foram apresentados com sinal negativo, preservando-se a geometria relativa da superfície.
 
-A análise geomorfométrica do fundo marinho foi realizada no domínio do tempo sísmico, a partir do primeiro refletor identificado no volume sísmico, associado à interface entre a coluna d’água e o substrato sedimentar. Devido ao elevado contraste de impedância acústica nessa interface, esse refletor foi utilizado como referência para a caracterização da morfologia do fundo marinho, traçado por essa razão, com a ferramenta \textit{Guided Autotracking}. Para facilitar sua visualização tridimensional, os valores temporais foram representados com sinal negativo, sem alteração da geometria relativa da superfície. A interpolação foi realizada no \textit{Surfer®} v. 11 por krigagem com variograma linear e resolução de 50 × 50 m. Posteriormente, o \textit{grid} foi importado para o \textit{QGIS®}, onde foram calculados os atributos de rugosidade e declividade. A rugosidade permitiu realçar escarpas, cicatrizes, canais e outras irregularidades morfológicas \cite{riley1999,wilson2007}. Como os valores verticais correspondem a TWT, a declividade representa um gradiente temporal aparente, e não uma declividade batimétrica real, sendo utilizada para evidenciar mudanças abruptas na geometria do refletor \cite{qgis2025}.
+A grade do fundo marinho foi importada para o \textit{QGIS®}, onde foram calculados os atributos de rugosidade e declividade. A rugosidade permitiu realçar escarpas, cicatrizes, depressões e outras irregularidades morfológicas \cite{riley1999,wilson2007}. Como o eixo vertical está em tempo duplo de percurso (TWT), a declividade calculada expressa um gradiente temporal aparente, usado para evidenciar mudanças abruptas na geometria do refletor \cite{qgis2025}.
 
-As superfícies de topo e base dos MTDs foram interpoladas em grades regulares compatíveis com o espaçamento do mapeamento. A resolução foi definida de acordo com a densidade dos pontos interpretados, evitando a geração de superfícies com detalhamento incompatível com os dados disponíveis. A extensão em planta de cada depósito foi delimitada por polígonos baseados nos limites reconhecidos na interpretação sísmica. Esses polígonos foram utilizados como máscaras para recortar as superfícies de topo e base e restringir os cálculos à área efetivamente interpretada. Os procedimentos de cálculo dos parâmetros morfométricos são descritos na seção de análise morfométrica (4.3).
+As superfícies de topo e base dos depósitos foram geradas no \textit{Petrel®} com a ferramenta \textit{Make Surface}. O espaçamento das grades foi definido de acordo com a densidade dos pontos interpretados. Os limites de cada depósito, reconhecidos na sísmica, foram representados por polígonos usados como máscaras para recortar as superfícies e restringir os cálculos à área mapeada. O cálculo dos parâmetros morfométricos é descrito na Seção 4.3.
 
 \section{Mapeamento de \textit{pockmarks}}
 
-O mapeamento dos \textit{pockmarks} foi realizado pela integração entre o \textit{raster} de rugosidade do fundo marinho e a interpretação sísmica. O \textit{raster} de rugosidade auxiliou na identificação e na delimitação das depressões, enquanto as seções sísmicas foram utilizadas para avaliar sua expressão em subsuperfície e a presença de evidências associadas à ocorrência ou à migração de fluidos. O levantamento foi restrito aos \textit{pockmarks} espacialmente relacionados aos MTDs caracterizados neste estudo.
+O mapeamento dos \textit{pockmarks} foi realizado pela integração entre o \textit{\textit{raster}} de rugosidade do fundo marinho e a interpretação sísmica. O \textit{\textit{raster}} de rugosidade auxiliou na identificação e na delimitação das depressões, enquanto as seções sísmicas foram utilizadas para avaliar sua expressão em subsuperfície e a presença de evidências associadas à ocorrência ou à migração de fluidos. O levantamento foi restrito aos \textit{pockmarks} espacialmente relacionados aos MTDs caracterizados neste estudo.
 
 As depressões interpretadas como \textit{pockmarks} foram diferenciadas em duas categorias descritivas, conforme a presença ou ausência de realce de amplitude nos refletores associados às feições nas seções sísmicas. A identificação das depressões considerou sua expressão morfológica em planta e em seção, enquanto a resposta de amplitude foi utilizada como característica complementar. Essa distinção não foi empregada para determinar a composição dos fluidos ou a atividade atual das feições.
 
@@ -88,15 +86,15 @@ A espessura em tempo foi calculada na aba \textit{Operations} , do \textit{Petre
 \end{equation}
 \equationdescription{Espessura temporal da isócrona}
 
-O resultado corresponde a variação de espessura do depósito, expressa em milissegundos de TWT. Foram inspecionadas as células com valores negativos, que poderiam indicar cruzamento das superfícies, problemas de alinhamento ou interpolação em áreas marginais. No processamento documentado, a máscara e o mapeamento foram ajustados quando ocorreu a identificação de valores negativos predominantemente nas bordas, mantendo os cálculos restritos ao domínio válido.
+O resultado corresponde a variação de espessura do depósito, expressa em milissegundos de TWT. Foram inspecionadas as células com valores negativos, que poderiam indicar cruzamento das superfícies, problemas de alinhamento ou interpolação em áreas marginais. A máscara e o mapeamento foram ajustados quando ocorreu a identificação de valores negativos predominantemente nas bordas, mantendo os cálculos restritos ao domínio válido.
 
-Em seguida, as superfícies geradas foram exportadas em formato \textit{Surfer® Binary Grid} (.grd) para o \textit{QGIS®}, onde duas estatísticas foram extraídas pela ferramenta Estatísticas Zonais, utilizando a máscara do depósito. Foram obtidos o número de células válidas, a soma, a média, a mediana, o desvio-padrão, os valores mínimo e máximo e a amplitude da espessura temporal. Também foram calculados contornos de mesma espessura temporal (isócronas) para cada superfície utilizando a ferramenta \textit{Raster} -- extrair contornos, também no \textit{QGIS}.
+Em seguida, as superfícies geradas foram exportadas em formato \textit{Surfer®} Binary \textit{Grid} (.grd) para o \textit{QGIS®}, onde foram extraídas estatísticas pela ferramenta Estatísticas Zonais, utilizando a máscara do depósito. Foram obtidos o número de células válidas, a soma, a média, a mediana, o desvio-padrão, os valores mínimo e máximo e a amplitude da espessura temporal. Também foram calculados contornos de mesma espessura temporal (isócronas) para cada superfície utilizando a ferramenta \textit{\textit{Raster}}- extrair contornos, também no \textit{QGIS}.
 
 \subsection{Área, volume e perímetro}
 
 A área em m² e o volume em ms·m² foram obtidos por meio da aba \textit{Operations} no \textit{Petrel®}, realizando a operação \textit{Volume Below Surface} na isócrona previamente calculada.
 
-O perímetro do polígono de máscara utilizado na geração da isócrona foi calculado no \textit{Petrel®} através da aba \textit{Operations} e operação \textit{Length (2D)}.
+O perímetro do polígono de máscara utilizado na geração da isócrona foi calculado no \textit{Petrel®} através da aba \textit{Operations} e operação Length (2D).
 
 \subsection{Definição do eixo e cálculos de comprimento e largura}
 
@@ -199,7 +197,7 @@ A medida caracteriza, portanto, a superfície receptora imediatamente à frente 
 
 \subsection{Conversão tempo--profundidade das medidas morfométricas}
 
-A conversão das medidas temporais foi realizada com caráter aproximativo, para fornecer uma noção da escala espacial e das dimensões dos depósitos em metros. Foram empregadas velocidades representativas dos intervalos sedimentares de cada evento, obtidas a partir de dados dos poços 1-BRSA-137-RJS e 1-BRSA-127-RJS, fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP), e combinadas por ponderação pelo inverso da distância ao ponto central de cada depósito (Figura~\ref{fig:resultado-27}). Os dados de entrada, os intervalos temporais, as velocidades equivalentes, as distâncias e os pesos empregados são apresentados no Apêndice~\ref{ap:distancias-velocidades}.
+A conversão tempo-profundidade foi realizada para expressar as espessuras, os soterramentos, os desníveis e os volumes em unidades métricas, utilizando velocidades representativas dos intervalos sedimentares de cada evento. Foram empregadas velocidades representativas dos intervalos sedimentares de cada evento, obtidas a partir de dados dos poços 1-BRSA-137-RJS e 1-BRSA-127-RJS, fornecidos pela Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP), e combinadas por ponderação pelo inverso da distância ao ponto central de cada depósito (Figura~\ref{fig:resultado-27}). Os dados de entrada, os intervalos temporais, as velocidades equivalentes, as distâncias e os pesos empregados são apresentados no Apêndice~\ref{ap:distancias-velocidades}.
 
 As equações de conversão apresentadas nesta seção fundamentam-se na relação entre tempo duplo de percurso, velocidade de propagação e profundidade, cujo princípio foi descrito na Seção 2.1 \cite{yilmaz2001}. Considerando propagação vertical, essa relação é expressa por (z=vt/2), com o tempo em segundos. As Equações~\eqref{eq:acrescimo-twt}, \eqref{eq:velocidade-intervalar}, \eqref{eq:conversao-espessura}, \eqref{eq:conversao-agua} e \eqref{eq:profundidade-ponto} correspondem a rearranjos ou aplicações dessa relação aos intervalos sedimentares e à coluna d’água, com as respectivas conversões de unidades. A Equação~\eqref{eq:velocidade-ponderada} corresponde à ponderação das velocidades pelo inverso da distância, fundamentada separadamente na Seção 4.3.8.2.
 
@@ -207,11 +205,11 @@ As equações de conversão apresentadas nesta seção fundamentam-se na relaç�
 
 As velocidades utilizadas na conversão tempo--profundidade foram estimadas a partir dos controles disponíveis nos poços 1-BRSA-137-RJS e 1-BRSA-127-RJS. Para considerar a posição dos eventos na coluna sedimentar, foram utilizados os tempos duplos médios do topo e da base de cada depósito, referenciados ao fundo marinho. O tempo médio da base foi obtido pela soma do tempo médio de soterramento do topo com a espessura temporal média do evento.
 
-No poço 1-BRSA-137-RJS, um \textit{script} desenvolvido em \textit{Python®} foi utilizado para ler o arquivo DLIS, extrair os canais de profundidade e tempo de percurso e calcular as velocidades intervalares entre registros consecutivos. Os valores foram associados às profundidades médias dos respectivos intervalos e exportados em formato tabular, juntamente com os valores de TWT. Essa rotina constituiu uma etapa preparatória de extração e organização dos dados do VSP.
+No poço 1-BRSA-137-RJS, um \textit{script} desenvolvido em \textit{Python®} foi utilizado para ler o arquivo DLIS, extrair os canais de profundidade e tempo de percurso e calcular as velocidades intervalares entre registros consecutivos. Os valores foram associados às profundidades médias dos respectivos intervalos e exportados em formato tabular, juntamente com os valores de TWT.
 
 Para a conversão morfométrica, as velocidades intervalares do poço 1-BRSA-137-RJS foram suavizadas por média móvel ponderada de três registros consecutivos, atribuindo-se pesos de 0,25 aos registros adjacentes e de 0,50 ao registro central. Os valores inicial e final da série foram preservados. Esse procedimento foi adotado para reduzir oscilações locais e definir uma curva de velocidades para a construção da relação tempo--profundidade.
 
-Os valores originais e os resultados dos três procedimentos de suavização avaliados são apresentados na Tabela~\ref{tab:resultado-D-2}. A média móvel ponderada foi utilizada na conversão morfométrica dos depósitos, enquanto os valores obtidos pelo filtro Savitzky--Golay foram empregados exclusivamente na análise HVSR \cite{savitzky1964}.
+Os valores originais e os resultados dos três procedimentos de suavização avaliados são apresentados na Tabela~\ref{tab:resultado-D-2}.
 
 Por meio de uma rotina em \textit{Python®}, disponibilizada no repositório indicado no Apêndice~\ref{ap:codigos}, as profundidades dos pontos de controle foram referenciadas ao fundo marinho. Entre o fundo marinho e o primeiro controle disponível, adotou-se como constante a velocidade mais rasa. A partir do primeiro controle, as velocidades foram interpoladas linearmente entre profundidades consecutivas. Para construir a relação cumulativa entre TWT e profundidade, o perfil do poço 1-BRSA-137-RJS foi discretizado com passo vertical de 0,01 m. Em cada incremento, utilizou-se a média das velocidades interpoladas em seus dois extremos. O acréscimo de tempo duplo de percurso foi calculado por:
 
@@ -433,7 +431,7 @@ As alturas e inclinações das cicatrizes ((H\_s) e (S\_s)) foram obtidas a part
 
 \subsubsection{Resolução vertical sísmica}
 
-O intervalo amostral do volume sísmico foi verificado no cabeçalho binário e em 200 cabeçalhos de traços do arquivo SEG-Y, obtendo-se 4 ms. A análise do conteúdo de frequências dos traços baseou-se nos fundamentos da transformada de Fourier aplicados à sísmica, apresentados por \citeonline{yilmaz2001}, e foi realizada por meio de uma rotina em \textit{Python}, disponibilizada no repositório indicado no Apêndice~\ref{ap:codigos}. Foram utilizados 45 pontos de controle, com extração de uma vizinhança de 3 × 3 traços em cada posição. Após a remoção da tendência linear, aplicou-se uma janela de Hann aos segmentos temporais, seguindo os fundamentos do janelamento na análise espectral descritos por \citeonline{harris1978}. Os espectros de potência foram calculados por transformada rápida de Fourier e normalizados individualmente. Para representar cada ponto de controle, calculou-se a mediana dos espectros da vizinhança. A frequência dominante foi estimada pela posição do máximo desse espectro, refinada por interpolação parabólica local em escala logarítmica, conforme o procedimento descrito por \citeonline{smith2011}.
+A análise do conteúdo de frequências dos traços baseou-se nos fundamentos da transformada de Fourier aplicados à sísmica, apresentados por \citeonline{yilmaz2001}, e foi realizada por meio de uma rotina em \textit{Python}, disponibilizada no repositório indicado no Apêndice~\ref{ap:codigos}. Foram utilizados 45 pontos de controle, com extração de uma vizinhança de 3 × 3 traços em cada posição. Após a remoção da tendência linear, aplicou-se uma janela de Hann aos segmentos temporais, seguindo os fundamentos do janelamento na análise espectral descritos por \citeonline{harris1978}. Os espectros de potência foram calculados por transformada rápida de Fourier e normalizados individualmente. Para representar cada ponto de controle, calculou-se a mediana dos espectros da vizinhança. A frequência dominante foi estimada pela posição do máximo desse espectro, refinada por interpolação parabólica local em escala logarítmica, conforme o procedimento descrito por \citeonline{smith2011}.
 
 Foram avaliadas janelas temporais de 256, 384 e 512 ms. A frequência dominante representativa foi definida considerando a estabilidade das frequências de pico entre as janelas e sua variabilidade espacial entre os pontos analisados.
 
@@ -469,9 +467,9 @@ Os conjuntos de pontos foram exportados do \textit{Petrel®} em arquivos ASCII c
 
 O domínio de cabeceira foi reconhecido na porção proximal dos eventos, a partir da presença da escarpa principal e de feições associadas à extensão e à evacuação de material. O domínio de deflação correspondeu à porção intermediária dos MTDs, predominantemente associado ao transporte do material mobilizado, situado entre a cabeceira e a área de acumulação. O domínio de acumulação compreendeu o setor em que predominou a deposição do material transportado, reconhecido a partir da geometria e da distribuição dos depósitos nos dados sísmicos e geomorfológicos.
 
-Os limites entre os domínios foram definidos a partir das transições estruturais e geomorfológicas reconhecidas nos dados, não sendo necessariamente abruptos. Os pontos A, B e C constituíram referências espaciais, enquanto a delimitação final dos domínios resultou da integração entre a geometria dos depósitos, o relevo da superfície basal, os mapas de aspecto e as feições cinemáticas interpretadas.A compartimentação adotada considerou, portanto, o processo predominante em cada setor, admitindo a coexistência de processos de transporte, erosão e deposição e a ocorrência de transições graduais entre os domínios.
+Os limites entre os domínios foram definidos a partir das transições estruturais e geomorfológicas reconhecidas nos dados, não sendo necessariamente abruptos. Os pontos A, B e C constituíram referências espaciais, enquanto a delimitação final dos domínios resultou da integração entre a geometria dos depósitos, o relevo da superfície basal, os mapas de aspecto e as feições cinemáticas interpretadas. A compartimentação adotada considerou, portanto, o processo predominante em cada setor, admitindo a coexistência de processos de transporte, erosão e deposição.
 
-\section{Classificação de depósitos/complexos de transporte de massa}
+4.5 Classificação de depósitos/complexos de transporte de massa
 
 Após a finalização dos cálculos morfométricos, os depósitos de movimentos de massa foram classificados quanto ao número de eventos, contexto de preservação, geometria geral, relação com a área-fonte e confinamento frontal. A configuração interna e as relações com o relevo lateral foram descritas separadamente e integradas à discussão dos processos de transporte e dos possíveis condicionantes das rupturas.
 
@@ -483,7 +481,7 @@ O comprimento da cicatriz foi calculado no \textit{QGIS®}, pela Calculadora de 
 
 \section{Técnica HVSR}
 
-O método da Razão Espectral Horizontal/Vertical (\textit{Horizontal-to-Vertical Spectral Ratio} — HVSR), também conhecido como razão H/V, foi aplicado para identificar a frequência fundamental de ressonância (f₀) do pacote sedimentar e estimar a profundidade do principal contraste de impedância na subsuperfície. A técnica utiliza o ruído sísmico ambiental registrado nas componentes horizontais norte--sul (NS), leste--oeste (EW) e vertical (V). Por ser passiva e de baixo impacto operacional, é adequada à investigação de contrastes de rigidez no subsolo \cite{nakamura1989,krylov2020}.
+O método da Razão Espectral Horizontal/Vertical (\textit{Horizontal-to-Vertical Spectral Ratio} — HVSR) também conhecido como razão H/V, foi aplicado para identificar a frequência fundamental de ressonância (f₀) do pacote sedimentar e estimar a profundidade do principal contraste de impedância na subsuperfície. A técnica utiliza o ruído sísmico ambiental registrado nas componentes horizontais norte--sul (NS), leste--oeste (EW) e vertical (V). Por ser passiva e de baixo impacto operacional, é adequada à investigação de contrastes de rigidez no subsolo \cite{nakamura1989,krylov2020}.
 
 O ruído sísmico ambiental é constituído por vibrações contínuas de pequena amplitude, da ordem de 10⁻⁴ a 10⁻² cm \cite{okada2003}, geradas por fontes como a interação das ondas oceânicas, fenômenos atmosféricos e atividades antrópicas. Além desse ruído contínuo, os registros podem conter sinais de eventos sísmicos. No contexto da área de estudo, cabe destacar que a margem passiva brasileira apresenta atividade sísmica superior à média das regiões continentais estáveis, com destaque para sua porção sudeste \cite{assumpcao2014}.
 
@@ -493,7 +491,7 @@ O OBS 18 foi instalado no âmbito do Projeto de Monitoramento Sismo-Oceanográfi
 
 A seleção do período de análise foi baseada na caracterização do ruído ambiente ao longo de aproximadamente um ano de registros do OBS 18, utilizando distribuições probabilísticas da densidade espectral de potência (\textit{Probabilistic Power Spectral Density} — PPSD). Essa técnica permite avaliar a distribuição dos níveis de energia do ruído em função da frequência e comparar sua variabilidade temporal \cite{mcnamara2004}. Sua aplicação aos registros de OBS permite considerar as particularidades ambientais e instrumentais que influenciam o ruído em cada estação \cite{webb1998,janiszewski2023}.
 
-A comparação entre as distribuições mensais indicou menores níveis de densidade espectral de potência em fevereiro, na faixa de frequência de interesse para o HVSR. A partir dessa caracterização, foram selecionados registros horários, em formato miniSEED, dos dias 1 e 29 de fevereiro de 2020. A escolha do mês fundamentou-se no comportamento observado nos dados do próprio OBS 18, buscando períodos com menor energia de ruído na faixa analisada. Essa seleção foi complementada pela inspeção das janelas individuais e das curvas HVSR resultantes.
+A comparação entre as distribuições mensais indicou menores níveis de densidade espectral de potência em fevereiro, na faixa de frequência de interesse para o HVSR. A partir dessa caracterização, foram selecionados registros horários, em formato miniSEED, dos dias 1 e 29 de fevereiro de 2020. Essa seleção foi complementada pela inspeção das janelas individuais e das curvas HVSR resultantes.
 
 A partir das três componentes sísmicas, calculou-se a razão espectral entre a média geométrica dos espectros de amplitude das componentes horizontais e o espectro de amplitude da componente vertical:
 
@@ -517,9 +515,11 @@ em que Vₛ corresponde à velocidade média da onda S na camada acima da interf
 
 \subsection{Cálculo das curvas HVSR}
 
-O processamento principal das curvas HVSR foi realizado em ambiente \textit{Python®}, utilizando os \textit{notebooks} disponibilizados no repositório \textit{hvsrweb} e as rotinas da biblioteca \textit{hvsrpy}, desenvolvidos por \citeonline{vantassel2021}. Os códigos originais foram mantidos, sendo alterados apenas os caminhos dos arquivos de entrada e os parâmetros necessários à configuração desta análise. Portanto, as etapas de segmentação dos sinais, aplicação do \textit{taper}, combinação das componentes horizontais, suavização espectral, cálculo das curvas HVSR, tratamento estatístico lognormal e determinação da frequência fundamental ${f}_{0}$ foram executadas pelas rotinas do \textit{hvsrweb} e do \textit{hvsrpy}. As configurações adotadas foram orientadas pelas recomendações do projeto \citeonline{sesame2004} e estão sintetizadas na Tabela~\ref{tab:resultado-3} .
+O processamento principal das curvas HVSR foi realizado em ambiente \textit{Python®}, utilizando os \textit{notebooks} disponibilizados no repositório \textit{hvsrweb} e as rotinas da biblioteca \textit{hvsrpy}, desenvolvidos por \citeonline{vantassel2021}. Os códigos originais foram mantidos, sendo alterados apenas os caminhos dos arquivos de entrada e os parâmetros necessários à configuração desta análise. As configurações adotadas foram orientadas pelas recomendações do projeto \citeonline{sesame2004} e estão sintetizadas na Tabela~\ref{tab:resultado-3} .
 
-Os sinais contínuos, correspondentes a 24 horas para cada dia,  foram divididos em janelas de 120 s, utilizadas na determinação estatística de f₀, e de 1.800 s, empregadas como teste de estabilidade espectral. Aplicou-se \textit{taper} de Tukey, com larguras de 0,10 e 0,05, respectivamente, a fim de reduzir o vazamento espectral nas extremidades das janelas. O \textit{taper} é uma função aplicada às extremidades de cada janela temporal para reduzir gradualmente a amplitude do sinal a zero, evitando descontinuidades e o vazamento espectral durante a transformação para o domínio da frequência. Neste estudo, utilizou-se o \textit{taper} de Tukey, conforme recomendações para o processamento HVSR \cite{sesame2004,vantassel2021}. As componentes horizontais foram combinadas por média geométrica, procedimento recomendado para a obtenção de uma única curva H/V representativa \cite{coxcheng2020}. Foram testadas as suavizações de Konno--Ohmachi e Parzen. A primeira foi adotada para a definição final de f₀, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências \cite{konno1998,sesame2004}.
+Os sinais contínuos, correspondentes a 24 horas para cada dia,  foram divididos em janelas de 120 s, utilizadas na determinação estatística de f₀, e de 1.800 s, empregadas como teste de estabilidade espectral. Em cada janela, aplicou-se um \textit{taper} de Tukey para reduzir gradualmente a amplitude do sinal nas extremidades e limitar o vazamento espectral. As larguras adotadas foram de 0,10 para as janelas de 120 s e de 0,05 para as de 1.800 s \cite{sesame2004,vantassel2021}.
+
+As componentes horizontais foram combinadas por média geométrica, procedimento recomendado para a obtenção de uma única curva H/V representativa \cite{coxcheng2020}. Foram testadas as suavizações de Konno--Ohmachi e Parzen. A primeira foi adotada para a definição final de f₀, pois opera em escala logarítmica de frequência e preserva melhor picos estreitos em baixas frequências \cite{konno1998,sesame2004}.
 
 A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individuais; os valores de pico das janelas processadas foram tratados por estatística lognormal, resultando em frequência central e dispersão associada. Não foi aplicado o algoritmo automático ou iterativo de rejeição de janelas no domínio da frequência proposto. Assim, as janelas que puderam ser processadas foram mantidas na análise, sem exclusão baseada em limites de amplitude, desvio-padrão ou afastamento em relação à curva mediana.
 
@@ -533,7 +533,7 @@ A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individ
   \centering
   \caption{Parâmetros adotados no processamento HVSR}
   \label{tab:resultado-3}
-  \scriptsize
+  \small
   \setlength{\tabcolsep}{2.5pt}
   \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\centering\arraybackslash}X}
     \toprule
@@ -545,7 +545,7 @@ A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individ
     Combinação das horizontais & Média geométrica \\
     Suavização espectral & Konno--Ohmachi e Parzen \\
     Largura do operador de suavização & 40 \\
-    Curva adotada para f₀${f}_{0}$ & Konno--Ohmachi, janela de 120 s e \textit{taper} 0,10 \\
+    Curva adotada para ${f}_{0}$ & Konno--Ohmachi, janela de 120 s e \textit{taper} 0,10 \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -554,7 +554,7 @@ A identificação dos picos secundários constituiu uma etapa realizada por meio
 
 Após a remoção de valores numéricos inválidos, a curva HVSR obtida foi agrupada em intervalos de 0,2 Hz para reduzir flutuações locais, e os máximos foram identificados pelo algoritmo \texttt{find\_peaks}, adotando-se altura mínima de H/V = 1,5 e proeminência mínima de 0,4. Os limites de H/V ≥ 1,5 e de proeminência ≥ 0,4 foram definidos empiricamente a partir de testes no conjunto de dados analisado e da inspeção visual das curvas espectrais, buscando preservar máximos claramente reconhecíveis e, simultaneamente, reduzir a identificação de pequenas oscilações locais como picos independentes. De modo semelhante, adotou-se uma diferença mínima de 15\% em frequência relativa entre máximos sucessivos; picos com separação inferior a esse valor foram considerados parte de uma mesma feição espectral, evitando a contabilização duplicada de máximos associados ao mesmo pico. Esses valores constituem critérios operacionais definidos para este conjunto de dados e não limites universais do método HVSR.
 
-A frequência fundamental ${f}_{0}$ foi mantida conforme determinada previamente pelo processamento estatístico das janelas no \textit{hvsrpy}. Os máximos de frequência superior identificados pelo algoritmo foram então ordenados em frequência crescente e classificados como ${f}_{1}$ e ${f}_{2}$. Esses critérios foram empregados exclusivamente na identificação e individualização dos picos secundários, não sendo utilizados para rejeitar janelas temporais.
+Os máximos de frequência superior identificados pelo algoritmo foram então ordenados em frequência crescente e classificados como ${f}_{1}$ e ${f}_{2}$.
 
 \subsection{Obtenção de velocidades e incertezas}
 
@@ -563,15 +563,15 @@ A estimativa das velocidades foi fundamentada em dados dos poços 1-BRSA-127-RJS
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.03\textwidth,height=0.80\textheight,keepaspectratio]{figuras/google-docs/figura-27-localizacao-dos-pocos-e-do-obs-utilizado-na-area.png}
-  \caption{Localização dos poços e do OBS utilizado na área de estudo .(Base de dados: ANP, Google Satellite. SRC: SIRGAS 200 UTM 23S).}
+  \caption{Localização dos poços e do OBS utilizado na área de estudo .(Base de dados: ANP, Google Satellite. SRC: SIRGAS 2000/UTM 23S).}
   \label{fig:resultado-27}
 \end{figure}
 
 \begin{table}[htbp]
   \centering
-  \caption{Dados dos poços utilizados para estimativa das velocidades}
+  \caption{Dados dos poços utilizados para estimativa das velocidades para cálculo HVSR}
   \label{tab:resultado-4}
-  \scriptsize
+  \small
   \setlength{\tabcolsep}{2.5pt}
   \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
     \toprule
