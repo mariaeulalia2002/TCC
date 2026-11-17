@@ -1,5 +1,18 @@
 # Histórico de sincronização
 
+## 16 de novembro de 2026 — revisão integral do Docs e diagramação final
+
+- Revisão sincronizada do Google Docs: `AHj4eMQRwtq0jqSmTnuNURYMLIKJrJqXf3rLyhh28UqDTpO9T9RiOkbgXOo2W0q-v0rDyU1pfo0fyWXynrx_f_XItQAq_Srv1k3MJCSpXx4`.
+- Foram atualizados no LaTeX os textos, títulos, resumos, legendas, notas, tabelas, apêndices e figuras modificados no documento principal, sem remover o conteúdo científico da autora.
+- A Figura 83 foi substituída pela versão atual do Google Docs, preservando a resolução disponível na exportação.
+- As páginas em paisagem passaram a seguir as quebras de seção do DOCX; as demais figuras permaneceram em retrato e foram dimensionadas até o limite útil das margens com a legenda junto.
+- O corpo das tabelas foi ampliado para aproximadamente 11 pontos, mantendo notas e cabeçalhos legíveis e dentro das margens.
+- As Figuras 47 e 48 foram recolocadas na ordem correta; a Figura 48 passou a compartilhar a página com o texto subsequente e sua legenda foi aproximada da imagem.
+- As Figuras 77 a 82, relativas à compartimentação em domínios, foram mantidas junto das respectivas legendas e da seção correspondente.
+- O Quadro 2 foi mantido em uma única página, com apenas um título. No Quadro 1, o exemplo de cosseno da configuração interna 4 foi ampliado para equilibrar sua escala com o exemplo de amplitude.
+- A referência de Davis foi vinculada à citação correspondente. A auditoria final não encontrou chaves bibliográficas nem referências cruzadas indefinidas.
+- A sequência física do PDF foi conferida: Figuras 1–88 e Tabelas 1–44 aparecem em ordem contínua. O PDF final possui 264 páginas.
+
 ## 8 de novembro de 2026 — padronização ABNT e apêndices A–F
 
 - Revisão sincronizada do Google Docs: `AHj4eMQyq0p5NKerjo5oHVSAK9dwGjz6JwB0KzLKMqM20-SKVd6ABHEDAGllD8L2gxW19osXYliXExcq7zHCmDPYcXW0gPxqxdKJXDNyZzg`.
