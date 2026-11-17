@@ -811,7 +811,9 @@ def table_tex(
     if not rows:
         return []
     is_appendix_table = bool(label and re.fullmatch(r"tab:resultado-[A-F]-\d+", label))
-    if environment == "quadro" and len(rows) > 4:
+    # O Quadro 2 tem apenas cinco linhas de conteúdo e cabe inteiro em uma
+    # página. Mantê-lo unido evita um título de continuação desnecessário.
+    if environment == "quadro" and len(rows) > 4 and label != "qua:resultado-2":
         quadro_landscape = bool(label and label in LANDSCAPE_QUADROS)
         header, body = rows[0], rows[1:]
         if len(header) == 5:
@@ -859,6 +861,17 @@ def table_tex(
                 cells = [inline(c, crossrefs=False) for c in row]
                 cells = [
                     c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=\linewidth,height=2.2cm,keepaspectratio]")
+                    for c in cells
+                ]
+                # Na configuração interna 4, o recorte do cosseno de fase
+                # possui proporção mais baixa que o recorte de amplitude e
+                # ficava visualmente menor. Um acréscimo discreto equaliza os
+                # dois exemplos sem alterar as demais imagens do quadro.
+                cells = [
+                    c.replace(
+                        r"height=2.2cm,keepaspectratio]{figuras/google-docs/quadro-imagem-049.png}",
+                        r"height=2.35cm,keepaspectratio]{figuras/google-docs/quadro-imagem-049.png}",
+                    )
                     for c in cells
                 ]
                 out.append("    " + " & ".join(cells) + r" \\ \hline")
@@ -1148,8 +1161,13 @@ def parse_markdown(
                 if landscape_figure:
                     out.append(r"\begin{landscape}")
                 max_height = "0.62\\textheight" if num == 48 else "0.80\\textheight"
+                # As Figuras 47 e 48 precisam permanecer na ordem textual;
+                # deixar apenas a 48 fixa permitiria que ela ultrapassasse a
+                # 47. As figuras de domínios também ficam juntas ao texto e
+                # com espaçamento previsível.
+                fixed_placement = num in {47, 48} or (numeric_figure and 77 <= num <= 82)
                 out += [
-                    r"\begin{figure}[p]" if landscape_figure else (r"\begin{figure}[H]" if num == 52 else r"\begin{figure}[htbp]"),
+                    r"\begin{figure}[p]" if landscape_figure else (r"\begin{figure}[H]" if num == 52 or fixed_placement else r"\begin{figure}[htbp]"),
                     r"  \centering",
                     (f"  \\includegraphics[width=1.03\\linewidth,height={max_height},keepaspectratio]{{figuras/google-docs/{filename}}}"
                      if landscape_figure else
