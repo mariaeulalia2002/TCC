@@ -103,6 +103,11 @@ class Exporter:
         match = re.fullmatch(r"Heading (\d+)", style)
         if match and text:
             return f"{'#' * int(match.group(1))} {text}"
+        # Preserva listas nativas do Word/Google Docs. Sem este marcador, os
+        # objetivos e as definições de símbolos eram exportados como parágrafos
+        # comuns e perdiam as bolinhas ao chegar ao LaTeX.
+        if text and paragraph._p.xpath("./w:pPr/w:numPr"):
+            return f"* {text}"
         return text
 
     def cell_text(self, cell: _Cell) -> str:

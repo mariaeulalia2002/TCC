@@ -852,18 +852,31 @@ def table_tex(
                 r"|>{\centering\arraybackslash}p{0.18\linewidth}|"
             )
         else:
-            column_spec = (
-                r"|>{\raggedright\arraybackslash}p{0.15\linewidth}"
-                r"|>{\raggedright\arraybackslash}X"
-                r"|>{\raggedright\arraybackslash}p{0.20\linewidth}"
-                r"|>{\centering\arraybackslash}p{0.25\linewidth}|"
-            )
+            if label == "qua:resultado-1":
+                # O último campo contém os exemplos sísmicos. Dar-lhe mais
+                # largura padroniza visualmente as imagens e impede que elas
+                # cubram as linhas verticais do quadro.
+                column_spec = (
+                    r"|>{\raggedright\arraybackslash}p{0.13\linewidth}"
+                    r"|>{\raggedright\arraybackslash}X"
+                    r"|>{\raggedright\arraybackslash}p{0.17\linewidth}"
+                    r"|>{\centering\arraybackslash}p{0.34\linewidth}|"
+                )
+            else:
+                column_spec = (
+                    r"|>{\raggedright\arraybackslash}p{0.15\linewidth}"
+                    r"|>{\raggedright\arraybackslash}X"
+                    r"|>{\raggedright\arraybackslash}p{0.20\linewidth}"
+                    r"|>{\centering\arraybackslash}p{0.25\linewidth}|"
+                )
         midpoint = (len(body) + 1) // 2
         parts = [body[:midpoint], body[midpoint:]]
         out: list[str] = []
+        if quadro_landscape:
+            # Um único ambiente paisagem para as duas partes evita a página
+            # em branco que surgia ao fechar e reabrir ``landscape``.
+            out.append(r"\begin{landscape}")
         for part_index, part in enumerate(parts):
-            if quadro_landscape:
-                out.append(r"\begin{landscape}")
             out += [r"\begin{quadro}", r"  \centering"]
             if part_index == 0:
                 if caption:
@@ -886,29 +899,47 @@ def table_tex(
             ]
             for row in part:
                 cells = [inline(c, crossrefs=False) for c in row]
-                cells = [
-                    c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=\linewidth,height=2.05cm,keepaspectratio]")
-                    for c in cells
-                ]
+                if label == "qua:resultado-1":
+                    cells = [
+                        c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=0.98\linewidth,height=2.05cm,keepaspectratio]")
+                        for c in cells
+                    ]
+                else:
+                    cells = [
+                        c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=\linewidth,height=2.05cm,keepaspectratio]")
+                        for c in cells
+                    ]
                 # Na configuração interna 4, o recorte do cosseno de fase
                 # possui proporção mais baixa que o recorte de amplitude e
                 # ficava visualmente menor. Um acréscimo discreto equaliza os
                 # dois exemplos sem alterar as demais imagens do quadro.
-                cells = [
-                    c.replace(
-                        r"height=2.05cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
-                        r"height=2.2cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
-                    )
-                    for c in cells
-                ]
+                if label == "qua:resultado-1":
+                    # O exemplo de cosseno da configuração 4 tem proporção
+                    # mais baixa; o pequeno acréscimo o aproxima visualmente
+                    # do exemplo de amplitude, como solicitado na revisão.
+                    cells = [
+                        c.replace(
+                            r"height=2.05cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
+                            r"height=2.2cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
+                        )
+                        for c in cells
+                    ]
+                else:
+                    cells = [
+                        c.replace(
+                            r"height=2.05cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
+                            r"height=2.2cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
+                        )
+                        for c in cells
+                    ]
                 out.append("    " + " & ".join(cells) + r" \\ \hline")
             out += [
                 r"  \end{tabularx}",
                 *([f"  \\nota{{{inline(note)}}}"] if note and part_index == len(parts) - 1 else []),
                 r"\end{quadro}",
             ]
-            if quadro_landscape:
-                out.append(r"\end{landscape}")
+        if quadro_landscape:
+            out.append(r"\end{landscape}")
         return out
     if environment == "table" and len(rows) >= 12:
         cols = max(len(r) for r in rows)
@@ -1088,6 +1119,7 @@ def parse_markdown(
                         f"\\label{{{appendix_labels[appendix_letter]}}}",
                         f"\\setcounter{{figure}}{{0}}\\renewcommand{{\\thefigure}}{{{appendix_letter}.\\arabic{{figure}}}}",
                         f"\\setcounter{{table}}{{0}}\\renewcommand{{\\thetable}}{{{appendix_letter}.\\arabic{{table}}}}",
+                        f"\\setcounter{{quadro}}{{0}}\\renewcommand{{\\thequadro}}{{{appendix_letter}.\\arabic{{quadro}}}}",
                         "",
                     ]
                 elif is_acknowledgements:
@@ -1118,9 +1150,18 @@ def parse_markdown(
             continue
         if s.startswith("* "):
             items: list[str] = []
-            while i < len(lines) and lines[i].strip().startswith("* "):
-                items.append(lines[i].strip()[2:].strip())
-                i += 1
+            while i < len(lines):
+                current = lines[i].strip()
+                if current.startswith("* "):
+                    items.append(current[2:].strip())
+                    i += 1
+                    continue
+                # A exportação do Google Docs separa visualmente os itens com
+                # uma linha vazia. Ela não deve encerrar a lista no LaTeX.
+                if not current and i + 1 < len(lines) and lines[i + 1].strip().startswith("* "):
+                    i += 1
+                    continue
+                break
             out += [r"\begin{itemize}"]
             out += [f"  \\item {inline(item)}" for item in items]
             out += [r"\end{itemize}", ""]
@@ -1216,7 +1257,7 @@ def parse_markdown(
                 # com espaçamento previsível.
                 fixed_placement = num in {47, 48} or (numeric_figure and 77 <= num <= 82)
                 out += [
-                    r"\begin{figure}[p]" if landscape_figure else (r"\begin{figure}[H]" if num == 52 or fixed_placement else r"\begin{figure}[htbp]"),
+                    r"\begin{figure}[p]" if landscape_figure else (r"\begin{figure}[H]" if num in {5, 27, 52} or fixed_placement else r"\begin{figure}[htbp]"),
                     r"  \centering",
                     (f"  \\includegraphics[width=1.03\\linewidth,height={max_height},keepaspectratio]{{figuras/google-docs/{filename}}}"
                      if landscape_figure else

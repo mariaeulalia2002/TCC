@@ -1,38 +1,38 @@
 \contentsline {equation}{\numberline {Equação~1}Cosseno da fase instantânea}{31}{equation.2.1}%
 \contentsline {equation}{\numberline {Equação~2}Fator de segurança}{38}{equation.2.2}%
-\contentsline {equation}{\numberline {Equação~3}Critério de ruptura de Mohr--Coulomb}{38}{equation.2.3}%
+\contentsline {equation}{\numberline {Equação~3}Critério de ruptura de Mohr--Coulomb}{39}{equation.2.3}%
 \contentsline {equation}{\numberline {Equação~4}Tensão normal efetiva}{39}{equation.2.4}%
 \contentsline {equation}{\numberline {Equação~5}Resistência ao cisalhamento em função da poropressão}{39}{equation.2.5}%
 \contentsline {equation}{\numberline {Equação~6}Fator de segurança em função da poropressão}{39}{equation.2.6}%
-\contentsline {equation}{\numberline {Equação~7}Espessura temporal da isócrona}{74}{equation.4.7}%
-\contentsline {equation}{\numberline {Equação~8}Diferença temporal da altura total de queda}{75}{equation.4.8}%
-\contentsline {equation}{\numberline {Equação~9}Altura total de queda}{76}{equation.4.9}%
-\contentsline {equation}{\numberline {Equação~10}Altura da cicatriz}{76}{equation.4.10}%
-\contentsline {equation}{\numberline {Equação~11}Inclinação máxima da cicatriz}{76}{equation.4.11}%
-\contentsline {equation}{\numberline {Equação~12}Inclinação do declive não deformado}{77}{equation.4.12}%
-\contentsline {equation}{\numberline {Equação~13}Inclinação da superfície receptora}{78}{equation.4.13}%
-\contentsline {equation}{\numberline {Equação~14}Acréscimo de TWT no modelo de velocidade do poço 137}{79}{equation.4.14}%
-\contentsline {equation}{\numberline {Equação~15}Velocidade intervalar no poço 127}{79}{equation.4.15}%
-\contentsline {equation}{\numberline {Equação~16}Velocidade ponderada pelo inverso da distância}{80}{equation.4.16}%
-\contentsline {equation}{\numberline {Equação~17}Conversão da espessura temporal em profundidade}{81}{equation.4.17}%
-\contentsline {equation}{\numberline {Equação~18}Conversão do TWT na coluna d'água em profundidade}{81}{equation.4.18}%
-\contentsline {equation}{\numberline {Equação~19}Profundidade de ponto soterrado}{81}{equation.4.19}%
-\contentsline {equation}{\numberline {Equação~20}Incerteza de repetibilidade da interpretação}{83}{equation.4.20}%
-\contentsline {equation}{\numberline {Equação~21}Incerteza de interpolação}{83}{equation.4.21}%
-\contentsline {equation}{\numberline {Equação~22}Dispersão ponderada da velocidade}{84}{equation.4.22}%
-\contentsline {equation}{\numberline {Equação~23}Propagação geral de incertezas}{84}{equation.4.23}%
-\contentsline {equation}{\numberline {Equação~24}Incerteza temporal da espessura}{84}{equation.4.24}%
-\contentsline {equation}{\numberline {Equação~25}Incerteza temporal do soterramento}{84}{equation.4.25}%
-\contentsline {equation}{\numberline {Equação~26}Incerteza da medida convertida em profundidade}{85}{equation.4.26}%
-\contentsline {equation}{\numberline {Equação~27}Incerteza da integral temporal do volume}{85}{equation.4.27}%
-\contentsline {equation}{\numberline {Equação~28}Incerteza do volume}{85}{equation.4.28}%
-\contentsline {equation}{\numberline {Equação~29}Incerteza do desnível}{86}{equation.4.29}%
-\contentsline {equation}{\numberline {Equação~30}Incerteza da inclinação}{86}{equation.4.30}%
-\contentsline {equation}{\numberline {Equação~31}Resolução vertical temporal}{87}{equation.4.31}%
-\contentsline {equation}{\numberline {Equação~32}Razão espectral horizontal/vertical}{91}{equation.4.32}%
-\contentsline {equation}{\numberline {Equação~33}Profundidade da interface pelo modelo de quarto de comprimento de onda}{91}{equation.4.33}%
-\contentsline {equation}{\numberline {Equação~34}Limites lognormais de frequência}{92}{equation.4.34}%
-\contentsline {equation}{\numberline {Equação~35}Conversão de $V_p$ para $V_s$ pelo coeficiente de Poisson}{94}{equation.4.35}%
-\contentsline {equation}{\numberline {Equação~36}Ponto médio do envelope de profundidade}{95}{equation.4.36}%
-\contentsline {equation}{\numberline {Equação~37}Semi-amplitude do envelope de profundidade}{95}{equation.4.37}%
-\contentsline {equation}{\numberline {Equação~38}Semi-amplitude relativa do envelope de profundidade}{95}{equation.4.38}%
+\contentsline {equation}{\numberline {Equação~7}Espessura temporal da isócrona}{75}{equation.4.7}%
+\contentsline {equation}{\numberline {Equação~8}Diferença temporal da altura total de queda}{76}{equation.4.8}%
+\contentsline {equation}{\numberline {Equação~9}Altura total de queda}{77}{equation.4.9}%
+\contentsline {equation}{\numberline {Equação~10}Altura da cicatriz}{77}{equation.4.10}%
+\contentsline {equation}{\numberline {Equação~11}Inclinação máxima da cicatriz}{77}{equation.4.11}%
+\contentsline {equation}{\numberline {Equação~12}Inclinação do declive não deformado}{78}{equation.4.12}%
+\contentsline {equation}{\numberline {Equação~13}Inclinação da superfície receptora}{79}{equation.4.13}%
+\contentsline {equation}{\numberline {Equação~14}Acréscimo de TWT no modelo de velocidade do poço 137}{80}{equation.4.14}%
+\contentsline {equation}{\numberline {Equação~15}Velocidade intervalar no poço 127}{80}{equation.4.15}%
+\contentsline {equation}{\numberline {Equação~16}Velocidade ponderada pelo inverso da distância}{81}{equation.4.16}%
+\contentsline {equation}{\numberline {Equação~17}Conversão da espessura temporal em profundidade}{82}{equation.4.17}%
+\contentsline {equation}{\numberline {Equação~18}Conversão do TWT na coluna d'água em profundidade}{82}{equation.4.18}%
+\contentsline {equation}{\numberline {Equação~19}Profundidade de ponto soterrado}{82}{equation.4.19}%
+\contentsline {equation}{\numberline {Equação~20}Incerteza de repetibilidade da interpretação}{84}{equation.4.20}%
+\contentsline {equation}{\numberline {Equação~21}Incerteza de interpolação}{84}{equation.4.21}%
+\contentsline {equation}{\numberline {Equação~22}Dispersão ponderada da velocidade}{85}{equation.4.22}%
+\contentsline {equation}{\numberline {Equação~23}Propagação geral de incertezas}{85}{equation.4.23}%
+\contentsline {equation}{\numberline {Equação~24}Incerteza temporal da espessura}{85}{equation.4.24}%
+\contentsline {equation}{\numberline {Equação~25}Incerteza temporal do soterramento}{85}{equation.4.25}%
+\contentsline {equation}{\numberline {Equação~26}Incerteza da medida convertida em profundidade}{86}{equation.4.26}%
+\contentsline {equation}{\numberline {Equação~27}Incerteza da integral temporal do volume}{86}{equation.4.27}%
+\contentsline {equation}{\numberline {Equação~28}Incerteza do volume}{86}{equation.4.28}%
+\contentsline {equation}{\numberline {Equação~29}Incerteza do desnível}{87}{equation.4.29}%
+\contentsline {equation}{\numberline {Equação~30}Incerteza da inclinação}{87}{equation.4.30}%
+\contentsline {equation}{\numberline {Equação~31}Resolução vertical temporal}{88}{equation.4.31}%
+\contentsline {equation}{\numberline {Equação~32}Razão espectral horizontal/vertical}{92}{equation.4.32}%
+\contentsline {equation}{\numberline {Equação~33}Profundidade da interface pelo modelo de quarto de comprimento de onda}{92}{equation.4.33}%
+\contentsline {equation}{\numberline {Equação~34}Limites lognormais de frequência}{93}{equation.4.34}%
+\contentsline {equation}{\numberline {Equação~35}Conversão de $V_p$ para $V_s$ pelo coeficiente de Poisson}{96}{equation.4.35}%
+\contentsline {equation}{\numberline {Equação~36}Ponto médio do envelope de profundidade}{96}{equation.4.36}%
+\contentsline {equation}{\numberline {Equação~37}Semi-amplitude do envelope de profundidade}{96}{equation.4.37}%
+\contentsline {equation}{\numberline {Equação~38}Semi-amplitude relativa do envelope de profundidade}{97}{equation.4.38}%
