@@ -541,17 +541,17 @@ Caracterizar os depósitos e complexos de transporte de massa no talude norte da
 
 ### 1.1.2 Objetivos específicos
 
-Identificar e mapear os depósitos e complexos de transporte de massa na área de estudo;
+* Identificar e mapear os depósitos e complexos de transporte de massa na área de estudo;
 
-Gerar superfícies representativas do fundo marinho e dos limites de topo e base dos depósitos identificados;
+* Gerar superfícies representativas do fundo marinho e dos limites de topo e base dos depósitos identificados;
 
-Determinar a morfometria dos depósitos e complexos de movimentos de massa identificados;
+* Determinar a morfometria dos depósitos e complexos de movimentos de massa identificados;
 
-Com base nas superfícies mapeadas, investigar as relações dos depósitos e complexos de transporte de massa com as estruturas e feições geomorfológicas adjacentes.
+* Com base nas superfícies mapeadas, investigar as relações dos depósitos e complexos de transporte de massa com as estruturas e feições geomorfológicas adjacentes.
 
-Classificar os depósitos/complexos de transporte de massa com base em critérios morfológicos, geométricos e estratigráficos ;
+* Classificar os depósitos/complexos de transporte de massa com base em critérios morfológicos, geométricos e estratigráficos ;
 
-Estimar, por meio da técnica HVSR, a profundidade de uma interface com contraste de impedância significativo e avaliar sua correspondência com os limites dos depósitos reconhecidos na sísmica.
+* Estimar, por meio da técnica HVSR, a profundidade de uma interface com contraste de impedância significativo e avaliar sua correspondência com os limites dos depósitos reconhecidos na sísmica.
 
 ## 1.2 Justificativa
 
@@ -673,11 +673,11 @@ FS = τf / τm, [2]
 
 onde:
 
-FS é o fator de segurança;
+* FS é o fator de segurança;
 
-τf é a resistência ao cisalhamento do material;
+* τf é a resistência ao cisalhamento do material;
 
-τm é a tensão cisalhante mobilizada ao longo da superfície potencial de ruptura.
+* τm é a tensão cisalhante mobilizada ao longo da superfície potencial de ruptura.
 
 Quando FS é superior a 1, a resistência disponível excede a tensão mobilizada e o talude é considerado estável. Na condição limite, FS é igual a 1; valores inferiores a 1 indicam ruptura. Embora simplificada, essa relação permite compreender como processos geológicos e ambientais alteram a estabilidade do talude.
 
@@ -687,15 +687,15 @@ A resistência ao cisalhamento pode ser descrita pelo critério de Mohr–Coulom
 
 em que:
 
-τf é a resistência ao cisalhamento;
+* τf é a resistência ao cisalhamento;
 
-c′ é a coesão efetiva do material;
+* c′ é a coesão efetiva do material;
 
-σ′n é a tensão normal efetiva atuante sobre a superfície de ruptura;
+* σ′n é a tensão normal efetiva atuante sobre a superfície de ruptura;
 
-φ′ é o ângulo de atrito interno efetivo;
+* φ′ é o ângulo de atrito interno efetivo;
 
-tan φ′ representa o coeficiente de atrito interno.
+* tan φ′ representa o coeficiente de atrito interno.
 
 A coesão está relacionada às forças que mantêm as partículas unidas, como cimentação e interações físico-químicas. O ângulo de atrito interno representa a resistência produzida pelo atrito e pelo imbricamento entre os grãos. Em sedimentos marinhos inconsolidados, a resistência é frequentemente controlada pela tensão efetiva e pelo atrito interno, embora camadas cimentadas ou sedimentos coesivos também possam apresentar uma parcela significativa de coesão.
 
@@ -705,11 +705,11 @@ Como os sedimentos marinhos estão saturados, parte da tensão total aplicada ao
 
 em que:
 
-σ′n é a tensão normal efetiva;
+* σ′n é a tensão normal efetiva;
 
-σn é a tensão normal total;
+* σn é a tensão normal total;
 
-u é a pressão do fluido nos poros, ou poropressão.
+* u é a pressão do fluido nos poros, ou poropressão.
 
 Substituindo a expressão da tensão efetiva da Equação 4 no critério de Mohr-Coulomb da Equação 3, obtém-se:
 
