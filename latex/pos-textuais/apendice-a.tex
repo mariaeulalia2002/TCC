@@ -11,31 +11,25 @@ Link: \url{https://github.com/mariaeulalia2002/codigos_tcc}
   \caption[Códigos disponibilizados no repositório e suas principais funções]{Códigos disponibilizados no repositório e suas principais funções.}
   \label{qua:resultado-A-1}
   \small
-  \setlength{\tabcolsep}{3pt}
-  \renewcommand{\arraystretch}{1.08}
-  \begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.15\linewidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\centering\arraybackslash}p{0.25\linewidth}|}
+  \setlength{\tabcolsep}{2.5pt}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.34\textwidth}|>{\raggedright\arraybackslash}X|}
     \hline
     \textbf{\textbf{Código}} & \textbf{\textbf{Principal função}} \\
     \hline
-    verificacao\_headers\_segy.py & Comparar o intervalo amostral registrado no cabeçalho binário com os valores presentes nos cabeçalhos dos traços dos arquivos SEG-Y. \\ \hline
-    analise\_Espectral.py & Calcular os espectros de potência nos pontos de controle, determinar as frequências dominantes e fornecer os valores utilizados na avaliação da resolução vertical sísmica. \\ \hline
-    extracao\_dados\_vsp\_poco\_137.py & Extrair do arquivo DLIS do poço 1-BRSA-137-RJS os dados de profundidade e tempo utilizados no cálculo das velocidades intervalares. \\ \hline
-    suavizacao\_poco\_137.py & Aplicar média móvel simples, filtro Savitzky--Golay e média móvel ponderada à curva de velocidades do poço 1-BRSA-137-RJS. \\ \hline
-  \end{tabularx}
-\end{quadro}
-\begin{quadro}
-  \centering
-  \begin{center}\footnotesize Quadro~\thequadro{} — Códigos disponibilizados no repositório e suas principais funções. (continuação).\end{center}\smallskip
-  \small
-  \setlength{\tabcolsep}{3pt}
-  \renewcommand{\arraystretch}{1.08}
-  \begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.15\linewidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\centering\arraybackslash}p{0.25\linewidth}|}
+    verificacao\_\allowbreak{}headers\_\allowbreak{}segy.py & Comparar o intervalo amostral registrado no cabeçalho binário com os valores presentes nos cabeçalhos dos traços dos arquivos SEG-Y. \\
     \hline
-    \textbf{\textbf{Código}} & \textbf{\textbf{Principal função}} \\
+    analise\_\allowbreak{}Espectral.py & Calcular os espectros de potência nos pontos de controle, determinar as frequências dominantes e fornecer os valores utilizados na avaliação da resolução vertical sísmica. \\
     \hline
-    conversao\_tempo\_profundidade.py & Calcular as velocidades equivalentes dos intervalos sedimentares e a ponderação das velocidades dos poços pelo inverso da distância aos eventos. \\ \hline
-    identificacao\_picos\_secundarios.py & Identificar possíveis picos secundários f1 e f2 nas curvas HVSR previamente processadas pelo \textit{hvsrweb/hvsrpy}. \\ \hline
-    incertezas\_morfometricas/incertezas\_morfometricas.py & Calcular os valores convertidos de espessura, soterramento, volume, altura total de queda e inclinação, além de propagar as respectivas componentes de incerteza. \\ \hline
+    extracao\_\allowbreak{}dados\_\allowbreak{}vsp\_\allowbreak{}poco\_\allowbreak{}137.py & Extrair do arquivo DLIS do poço 1-BRSA-137-RJS os dados de profundidade e tempo utilizados no cálculo das velocidades intervalares. \\
+    \hline
+    suavizacao\_\allowbreak{}poco\_\allowbreak{}137.py & Aplicar média móvel simples, filtro Savitzky--Golay e média móvel ponderada à curva de velocidades do poço 1-BRSA-137-RJS. \\
+    \hline
+    conversao\_\allowbreak{}tempo\_\allowbreak{}profundidade.py & Calcular as velocidades equivalentes dos intervalos sedimentares e a ponderação das velocidades dos poços pelo inverso da distância aos eventos. \\
+    \hline
+    identificacao\_\allowbreak{}picos\_\allowbreak{}secundarios.py & Identificar possíveis picos secundários f1 e f2 nas curvas HVSR previamente processadas pelo \textit{hvsrweb/hvsrpy}. \\
+    \hline
+    incertezas\_\allowbreak{}morfometricas/incertezas\_\allowbreak{}morfometricas.py & Calcular os valores convertidos de espessura, soterramento, volume, altura total de queda e inclinação, além de propagar as respectivas componentes de incerteza. \\
+    \hline
   \end{tabularx}
-  \nota{*\textit{ o processamento principal das curvas HVSR foi realizado com os }notebooks\textit{ do }hvsrweb\textit{ e com a biblioteca }hvsrpy*, de \citeonline{vantassel2021}, que não são redistribuídos neste repositório. A rotina de identificação de picos secundários corresponde ao procedimento complementar desenvolvido para este trabalho.}
+  \nota{o processamento principal das curvas HVSR foi realizado com os \textit{notebooks} do \textit{hvsrweb} e com a biblioteca \textit{hvsrpy}, de \citeonline{vantassel2021}, que não são redistribuídos neste repositório. A rotina de identificação de picos secundários corresponde ao procedimento complementar desenvolvido para este trabalho.}
 \end{quadro}

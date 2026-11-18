@@ -836,7 +836,11 @@ def table_tex(
     is_appendix_table = bool(label and re.fullmatch(r"tab:resultado-[A-F]-\d+", label))
     # O Quadro 2 tem apenas cinco linhas de conteúdo e cabe inteiro em uma
     # página. Mantê-lo unido evita um título de continuação desnecessário.
-    if environment == "quadro" and len(rows) > 4 and label != "qua:resultado-2":
+    if (
+        environment == "quadro"
+        and len(rows) > 4
+        and label not in {"qua:resultado-2", "qua:resultado-A-1"}
+    ):
         quadro_landscape = bool(label and label in LANDSCAPE_QUADROS)
         header, body = rows[0], rows[1:]
         if len(header) == 5:
@@ -949,7 +953,12 @@ def table_tex(
         out.append(r"}")
         return out
     cols = max(len(r) for r in rows)
-    if environment == "quadro":
+    if environment == "quadro" and label == "qua:resultado-A-1":
+        spec = (
+            r"|>{\raggedright\arraybackslash}p{0.34\textwidth}"
+            r"|>{\raggedright\arraybackslash}X|"
+        )
+    elif environment == "quadro":
         spec = "|>{\\raggedright\\arraybackslash}X|" + "".join([">{\\centering\\arraybackslash}X|"] * (cols - 1))
     else:
         spec = ">{\\raggedright\\arraybackslash}X " + " ".join([">{\\centering\\arraybackslash}X"] * (cols - 1))
@@ -964,6 +973,8 @@ def table_tex(
     out += [r"  \small", r"  \setlength{\tabcolsep}{2.5pt}", f"  \\begin{{tabularx}}{{\\textwidth}}{{{spec}}}", first_rule]
     for ri, row in enumerate(rows):
         cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
+        if label == "qua:resultado-A-1" and cells:
+            cells[0] = cells[0].replace(r"\_", r"\_\allowbreak{}")
         if ri == 0:
             cells = [f"\\textbf{{{c}}}" for c in cells]
             cells = [c.replace("Depósito/evento", "Depósito/\\newline evento") for c in cells]
@@ -1265,9 +1276,13 @@ def parse_markdown(
             while note_index < len(lines) and not lines[note_index].strip():
                 note_index += 1
             if note_index < len(lines):
-                candidate = lines[note_index].strip().strip("*")
-                if candidate.startswith("Nota:") or candidate.startswith("Nota específica:"):
-                    note = re.sub(r"^Nota(?: específica)?:\s*", "", candidate)
+                candidate = lines[note_index].strip()
+                if re.match(r"^\*{0,2}Nota(?: específica)?:\*{0,2}\s*", candidate):
+                    note = re.sub(
+                        r"^\*{0,2}Nota(?: específica)?:\*{0,2}\s*",
+                        "",
+                        candidate,
+                    )
                     i = note_index + 1
             out += table_tex(rows, cap, lab, environment, note=note) + [""]
             pending_caption = None
