@@ -114,7 +114,13 @@ class Exporter:
         return "<br>".join(parts).replace("|", r"\|")
 
     def table_markdown(self, table: Table) -> list[str]:
-        rows = [[self.cell_text(cell) for cell in row.cells] for row in table.rows]
+        # Use as celulas OOXML reais. ``row.cells`` replica celulas mescladas e
+        # faria a mesma imagem aparecer duas vezes no Markdown, deslocando a
+        # correspondencia com a ordem dos desenhos do DOCX.
+        rows = [
+            [self.cell_text(_Cell(tc, table)) for tc in tr.tc_lst]
+            for tr in table._tbl.tr_lst
+        ]
         if not rows:
             return []
         columns = max(len(row) for row in rows)

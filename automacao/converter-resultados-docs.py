@@ -135,6 +135,23 @@ def slug(text: str) -> str:
     return text[:48]
 
 
+def short_caption(text: str) -> str:
+    """Retorna somente o titulo para as listas de figuras e tabelas."""
+    value = text.strip()
+    panel = re.search(r"(?:\.\s*|:\s*|\s+)\([a-z]\)\s+", value, re.IGNORECASE)
+    if panel and panel.start() >= 12:
+        value = value[:panel.start()]
+    else:
+        sentence = re.search(r"\.\s+(?=[A-ZÁÀÂÃÉÊÍÓÔÕÚÜÇ])", value)
+        if sentence and sentence.start() >= 12:
+            value = value[:sentence.start()]
+    if len(value) > 150:
+        cut = max(value.rfind(mark, 0, 145) for mark in (":", ";", ","))
+        if cut >= 40:
+            value = value[:cut]
+    return value.rstrip(" .;:")
+
+
 def protect_math(text: str):
     parts: list[str] = []
 
@@ -389,6 +406,8 @@ def inline(text: str, crossrefs: bool = True) -> str:
     text = text.replace("sísmicas.Para", "sísmicas. Para")
     text = text.replace("*et al*.", "*et al.*")
     text = text.replace("*et al.,*", "*et al.*,")
+    text = re.sub(r"\*\s+et al\.\*", "*et al.*", text, flags=re.IGNORECASE)
+    text = re.sub(r"(?<=\w)\*et al\.\*", " *et al.*", text, flags=re.IGNORECASE)
     text = re.sub(r"(\*?et al\.\*?),\s*\(", r"\1 (", text, flags=re.IGNORECASE)
     text = re.sub(r"\\([()\[\],!<>])", r"\1", text)
     text = re.sub(r"\[([^\]]+)\]\(https?://[^)]+\)", r"\1", text)
@@ -407,6 +426,10 @@ def inline(text: str, crossrefs: bool = True) -> str:
     text = text.replace(
         "MOREIRA *et al.*, 2007, apud Diório (2024, p. 34)",
         r"\citeonline{moreira2007} apud \citeonline[p.~34]{diorio2024}",
+    )
+    text = text.replace(
+        "Kearey, Brooks & Hill (2009)",
+        r"\citeonline{kearey2009}",
     )
     text = text.replace(
         "Os três termos da Equação 27 representam",
@@ -840,7 +863,7 @@ def table_tex(
             out += [r"\begin{quadro}", r"  \centering"]
             if part_index == 0:
                 if caption:
-                    out.append(f"  \\caption{{{inline(caption)}}}")
+                    out.append(f"  \\caption[{inline(short_caption(caption))}]{{{inline(caption)}}}")
                 if label:
                     out.append(f"  \\label{{{label}}}")
             else:
@@ -860,7 +883,7 @@ def table_tex(
             for row in part:
                 cells = [inline(c, crossrefs=False) for c in row]
                 cells = [
-                    c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=\linewidth,height=2.2cm,keepaspectratio]")
+                    c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=\linewidth,height=2.05cm,keepaspectratio]")
                     for c in cells
                 ]
                 # Na configuração interna 4, o recorte do cosseno de fase
@@ -869,8 +892,8 @@ def table_tex(
                 # dois exemplos sem alterar as demais imagens do quadro.
                 cells = [
                     c.replace(
-                        r"height=2.2cm,keepaspectratio]{figuras/google-docs/quadro-imagem-049.png}",
-                        r"height=2.35cm,keepaspectratio]{figuras/google-docs/quadro-imagem-049.png}",
+                        r"height=2.05cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
+                        r"height=2.2cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
                     )
                     for c in cells
                 ]
@@ -900,7 +923,7 @@ def table_tex(
             f"\\begin{{longtable}}{{{spec}}}",
         ]
         if caption:
-            out.append(f"  \\caption{{{inline(caption)}}}" + (f"\\label{{{label}}}" if label else "") + r" \\")
+            out.append(f"  \\caption[{inline(short_caption(caption))}]{{{inline(caption)}}}" + (f"\\label{{{label}}}" if label else "") + r" \\")
         elif label:
             out.append(f"  \\label{{{label}}}\\")
         out += [r"    \toprule", header_line, r"    \midrule", r"    \endfirsthead"]
@@ -915,6 +938,8 @@ def table_tex(
         ]
         for row_index, row in enumerate(rows[1:]):
             cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
+            if label in {"tab:resultado-F-1", "tab:resultado-F-2"} and 6 <= row_index <= 11:
+                cells = [f"\\textbf{{{cell}}}" for cell in cells]
             out.append("    " + " & ".join(cells) + r" \\")
             if is_appendix_table and row_index < len(rows[1:]) - 1:
                 out.append(r"    \midrule")
@@ -932,7 +957,7 @@ def table_tex(
     placement = "[H]" if environment == "table" and (is_appendix_table or force_here) else "[htbp]" if environment == "table" else ""
     out = [f"\\begin{{{environment}}}{placement}", r"  \centering"]
     if caption:
-        out.append(f"  \\caption{{{inline(caption)}}}")
+        out.append(f"  \\caption[{inline(short_caption(caption))}]{{{inline(caption)}}}")
     if label:
         out.append(f"  \\label{{{label}}}")
     first_rule = r"    \hline" if environment == "quadro" else r"    \toprule"
@@ -985,16 +1010,27 @@ def parse_markdown(
         mimg = re.search(r"\[image(\d+)\]", s)
         if mimg:
             pending_image = int(mimg.group(1))
-            i += 1
-            continue
+            remainder = re.sub(r"!?\[[^\]]*\]\[image\d+\]", "", s).strip()
+            if not remainder:
+                i += 1
+                continue
+            # Algumas legendas do Docs (notadamente a Figura 26) contêm o
+            # objeto flutuante no fim do mesmo parágrafo. Conserva a imagem
+            # pendente e continua interpretando o texto da legenda.
+            s = remainder
         heading_prefix = appendix_letter or chapter_number
         mbold_heading = re.fullmatch(
             rf"\*\*({re.escape(heading_prefix)}(?:\.\d+)+)\s+(.+?)\*\*",
             s,
         )
-        if mbold_heading:
-            depth = mbold_heading.group(1).count(".")
-            title = inline(mbold_heading.group(2), crossrefs=False)
+        mplain_heading = re.fullmatch(
+            rf"({re.escape(heading_prefix)}(?:\.\d+)+)\s+([^|]+)",
+            s,
+        )
+        numbered_heading = mbold_heading or mplain_heading
+        if numbered_heading:
+            depth = numbered_heading.group(1).count(".")
+            title = inline(numbered_heading.group(2), crossrefs=False)
             command = "section" if depth == 1 else "subsection" if depth == 2 else "subsubsection"
             out += [f"\\{command}{{{title}}}", ""]
             i += 1
@@ -1139,7 +1175,7 @@ def parse_markdown(
                     r"\begin{figure}[htbp]",
                     r"  \centering",
                     r"  \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering IMAGEM PENDENTE NO GOOGLE DOCS}}",
-                    f"  \\caption{{{inline(caption)}}}",
+                    f"  \\caption[{inline(short_caption(caption))}]{{{inline(caption)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
                     *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
                     *([f"  \\nota{{{inline(note_line)}}}"] if note_line else []),
@@ -1156,7 +1192,9 @@ def parse_markdown(
                     else f"figura-{label_number}-{slug(caption)}{ext}"
                 )
                 FIGDIR.mkdir(parents=True, exist_ok=True)
-                (FIGDIR / filename).write_bytes(data)
+                target = FIGDIR / filename
+                if not target.exists() or target.read_bytes() != data:
+                    target.write_bytes(data)
                 landscape_figure = numeric_figure and num in LANDSCAPE_FIGURES
                 if landscape_figure:
                     out.append(r"\begin{landscape}")
@@ -1172,7 +1210,7 @@ def parse_markdown(
                     (f"  \\includegraphics[width=1.03\\linewidth,height={max_height},keepaspectratio]{{figuras/google-docs/{filename}}}"
                      if landscape_figure else
                      f"  \\includegraphics[width=1.03\\textwidth,height={max_height},keepaspectratio]{{figuras/google-docs/{filename}}}"),
-                    f"  \\caption{{{inline(caption)}}}",
+                    f"  \\caption[{inline(short_caption(caption))}]{{{inline(caption)}}}",
                     f"  \\label{{fig:resultado-{label_number}}}",
                     *([r"  \label{fig:velocidade-profundidade-poco}"] if num == 52 else []),
                     *([f"  \\FonteTCC{{{inline(source_line, crossrefs=False)}}}"] if source_line else []),
@@ -1185,7 +1223,8 @@ def parse_markdown(
             pending_image = None
             i = consumed_index
             continue
-        mtab = re.match(r"(Tabela|Quadro)\s+((?:[A-F]\.)?\d+)\s+[—–-]\s*(.*)", s)
+        caption_line = s.strip("*").strip()
+        mtab = re.match(r"(Tabela|Quadro)\s+((?:[A-F]\.)?\d+)\s+[—–-]\s*(.*)", caption_line)
         if mtab:
             kind, n, cap = mtab.group(1), mtab.group(2), mtab.group(3).replace("\\.", ".")
             prefix = "tab" if kind == "Tabela" else "qua"
@@ -1212,7 +1251,9 @@ def parse_markdown(
                                 ext = ".png"
                             filename = f"quadro-imagem-{image_number:03d}{ext}"
                             FIGDIR.mkdir(parents=True, exist_ok=True)
-                            (FIGDIR / filename).write_bytes(data)
+                            target = FIGDIR / filename
+                            if not target.exists() or target.read_bytes() != data:
+                                target.write_bytes(data)
                             return rf"\includegraphics[width=\linewidth]{{figuras/google-docs/{filename}}}"
                         converted.append(re.sub(r"!\[[^\]]*\]\[image(\d+)\]", table_image, cell))
                     cells = converted
@@ -1307,9 +1348,10 @@ def main() -> None:
     for letter, section in appendix_sections.items():
         appendix_tex = parse_markdown(section, images, appendix_letter=letter)
         if letter == "A":
-            appendix_tex = appendix_tex.replace(
-                r"Link: https\://github.com/mariaeulalia2002/codigos\_tcc",
-                r"Link: \url{https://github.com/mariaeulalia2002/codigos_tcc}",
+            appendix_tex = re.sub(
+                r"Link:\s+https:?\\?//github\.com/mariaeulalia2002/codigos\\?_tcc",
+                r"Link: \\url{https://github.com/mariaeulalia2002/codigos_tcc}",
+                appendix_tex,
             )
         APENDICES[letter].write_text(appendix_tex, encoding="utf-8")
     for number, path in CHAPTERS.items():
