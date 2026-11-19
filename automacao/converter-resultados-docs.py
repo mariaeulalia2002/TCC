@@ -531,6 +531,10 @@ def inline(text: str, crossrefs: bool = True) -> str:
     )
     text = re.sub(r"(?<![\w@])find_peaks(?![\w@])", r"\\texttt{find\_peaks}", text)
     if crossrefs:
+        # Esta chamada pertence ao documento externo JCGM (2008), não a uma
+        # seção do TCC, e por isso deve permanecer como número sem hyperlink.
+        external_section = "JCGM (2008, Seção 5.2.2)"
+        text = text.replace(external_section, "@@EXTERNALSECTIONJCGM@@")
         text = re.sub(r"\bFig(?:\.\s*|\s+)", "Figura ", text, flags=re.IGNORECASE)
         text = convert_object_references(text)
         appendix_labels = {
@@ -543,6 +547,36 @@ def inline(text: str, crossrefs: bool = True) -> str:
         }
         for letter, label in appendix_labels.items():
             text = text.replace(f"Apêndice {letter}", rf"Apêndice~\ref{{{label}}}")
+        # Todas as chamadas de seções passam a usar rótulos estáveis e links.
+        # Isso evita que números digitados manualmente fiquem desatualizados
+        # quando uma seção é inserida ou reorganizada no Google Docs.
+        text = text.replace(
+            "Seção de configuração interna 5.2",
+            r"Seção~\ref{sec:5-2}, sobre configuração interna",
+        )
+
+        def plural_section_refs(match: re.Match[str]) -> str:
+            prefix, sequence = match.group(1), match.group(2)
+            converted = re.sub(
+                r"\d+(?:\.\d+)+",
+                lambda number: rf"\ref{{sec:{number.group(0).replace('.', '-')}}}",
+                sequence,
+            )
+            return f"{prefix}~{converted}"
+
+        text = re.sub(
+            r"\b([Ss]eções)\s+(\d+(?:\.\d+)+(?:\s*(?:,|e)\s*\d+(?:\.\d+)+)+)",
+            plural_section_refs,
+            text,
+        )
+        text = re.sub(
+            r"\b([Ss]eção)\s+(\d+(?:\.\d+)+)",
+            lambda match: (
+                rf"{match.group(1)}~\ref{{sec:{match.group(2).replace('.', '-')}}}"
+            ),
+            text,
+        )
+        text = text.replace("@@EXTERNALSECTIONJCGM@@", external_section)
         text = re.sub(
             r"\bTabela\s+([A-F])\.(\d+)",
             r"Tabela~\\ref{tab:resultado-\1-\2}",
@@ -1009,6 +1043,10 @@ def table_tex(
     out += [r"  \small", r"  \setlength{\tabcolsep}{2.5pt}", f"  \\begin{{tabularx}}{{\\textwidth}}{{{spec}}}", first_rule]
     for ri, row in enumerate(rows):
         cells = [inline(c, crossrefs=False) for c in row] + [""] * (cols - len(row))
+        if label in {"tab:resultado-38", "tab:resultado-39"} and ri > 0 and cells:
+            panel = re.fullmatch(r"(83|84)([A-D])", cells[-1].strip())
+            if panel:
+                cells[-1] = rf"\ref{{fig:resultado-{panel.group(1)}}}({panel.group(2).lower()})"
         if label == "qua:resultado-A-1" and cells:
             cells[0] = cells[0].replace(r"\_", r"\_\allowbreak{}")
         if ri == 0:
@@ -1076,10 +1114,14 @@ def parse_markdown(
         )
         numbered_heading = mbold_heading or mplain_heading
         if numbered_heading:
-            depth = numbered_heading.group(1).count(".")
+            heading_number = numbered_heading.group(1)
+            depth = heading_number.count(".")
             title = inline(numbered_heading.group(2), crossrefs=False)
             command = "section" if depth == 1 else "subsection" if depth == 2 else "subsubsection"
-            out += [f"\\{command}{{{title}}}", ""]
+            out += [
+                f"\\{command}{{{title}}}\\label{{sec:{heading_number.replace('.', '-')}}}",
+                "",
+            ]
             i += 1
             continue
         if s.startswith("#"):
@@ -1088,6 +1130,8 @@ def parse_markdown(
             if raw_title.startswith("**") and raw_title.endswith("**"):
                 raw_title = raw_title[2:-2].strip()
             title = clean_heading(s)
+            heading_number_match = re.match(r"^(\d+(?:\.\d+)*)\s+", raw_title)
+            heading_number = heading_number_match.group(1) if heading_number_match else None
             chapter_heading = f"{chapter_number} {chapter_title.upper()}"
             is_appendix_heading = bool(
                 appendix_letter
@@ -1141,14 +1185,17 @@ def parse_markdown(
                     }.get(chapter_number, slug(chapter_title))
                     out += [f"\\chapter{{{chapter_title}}}\\label{{cap:{label}}}", ""]
             elif level == 2:
-                out += [f"\\section{{{inline(title, crossrefs=False)}}}", ""]
+                section_label = f"\\label{{sec:{heading_number.replace('.', '-')}}}" if heading_number else ""
+                out += [f"\\section{{{inline(title, crossrefs=False)}}}{section_label}", ""]
             elif level == 3:
-                out.append(f"\\subsection{{{inline(title, crossrefs=False)}}}")
+                section_label = f"\\label{{sec:{heading_number.replace('.', '-')}}}" if heading_number else ""
+                out.append(f"\\subsection{{{inline(title, crossrefs=False)}}}{section_label}")
                 if title.casefold() == "velocidades utilizadas na análise hvsr".casefold():
                     out.append(r"\label{subsec:resultados-velocidades-hvsr}")
                 out.append("")
             elif level == 4:
-                out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}", ""]
+                section_label = f"\\label{{sec:{heading_number.replace('.', '-')}}}" if heading_number else ""
+                out += [f"\\subsubsection{{{inline(title, crossrefs=False)}}}{section_label}", ""]
             else:
                 out += [f"\\paragraph{{{inline(title, crossrefs=False)}}}", ""]
             i += 1

@@ -1320,7 +1320,7 @@ O volume foi obtido pela conversão da integral da espessura temporal sobre a á
 
 uI=Aut,esp, [27]
 
-em que A é a área do depósito, em metros quadrados, e uI é a componente de incerteza da integral temporal, em ms·m². Essa escolha corresponde à adoção de uma componente temporal representativa comum a toda a área, equivalente à hipótese de correlação espacial positiva perfeita dessa contribuição, sem redução pelo número de células. Nesse caso, as contribuições à incerteza da integral se combinam linearmente, conforme o tratamento apresentado pelo JCGM (2008, Seção 5.2.2) A incerteza do volume foi calculada combinando as contribuições da integral temporal e da velocidade, por propagação de primeira ordem (Taylor, 1997):
+em que A é a área do depósito, em metros quadrados, e uI é a componente de incerteza da integral temporal, em ms·m². Essa escolha corresponde à adoção de uma componente temporal representativa comum a toda a área, equivalente à hipótese de correlação espacial positiva perfeita dessa contribuição, sem redução pelo número de células. Nesse caso, as contribuições à incerteza da integral se combinam linearmente, conforme o tratamento apresentado pelo JCGM (2008, Seção 5.2.2). A incerteza do volume foi calculada combinando as contribuições da integral temporal e da velocidade, por propagação de primeira ordem (Taylor, 1997):
 
 uV=veuI2×10122+Iuv,e2×10122, [28]
 
@@ -2600,7 +2600,7 @@ Quadro 2 — Síntese da classificação dos depósitos e complexos de transport
 
 ### 5.10.1 Frequências e curvas HVSR
 
-Foram gerada oito curvas HVSR, quatro para cada data analisada (01/02/2020 e 29/02/2020), combinando janelas de 120 s e 1.800 s com as suavizações de Konno–Ohmachi e Parzen. As estimativas da frequência fundamental (f₀) e da dispersão das frequências de pico são apresentadas nas Tabelas 38 e 39, conforme o procedimento descrito na Seção 4.6.1.
+Foram geradas oito curvas HVSR, quatro para cada data analisada (01/02/2020 e 29/02/2020), combinando janelas de 120 s e 1.800 s com as suavizações de Konno–Ohmachi e Parzen. As estimativas da frequência fundamental (f₀) e da dispersão das frequências de pico são apresentadas nas Tabelas 38 e 39, conforme o procedimento descrito na Seção 4.6.1. As curvas correspondentes às duas datas são apresentadas nas Figuras 83 e 84, respectivamente.
 
 ![Imagem][image95]
 
@@ -3288,7 +3288,7 @@ Link: [https://github.com/mariaeulalia2002/codigos_tcc](https://github.com/maria
 
 # APÊNDICE B — LOCALIZAÇÃO DAS MEDIDAS DE COMPRIMENTO E LARGURA
 
-Este apêndice apresenta a localização dos segmentos utilizados na determinação do comprimento longitudinal máximo (Lₜ) e da largura transversal máxima (Wₑ) de cada depósito e evento. Nas representações, os segmentos de comprimento são indicados em preto e os segmentos de largura em branco. Os valores resultantes dessas medições são apresentados nas respectivas tabelas do capítulo de resultados.
+Este apêndice apresenta a localização dos segmentos utilizados na determinação do comprimento longitudinal máximo (Lₜ) e da largura transversal máxima (Wₑ) de cada depósito e evento. Nas representações, os segmentos de comprimento são indicados em preto e os segmentos de largura em branco. A Figura B.1 reúne a localização dos segmentos utilizados nas medições. Os valores resultantes dessas medições são apresentados nas respectivas tabelas do capítulo de resultados.
 
 ![Imagem][image101]
 
