@@ -869,8 +869,14 @@ def table_tex(
                     r"|>{\raggedright\arraybackslash}p{0.20\linewidth}"
                     r"|>{\centering\arraybackslash}p{0.25\linewidth}|"
                 )
-        midpoint = (len(body) + 1) // 2
-        parts = [body[:midpoint], body[midpoint:]]
+        if label == "qua:resultado-1":
+            # Duas configurações por página deixam espaço para manter cada
+            # par amplitude/cosseno na largura integral da célula, como no
+            # Google Docs, sem reduzir nem ultrapassar as linhas do quadro.
+            parts = [body[index:index + 2] for index in range(0, len(body), 2)]
+        else:
+            midpoint = (len(body) + 1) // 2
+            parts = [body[:midpoint], body[midpoint:]]
         out: list[str] = []
         if quadro_landscape:
             # Um único ambiente paisagem para as duas partes evita a página
@@ -901,7 +907,7 @@ def table_tex(
                 cells = [inline(c, crossrefs=False) for c in row]
                 if label == "qua:resultado-1":
                     cells = [
-                        c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=0.98\linewidth,height=2.05cm,keepaspectratio]")
+                        c.replace(r"\includegraphics[width=\linewidth]", r"\includegraphics[width=0.95\linewidth,keepaspectratio]")
                         for c in cells
                     ]
                 else:
@@ -913,10 +919,7 @@ def table_tex(
                 # possui proporção mais baixa que o recorte de amplitude e
                 # ficava visualmente menor. Um acréscimo discreto equaliza os
                 # dois exemplos sem alterar as demais imagens do quadro.
-                if label == "qua:resultado-1":
-                    # O exemplo de cosseno da configuração 4 tem proporção
-                    # mais baixa; o pequeno acréscimo o aproxima visualmente
-                    # do exemplo de amplitude, como solicitado na revisão.
+                if label != "qua:resultado-1":
                     cells = [
                         c.replace(
                             r"height=2.05cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
@@ -924,14 +927,16 @@ def table_tex(
                         )
                         for c in cells
                     ]
-                else:
-                    cells = [
-                        c.replace(
-                            r"height=2.05cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
-                            r"height=2.2cm,keepaspectratio]{figuras/google-docs/quadro-imagem-050.png}",
-                        )
-                        for c in cells
-                    ]
+                if label == "qua:resultado-1" and len(cells) >= 4:
+                    # Mantém os recortes afastados das linhas horizontais da
+                    # célula sem alterar sua escala. O preenchimento também
+                    # aumenta discretamente a altura de cada configuração.
+                    cells[3] = (
+                        r"\begin{minipage}[c]{\linewidth}\centering"
+                        r"\vspace*{0.14cm}\par "
+                        + cells[3]
+                        + r"\par\vspace*{0.14cm}\end{minipage}"
+                    )
                 out.append("    " + " & ".join(cells) + r" \\ \hline")
             out += [
                 r"  \end{tabularx}",

@@ -14,6 +14,7 @@
 \RequirePackage{geometry}
 \geometry{a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,headsep=0.8cm}
 \RequirePackage{microtype}
+\RequirePackage{ragged2e}
 \RequirePackage{indentfirst}
 \RequirePackage{graphicx}
 \graphicspath{{figuras/}}
@@ -70,6 +71,10 @@
 \setlength{\floatsep}{12pt plus 2pt minus 2pt}
 \setlength{\abovecaptionskip}{5pt}
 \setlength{\belowcaptionskip}{0pt}
+
+% A lista de referências deve conservar o alinhamento justificado do texto,
+% em vez do alinhamento irregular à direita aplicado pelo estilo bibliográfico.
+\AtBeginEnvironment{thebibliography}{\justifying}
 
 % Mantém cada figura e tabela dentro da seção em que foi inserida. Sem essas
 % barreiras, o mecanismo de floats pode empurrar uma ilustração para um
