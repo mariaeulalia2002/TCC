@@ -171,8 +171,9 @@
 \newcommand{\equationdescription}[1]{%
   \addcontentsline{loe}{equation}{\protect\numberline{Equação~\theequation}#1}%
 }
-% Equações centralizadas, com vírgula antes da numeração entre colchetes.
-\renewcommand{\tagform@}[1]{\maketag@@@{,\ [#1]}}
+% Equações centralizadas, com numeração entre colchetes. A pontuação integra
+% a expressão matemática, imediatamente após a equação, e não a etiqueta.
+\renewcommand{\tagform@}[1]{\maketag@@@{[#1]}}
 \makeatother
 
 \newenvironment{paisagem}{\begin{landscape}}{\end{landscape}}

@@ -17,11 +17,12 @@ Atributos sísmicos são grandezas extraídas ou calculadas a partir dos dados s
 Tal atributo é obtido a partir do cálculo do cosseno da fase instantânea do sinal sísmico, conforme a seguinte equação:
 
 \begin{equation}
-  C(t)=\cos\bigl(\phi(t)\bigr)
+  C(t)=\cos\bigl(\phi(t)\bigr),
   \label{eq:cosseno-fase}
 \end{equation}
 \equationdescription{Cosseno da fase instantânea}
 
+\noindent
 em que C(t) corresponde ao cosseno da fase instantânea e φ(t) representa a fase instantânea do sinal sísmico no tempo t. A fase instantânea é determinada a partir do sinal analítico, cuja parte imaginária é obtida por meio da transformada de Hilbert. Esse procedimento permite separar as informações de fase e amplitude do traço sísmico \cite{chopra2007}. O cálculo do cosseno da fase torna-se, assim, independente dos valores de amplitude, promovendo a normalização do traço sísmico e reduzindo as variações relacionadas à intensidade do sinal \cite{meneses2010}.
 
 Dessa forma, o cosseno da fase instantânea contribui para realçar a continuidade lateral dos refletores, as mudanças no padrão de acamadamento e os limites entre sequências sísmicas, auxiliando a interpretação estratigráfica e estrutural dos dados \cite{alvarenga2016}.
@@ -113,11 +114,12 @@ Neste trabalho, MTD será adotado como denominação padrão para unidades inter
 A estabilidade dos taludes submarinos pode ser modificada por processos como acúmulo sedimentar, erosão, terremotos, deformação tectônica e migração de fluidos, que aumentam os esforços atuantes ou reduzem a resistência dos materiais \cite{hampton1996}. A relação entre a resistência disponível e a tensão cisalhante mobilizada ao longo de uma superfície potencial de ruptura pode ser expressa pelo fator de segurança (FS), definido pela razão entre a resistência disponível ao cisalhamento e a tensão cisalhante mobilizada ao longo de uma superfície potencial de ruptura.
 
 \begin{equation}
-  FS=\frac{\tau_f}{\tau_m}
+  FS=\frac{\tau_f}{\tau_m},
   \label{eq:fator-seguranca}
 \end{equation}
 \equationdescription{Fator de segurança}
 
+\noindent
 onde:
 
 \begin{itemize}
@@ -131,11 +133,12 @@ Quando FS é superior a 1, a resistência disponível excede a tensão mobilizad
 A resistência ao cisalhamento pode ser descrita pelo critério de Mohr--Coulomb \cite{caputo1988}:
 
 \begin{equation}
-  \tau_f=c'+\sigma'_n\tan\varphi'
+  \tau_f=c'+\sigma'_n\tan\varphi',
   \label{eq:mohr-coulomb}
 \end{equation}
 \equationdescription{Critério de ruptura de Mohr--Coulomb}
 
+\noindent
 em que:
 
 \begin{itemize}
@@ -151,11 +154,12 @@ A coesão está relacionada às forças que mantêm as partículas unidas, como 
 Como os sedimentos marinhos estão saturados, parte da tensão total aplicada ao pacote sedimentar é sustentada pelo fluido presente nos poros. De acordo com o princípio da tensão efetiva de \citeonline{terzaghi1925}, a tensão normal efetiva pode ser expressa por:
 
 \begin{equation}
-  \sigma'_n=\sigma_n-u
+  \sigma'_n=\sigma_n-u,
   \label{eq:tensao-efetiva}
 \end{equation}
 \equationdescription{Tensão normal efetiva}
 
+\noindent
 em que:
 
 \begin{itemize}
@@ -167,19 +171,21 @@ em que:
 Substituindo a expressão da tensão efetiva da Equação~\eqref{eq:tensao-efetiva} no critério de Mohr-Coulomb da Equação~\eqref{eq:mohr-coulomb}, obtém-se:
 
 \begin{equation}
-  \tau_f=c'+(\sigma_n-u)\tan\varphi'
+  \tau_f=c'+(\sigma_n-u)\tan\varphi',
   \label{eq:mohr-coulomb-poropressao}
 \end{equation}
 \equationdescription{Resistência ao cisalhamento em função da poropressão}
 
+\noindent
 Com isso, o fator de segurança pode ser representado de forma simplificada por \cite{caputo1988}:
 
 \begin{equation}
-  FS=\frac{c'+(\sigma_n-u)\tan\varphi'}{\tau_m}
+  FS=\frac{c'+(\sigma_n-u)\tan\varphi'}{\tau_m},
   \label{eq:fator-seguranca-completo}
 \end{equation}
 \equationdescription{Fator de segurança em função da poropressão}
 
+\noindent
 As forças atuantes sobre um bloco sedimentar em um talude e o equilíbrio entre a componente tangencial do peso e a resistência ao cisalhamento são representados na Figura~\ref{fig:resultado-6}(a). Nos sedimentos saturados, a água ocupa os espaços entre os grãos e o excesso de poropressão reduz o contato efetivo entre eles, como ilustrado na Figura~\ref{fig:resultado-6}(b). Assim, o aumento da poropressão reduz a tensão efetiva e, consequentemente, a resistência ao cisalhamento. Quando a poropressão se aproxima da tensão normal total, mesmo pequenas elevações da tensão cisalhante podem levar o sedimento à ruptura \cite{hampton1996,talling2014}.
 
 \begin{figure}[htbp]

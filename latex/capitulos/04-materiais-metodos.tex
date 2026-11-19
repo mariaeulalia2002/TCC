@@ -85,7 +85,7 @@ As medidas foram inicialmente obtidas em unidades horizontais métricas e em tem
 A espessura em tempo foi calculada na aba \textit{Operations} , do \textit{Petrel®}, subtraindo-se a superfície de base da superfície de topo. As superfícies utilizadas nas operações apresentavam valores negativos de TWT, tornando-se mais negativos com o aumento da profundidade.
 
 \begin{equation}
-  \Delta t(x,y)=t_{\mathrm{topo}}(x,y)-t_{\mathrm{base}}(x,y)
+  \Delta t(x,y)=t_{\mathrm{topo}}(x,y)-t_{\mathrm{base}}(x,y).
   \label{eq:espessura-temporal}
 \end{equation}
 \equationdescription{Espessura temporal da isócrona}
@@ -119,7 +119,7 @@ Nos corpos cuja continuidade ultrapassa ou possivelmente ultrapassa a cobertura 
 A altura total de queda Hₜ corresponde ao desnível vertical entre o topo da cicatriz (A) e a base do depósito em sua terminação distal (C), conforme \citeonline{clare2018}. Os extremos foram selecionados na interpretação sísmica, considerando sua correspondência com o eixo de transporte traçado em planta. Inicialmente, foi calculada a diferença temporal entre os pontos:
 
 \begin{equation}
-  t_t=t_C-t_A
+  t_t=t_C-t_A.
   \label{eq:diferenca-altura-total}
 \end{equation}
 \equationdescription{Diferença temporal da altura total de queda}
@@ -129,7 +129,7 @@ Para a obtenção do desnível em metros, os pontos A e C foram convertidos indi
 A altura total de queda foi calculada por:
 
 \begin{equation}
-  H_t=\lvert z_C-z_A\rvert
+  H_t=\lvert z_C-z_A\rvert.
   \label{eq:altura-total}
 \end{equation}
 \equationdescription{Altura total de queda}
@@ -145,7 +145,7 @@ Para cada evento, foram examinados três perfis, posicionados nos setores esquer
 Nas anotações desses perfis, os limites superior e inferior foram chamados de A e B. Para distingui-los dos pontos do eixo longitudinal, são indicados aqui como As e Bs:
 
 \begin{equation}
-  H_s=z_{B_s}-z_{A_s}
+  H_s=z_{B_s}-z_{A_s}.
   \label{eq:altura-cicatriz}
 \end{equation}
 \equationdescription{Altura da cicatriz}
@@ -153,7 +153,7 @@ Nas anotações desses perfis, os limites superior e inferior foram chamados de 
 A inclinação máxima da cicatriz foi determinada separadamente. Dentro do intervalo As--Bs, foram selecionados os pontos P e Q, delimitando o trecho contínuo de maior gradiente. O desnível e a distância horizontal desse trecho foram utilizados para calcular:
 
 \begin{equation}
-  S_s=\arctan\!\left(\frac{\lvert z_Q-z_P\rvert}{L_{P-Q}}\right)\frac{180}{\pi}
+  S_s=\arctan\!\left(\frac{\lvert z_Q-z_P\rvert}{L_{P-Q}}\right)\frac{180}{\pi}.
   \label{eq:inclinacao-cicatriz}
 \end{equation}
 \equationdescription{Inclinação máxima da cicatriz}
@@ -176,7 +176,7 @@ No \textit{Petrel®}, foram selecionados dois pontos, P1 e P2, sobre o mesmo ref
 A inclinação foi obtida pela razão entre o desnível convertido e a distância horizontal:
 
 \begin{equation}
-  S=\arctan\!\left(\frac{\lvert z_{P2}-z_{P1}\rvert}{L_{P1-P2}}\right)\frac{180}{\pi}
+  S=\arctan\!\left(\frac{\lvert z_{P2}-z_{P1}\rvert}{L_{P1-P2}}\right)\frac{180}{\pi}.
   \label{eq:inclinacao-declive}
 \end{equation}
 \equationdescription{Inclinação do declive não deformado}
@@ -192,7 +192,7 @@ O cálculo utilizou apenas o trecho externo ao depósito, delimitado pelos ponto
 Foram registrados as coordenadas, o TWT do refletor e o TWT do fundo marinho em cada posição. Após a conversão individual das profundidades:
 
 \begin{equation}
-  S_t=\arctan\!\left(\frac{\lvert z_{P4}-z_{P3}\rvert}{L_{P3-P4}}\right)\frac{180}{\pi}
+  S_t=\arctan\!\left(\frac{\lvert z_{P4}-z_{P3}\rvert}{L_{P3-P4}}\right)\frac{180}{\pi}.
   \label{eq:inclinacao-superficie-receptora}
 \end{equation}
 \equationdescription{Inclinação da superfície receptora}
@@ -218,22 +218,24 @@ Os valores originais e os resultados dos três procedimentos de suavização ava
 Por meio de uma rotina em \textit{Python®}, disponibilizada no repositório indicado no Apêndice~\ref{ap:codigos}, as profundidades dos pontos de controle foram referenciadas ao fundo marinho. Entre o fundo marinho e o primeiro controle disponível, adotou-se como constante a velocidade mais rasa. A partir do primeiro controle, as velocidades foram interpoladas linearmente entre profundidades consecutivas. Para construir a relação cumulativa entre TWT e profundidade, o perfil do poço 1-BRSA-137-RJS foi discretizado com passo vertical de 0,01 m. Em cada incremento, utilizou-se a média das velocidades interpoladas em seus dois extremos. O acréscimo de tempo duplo de percurso foi calculado por:
 
 \begin{equation}
-  \Delta t_i=\frac{2000\,\Delta z_i}{\overline{v}_i}
+  \Delta t_i=\frac{2000\,\Delta z_i}{\overline{v}_i},
   \label{eq:acrescimo-twt}
 \end{equation}
 \equationdescription{Acréscimo de TWT no modelo de velocidade do poço 137}
 
+\noindent
 em que ΔTj é o acréscimo de TWT no intervalo j, em milissegundos; Δzj é a sua espessura , em metros; e vjé a média das velocidades nos dois extremos do intervalo. O fator 2000 contempla a conversão de segundos para milissegundos e o percurso de ida e volta da onda. Os acréscimos foram acumulados a partir do fundo marinho, estabelecendo a relação entre TWT e profundidade abaixo dessa superfície.
 
 No poço 1-BRSA-127-RJS, as velocidades intervalares foram calculadas a partir das diferenças de profundidade e dos tempos duplos correspondentes, obtidos no relatório do poço:
 
 \begin{equation}
-  v_{\mathrm{int}}=\frac{2000(z_2-z_1)}{t_2-t_1}
+  v_{\mathrm{int}}=\frac{2000(z_2-z_1)}{t_2-t_1},
   \label{eq:velocidade-intervalar}
 \end{equation}
 \equationdescription{Velocidade intervalar no poço 127}
 
-Em que z₁ e z₂ são as profundidades, em metros, e t₁ e t₂, os tempos duplos, em milissegundos. O fator 2000 incorpora a conversão de milissegundos para segundos e o percurso de ida e volta da onda. No intervalo entre 1.854 e 2.059 m, correspondente a aproximadamente 23--228 m abaixo do fundo marinho, os tempos de 2.425,68 e 2.693,94 ms forneceram uma velocidade intervalar de 1.528,4 m/s. Essa velocidade também foi adotada no trecho de aproximadamente 23 m entre o fundo marinho e o primeiro controle. Nos demais intervalos disponíveis, as velocidades foram consideradas constantes dentro de seus respectivos limites. A relação cumulativa entre TWT e profundidade foi construída pela soma dos tempos de percurso das camadas, calculados pela Equação~\eqref{eq:acrescimo-twt} a partir de suas espessuras e velocidades constantes, utilizando os controles apresentados na Tabela~\ref{tab:resultado-D-1}.
+\noindent
+em que z₁ e z₂ são as profundidades, em metros, e t₁ e t₂, os tempos duplos, em milissegundos. O fator 2000 incorpora a conversão de milissegundos para segundos e o percurso de ida e volta da onda. No intervalo entre 1.854 e 2.059 m, correspondente a aproximadamente 23--228 m abaixo do fundo marinho, os tempos de 2.425,68 e 2.693,94 ms forneceram uma velocidade intervalar de 1.528,4 m/s. Essa velocidade também foi adotada no trecho de aproximadamente 23 m entre o fundo marinho e o primeiro controle. Nos demais intervalos disponíveis, as velocidades foram consideradas constantes dentro de seus respectivos limites. A relação cumulativa entre TWT e profundidade foi construída pela soma dos tempos de percurso das camadas, calculados pela Equação~\eqref{eq:acrescimo-twt} a partir de suas espessuras e velocidades constantes, utilizando os controles apresentados na Tabela~\ref{tab:resultado-D-1}.
 
 Para cada evento, os tempos duplos médios do topo e da base, referenciados ao fundo marinho, foram localizados nas relações cumulativas dos dois poços, obtendo-se as profundidades correspondentes por interpolação linear. A velocidade equivalente foi então calculada pela Equação~\eqref{eq:velocidade-intervalar}, a partir das diferenças de profundidade e de TWT entre esses limites. A seleção considerou a posição temporal dos eventos abaixo do fundo marinho, sem pressupor correlação de idade ou litologia entre os depósitos e os poços.
 
@@ -244,12 +246,13 @@ O poço 3-BRSA-944A-RJS também foi avaliado, mas não integrou a estimativa cen
 As velocidades equivalentes dos dois poços foram combinadas pelo inverso da distância, segundo o princípio de atribuir maior influência aos controles espacialmente mais próximos, empregado nos métodos de ponderação por distância \cite{shepard1968}. Neste trabalho, adotou-se expoente igual a um e utilizaram-se as distâncias horizontais entre os poços e o ponto central de cada depósito:
 
 \begin{equation}
-  \overline{v}_e=\frac{\sum_i v_{i,e}/d_{i,e}}{\sum_i 1/d_{i,e}}
+  \overline{v}_e=\frac{\sum_i v_{i,e}/d_{i,e}}{\sum_i 1/d_{i,e}},
   \label{eq:velocidade-ponderada}
 \end{equation}
 \equationdescription{Velocidade ponderada pelo inverso da distância}
 
-Em que vi,e é a velocidade equivalente do intervalo do evento e no poço i, e di,e, a distância horizontal entre esse poço e o ponto central do depósito.
+\noindent
+em que vi,e é a velocidade equivalente do intervalo do evento e no poço i, e di,e, a distância horizontal entre esse poço e o ponto central do depósito.
 
 Os eventos pertencentes a um mesmo complexo foram tratados individualmente, considerando seus respectivos intervalos temporais e as distâncias aos poços. Para cada evento, obteve-se uma velocidade ponderada, aplicada de forma espacialmente constante à conversão das medidas morfométricas. As distâncias, os pesos normalizados, as velocidades equivalentes de cada poço e as velocidades ponderadas adotadas são apresentados nas Tabelas~\ref{tab:resultado-D-3} e \ref{tab:resultado-D-4}.
 
@@ -258,12 +261,13 @@ Os eventos pertencentes a um mesmo complexo foram tratados individualmente, cons
 As espessuras dos eventos foram convertidas utilizando a diferença de TWT entre topo e base e a velocidade ponderada do respectivo evento:
 
 \begin{equation}
-  h=\frac{\lvert t_{\mathrm{base}}-t_{\mathrm{topo}}\rvert\,\overline{v}_e}{2000}
+  h=\frac{\lvert t_{\mathrm{base}}-t_{\mathrm{topo}}\rvert\,\overline{v}_e}{2000},
   \label{eq:conversao-espessura}
 \end{equation}
 \equationdescription{Conversão da espessura temporal em profundidade}
 
-Em que h é a espessura, em metros; tbase e ttopo são os tempos duplos de percurso da base e do topo, em milissegundos; e v̄ₑ é a velocidade ponderada do evento, em metros por segundo. O módulo da diferença temporal permite expressar a espessura positiva para horizontes ordenados de acordo com sua posição estratigráfica, independentemente da convenção de sinal utilizada na exportação. A relação foi aplicada às espessuras mínima, média e máxima.
+\noindent
+em que h é a espessura, em metros; tbase e ttopo são os tempos duplos de percurso da base e do topo, em milissegundos; e v̄ₑ é a velocidade ponderada do evento, em metros por segundo. O módulo da diferença temporal permite expressar a espessura positiva para horizontes ordenados de acordo com sua posição estratigráfica, independentemente da convenção de sinal utilizada na exportação. A relação foi aplicada às espessuras mínima, média e máxima.
 
 O volume foi calculado pela integração da espessura convertida sobre a área do depósito. Como a velocidade foi mantida constante em cada evento, essa operação equivale a multiplicar a integral da espessura temporal pelo fator (v̄ₑ/2000), obtendo-se o volume em metros cúbicos quando a área é expressa em metros quadrados.
 
@@ -274,22 +278,24 @@ O soterramento do topo foi calculado a partir da diferença de TWT entre o topo 
 Para a coluna d’água, adotou-se a velocidade constante de 1.500 m/s, conforme a aproximação empregada por \citeonline{kearey2009} no cálculo da profundidade do fundo marinho. A dependência dessa velocidade em relação à temperatura, à salinidade e à profundidade é descrita por \citeonline{mackenzie1981}. O valor adotado foi utilizado na conversão dos tempos e dos desníveis dos perfis de cicatrizes medidos sobre o horizonte do fundo marinho:
 
 \begin{equation}
-  z_{\mathrm{agua}}=\frac{1500\,t_{\mathrm{agua}}}{2000}
+  z_{\mathrm{agua}}=\frac{1500\,t_{\mathrm{agua}}}{2000},
   \label{eq:conversao-agua}
 \end{equation}
 \equationdescription{Conversão do TWT na coluna d'água em profundidade}
 
-Em que z é a profundidade em metros e t, o TWT em milissegundos. Para as alturas e os desníveis, utilizou-se a diferença de TWT entre os pontos correspondentes.
+\noindent
+em que z é a profundidade em metros e t, o TWT em milissegundos. Para as alturas e os desníveis, utilizou-se a diferença de TWT entre os pontos correspondentes.
 
 Para pontos soterrados, a profundidade foi calculada separando o percurso na água do percurso nos sedimentos:
 
 \begin{equation}
-  z_P=\frac{1500\,t_{\mathrm{fundo},P}+\overline{v}_e(t_P-t_{\mathrm{fundo},P})}{2000}
+  z_P=\frac{1500\,t_{\mathrm{fundo},P}+\overline{v}_e(t_P-t_{\mathrm{fundo},P})}{2000},
   \label{eq:profundidade-ponto}
 \end{equation}
 \equationdescription{Profundidade de ponto soterrado}
 
-Em que ZP é a profundidade do ponto interpretado, em metros; tP o tempo do ponto interpretado; e tfundo,P, o tempo do fundo marinho na mesma posição, ambos expressos como TWT positivo em milissegundos; e ve é a velocidade ponderada do evento, em metros por segundo. Quando o ponto coincide com o fundo marinho, seu tempo duplo de percurso é igual ao do fundo na mesma posição, e a parcela correspondente ao percurso nos sedimentos é nula. Essa separação foi utilizada para obter as profundidades dos pontos A, B e C e, posteriormente, calcular a altura total de queda. Também foi aplicada aos pontos dos perfis do declive não deformado e da superfície receptora à frente do pé do depósito, cujos tempos foram lidos diretamente na sísmica. As inclinações foram calculadas a partir dos desníveis convertidos e das respectivas distâncias horizontais. As medidas em TWT foram mantidas como referência para a apresentação dos resultados, juntamente com os valores convertidos. As implicações dos parâmetros adotados na conversão são discutidas na Seção~\ref{sec:6-10-2}.
+\noindent
+em que ZP é a profundidade do ponto interpretado, em metros; tP o tempo do ponto interpretado; e tfundo,P, o tempo do fundo marinho na mesma posição, ambos expressos como TWT positivo em milissegundos; e ve é a velocidade ponderada do evento, em metros por segundo. Quando o ponto coincide com o fundo marinho, seu tempo duplo de percurso é igual ao do fundo na mesma posição, e a parcela correspondente ao percurso nos sedimentos é nula. Essa separação foi utilizada para obter as profundidades dos pontos A, B e C e, posteriormente, calcular a altura total de queda. Também foi aplicada aos pontos dos perfis do declive não deformado e da superfície receptora à frente do pé do depósito, cujos tempos foram lidos diretamente na sísmica. As inclinações foram calculadas a partir dos desníveis convertidos e das respectivas distâncias horizontais. As medidas em TWT foram mantidas como referência para a apresentação dos resultados, juntamente com os valores convertidos. As implicações dos parâmetros adotados na conversão são discutidas na Seção~\ref{sec:6-10-2}.
 
 \subsection{Incertezas nas medidas morfométricas}\label{sec:4-3-9}
 
@@ -310,11 +316,12 @@ Neste trabalho, a repetibilidade foi avaliada em 12 pontos distribuídos entre d
 A média das diferenças foi de aproximadamente 0,15 ms, e seu desvio-padrão foi de aproximadamente 0,54 ms. Como cada diferença reúne a variabilidade de duas marcações, estimou-se a componente correspondente a uma única marcação dividindo esse desvio-padrão por 2, sob a hipótese de erros independentes e de igual variância nas duas interpretações \cite{taylor1997}:
 
 \begin{equation}
-  u_{\mathrm{pick}}=\frac{s_d}{\sqrt{2}}
+  u_{\mathrm{pick}}=\frac{s_d}{\sqrt{2}},
   \label{eq:repetibilidade}
 \end{equation}
 \equationdescription{Incerteza de repetibilidade da interpretação}
 
+\noindent
 em que sd é o desvio-padrão das diferenças entre as duas interpretações, em milissegundos. Nos cálculos, utilizou-se upick=0,54/2≈0,38184 ms, apresentado de forma arredondada como 0,4 ms.
 
 \paragraph{Interpolação das superfícies}
@@ -322,11 +329,12 @@ em que sd é o desvio-padrão das diferenças entre as duas interpretações, em
 A variância de krigagem expressa a variância de estimativa associada ao modelo geoestatístico \cite{isaaks1989}. Seu uso na avaliação da incerteza de superfícies sísmicas é exemplificado por Claprood \textit{et al.} (2011), que empregaram krigagem com tendência externa na conversão de horizontes para profundidade Neste trabalho, adotou-se a raiz quadrada de sua média em cada superfície de topo ou base como componente temporal representativa da interpolação:
 
 \begin{equation}
-  u_{\mathrm{interp},j}=\sqrt{K_j}
+  u_{\mathrm{interp},j}=\sqrt{K_j},
   \label{eq:interpolacao}
 \end{equation}
 \equationdescription{Incerteza de interpolação}
 
+\noindent
 em que Kj é a variância média de krigagem da superfície j, em ms², e uinterp,j é sua componente temporal, em milissegundos. Foram utilizados valores separados para topo e base de cada evento. Para o fundo marinho, adotou-se uf=0,09826 ms, correspondente à raiz do erro quadrático médio (RMSE) da superfície obtido no \textit{Surfer®}.
 
 \paragraph{Velocidade de conversão}
@@ -334,11 +342,12 @@ em que Kj é a variância média de krigagem da superfície j, em ms², e uinter
 A incerteza das velocidades utilizadas na conversão tempo--profundidade repercute nas profundidades estimadas dos horizontes sísmicos, como demonstrado por Michelioudakis \textit{et al. }(2018). A componente de incerteza de velocidade foi estimada pela dispersão ponderada das velocidades equivalentes dos poços em torno da velocidade adotada para cada evento. O cálculo baseou-se na definição de variância para distribuições discretas apresentada por \citeonline{illowsky2023}, utilizando, neste trabalho, os pesos normalizados pelo inverso da distância. Essa escolha permitiu representar a diferença entre os controles de velocidade disponíveis, preservando a influência relativa de cada poço empregada na conversão tempo--profundidade. A dispersão resultante foi adotada como componente operacional de incerteza da velocidade:
 
 \begin{equation}
-  u_v=\sqrt{\sum_i p_i(v_i-\overline{v}_e)^2}
+  u_v=\sqrt{\sum_i p_i(v_i-\overline{v}_e)^2},
   \label{eq:dispersao-velocidade}
 \end{equation}
 \equationdescription{Dispersão ponderada da velocidade}
 
+\noindent
 em que vi é a velocidade equivalente no poço i, ve é a velocidade ponderada do evento e pi é o peso normalizado do poço. Foram mantidos os pesos pelo inverso da distância utilizados na Seção~\ref{sec:4-3-8-2}, cuja soma é igual a um. A dispersão foi utilizada diretamente, sem divisão pela raiz do número de poços. As velocidades e os pesos encontram-se no Apêndice~\ref{ap:distancias-velocidades}.
 
 \subsubsection{Propagação para as medidas morfométricas}\label{sec:4-3-9-2}
@@ -346,11 +355,12 @@ em que vi é a velocidade equivalente no poço i, ve é a velocidade ponderada d
 As componentes de incerteza listadas anteriormente foram combinadas pela propagação de primeira ordem, considerando independência entre as entradas e sem inclusão de covariâncias, conforme \citeonline{taylor1997}:
 
 \begin{equation}
-  u_F=\sqrt{\sum_i\left(\frac{\partial F}{\partial x_i}\right)^2u_{x_i}^2}
+  u_F=\sqrt{\sum_i\left(\frac{\partial F}{\partial x_i}\right)^2u_{x_i}^2},
   \label{eq:propagacao-geral}
 \end{equation}
 \equationdescription{Propagação geral de incertezas}
 
+\noindent
 em que F é a medida calculada, xi são suas variáveis de entrada e uxi são as respectivas componentes de incerteza. Essa expressão combina a contribuição de cada variável conforme sua influência sobre a medida final.
 
 \paragraph{Espessuras e soterramentos}
@@ -358,29 +368,32 @@ em que F é a medida calculada, xi são suas variáveis de entrada e uxi são as
 Primeiro, foram combinadas as componentes de incerteza temporais dos horizontes envolvidos. Para a espessura, foram consideradas a interpretação do topo e da base e a interpolação de ambas as superfícies:
 
 \begin{equation}
-  u_{t,\mathrm{esp}}=\sqrt{2u_{\mathrm{pick}}^2+K_{\mathrm{topo}}+K_{\mathrm{base}}}
+  u_{t,\mathrm{esp}}=\sqrt{2u_{\mathrm{pick}}^2+K_{\mathrm{topo}}+K_{\mathrm{base}}},
   \label{eq:incerteza-temporal-espessura}
 \end{equation}
 \equationdescription{Incerteza temporal da espessura}
 
+\noindent
 O fator dois corresponde às duas interpretações, uma do topo e outra da base. Para o soterramento do topo, foram combinadas a interpretação e a interpolação do topo com a componente temporal do fundo marinho:
 
 \begin{equation}
-  u_{t,\mathrm{sot}}=\sqrt{u_{\mathrm{pick}}^2+K_{\mathrm{topo}}+u_f^2}
+  u_{t,\mathrm{sot}}=\sqrt{u_{\mathrm{pick}}^2+K_{\mathrm{topo}}+u_f^2},
   \label{eq:incerteza-temporal-soterramento}
 \end{equation}
 \equationdescription{Incerteza temporal do soterramento}
 
+\noindent
 em que Ktopo e Kbase são as variâncias médias de krigagem, em ms², e uf é a componente temporal do fundo marinho, em milissegundos.
 
 Em seguida, a componente temporal foi combinada à componente de velocidade. Para uma medida convertida pela relação z=vet/2000, a incerteza em metros foi calculada por:
 
 \begin{equation}
-  u_z=\sqrt{\left(\frac{\overline{v}_e u_t}{2000}\right)^2+\left(\frac{t u_v}{2000}\right)^2}
+  u_z=\sqrt{\left(\frac{\overline{v}_e u_t}{2000}\right)^2+\left(\frac{t u_v}{2000}\right)^2},
   \label{eq:incerteza-profundidade}
 \end{equation}
 \equationdescription{Incerteza da medida convertida em profundidade}
 
+\noindent
 em que t é o intervalo de TWT utilizado no cálculo, em milissegundos, e ut corresponde a ut,esp ou ut,sot, conforme a medida. O primeiro termo representa a contribuição temporal; o segundo, a contribuição da velocidade de conversão.
 
 As componentes temporais representativas de cada evento foram aplicadas às medidas mínimas, médias e máximas, sem redução pelo número de células.
@@ -390,19 +403,21 @@ As componentes temporais representativas de cada evento foram aplicadas às medi
 O volume foi obtido pela conversão da integral da espessura temporal sobre a área do depósito, utilizando a velocidade ponderada do respectivo evento. A componente temporal foi calculada a partir das variâncias médias de krigagem das superfícies de topo e base e da repetibilidade da interpretação, conforme a expressão de ut,esp apresentada anteriormente. Para representar sua contribuição à integral temporal, manteve-se a área fixa e adotou-se:
 
 \begin{equation}
-  u_I=A\,u_{t,\mathrm{esp}}
+  u_I=A\,u_{t,\mathrm{esp}},
   \label{eq:incerteza-integral-temporal}
 \end{equation}
 \equationdescription{Incerteza da integral temporal do volume}
 
+\noindent
 em que A é a área do depósito, em metros quadrados, e uI é a componente de incerteza da integral temporal, em ms·m². Essa escolha corresponde à adoção de uma componente temporal representativa comum a toda a área, equivalente à hipótese de correlação espacial positiva perfeita dessa contribuição, sem redução pelo número de células. Nesse caso, as contribuições à incerteza da integral se combinam linearmente, conforme o tratamento apresentado pelo JCGM (2008, Seção 5.2.2). A incerteza do volume foi calculada combinando as contribuições da integral temporal e da velocidade, por propagação de primeira ordem \cite{taylor1997}:
 
 \begin{equation}
-  u_V=\sqrt{\left(\frac{\overline{v}_e u_I}{2\times10^{12}}\right)^2+\left(\frac{Iu_v}{2\times10^{12}}\right)^2}
+  u_V=\sqrt{\left(\frac{\overline{v}_e u_I}{2\times10^{12}}\right)^2+\left(\frac{Iu_v}{2\times10^{12}}\right)^2},
   \label{eq:incerteza-volume}
 \end{equation}
 \equationdescription{Incerteza do volume}
 
+\noindent
 em que I é a integral da espessura temporal, em ms·m²; ve é a velocidade ponderada do evento; e uv,e é sua dispersão ponderada, ambas em metros por segundo. O fator 2×1012 reúne a conversão do tempo duplo em milissegundos e a expressão do volume em quilômetros cúbicos.
 
 \paragraph{Alturas e inclinações}
@@ -412,11 +427,12 @@ Para a altura total de queda e as inclinações do declive não deformado e da s
 A incerteza do desnível foi calculada pela aplicação da propagação de primeira ordem de \citeonline{taylor1997} à diferença entre as profundidades dos pontos, obtidas conforme a Equação~\eqref{eq:profundidade-ponto}:
 
 \begin{equation}
-  u_{\Delta z}=\sqrt{\left(\frac{\overline{v}_e u_{\Delta t_h}}{2000}\right)^2+\left(\frac{(1500-\overline{v}_e)u_{\Delta t_f}}{2000}\right)^2+\left(\frac{(\Delta t_h-\Delta t_f)u_v}{2000}\right)^2}
+  u_{\Delta z}=\sqrt{\left(\frac{\overline{v}_e u_{\Delta t_h}}{2000}\right)^2+\left(\frac{(1500-\overline{v}_e)u_{\Delta t_f}}{2000}\right)^2+\left(\frac{(\Delta t_h-\Delta t_f)u_v}{2000}\right)^2},
   \label{eq:incerteza-desnivel}
 \end{equation}
 \equationdescription{Incerteza do desnível}
 
+\noindent
 em que Δth é a diferença de TWT entre os pontos do horizonte interpretado e Δtf é a diferença de TWT do fundo marinho nas mesmas posições, ambas em milissegundos e calculadas na mesma ordem entre os extremos; ve é a velocidade sedimentar adotada para o evento, em metros por segundo; e uv é sua dispersão ponderada. As componentes temporais foram definidas por uΔth=2upick e uΔtf=2uf, considerando independência entre os extremos.
 
 Os três termos da Equação~\eqref{eq:incerteza-desnivel} representam, respectivamente, as contribuições da interpretação do horizonte, do fundo marinho e da velocidade sedimentar para a incerteza do desnível. Para a altura total de queda, adotou-se uHt=uΔz.
@@ -424,11 +440,12 @@ Os três termos da Equação~\eqref{eq:incerteza-desnivel} representam, respecti
 Para as inclinações, calculadas por θ=arctan(|Δz|/L), a propagação foi realizada mantendo a distância horizontal L fixa:
 
 \begin{equation}
-  u_\theta=\frac{180}{\pi}\frac{u_{\Delta z}}{L\left[1+(\Delta z/L)^2\right]}
+  u_\theta=\frac{180}{\pi}\frac{u_{\Delta z}}{L\left[1+(\Delta z/L)^2\right]},
   \label{eq:incerteza-inclinacao}
 \end{equation}
 \equationdescription{Incerteza da inclinação}
 
+\noindent
 em que uθ é a incerteza angular, em graus; uΔz é a incerteza do desnível, em metros; e L é a distância horizontal entre os pontos, em metros. Essa expressão foi aplicada às inclinações do declive não deformado (S) e da superfície receptora (St). Os dados dos pontos e segmentos utilizados nos cálculos encontram-se no Apêndice~\ref{ap:dados-morfometria}.
 
 As alturas e inclinações das cicatrizes ((H\_s) e (S\_s)) foram obtidas a partir de perfis da superfície do fundo marinho, utilizando velocidade constante de 1.500 m/s para converter os desníveis temporais em metros. Não foram quantificadas incertezas para essas medidas, assim como para áreas, perímetros e comprimentos.
@@ -442,11 +459,12 @@ Foram avaliadas janelas temporais de 256, 384 e 512 ms. A frequência dominante 
 A frequência dominante foi utilizada para estimar a resolução vertical por sua relação com o comprimento de onda do sinal sísmico. Adotou-se o critério de um quarto do comprimento de onda dominante, apresentado por \citeonline{yilmaz2001}, segundo o qual a resolução vertical em profundidade é estimada por Rz=v/(4fdom). Expressando essa espessura em tempo duplo de percurso, pela relação RTWT=2Rz/v, e convertendo segundos para milissegundos, obtém-se:
 
 \begin{equation}
-  R_{\mathrm{TWT}}=\frac{500}{f_{\mathrm{dom}}}
+  R_{\mathrm{TWT}}=\frac{500}{f_{\mathrm{dom}}},
   \label{eq:resolucao-vertical}
 \end{equation}
 \equationdescription{Resolução vertical temporal}
 
+\noindent
 em que fdom é a frequência dominante, em hertz, e RTWT é a resolução vertical temporal, em milissegundos. Os valores obtidos, entre aproximadamente 13 e 22 ms, foram utilizados como referência para avaliar a capacidade de individualização do topo e da base dos depósitos. Essa avaliação foi mantida separada da propagação de incertezas, pois a resolução entre interfaces não corresponde diretamente à repetibilidade de sua interpretação.
 
 \subsubsection{Sensibilidade das medidas morfométricas ao espaçamento da grade}\label{sec:4-3-9-4}
@@ -498,21 +516,23 @@ A comparação entre as distribuições mensais indicou menores níveis de densi
 A partir das três componentes sísmicas, calculou-se a razão espectral entre a média geométrica dos espectros de amplitude das componentes horizontais e o espectro de amplitude da componente vertical:
 
 \begin{equation}
-  \operatorname{HVSR}(f)=\frac{\sqrt{\left([NS(f)]^2+[EW(f)]^2\right)/2}}{V(f)}
+  \operatorname{HVSR}(f)=\frac{\sqrt{\left([NS(f)]^2+[EW(f)]^2\right)/2}}{V(f)},
   \label{eq:hvsr}
 \end{equation}
 \equationdescription{Razão espectral horizontal/vertical}
 
+\noindent
 em que NS(f) e EW(f) representam os espectros de amplitude das componentes horizontais norte--sul e leste--oeste, respectivamente; V(f) representa o espectro da componente vertical; e f é a frequência.
 
 O pico dominante da curva H/V foi associado à frequência fundamental de ressonância (f₀), relacionada à resposta de uma interface com contraste de impedância. Considerando um modelo simplificado de uma camada sedimentar sobre um substrato mais rígido, a profundidade aproximada da interface (H) foi calculada por:
 
 \begin{equation}
-  H\approx\frac{V_s}{4f_0}
+  H\approx\frac{V_s}{4f_0},
   \label{eq:quarto-comprimento}
 \end{equation}
 \equationdescription{Profundidade da interface pelo modelo de quarto de comprimento de onda}
 
+\noindent
 em que Vₛ corresponde à velocidade média da onda S na camada acima da interface \cite{nakamura1989,krylov2020}.
 
 \subsection{Cálculo das curvas HVSR}\label{sec:4-6-1}
@@ -526,7 +546,7 @@ As componentes horizontais foram combinadas por média geométrica, procedimento
 A frequência fundamental foi obtida pelo pico dominante das curvas HVSR individuais; os valores de pico das janelas processadas foram tratados por estatística lognormal, resultando em frequência central e dispersão associada. Não foi aplicado o algoritmo automático ou iterativo de rejeição de janelas no domínio da frequência proposto. Assim, as janelas que puderam ser processadas foram mantidas na análise, sem exclusão baseada em limites de amplitude, desvio-padrão ou afastamento em relação à curva mediana.
 
 \begin{equation}
-  f_{\pm1\sigma}=\widetilde{f}_0\exp\!\left[\pm\sigma_{\ln(f_0)}\right]
+  f_{\pm1\sigma}=\widetilde{f}_0\exp\!\left[\pm\sigma_{\ln(f_0)}\right],
   \label{eq:intervalo-lognormal}
 \end{equation}
 \equationdescription{Limites lognormais de frequência}
@@ -595,11 +615,12 @@ O poço 3-BRSA-944A-RJS foi mantido na estimativa por constituir o controle espa
 Após a obtenção de Vp, realizou-se a conversão para Vs por meio do coeficiente de Poisson (ν), conforme a relação elástica proposta por \citeonline{aki2002}:
 
 \begin{equation}
-  V_s=V_p\sqrt{\frac{1-2\nu}{2(1-\nu)}}
+  V_s=V_p\sqrt{\frac{1-2\nu}{2(1-\nu)}},
   \label{eq:vp-vs}
 \end{equation}
 \equationdescription{Conversão de $V_p$ para $V_s$ pelo coeficiente de Poisson}
 
+\noindent
 Foram adotados valores de ν entre 0,46 e 0,48, compatíveis com sedimentos finos saturados e com a natureza litológica indicada pelos perfis dos poços \cite{davidovici1985,domenico1990,prakash1990}. Os valores de Vₛ resultantes das combinações entre as duas estimativas de Vₚ e os três coeficientes de Poisson são apresentados na Seção~\ref{sec:5-10-3}.
 
 A profundidade foi estimada para todas as combinações entre três valores de frequência — inferior, central e superior —, duas estimativas de velocidade de onda P (Vp) e três valores do coeficiente de Poisson (ν), totalizando 18 cenários para cada data. Os valores inferior e superior de frequência foram definidos a partir da dispersão das frequências de pico entre as janelas processadas, conforme o tratamento estatístico descrito na seção~\ref{sec:4-6-1}.
@@ -607,15 +628,16 @@ A profundidade foi estimada para todas as combinações entre três valores de f
 Adotando a distinção entre incerteza absoluta e relativa apresentada por \citeonline{taylor1997}, a variabilidade entre os cenários calculados foi sintetizada neste estudo por meio de um envelope. Os valores mínimo (Hmin) e máximo (Hmax) delimitaram o intervalo, cujo ponto médio foi utilizado como valor de referência:
 
 \begin{equation}
-  H_c=\frac{H_{\min}+H_{\max}}{2}
+  H_c=\frac{H_{\min}+H_{\max}}{2},
   \label{eq:ponto-medio-envelope}
 \end{equation}
 \equationdescription{Ponto médio do envelope de profundidade}
 
+\noindent
 A incerteza absoluta pelo método do envelope foi definida como a semi-amplitude do intervalo, correspondente à metade da diferença entre as profundidades máxima e mínima:
 
 \begin{equation}
-  \Delta H_{\mathrm{abs}}=\frac{H_{\max}-H_{\min}}{2}
+  \Delta H_{\mathrm{abs}}=\frac{H_{\max}-H_{\min}}{2}.
   \label{eq:semi-amplitude-envelope}
 \end{equation}
 \equationdescription{Semi-amplitude do envelope de profundidade}
@@ -623,7 +645,7 @@ A incerteza absoluta pelo método do envelope foi definida como a semi-amplitude
 Assim, o envelope foi apresentado na forma Hc ± ΔHabs. A incerteza relativa corresponde à razão entre a incerteza absoluta e o valor de referência, sendo expressa percentualmente por:
 
 \begin{equation}
-  \Delta H_{\mathrm{rel}}(\%)=\frac{\Delta H_{\mathrm{abs}}}{H_c}\times100
+  \Delta H_{\mathrm{rel}}(\%)=\frac{\Delta H_{\mathrm{abs}}}{H_c}\times100.
   \label{eq:semi-amplitude-relativa}
 \end{equation}
 \equationdescription{Semi-amplitude relativa do envelope de profundidade}
